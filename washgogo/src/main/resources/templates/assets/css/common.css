@@ -158,10 +158,9 @@ body{
     z-index: 1020;
     display: flex;
     align-items: center;
-    justify-content: space-between;  
+    justify-content: space-between;
 }
 #app-header{
-    /*sticky는 부모, 조상 노드에 overflow가 hidden,scroll,auto로 설정되어 있으면 적용되지 않음*/
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -202,7 +201,7 @@ body{
     display: block;
     width: 12rem;
     height: 2.25rem;
-    background: url("../images/logoBgWhite.png") no-repeat center;
+    background: url("../img/logoBgWhite.png") no-repeat center;
     background-size: contain;
     text-indent: -99999px;
 }
