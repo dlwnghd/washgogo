@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>requestSelect</title>
+    <link rel="stylesheet" href="../../../../../../request/requestSelect.css">
+    <link rel="stylesheet" href="../../../../../../request/common.css">
+</head>
+<body>
+    <div id="app">
+        <!---- App-Header ---->
+        <header id="app-header" class="global-header hide-border-bottom">
+            <section>
+                <div class="desktop-header">
+                    <div class="left-section">
+                        <div class="logo">
+                            <a href="./index.html">
+                                <div class="logo-image">washgogo</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="right-section">
+                        <nav>
+                            <ul class="nav-list sign-out">
+                                <li class="nav-item">
+                                    <a href="./guide.html"><span>가이드</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#"><span>가격표</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#"><span>로그인</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#"><span>회원가입</span></a>
+                                </li>
+                            </ul>
+                            <ul class="nav-list sign-in" style="display: none;">
+                                <li class="nav-item">
+                                    <a href="./index.html"><span>가이드</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#"><span>가격표</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#"><span>이용내역</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#"><span>마이페이지</span></a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <button type="button" class="btn btn-primary pickup-request-btn">수거신청</button>
+                    </div>
+                </div>
+            </section>
+        </header>
+        <!---- App-Body ---->
+        <div id="app-body">
+            <section class="request-select-container">
+                <article class="request-select-detail">
+                    <div class="request-img-container">
+                        <img class="request-img" src="img\request.png" alt="세탁물 수거">
+                    </div>
+                    <div class="guide-take"><div class="border-title border-name">우재현님</div>, 오늘 밤 <div>문 앞의 세탁물을 수거하러 갑니다.</div></div>
+                    <div class="adr">
+                        <div class="request-where-title">
+                            <div class="border-title">수거 배송/주소</div>
+                            <div class="update-address">수정 > </div>
+                        </div>
+                        <div class="request-where-main">
+                            <div class="address-doorlock">
+                                <div class="address font-weight500">주소 수정 시 내용이 들어갈 곳</div>
+                                <div class="doorlock-password">공동현관 비밀번호:</div>
+                            </div>
+                            <div class="alarm-message">
+                                <div class="alarm-message-text font-weight500">알림 메시지 전송 시간</div>
+                                <div class="checkbox-container-wrap">
+                                    <div class="checkbox-container">
+                                        <form action="#">
+                                            <label for="chk-after">
+                                            <input type="checkbox" id="chk-after">
+                                            <i class="circle"></i>
+                                            <span class="alarm-choose-text">오전 7시 이후</span>
+                                            </label>
+                                        </form>
+                                    </div>
+                                    <div class="checkbox-container">
+                                        <form action="#">
+                                            <label for="chk-direct">
+                                            <input type="checkbox" id="chk-direct">
+                                            <i class="circle"></i>
+                                            <span class="alarm-choose-text">수거/배송 즉시</span>
+                                            </label>
+                                    </form>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pre">
+                        <div class="premium">
+                            <div class="premium-title border-title">프리미엄 서비스</div>
+                            <div class="guide-premium">프리미엄 서비스 안내 </div>
+                        </div>
+                        <div class="premium-main">  
+                            <div class="select-premium">
+                                <div class="premium-text font-weight500">프리미엄 의류 선택하기</div>
+                                <div>></div>
+                            </div>
+                            <div class="premium-tip">
+                                <div class="tip-text">TIP</div>
+                                <div class="guide-premium-detail">프리미엄 가격표/ 지정 브랜드 보기</div>
+                            </div>
+                        </div>
+                        <div class="premium-brand-guide">프리미엄 지정 브랜드는 <div class="premium-service-color">프리미엄 서비스로 자동 적용</div>됩니다.</div>
+                    </div>
+                    <div class="cleaning">
+                        <div class="cleaning-title">
+                            <div class="border-title">맡기실 세탁물 선택하기</div>
+                        </div>
+                        <div cleaning="select-cleaning">
+                            <div class="checkbox-container-wrap-cleaning">
+                                <div class="checkbox-container-cleaning">
+                                    <form action="#">
+                                        <label for="chk-life">
+                                        <input type="checkbox" id="chk-life">
+                                        <i class="circle2"></i>
+                                        <span class="cleaning-choose-text">생활 빨래</span>
+                                        <div class="help-text">티셔츠, 수건과 같은 세탁기에 돌리는 빨래입니다.</div>
+                                        </label>
+                                    </form>
+                                </div>
+                                <div class="checkbox-container-cleaning">
+                                    <form action="#">
+                                        <label for="chk-other">
+                                        <input type="checkbox" id="chk-other">
+                                        <i class="circle2"></i>
+                                        <span class="cleaning-choose-text">개별 클리닝</span>
+                                        <div class="help-text">드라이클리닝, 신발, 이불 등의 개별로 과금되는 세탁물입니다.</div>
+                                        </label>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="req">
+                        <div class="cleaning-requests-title">
+                            <div class="border-title">세탁 요청사항</div>
+                            <div>△</div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </div>
+        <!---- App-Footer ---->
+        <nav id="app-footer" class="footer-container">
+            <div class="footer-container-row">
+                <div class="col-content">
+                    <p class="contact">1833-1900</p>
+                    <p class="text-middle">
+                        평일 10:00 - 18:00
+                        <br>
+                        (점심시간 13:00 - 14:00 제외 · 주말/공휴일 제외)
+                    </p>
+                </div>
+                <div class="col-content right">
+                    <a href="#" class="download"><img src="https://assets.cdn.soomgo.com/icons/icon-download-appstore.svg" alt="앱스토어">APP STORE</a>
+                    <a href="#" class="download"><img src="https://assets.cdn.soomgo.com/icons/icon-download-palystore.svg" alt="구글플레이">PLAY STORE</a>
+                </div>
+            </div>
+            <div class="footer-container-row terms">
+                <div class="term-container">
+                    <div class="col-content term-content">
+                        <img src="./images/logoGray.jpg" alt="logo" class="logo">
+                        <div class="col-content-list-term">
+                            <a href="#" class="text term">이용약관</a>
+                            <a href="#" class="text term">개인정보처리방침</a>
+                            <a href="#" class="text term">사업자 정보확인</a>
+                        </div>
+                        <div>
+                            <ul class="col-content-guide">
+                                <li class="text">(주)워시고고컴퍼니</li>
+                                <li class="text">대표 : 송민경 사업자 등록번호:561-87-00950</li>
+                                <li class="text">통신판매업신고 : 제2022-서울강서-2052호</li>
+                                <li class="text">주소 : 서울특별시 강서구 양천로 60길 1004(01004)</li>
+                                <li class="text">개인정보담당자 : 송민경 이메일:privacy@washgogo.kr</li>
+                                <li class="text">고객센터 : 1833-1900</li>
+                                <li class="text">Copyright2022 &copy; Washgogo All rights reserved</li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                    <div class="col-content badge-list right">
+                        <a href="#" target="_blank" class="footer-badge">
+                            <img src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-facebook.svg" alt="워시고고 페이스북 계정">
+                        </a>
+                        <a href="#" target="_blank" class="footer-badge">
+                            <img src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-instagram.svg" alt="워시고고 인스타그램">
+                        </a>
+                        <a href="#" target="_blank" class="footer-badge">
+                            <img src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-naverblog.svg" alt="워시고고 블로그">
+                        </a>
+                        <a href="#" target="_blank" class="footer-badge">
+                            <img src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-naverpost.svg" alt="워시고고 포스트">
+                        </a>
+                        <a href="#" target="_blank" class="footer-badge">
+                            <img src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-tistory.svg" alt="워시고고 스토리">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>
