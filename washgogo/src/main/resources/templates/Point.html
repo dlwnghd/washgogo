@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" style="--gnb-height:72px;" class="">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,11 +17,11 @@
         <!--⭐헤더 푸터-->
         <link rel="stylesheet" href="assets/css/style_frame.css">
         <!--⭐틀-->
-        <link rel="stylesheet" href="assets/css/style_use_service.css">
-        <!--⭐이용중인 서비스 세부-->
+        <link rel="stylesheet" href="assets/css/style_point.css">
+        <!--⭐틀-->
     </head>
-    <body>
-        <div id="app">
+    <body class="mypage" style="padding-right: 0px;" data-modal-open-count="0">
+        <div id="app" data-is-loaded="true">
             <!---- App-Header ---->
             <header id="app-header" class="global-header hide-border-bottom">
                 <section>
@@ -81,50 +81,36 @@
             </header>
             <!---- App-Body ---->
             <div id="app-body">
-                <div class="container" style="max-width: 39.375rem; margin: 0 auto">
-                    <div class="content" style="margin-top: 50px;">
-                        <div class="title">
-                            <h1 style="text-align: left; border-bottom: 2px solid black;">이용중인 서비스</h1>
-                        </div>
-                        <div class="use-list">
-                            <ul>
-                                <li class="service-info">신청 서비스
-                                <span style="float: right;">월정액</span>
-                                </li>
-                                <li class="service-info">신청일
-                                    <span style="float: right;">2022-06-17</span>
-                                </li>
-                                <li class="service-info">이용 상태
-                                    <span style="float: right;">사용중</span>
-                                </li>
-                                <li class="service-info">이용기간
-                                    <span style="float: right;">1일</span>
-                                </li>
-                                <li class="service-info">결제 예정일
-                                    <span style="float: right;">매달 10일</span>
-                                </li>
-                            </ul>
-                            <div style="border: 1px solid black; margin-bottom:0.5rem;"></div>
-                            <ul>
-                                <li class="service-info">요금제
-                                    <span style="float: right;">-</span>
-                                </li>
-                                <li class="service-info">요금제 금액
-                                    <span style="float: right;">-</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="image-boxes">
-                            <div>
-                                <img src="" alt="">
-                            </div>
-                            <div>
-                                <img src="" alt="">
-                            </div>
-                            <div>
-                                <img src="" alt="">
-                            </div>
-                        </div>
+                <div class="container-md container">
+                    <div class="mypage-container">
+                        <h1 class="mypage-title">포인트</h1>
+                        <h4 class="point-title">WASHGOGO 포인트
+                            <span style="float: right">999,999,999p</span>
+                        </h4>
+                        <p class="">한달 내, 소멸 예정 포인트
+                            <span style="float: right">999,999,999p</span>
+                        </p>
+                        <button style="margin: auto;">포인트 코드 등록</button>
+                    </div>
+                    <div class="mypage-container">
+                        <h4 style="border-bottom :1px solid">포인트 이용 내역</h4>
+                        <table border="1" style="width: 100%;">
+                            <tr>
+                                <th>날짜</th>
+                                <th>사용명</th>
+                                <th>포인트</th>
+                            </tr>
+                            <tr>
+                                <td>ex)2022-06-16</td>
+                                <td>월정액</td>
+                                <td>5000</td>
+                            </tr>
+                            <tr>
+                                <td>ex)2022-06-16</td>
+                                <td>자유이용</td>
+                                <td>5000</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -151,7 +137,7 @@
                 <div class="footer-container-row terms">
                     <div class="term-container">
                         <div class="col-content term-content">
-                            <img src="assets/img/logoGray.jpg" alt="logo" class="logo">
+                            <img src=" ../images/logoGray.jpg" alt="logo" class="logo">
                             <div class="col-content-list-term">
                                 <a href="#" class="text term">이용약관</a>
                                 <a href="#" class="text term">개인정보처리방침</a>
@@ -201,5 +187,6 @@
                 </div>
             </nav>
         </div>
-    </body>
+    </div>
+</body>
 </html>

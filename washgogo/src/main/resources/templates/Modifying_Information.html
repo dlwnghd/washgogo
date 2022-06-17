@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko" class="">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>워시고고 - 우리집 모바일 세탁소</title>
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="https://www.laundrygo.com/image/favicon/favicon_web.png">
+        <link rel="stylesheet" href="assets/css/common.css">
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <!--⭐헤더 푸터-->
+        <link rel="stylesheet" href="assets/css/style_frame.css">
+        <!--⭐틀-->
+        <link rel="stylesheet" href="assets/css/Modifying_information_modal.css">
+        <!-- ⭐각 수정별 모달창 스타일-->
+        <link rel="stylesheet" href="assets/css/style_Modifying_information.css">
+        <!-- ⭐수정 페이지 세부 -->
+    </head>
+    <body class="account-info" data-modal-open-count="0">
+        <div id="app" data-is-loaded="true">
+            <!---- App-Header ---->
+            <header id="app-header" class="global-header hide-border-bottom">
+                <section>
+                    <div class="desktop-header">
+                        <div class="left-section">
+                            <div class="logo">
+                                <a href="./index.html">
+                                    <img src="assets/img/headerLogo.png" alt="" style="width: 106px;">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="right-section">
+                            <nav>
+                                <!-- ⭐비로그인 헤더 -->
+                                <ul class="nav-list sign-out" style="display: none;">
+                                    <li class="nav-item">
+                                        <a href="./guide.html">
+                                            <span>가이드</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">
+                                            <span>가격표</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">
+                                            <span>로그인</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">
+                                            <span>회원가입</span></a>
+                                    </li>
+                                </ul>
+                                <!-- ⭐로그인 헤더 -->
+                                <ul class="nav-list sign-in">
+                                    <li class="nav-item">
+                                        <a href="./index.html">
+                                            <span>가이드</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">
+                                            <span>가격표</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">
+                                            <span>이용내역</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">
+                                            <span>마이페이지</span></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <button type="button" class="btn btn-primary pickup-request-btn">수거신청</button>
+                        </div>
+                    </div>
+                </section>
+            </header>
+            <!---- App-Body ---->
+            <div id="app-body">
+                <div class="container-md container">
+                    <main data-v-5e02e480="" class="account-info-container">
+                        <h1 data-v-5e02e480="">계정 설정</h1>
+                        <div data-v-5e02e480="" class="profile-image">
+                            <div data-v-231f963c="" data-v-5e02e480="" class="user-profile-picture h-100">
+                                <div
+                                    data-v-231f963c=""
+                                    data-name="image"
+                                    class=""
+                                    data-src="https://dmmj3ljielax6.cloudfront.net?h=320&amp;w=320"
+                                    lazy="error"
+                                    style="background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYSIgZD0iTTAgMGg3MnY3MkgweiIvPgogICAgICAgIDxwYXRoIGlkPSJjIiBkPSJNMCAwaDcydjcySDB6Ii8+CiAgICA8L2RlZnM+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxtYXNrIGlkPSJiIiBmaWxsPSIjZmZmIj4KICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYSIvPgogICAgICAgIDwvbWFzaz4KICAgICAgICA8ZyBtYXNrPSJ1cmwoI2IpIj4KICAgICAgICAgICAgPG1hc2sgaWQ9ImQiIGZpbGw9IiNmZmYiPgogICAgICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYyIvPgogICAgICAgICAgICA8L21hc2s+CiAgICAgICAgICAgIDx1c2UgZmlsbD0iI0YyRjJGMiIgeGxpbms6aHJlZj0iI2MiLz4KICAgICAgICAgICAgPHBhdGggZmlsbD0iI0UxRTFFMSIgZD0iTTcwLjY3NyA2Ny4wMzJjLS45NTEtMi44NDQtMi42NzQtNS43MTItNS4yMTUtNy4zODEtNC44OS0zLjIzNi0xMC41ODctNC45NjItMTYuMDk1LTYuODEtMS4zMjktLjQ2NS0yLjY4LS45Ny0zLjg5My0xLjY5LTEuMDg1LS42NDMtMS40OTItMS45Ni0xLjc0My0zLjExNy0uMTEyLS42MTItLjE4LTEuMjQtLjIxNS0xLjg1NyAzLjk5NC01LjQ0OCA2LjY0NC0xNC4zNCA2LjY0NC0yMS42M0M1MC4xNiAxMy4xNzIgNDMuNzEyIDEwIDM1Ljc2IDEwYy03Ljk1NCAwLTE0LjQgMy4xNjYtMTQuNCAxNC41NDMgMCA3LjU1MSAyLjg0IDE2LjgxNCA3LjA3NSAyMi4xOTUtLjAzOS40MjQtLjA5Ljg1LS4xNjYgMS4yNzItLjI1MiAxLjE1Ny0uNjU5IDIuNDUtMS43NDIgMy4wOTItMS4yMTYuNzItMi41NjYgMS4xNzctMy44OTUgMS42NC01LjUwOSAxLjg0OS0xMS4yMDYgMy40NzgtMTYuMDk0IDYuNzE0LTIuNTQyIDEuNjctNC4yNjQgNC43MzItNS4yMTQgNy41NzZDLjM0NiA2OS45ODItLjA1NCA3My42MzguMDA2IDc2LjZoNzEuOTg4Yy4wNi0yLjk2Mi0uMzQtNi42MTctMS4zMTctOS41Njh6IiBtYXNrPSJ1cmwoI2QpIi8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K&quot;);"></div>
+                            </div><img
+                                data-v-5e02e480=""
+                                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGc+CiAgICAgICAgICAgIDxnPgogICAgICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTYwMyAtMjg2KSB0cmFuc2xhdGUoNTM1IDIxOCkgdHJhbnNsYXRlKDY4IDY4KSB0cmFuc2xhdGUoMSAxKSI+CiAgICAgICAgICAgICAgICAgICAgICAgIDxjaXJjbGUgY3g9IjE1IiBjeT0iMTUiIHI9IjE1IiBmaWxsPSIjRkZGIiBzdHJva2U9IiNGMkYyRjIiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxnPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTAgMEwxOCAwIDE4IDE4IDAgMTh6IiBvcGFjaXR5PSIuNCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiA2KSIvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZmlsbD0iI0I1QjVCNSIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMTEuNCAybDEuNDY0IDEuNTU2SDE1LjRjLjg4IDAgMS42LjcgMS42IDEuNTU1djkuMzMzQzE3IDE1LjMgMTYuMjggMTYgMTUuNCAxNkgyLjZjLS44OCAwLTEuNi0uNy0xLjYtMS41NTZWNS4xMTFjMC0uODU1LjcyLTEuNTU1IDEuNi0xLjU1NWgyLjUzNkw2LjYgMmg0Ljh6TTkgN2MtMS42NTYgMC0zIDEuMzQ0LTMgM3MxLjM0NCAzIDMgMyAzLTEuMzQ0IDMtMy0xLjM0NC0zLTMtM3oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYgNikiLz4KICAgICAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
+                                class="camera-icon">
+                        </div>
+                        <section data-v-5e02e480="">
+                            <div
+                                data-v-7a8bbde7=""
+                                data-v-5e02e480=""
+                                class="sign-container danger md"
+                                style="display: none;">
+                                <div data-v-7a8bbde7="" class="header">
+                                    <div data-v-7a8bbde7="" class="title"><img
+                                        data-v-7a8bbde7=""
+                                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGc+CiAgICAgICAgICAgIDxnPgogICAgICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICAgICAgPHBhdGggZmlsbD0iI0ZBNTk2MyIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMy42NzUgMTdoMTIuNjVjLjkxMyAwIDEuNjU0LS43NCAxLjY1NC0xLjY1MyAwLS4yOTYtLjA4LS41ODctLjIzLS44NDJsLTYuMzI2LTEwLjdDMTAuOTYgMy4wMiA5Ljk0NSAyLjc2IDkuMTYgMy4yMjVjLS4yNC4xNDEtLjQ0LjM0Mi0uNTgyLjU4MmwtNi4zMjUgMTAuN2MtLjQ2NS43ODUtLjIwNCAxLjguNTgyIDIuMjY0LjI1NC4xNS41NDUuMjMuODQxLjIzem03LjE2NC0yLjQ2M0g5LjE2MnYtMS42NDNoMS42Nzd2MS42NDN6bTAtMy4yODVIOS4xNjJWNy45NjdoMS42Nzd2My4yODV6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzIgLTQ0OSkgdHJhbnNsYXRlKDE2IDQyOSkgdHJhbnNsYXRlKDE2IDIwKSIvPgogICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0wIDIwTDIwIDIwIDIwIDAgMCAweiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTMyIC00NDkpIHRyYW5zbGF0ZSgxNiA0MjkpIHRyYW5zbGF0ZSgxNiAyMCkiLz4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
+                                        alt="danger">
+                                        <span data-v-7a8bbde7="">성별 정보가 없습니다.</span></div>
+                                    <!---->
+                                </div>
+                                <a
+                                    data-v-7a8bbde7=""
+                                    href="/mypage/account-info/settings/gender"
+                                    class="btn btn-action btn-secondary btn-block"
+                                    target="_self">
+                                    성별 입력하기
+                                </a>
+                            </div>
+                            <ul data-v-5e02e480="" class="account-info">
+                                <li data-v-5e02e480="" class="item-container">
+                                    <div data-v-5e02e480="" class="item">
+                                        <div data-v-5e02e480="" class="item-title">이름</div>
+                                        <div data-v-5e02e480="" class="item-info">이주홍</div>
+                                    </div>
+                                    <div data-v-5e02e480=""><img
+                                        data-v-5e02e480=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                                <a
+                                    data-v-5e02e480=""
+                                    href="/mypage/account-info/settings/email"
+                                    class="item-container">
+                                    <div data-v-5e02e480="" class="item">
+                                        <div data-v-5e02e480="" class="item-title">이메일</div>
+                                        <div data-v-5e02e480="" class="item-info">
+                                            <!---->
+                                            <span data-v-5e02e480="">alion0513@naver.com</span>
+                                        </div>
+                                    </div>
+                                    <div data-v-5e02e480=""><img
+                                        data-v-5e02e480=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </a>
+                                <a
+                                    data-v-5e02e480=""
+                                    href="/mypage/account-info/settings/password"
+                                    class="item-container">
+                                    <div data-v-5e02e480="" class="item">
+                                        <div data-v-5e02e480="" class="item-title">비밀번호</div>
+                                        <div data-v-5e02e480="" class="item-info">•••••••</div>
+                                    </div>
+                                    <div data-v-5e02e480=""><img
+                                        data-v-5e02e480=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </a>
+                                <li data-v-5e02e480="" class="item-container">
+                                    <div data-v-5e02e480="" class="item">
+                                        <div data-v-5e02e480="" class="item-title">휴대전화 번호</div>
+                                        <div data-v-5e02e480="" class="item-info">01088580291</div>
+                                    </div>
+                                    <div data-v-5e02e480=""><img
+                                        data-v-5e02e480=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                                <li data-v-5e02e480="" class="item-container">
+                                    <div data-v-5e02e480="" class="item">
+                                        <div data-v-5e02e480="" class="item-title">배송지</div>
+                                        <div data-v-5e02e480="" class="item-info">안알랴쥼</div>
+                                    </div>
+                                    <div data-v-5e02e480=""><img
+                                        data-v-5e02e480=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                                <li data-v-5e02e480="" class="item-container">
+                                    <div data-v-5e02e480="" class="item">
+                                        <div data-v-5e02e480="" class="item-title">공동현관 출입방법</div>
+                                        <div data-v-5e02e480="" class="item-info">안알랴쥼</div>
+                                    </div>
+                                    <div data-v-5e02e480=""><img
+                                        data-v-5e02e480=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                                <li data-v-5e02e480="" class="item-container">
+                                    <div data-v-5e02e480="" class="item">
+                                        <div data-v-5e02e480="" class="item-title">결제정보</div>
+                                        <div data-v-5e02e480="" class="item-info">안알랴쥼</div>
+                                    </div>
+                                    <div data-v-5e02e480=""><img
+                                        data-v-5e02e480=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                            </ul>
+                            <ul data-v-5e02e480="" data-testid="delete-account" class="delete-account">
+                                <li data-v-5e02e480="" class="item-container">
+                                    <div data-v-5e02e480="" data-testid="delete-account-text" class="item">계정 탈퇴</div>
+                                    <div data-v-5e02e480=""><img
+                                        data-v-5e02e480=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                            </ul>
+                        </section>
+                        <!---->
+                    </main>
+                </div>
+            </div>
+            <!---- App-Footer ---->
+            <nav id="app-footer" class="footer-container">
+                <div class="footer-container-row">
+                    <div class="col-content">
+                        <p class="contact">1833-1900</p>
+                        <p class="text-middle">
+                            평일 10:00 - 18:00
+                            <br>
+                            (점심시간 13:00 - 14:00 제외 · 주말/공휴일 제외)
+                        </p>
+                    </div>
+                    <div class="col-content right">
+                        <a href="#" class="download"><img
+                            src="https://assets.cdn.soomgo.com/icons/icon-download-appstore.svg"
+                            alt="앱스토어">APP STORE</a>
+                        <a href="#" class="download"><img
+                            src="https://assets.cdn.soomgo.com/icons/icon-download-palystore.svg"
+                            alt="구글플레이">PLAY STORE</a>
+                    </div>
+                </div>
+                <div class="footer-container-row terms">
+                    <div class="term-container">
+                        <div class="col-content term-content">
+                            <img src=" assets/img/logoGray.jpg" alt="logo" class="logo">
+                            <div class="col-content-list-term">
+                                <a href="#" class="text term">이용약관</a>
+                                <a href="#" class="text term">개인정보처리방침</a>
+                                <a href="#" class="text term">사업자 정보확인</a>
+                            </div>
+                            <div>
+                                <ul class="col-content-guide">
+                                    <li class="text">(주)워시고고컴퍼니</li>
+                                    <li class="text">대표 : 송민경 사업자 등록번호:561-87-00950</li>
+                                    <li class="text">통신판매업신고 : 제2022-서울강서-2052호</li>
+                                    <li class="text">주소 : 서울특별시 강서구 양천로 60길 1004(01004)</li>
+                                    <li class="text">개인정보담당자 : 송민경 이메일:privacy@washgogo.kr</li>
+                                    <li class="text">고객센터 : 1833-1900</li>
+                                    <li class="text">Copyright2022 &copy; Washgogo All rights reserved</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-content badge-list right">
+                            <a href="#" target="_blank" class="footer-badge">
+                                <img
+                                    src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-facebook.svg"
+                                    alt="워시고고 페이스북 계정">
+                            </a>
+                            <a href="#" target="_blank" class="footer-badge">
+                                <img
+                                    src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-instagram.svg"
+                                    alt="워시고고 인스타그램">
+                            </a>
+                            <a href="#" target="_blank" class="footer-badge">
+                                <img
+                                    src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-naverblog.svg"
+                                    alt="워시고고 블로그">
+                            </a>
+                            <a href="#" target="_blank" class="footer-badge">
+                                <img
+                                    src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-naverpost.svg"
+                                    alt="워시고고 포스트">
+                            </a>
+                            <a href="#" target="_blank" class="footer-badge">
+                                <img
+                                    src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-tistory.svg"
+                                    alt="워시고고 스토리">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- ⭐id 수정 모달창 -->
+        <!-- <div id="modal" class="modal-overlay"> <div class="modal-window"> <div
+        class="close-area">X</div> <div class="title"> <h2 style="text-align:
+        center;">ID 수정</h2> </div> <div class="content"> <input type="text"> </div> <div
+        class="choose"> <button type="button" class="remain-user" style="display:
+        inline-block;">취소</button> <button type="button" class="account-withdrawal"
+        style="display: inline-block;">수정</button> </div> </div> </div> -->
+        <!-- ⭐이메일 수정 모달창 -->
+        <!-- <div id="modal" class="modal-overlay"> <div class="modal-window"> <div
+        class="close-area">X</div> <div class="title"> <h2 style="text-align:
+        center;">이메일 수정</h2> </div> <div class="content"> <input type="text"> </div>
+        <div class="choose"> <button type="button" class="remain-user" style="display:
+        inline-block;">취소</button> <button type="button" class="account-withdrawal"
+        style="display: inline-block;">수정</button> </div> </div> </div> -->
+        <!-- ⭐pw 수정 모달창 -->
+        <!-- <div id="modal" class="modal-overlay"> <div class="modal-window"> <div
+        class="close-area">X</div> <div class="title"> <h2 style="text-align:
+        center;">PW 수정</h2> </div> <div class="content">새 비밀번호 <input type="pw"> </div>
+        <div class="content">새 비밀번호 확인 <input type="pw"> </div> <div class="choose">
+        <button type="button" class="remain-user" style="display:
+        inline-block;">취소</button> <button type="button" class="account-withdrawal"
+        style="display: inline-block;">수정</button> </div> </div> </div> -->
+        <!-- ⭐전화번호 수정 모달창 -->
+        <!-- <div id="modal" class="modal-overlay"> <div class="modal-window"> <div
+        class="close-area">X</div> <div class="title"> <h2 style="text-align:
+        center;">이메일 수정</h2> </div> <div class="content">이메일 수정 <input type="text">
+        </div> <div class="choose"> <button type="button" class="remain-user"
+        style="display: inline-block;">취소</button> <button type="button"
+        class="account-withdrawal" style="display: inline-block;">수정</button> </div>
+        </div> </div> -->
+        <!-- ⭐배송지 수정 모달창 -->
+        <!-- <div id="modal" class="modal-overlay"> <div class="modal-window"> <div
+        class="close-area">X</div> <div class="title"> <h2 style="text-align:
+        center;">배송지 수정</h2> </div> <div class="content">배송지 수정 <input type="text">
+        </div> <div class="choose"> <button type="button" class="remain-user"
+        style="display: inline-block;">취소</button> <button type="button"
+        class="account-withdrawal" style="display: inline-block;">수정</button> </div>
+        </div> </div> -->
+        <!-- ⭐공동현관 출입방법 수정 모달창 -->
+        <!-- <div id="modal" class="modal-overlay"> <div class="modal-window"> <div
+        class="close-area">X</div> <div class="title"> <h2 style="text-align:
+        center;">공동현관 출입방법 수정</h2> </div> <div class="content">공동현관 출입방법 수정 <input
+        type="text"> </div> <div class="choose"> <button type="button"
+        class="remain-user" style="display: inline-block;">취소</button> <button
+        type="button" class="account-withdrawal" style="display:
+        inline-block;">수정</button> </div> </div> </div> -->
+        <!-- ⭐결제정보 수정 모달창 -->
+        <div id="modal" class="modal-overlay">
+            <div class="modal-window">
+                <div class="close-area">X</div>
+                <div class="title">
+                    <h2 style="text-align: center;">결제정보 수정</h2>
+                </div>
+                <div class="content">결제정보 수정
+                    <input type="text">
+                </div>
+                <div class="choose">
+                    <button type="button" class="remain-user" style="display: inline-block;">취소</button>
+                    <button type="button" class="account-withdrawal" style="display: inline-block;">수정</button>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="modal" class="modal-overlay"> <div class="modal-window"> <div
+        class="close-area">X</div> <div class="title"> <h2 style="text-align:
+        center;">정말 WASHGOGO를<br>떠나실 건가요?</h2> </div> <div class="content"> <p>계정</p>
+        <p>계정 탈퇴 시 모든 개인정보가 삭제되며<br> 구매하신 캐시는 환불되지 않아요</p> </div> <div class="choose">
+        <button type="button" class="remain-user" style="display: inline-block;">다시 생각해
+        볼게요</button> <button type="button" class="account-withdrawal" style="display:
+        inline-block;">계정 탈퇴</button> </div> </div> </div> -->
+        <script>
+            const loremIpsum = document.getElementById("lorem-ipsum")
+            fetch("https://baconipsum.com/api/?type=all-meat&paras=200&format=html")
+                .then(
+                    response => response.text()
+                )
+                .then(result => loremIpsum.innerHTML = result)
+
+            const closeBtn = modal.querySelector(".close-area")
+            closeBtn.addEventListener("click", e => {
+                modal.style.display = "none"
+            })
+
+            modal.addEventListener("click", e => {
+                const evTarget = e.target
+                if (evTarget.classList.contains("modal-overlay")) {
+                    modal.style.display = "none"
+                }
+            })
+        </script>
+    </body>
+</html>
