@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>워시고고 - 우리집 모바일 세탁소</title>
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="https://www.laundrygo.com/image/favicon/favicon_web.png">
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" href="assets/css/common.css">
+        <!--⭐헤더 푸터-->
+        <link rel="stylesheet" href="assets/css/style_frame.css">
+        <!--⭐틀-->
+        <link rel="stylesheet" href="assets/css/style_mypage.css">
+        <!--⭐마이페이지 세부-->
+    </head>
+    <body>
+        <div id="app" data-is-loaded="true">
+            <!---- App-Header ---->
+            <header id="app-header" class="global-header hide-border-bottom">
+                <section>
+                    <div class="desktop-header">
+                        <div class="left-section">
+                            <div class="logo">
+                                <a href="./index.html">
+                                    <img src="assets/img/headerLogo.png" alt="" style="width: 106px;">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="right-section">
+                            <nav>
+                                <!-- ⭐비로그인 헤더 -->
+                                <ul class="nav-list sign-out" style="display: none;">
+                                    <li class="nav-item">
+                                        <a href="./guide.html">
+                                            <span>가이드</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">
+                                            <span>가격표</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">
+                                            <span>로그인</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">
+                                            <span>회원가입</span></a>
+                                    </li>
+                                </ul>
+                                <!-- ⭐로그인 헤더 -->
+                                <ul class="nav-list sign-in">
+                                    <li class="nav-item">
+                                        <a href="./index.html">
+                                            <span>가이드</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">
+                                            <span>가격표</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">
+                                            <span>이용내역</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#">
+                                            <span>마이페이지</span></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <button type="button" class="btn btn-primary pickup-request-btn">수거신청</button>
+                        </div>
+                    </div>
+                </section>
+            </header>
+            <!---- App-Body ---->
+            <div id="app-body">
+                <div class="container-md container">
+                    <div class="mypage-container">
+                        <h1 class="mypage-title">마이페이지</h1>
+                        <div data-v-5b32e6b8="" class="profile-container underline">
+                            <a data-v-5b32e6b8="" href="./mypage/account-info" class="">
+                                <div data-v-5b32e6b8="" class="thumb">
+                                    <div data-v-231f963c="" data-v-5b32e6b8="" class="user-profile-picture h-100">
+                                        <div
+                                            data-v-231f963c=""
+                                            data-name="image"
+                                            class="is-square"
+                                            data-src="https://dmmj3ljielax6.cloudfront.net?h=320&amp;w=320"
+                                            lazy="error"
+                                            style="background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYSIgZD0iTTAgMGg3MnY3MkgweiIvPgogICAgICAgIDxwYXRoIGlkPSJjIiBkPSJNMCAwaDcydjcySDB6Ii8+CiAgICA8L2RlZnM+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxtYXNrIGlkPSJiIiBmaWxsPSIjZmZmIj4KICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYSIvPgogICAgICAgIDwvbWFzaz4KICAgICAgICA8ZyBtYXNrPSJ1cmwoI2IpIj4KICAgICAgICAgICAgPG1hc2sgaWQ9ImQiIGZpbGw9IiNmZmYiPgogICAgICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYyIvPgogICAgICAgICAgICA8L21hc2s+CiAgICAgICAgICAgIDx1c2UgZmlsbD0iI0YyRjJGMiIgeGxpbms6aHJlZj0iI2MiLz4KICAgICAgICAgICAgPHBhdGggZmlsbD0iI0UxRTFFMSIgZD0iTTcwLjY3NyA2Ny4wMzJjLS45NTEtMi44NDQtMi42NzQtNS43MTItNS4yMTUtNy4zODEtNC44OS0zLjIzNi0xMC41ODctNC45NjItMTYuMDk1LTYuODEtMS4zMjktLjQ2NS0yLjY4LS45Ny0zLjg5My0xLjY5LTEuMDg1LS42NDMtMS40OTItMS45Ni0xLjc0My0zLjExNy0uMTEyLS42MTItLjE4LTEuMjQtLjIxNS0xLjg1NyAzLjk5NC01LjQ0OCA2LjY0NC0xNC4zNCA2LjY0NC0yMS42M0M1MC4xNiAxMy4xNzIgNDMuNzEyIDEwIDM1Ljc2IDEwYy03Ljk1NCAwLTE0LjQgMy4xNjYtMTQuNCAxNC41NDMgMCA3LjU1MSAyLjg0IDE2LjgxNCA3LjA3NSAyMi4xOTUtLjAzOS40MjQtLjA5Ljg1LS4xNjYgMS4yNzItLjI1MiAxLjE1Ny0uNjU5IDIuNDUtMS43NDIgMy4wOTItMS4yMTYuNzItMi41NjYgMS4xNzctMy44OTUgMS42NC01LjUwOSAxLjg0OS0xMS4yMDYgMy40NzgtMTYuMDk0IDYuNzE0LTIuNTQyIDEuNjctNC4yNjQgNC43MzItNS4yMTQgNy41NzZDLjM0NiA2OS45ODItLjA1NCA3My42MzguMDA2IDc2LjZoNzEuOTg4Yy4wNi0yLjk2Mi0uMzQtNi42MTctMS4zMTctOS41Njh6IiBtYXNrPSJ1cmwoI2QpIi8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K&quot;);"></div>
+                                    </div>
+                                </div>
+                                <div data-v-5b32e6b8="" class="user-info">
+                                    <div data-v-5b32e6b8="" class="user-name">
+                                        <span data-v-5b32e6b8="" class="name-length">이주홍</span>
+                                        고객님
+                                    </div>
+                                    <div data-v-5b32e6b8="" class="user-id">
+                                        <!---->
+                                        <span data-v-5b32e6b8="" class="id-length">alion0513@naver.com</span>
+                                    </div>
+                                </div>
+                                <div data-v-5b32e6b8="" class="arrow">
+                                    <span data-v-5b32e6b8="" class="right-arrow"><img
+                                        data-v-5b32e6b8=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span>
+                                </div>
+                            </a>
+                            <!---->
+                        </div>
+                        <div class="my-page-menu">
+                            <ul >
+                                <li data-v-4580432e="" class="sub-menu-container underline escrow-list">
+                                    <a data-v-4580432e="" href="/escrows/history" class="sub-menu-list">
+                                        <div data-v-4580432e="" class="sub-content">
+                                            <div data-v-4580432e="" class="sub-menu">
+                                                <span data-v-4580432e="" class="sub-menu-title">포인트</span></div>
+                                            <!---->
+                                        </div>
+                                        <!---->
+                                        <div data-v-4580432e="" class="arrow">
+                                            <span data-v-4580432e="" class="right-arrow"><img
+                                                data-v-4580432e=""
+                                                src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span></div>
+                                        <!---->
+                                    </a>
+                                </li>
+                                <li data-v-4580432e="" class="sub-menu-container underline escrow-list">
+                                    <a data-v-4580432e="" href="/escrows/history" class="sub-menu-list">
+                                        <div data-v-4580432e="" class="sub-content">
+                                            <div data-v-4580432e="" class="sub-menu">
+                                                <span data-v-4580432e="" class="sub-menu-title">결제내역</span></div>
+                                            <!---->
+                                        </div>
+                                        <!---->
+                                        <div data-v-4580432e="" class="arrow">
+                                            <span data-v-4580432e="" class="right-arrow"><img
+                                                data-v-4580432e=""
+                                                src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span></div>
+                                        <!---->
+                                    </a>
+                                </li>
+                                <li data-v-4580432e="" class="sub-menu-container underline escrow-list">
+                                    <a data-v-4580432e="" href="/escrows/history" class="sub-menu-list">
+                                        <div data-v-4580432e="" class="sub-content">
+                                            <div data-v-4580432e="" class="sub-menu">
+                                                <span data-v-4580432e="" class="sub-menu-title">이용 중인 서비스</span></div>
+                                            <!---->
+                                        </div>
+                                        <!---->
+                                        <div data-v-4580432e="" class="arrow">
+                                            <span data-v-4580432e="" class="right-arrow"><img
+                                                data-v-4580432e=""
+                                                src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span></div>
+                                        <!---->
+                                    </a>
+                                </li>
+                                <li data-v-4580432e="" class="sub-menu-container underline coupon-event">
+                                    <a data-v-4580432e="" href="/mypage/coupon" class="sub-menu-list">
+                                        <div data-v-4580432e="" class="sub-content">
+                                            <div data-v-4580432e="" class="sub-menu">
+                                                <span data-v-4580432e="" class="sub-menu-title">친구 초대 하기</span></div>
+                                            <!---->
+                                        </div>
+                                        <div data-v-4580432e="" class="teal-badge">
+                                            <span data-v-4580432e="">5000P 받기
+                                            </div>
+                                            <div data-v-4580432e="" class="arrow">
+                                                <span data-v-4580432e="" class="right-arrow"><img
+                                                    data-v-4580432e=""
+                                                    src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span>
+                                            </div>
+                                            <!---->
+                                        </a>
+                                    </li>
+                                    <li data-v-4580432e="" class="sub-menu-container underline notification">
+                                        <a data-v-4580432e="" href="/setting/notification" class="sub-menu-list">
+                                            <div data-v-4580432e="" class="sub-content">
+                                                <div data-v-4580432e="" class="sub-menu">
+                                                    <span data-v-4580432e="" class="sub-menu-title">공지사항</span></div>
+                                                <!---->
+                                            </div>
+                                            <!---->
+                                            <div data-v-4580432e="" class="arrow">
+                                                <span data-v-4580432e="" class="right-arrow"><img
+                                                    data-v-4580432e=""
+                                                    src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span></div>
+                                            <!---->
+                                        </a>
+                                    </li>
+                                    <li data-v-4580432e="" class="sub-menu-container underline notification">
+                                        <a data-v-4580432e="" href="/setting/notification" class="sub-menu-list">
+                                            <div data-v-4580432e="" class="sub-content">
+                                                <div data-v-4580432e="" class="sub-menu">
+                                                    <span data-v-4580432e="" class="sub-menu-title">설정</span></div>
+                                                <!---->
+                                            </div>
+                                            <!---->
+                                            <div data-v-4580432e="" class="arrow">
+                                                <span data-v-4580432e="" class="right-arrow"><img
+                                                    data-v-4580432e=""
+                                                    src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span></div>
+                                            <!---->
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!---->
+                                <!---->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!---- App-Footer ---->
+                <nav id="app-footer" class="footer-container">
+                    <div class="footer-container-row">
+                        <div class="col-content">
+                            <p class="contact">1833-1900</p>
+                            <p class="text-middle">
+                                평일 10:00 - 18:00
+                                <br>
+                                (점심시간 13:00 - 14:00 제외 · 주말/공휴일 제외)
+                            </p>
+                        </div>
+                        <div class="col-content right">
+                            <a href="#" class="download"><img
+                                src="https://assets.cdn.soomgo.com/icons/icon-download-appstore.svg"
+                                alt="앱스토어">APP STORE</a>
+                            <a href="#" class="download"><img
+                                src="https://assets.cdn.soomgo.com/icons/icon-download-palystore.svg"
+                                alt="구글플레이">PLAY STORE</a>
+                        </div>
+                    </div>
+                    <div class="footer-container-row terms">
+                        <div class="term-container">
+                            <div class="col-content term-content">
+                                <img src="assets/img/logoGray.jpg" alt="logo" class="logo">
+                                <div class="col-content-list-term">
+                                    <a href="#" class="text term">이용약관</a>
+                                    <a href="#" class="text term">개인정보처리방침</a>
+                                    <a href="#" class="text term">사업자 정보확인</a>
+                                </div>
+                                <div>
+                                    <ul class="col-content-guide">
+                                        <li class="text">(주)워시고고컴퍼니</li>
+                                        <li class="text">대표 : 송민경 사업자 등록번호:561-87-00950</li>
+                                        <li class="text">통신판매업신고 : 제2022-서울강서-2052호</li>
+                                        <li class="text">주소 : 서울특별시 강서구 양천로 60길 1004(01004)</li>
+                                        <li class="text">개인정보담당자 : 송민경 이메일:privacy@washgogo.kr</li>
+                                        <li class="text">고객센터 : 1833-1900</li>
+                                        <li class="text">Copyright2022 &copy; Washgogo All rights reserved</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <div class="col-content badge-list right">
+                                <a href="#" target="_blank" class="footer-badge">
+                                    <img
+                                        src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-facebook.svg"
+                                        alt="워시고고 페이스북 계정">
+                                </a>
+                                <a href="#" target="_blank" class="footer-badge">
+                                    <img
+                                        src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-instagram.svg"
+                                        alt="워시고고 인스타그램">
+                                </a>
+                                <a href="#" target="_blank" class="footer-badge">
+                                    <img
+                                        src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-naverblog.svg"
+                                        alt="워시고고 블로그">
+                                </a>
+                                <a href="#" target="_blank" class="footer-badge">
+                                    <img
+                                        src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-naverpost.svg"
+                                        alt="워시고고 포스트">
+                                </a>
+                                <a href="#" target="_blank" class="footer-badge">
+                                    <img
+                                        src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-tistory.svg"
+                                        alt="워시고고 스토리">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </body>
+    </html>

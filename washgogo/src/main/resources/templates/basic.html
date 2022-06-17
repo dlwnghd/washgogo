@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>requestGuide</title>
-    <link rel="stylesheet" href="assets/css/requestGuide.css">
+    <title>워시고고 - 우리집 모바일 세탁소</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.laundrygo.com/image/favicon/favicon_web.png">
     <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 </head>
 <body>
     <div id="app">
@@ -28,7 +29,7 @@
                                     <a href="./guide.html"><span>가이드</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#"><span>가격표</span></a>
+                                    <a href="./price.html"><span>가격표</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#"><span>로그인</span></a>
@@ -59,74 +60,7 @@
         </header>
         <!---- App-Body ---->
         <div id="app-body">
-            <section class="request-guide-container">
-                <h2 class="please-follow">이렇게 맡겨주세요</h2>
-                <div class="first-requset">첫 수거 신청 시</div>
-                <article class="request-guide-detail">
-                    <div class="first-guide-group">
-                        <div class="border-name border-main-name">꼭 확인하세요.</div>
-                        <div>정확한 서비스를 위해 세탁물을 분류 방법대로 비닐이나 쇼핑백에 담아 <div class="border-name content-name">워시고고+세탁물명</div>을 표기해 문 앞에 내놓으세요.</div>
-                        <div class="warning-name">! 주의</div>
-                        <div class="flex-container">
-                        <div class="warning"><div class="border-name content-name">비닐이나 쇼핑백에 워시고고+세탁물명</div>을 정확하게 표기하지 않을 시 수거가 불가하며, 배송비 3,500원이 별도로 부과됩니다.</div>
-                        <div class="howto-img-container">
-                            <img class="bag-img" src="assets/img/howToBag.png" alt="쇼핑백이미지">
-                        </div>
-                        </div>
-                    </div>
-                    <div class="guide-group flex-container">
-                        <div class="small-img-container">
-                            <img class="small-img" src="assets/img/normal.png" alt="생활빨래">
-                        </div>
-                        <div>
-                            <div class="border-name border-main-name">생활빨래</div>
-                            <div class="sec-name"><div class="border-name content-name">'워시고고 생활빨래'</div>를 표기해주세요.</div>
-                            <div class="guide-detail"><div class="border-name content-name">생활빨래</div>는 별도의 검수를 하지 않고, 기계 세탁 및 건조 후 다림질 없이 개어 보내드립니다. <div class="border-name content-name">속옷</div>은 별도 포장해 생활 빨래에 담아주세요.</div>
-                        </div>
-                    </div>
-                    <div class="guide-group flex-container">
-                        <div class="small-img-container">
-                            <img class="small-img" src="assets/img/other_cleaning.png" alt="개별클리닝">
-                        </div>
-                        <div>
-                            <div class="border-name border-main-name">개별클리닝 &와이셔츠</div>
-                            <div class="sec-name"><div class="border-name content-name">'워시고고 개별클리닝'</div>을 표기해주세요.</div>
-                            <div class="guide-detail"><div class="border-name content-name">케어라벨</div>에 따라 드라이 클리닝 혹은 웨트드라이로 세탁되며, 안심 정찰 가격표에 의해 의류 별로 과금됩니다.</div>
-                        </div>
-                    </div>
-                    <div class="guide-group flex-container">
-                        <div class="small-img-container">
-                            <img class="small-img" src="assets/img/premium.png" alt="개별클리닝">
-                        </div>
-                        <div>
-                            <div class="border-name border-main-name">프리미엄</div>
-                            <div class="sec-name"><div class="border-name content-name">'워시고고 프리미엄'</div>을 표기해주세요.</div>
-                            <div class="guide-detail">'프리미엄 의류는 수거 신청 단계에서 개별 의류를 선택하여 신청하실 수 있습니다.</div>
-                        </div>
-                    </div>
-                    <div class="guide-group flex-container">
-                        <div class="small-img-container">
-                            <img class="small-img" src="assets/img/bed.png" alt="기타">
-                            <img class="small-img" src="assets/img/shoes.png" alt="기타">
-                        </div>
-                        <div>
-                            <div class="border-name border-main-name">기타</div>
-                            <div class="sec-name"><div class="border-name content-name">'워시고고 세탁물명(이불, 운동화 등)'</div>을 표기해주세요.</div>
-                        </div>
-                    </div>
-                    <div class="guide-group flex-container">
-                        <div>
-                            <div class="guide-detail warning-sec">· 2회차 이용부터는 런드렛이나 라이트백을 활용하여 세탁물을 맡겨주세요.</div>
-                            <div class="guide-detail-warning warning-sec">· 담아주신 비닐이나 쇼핑백은 돌려드리지 않습니다.</div>
-                        </div>
-                    </div>
-                </article>
-                <div class="check-flex-container">
-                    <div></div>
-                    <a href="requestSelect.html"><div class="check-ok">네, 알겠습니다.</div></a>
-                    <div></div>
-                </div>
-            </section>
+            
         </div>
         <!---- App-Footer ---->
         <nav id="app-footer" class="footer-container">
@@ -188,5 +122,7 @@
         </nav>
     </div>
 </body>
-<body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="./js/main.js"></script>
 </html>

@@ -36,14 +36,13 @@ body {
 }
 
 .request-img-container{
-    padding: 0px 200px 0px 200px;
     display: flex;
-    justify-content: center;
 }
 
 .request-img{
-    width:100%;
-    height: 100%;
+    width: 60px;
+    height: 66px;
+    margin-right: 10px;
 }
 
 .border-title{
@@ -59,9 +58,19 @@ body {
     margin-top:10px;
 }
 
+.tonight-title{
+    display: contents;
+}
+
+.client-name{
+    display:contents;
+}
+
 .guide-take{
+    margin-top:40px;
     margin-bottom: 50px;
     font-size:1.1rem;
+    display: flex;
 }
 
 .request-where-title{
@@ -121,8 +130,8 @@ form{ padding: 10px; }
 }
 
 #chk-after:checked + .circle{
-  background-color: green;
-  border-color: green;
+  background-color: #00BA86;
+  border-color: #00BA86;
   background-image: url(templates/assets/img/check_white.png);
 }
 
@@ -130,8 +139,8 @@ form{ padding: 10px; }
 #chk-after{ position: absolute; left: -999em; }
 
 #chk-direct:checked + .circle{
-    background-color: green;
-    border-color: green;
+    background-color: #00BA86;
+    border-color: #00BA86;
     background-image: url(templates/assets/img/check_white.png);
   }
   
@@ -195,7 +204,7 @@ form{ padding: 10px; }
 
 .premium-service-color{
     display:inline;
-    color:red;
+    color: #ff0000;
 }
 
 form{ padding: 10px; }
@@ -215,8 +224,8 @@ form{ padding: 10px; }
 }
 
 #chk-life:checked + .circle2{
-    background-color: green;
-    border-color: green;
+    background-color: #00BA86;
+    border-color: #00BA86;
     background-image: url(templates/assets/img/check_white.png);
   }
   
@@ -224,8 +233,8 @@ form{ padding: 10px; }
 #chk-life{ position: absolute; left: -999em; }
 
 #chk-other:checked + .circle2{
-    background-color: green;
-    border-color: green;
+    background-color: #00BA86;
+    border-color: #00BA86;
     background-image: url(templates/assets/img/check_white.png);
   }
   
@@ -235,6 +244,10 @@ form{ padding: 10px; }
 .checkbox-container-cleaning-wrap{
     display:flex;
     flex-direction: column;
+}
+
+.checkbox-container-wrap-cleaning{
+    margin-top:5px;
 }
 
 .cleaning-choose-text{
@@ -252,7 +265,35 @@ form{ padding: 10px; }
     margin-bottom: 80px;
 }
 
+.select-cleaning{
+    border: 1px solid #e2e2e2;
+    border-radius: 3px;
+    padding:10px;
+}
+
+.req{
+    margin-bottom:80px;
+}
+
 .cleaning-requests-title{
     display:flex;
     justify-content: space-between;
+}
+
+.cleaning-requests-select{
+    display: flex;
+    border: 1px solid #e2e2e2;
+    border-radius: 3px;
+    padding:10px;
+}
+
+.requests-select-box{
+    font-size:0.8rem;
+    font-weight: 500;
+    padding:10px;
+    height:42px;
+    border: 1px solid #00BA86;
+    border-radius: 17px;
+    background-color: white;
+    margin-right: 20px;
 }
