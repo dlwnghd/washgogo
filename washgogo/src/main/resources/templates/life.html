@@ -1,10 +1,400 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>워시고고 - 우리집 모바일 세탁소</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.laundrygo.com/image/favicon/favicon_web.png">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/life.css">
 </head>
 <body>
-$END$
+<div id="app">
+    <!---- App-Header ---->
+    <header id="app-header" class="global-header hide-border-bottom">
+        <section>
+            <div class="desktop-header">
+                <div class="left-section">
+                    <div class="logo">
+                        <a href="./index.html">
+                            <div class="logo-image">washgogo</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="right-section">
+                    <nav>
+                        <ul class="nav-list sign-out">
+                            <li class="nav-item">
+                                <a href="./guide.html"><span>가이드</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pricesheet.html"><span>가격표</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#"><span>로그인</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#"><span>회원가입</span></a>
+                            </li>
+                        </ul>
+                        <ul class="nav-list sign-in" style="display: none;">
+                            <li class="nav-item">
+                                <a href="./guide.html"><span>가이드</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pricesheet.html"><span>가격표</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#"><span>이용내역</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#"><span>마이페이지</span></a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <button type="button" class="btn btn-primary pickup-request-btn">수거신청</button>
+                </div>
+            </div>
+        </section>
+    </header>
+    <!---- App-Body ---->
+    <div id="app-body">
+        <div class="life">
+            <section class="intro">
+                <div class="header">
+                    <p class="desc">WASHGOGO LIFE #11</p>
+                    <h1 class="title">패딩부터 니트까지<br>겨울옷 관리법</h1>
+                </div>
+                <div class="intro-desc">
+                    <div>
+                        <p>
+                            겨우내 부지런히 입고 걸어 둔 겨울옷들,<br>
+                            봄맞이를 위해 옷장 깊숙이 쌓아 넣을 생각을 하면<br>
+                            도무지 어디서부터 어떻게 처리해야 할지<br> 걱정부터 앞섭니다.
+                        </p>
+                        <p>
+                            두껍고 빽빽한 옷의 부피만큼 관리도 부담스럽기 마련이죠.<br>
+                            닳고 달아 이곳저곳 보풀이 돋아난 니트,<br> 쿰쿰한 냄새가
+                            배어든 무채색 데일리 코트,<br> 빵빵한 모습은 감쪽같이
+                            사라진 축 처진 롱 패딩.<br> 이렇게 겨울 의류는 특히나
+                            모양도 소재도 다양해<br> 제각각 손도 많이 가는 애증의
+                            아이템들이 대부분이죠.
+                        </p>
+                        <p>
+                            하지만 큰맘 먹고 산 인생 코트,<br> <em>내년에도 새 옷처럼
+                            기분 좋게 꺼내 입을 수 있도록,<br> 지금부터 <span>소재 특성에
+                                따라 알맞게 관리하는 방법</span>을<br> 알려 드릴게요.</em>
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="tips">
+                <div class="contents-container">
+                    <div class="content-item">
+                        <div class="title">
+                            <h2 class="step">01 KNIT</h2>
+                            <span>예민하고 섬세한 너란 니트</span>
+                        </div>
+                        <div class="content">
+                            <div class="image-content" style="background-image:url('./img/life11img01.jpg')"></div>
+                            <div class="text-content">
+                                <div class="info-text">
+                                    <p>
+                                        니트에 사용되는 섬유는 울이나 면, 레이온,
+                                        아크릴 등이 있고 이 섬유를 일정한 비율로
+                                        섞어 만든 혼방 재질 제품도 많습니다. 그렇기
+                                        때문에 <strong>제각각 특징을 고려해 적절한 세탁법을
+                                        선택하는 것이 무엇보다 중요하죠.</strong>
+                                    </p>
+                                    <p>
+                                        니트는 옷 안쪽의 <strong>케어 라벨을 잘 살펴본 후,</strong>
+                                        그에 따라 드라이클리닝과 울 코스 등 <strong>소재의
+                                        특성에 맞는 세탁법을 선택해야 합니다</strong> 세탁 후
+                                        말릴 때도 고열로 습기를 날리는 건조기 사용이나
+                                        손으로 비틀어 짜는 것 또한 니트의 모양을
+                                        변형시킬 수 잇다는 점도 참고해두면 좋겠죠.
+                                    </p>
+                                    <p>
+                                        금세 늘어나고 줄어드는 니트는 보관하는 방법
+                                        도 중요합니다. 오랜 시간 입지 않고 넣어두려면
+                                        우선 듬성듬성 피어난 보풀과 먼지를 제거하고
+                                        습기를 바싹 말려줍니다. 니트의 모양이 온전한
+                                        상태로 내년을 맞이할 수 있도록 <strong>한두 번만 편편
+                                        하게 접어 통풍이 잘 되는 곳에 보관하는 것이
+                                        가장 좋아요.</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="care-tip">
+                            <h2>KNIT CARE TIPS</h2>
+                            <p><b>니트 세탁법: </b>케어라벨을 확인해 소재의 특성에 맞는 세탁법을 선택한다.</p>
+                            <p><b>니트 보관법: </b>보풀과 먼지, 습기를 제거하고 통풍이 잘 되는 곳에 한두 번 접어 보관한다.</p>
+                        </div>
+                    </div>
+                    <div class="content-item">
+                        <div class="title">
+                            <h2 class="step">02 PADDING</h2>
+                            <span>크고 복잡한 패팅은 전문가에게</span>
+                        </div>
+                        <div class="content">
+                            <div class="image-content"style="background-image:url('./img/life11img02.jpg')"></div>
+                            <div class="text-content">
+                                <div class="info-text">
+                                    <p>
+                                        안감과 겉감, 충전재의 소재와 형태에 따라
+                                        세탁법이 달라진다는 사실, 알고 계셨나요?<br>
+                                        <span>다운 패딩은 드라이클리닝을 할 경우 충전대의
+                                            유지분이 녹아 보온력이 떨어지기 때문에 물 세탁</span>을 해야 하고, <span>안감이 플리스로 된 패딩은 곰
+                                            팡이나 세균이 생기기 쉬워 따로 겉과 안을 반복해 뒤집어 먼지 제거</span>를 해주어야 하며,
+                                        <span>섬유유연제는 방수와 방풍 기능 가공과 상극이니 사용하지 않아야 합니다.</span>
+                                    </p>
+                                    <p>
+                                        이렇게 까다로운 패딩은 <strong>특성 별로 분류해
+                                        케어하는 워시고고를 이용하는 방법이 가장 쉽고 편리합니다.</strong>
+                                        자주 세탁하면 오히려 옷이
+                                        금방 낡고 보온력이 떨어질 가능성이 있기 때문에, 겨울옷을 정리해 넣기 전 한 번씩만 전체
+                                        세탁을 해주는 편이 낫습니다.
+                                    </p>
+                                    <p>
+                                        패딩 보관법은 세탁에 비해 쉬운 편입니다.
+                                        퍼 후드가 달렸다면 분리해 따로 챙겨 두고,
+                                        빵빵한 형태 유지를 위해 <strong>한두 번만 툭툭 접어
+                                        큼직한 리빙박스에 넣어 그늘진 곳에 수평으로
+                                        보관합니다.</strong> 보관 박스에 섬유탈취제를 함께
+                                        넣으면 퀴퀴한 냄새를 방지할 수 있어요.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="care-tip">
+                            <h2>PADDING CARE TIPS</h2>
+                            <p><b>패딩 세탁법: </b>드라이클리닝과 섬유유연제 사용은 지양해주세요.</p>
+                            <p><b>패딩 보관법: </b>한두 번 접어 큼직한 리빙박스에 넣어 그늘진 곳에 수평으로 보관해주세요.</p>
+                        </div>
+                    </div>
+                    <div class="content-item">
+                        <div class="title">
+                            <h2 class="step">03 COAT</h2>
+                            <span>나의 인생 코트를 위하여</span>
+                        </div>
+                        <div class="content">
+                            <div class="image-content"style="background-image:url('./img/life11img03.jpg')"></div>
+                            <div class="text-content">
+                                <div class="info-text">
+                                    <p>
+                                        따뜻한데 시크하고 멋스럽기까지, 혼자 다하는
+                                        핏 좋은 울 코트 한 벌이면 겨울 한철 옷차림이
+                                        든든하죠.<br>
+                                        바람과 추위에도 강한 울 코트는 그 대신 냄새를
+                                        쉽게 빨아들이고 세탁 관리가 조금 까다롭다는
+                                        단점이 있어요. 대신 올바른 방법으로 케어 해주면
+                                        몇 년이고 꾸준히 즐겨 입는 단골 아우터가
+                                        되어줄 아이템이에요.
+                                    </p>
+                                    <p>
+                                        울 코느는 <strong>1년에 1~2회 정도만 세탁</strong>해주는 것이
+                                        적당해요. <strong>울 함유량이 20% 이상이라면
+                                        무조건 드라이클리닝을 해야 하고요.</strong> 하지만
+                                        드라이클리닝을 너무 자주 하면 섬유손상과
+                                        탈색을 발생할 수 있으니, 군데군데 남은 생활
+                                        얼룩과 오염 흔적은 중성세제와 미지근한 물을
+                                        이용해 부분 세척하고, 그늘진 곳에서 건조하는
+                                        것이 좋습니다.
+                                    </p>
+                                    <p>
+                                        전용 브러쉬나 부드러운 천으로 어깨부터 밑단
+                                        까지 천천히 쓸어내려 각종 먼지를 털어주고
+                                        <strong>평소에는 그늘진 곳에 걸어 둡니다.</strong> 코트 핏의
+                                        생명인 <strong>어깨 라인을 유지하고 싶다면 단단한
+                                        나무 옷걸이 사용을 권장합니다.</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="care-tip">
+                            <h2>COAT CARE TIPS</h2>
+                            <p><b>코트 세탁법: </b>1년에 1~2회 정도만 세탁하세요. 세탁시 드라이클리닝으로 관리해주세요.</p>
+                            <p><b>코트 보관법: </b>휘발성 세제와 습기를 없앤 후 단단한 나무 옷걸이에 보관해주세요.</p>
+                        </div>
+                    </div>
+                    <div class="content-item">
+                        <div class="title">
+                            <h2 class="step">04 FLEECE</h2>
+                            <span>만능 아이템의 특별한 관리법</span>
+                        </div>
+                        <div class="content">
+                            <div class="image-content"style="background-image:url('./img/life11img04.jpg')"></div>
+                            <div class="text-content">
+                                <div class="info-text">
+                                    <p>
+                                        플리스는 섬유 원단의 표면을 긁어 잔털을 만든
+                                        직물과 편물을 뜻합니다. 곱슬거리는 소재 사이
+                                        사이에 공기가 머물며 찬바람이 뚫고 지나가는
+                                        걸 촘촘하게 막아내는 원리예요. 탁월한 보온성
+                                        덕분에 아우터 안에 레이어링해도 좋고 으슬으슬할 때
+                                        어디서든 쉽게 걸치는 겨울철 만능템으로 자리 잡았죠.
+                                    </p>
+                                    <p>
+                                        하지만 플리스는 세탁을 잘못할 경우 털이
+                                        뭉치거나 빠질 수 있고 변색되는 등 쉽게 손상되는,
+                                        생각보다 까다로운 소재예요. 매일 입는
+                                        데일리 아이템이니 집에서 세탁한다면 니트와
+                                        마찬가지로 <strong>미온수에 중성세제나 울 샴푸를
+                                        활용해 세탁하는 방법을 추천할게요.</strong>
+                                    </p>
+                                    <p>
+                                        세탁기를 이용한다면 울 코스로, 또한 꼭 세탁
+                                        망에 넣어야 손상을 방지할 수 있어요. 옷에
+                                        변형이 생길 수 있으니 세탁 후에는 손으로
+                                        비틀어 짜지 말고, 건조기 사용도 지양해 주세요.
+                                        손으로 꾹꾹 눌러 물기를 제거하고 그늘진
+                                        곳에서 바짝 마를 때까지 건조하는 방법이 가장
+                                        좋아요. <strong>브러쉬로 구석구석 쓸어 엉킨 털을
+                                        풀어 보관하면 옷의 수명이 더욱 길어집니다.</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="care-tip">
+                            <h2>FLEECE CARE TIPS</h2>
+                            <p><b>후리스 세탁법: </b>미온수에 중성세제나 울 샴푸를 활용해 세탁해주세요.</p>
+                            <p><b>후리스 보관법: </b>브러쉬로 엉킨 털을 풀어주고 보관하면 옷의 수명이 더욱 길어집니다.</p>
+                        </div>
+                    </div>
+                    <div class="content-item">
+                        <div class="title">
+                            <h2 class="step">05 CASHMERE</h2>
+                            <span>소중한 촉감을 지켜내는 일</span>
+                        </div>
+                        <div class="content">
+                            <div class="image-content"style="background-image:url('./img/life11img05.jpg')"></div>
+                            <div class="text-content">
+                                <div class="info-text">
+                                    <p>
+                                        보송보송한 캐시미어 코트, 캐시미어 스웨터는
+                                        다양한 겨울옷 사이에서 가장 먼저 손이 가는
+                                        사랑스러운 아이템이죠.
+                                    </p>
+                                    <p>
+                                        캐시미어는 착용하고 있을 때보다 오래 보관하
+                                        고 있는 동안  손상되는 경우가 더 많습니다.
+                                        캐시미어만의 소중하고 부드러운 촉감을
+                                        유지하기 위해서는 세탁부터 보관까지, 소재가
+                                        손상되지 않도록 조심스럽게 다뤄줘야 합니다.
+                                        경우에 따라 손세탁이 가능하기도 하지만 장기
+                                        보관 전에는 <strong>꼭 전문 업체의 드라이클리닝
+                                        서비스를 통해 관리받기를 추천해요.</strong>
+                                        캐시미어에 치명적인 병해충을 예방할 수
+                                        있다는 점에서 물빨래보다 훨씬 효과적이기
+                                        때문이죠. 필링이나 보풀이 생겼다면 그때그때
+                                        제거해 손상 부위가 커지는 걸 막아주는 것이
+                                        좋습니다.
+                                    </p>
+                                    <p>
+                                        잘 세탁한 캐시미어는 <strong>완벽하게 습기를 말린 후
+                                        건조한 공간에 보관</strong>해야 하는데, 화이트나 아이
+                                        보리처럼 밝은 컬러의 캐시미어 옷은 햇빛은
+                                        물론 강한 실내조명에도 변색이 일어날 수
+                                        있으니 빛에 주의해야 합니다. <strong>통기성이 좋은
+                                        가먼트 백에 넣거나 중성지로 한번 감싼 후
+                                        섬유용 방충제를 함께 챙겨 넣어두면</strong> 3개월 이상
+                                        장기보관해도 소중한 캐시미어를
+                                        안전하게 보관할 수 있습니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="care-tip">
+                            <h2>CASHMERE CARE TIPS</h2>
+                            <p><b>캐시미어 세탁법: </b>꼭 전문 업체의 드라이클리닝 서비스를 통해 관리받기를 추천해요.</p>
+                            <p><b>캐시미어 보관법: </b>가먼트 백에 중성지로 한번 감싼 후 섬유용 방충제를 넣어 보관해주세요.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="outro">
+                <p>
+                    지금까지 워시고고가 소개하는 겨울옷 세탁과 관리법에 대해 알아봤습니다.<br>
+                    내년 겨울에도 새 옷처럼 기분 좋게 꺼내입을 수 있도록 잘 관리하고,<br> 겨울이 끝나면
+                    <strong>
+                        소재 특성에 맞춰 전문적으로 세탁하는<br>
+                        워시고고에 맡겨주세요!
+                    </strong>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!---- App-Footer ---->
+    <nav id="app-footer" class="footer-container">
+        <div class="footer-container-row">
+            <div class="col-content">
+                <p class="contact">1833-1900</p>
+                <p class="text-middle">
+                    평일 10:00 - 18:00
+                    <br>
+                    (점심시간 13:00 - 14:00 제외 · 주말/공휴일 제외)
+                </p>
+            </div>
+            <div class="col-content right">
+                <a href="#" class="download"><img src="https://assets.cdn.soomgo.com/icons/icon-download-appstore.svg" alt="앱스토어">APP STORE</a>
+                <a href="#" class="download"><img src="https://assets.cdn.soomgo.com/icons/icon-download-palystore.svg" alt="구글플레이">PLAY STORE</a>
+            </div>
+        </div>
+        <div class="footer-container-row terms">
+            <div class="term-container">
+                <div class="col-content term-content">
+                    <img src="./img/logoGray.jpg" alt="logo" class="logo">
+                    <div class="col-content-list-term">
+                        <a href="#" class="text term">이용약관</a>
+                        <a href="#" class="text term">개인정보처리방침</a>
+                        <a href="#" class="text term">사업자 정보확인</a>
+                    </div>
+                    <div>
+                        <ul class="col-content-guide">
+                            <li class="text">(주)워시고고컴퍼니</li>
+                            <li class="text">대표 : 송민경 사업자 등록번호:561-87-00950</li>
+                            <li class="text">통신판매업신고 : 제2022-서울강서-2052호</li>
+                            <li class="text">주소 : 서울특별시 강서구 양천로 60길 1004(01004)</li>
+                            <li class="text">개인정보담당자 : 송민경 이메일:privacy@washgogo.kr</li>
+                            <li class="text">고객센터 : 1833-1900</li>
+                            <li class="text">Copyright2022 &copy; Washgogo All rights reserved</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-content badge-list right">
+                    <a href="#" target="_blank" class="footer-badge">
+                        <img src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-facebook.svg" alt="워시고고 페이스북 계정">
+                    </a>
+                    <a href="#" target="_blank" class="footer-badge">
+                        <img src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-instagram.svg" alt="워시고고 인스타그램">
+                    </a>
+                    <a href="#" target="_blank" class="footer-badge">
+                        <img src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-naverblog.svg" alt="워시고고 블로그">
+                    </a>
+                    <a href="#" target="_blank" class="footer-badge">
+                        <img src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-naverpost.svg" alt="워시고고 포스트">
+                    </a>
+                    <a href="#" target="_blank" class="footer-badge">
+                        <img src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-tistory.svg" alt="워시고고 스토리">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    /* 헤더 스크롤 이벤트 */
+    const $header = $("#app-header");
+    document.onscroll = function(){
+        if(window.scrollY>0){
+            $header.removeClass("hide-border-bottom");
+        } else {
+            $header.addClass("hide-border-bottom");
+        }
+    }
+</script>
 </html>
