@@ -12,50 +12,7 @@
     <div id="app">
         <!---- App-Header ---->
         <header id="app-header" class="global-header hide-border-bottom">
-            <section>
-                <div class="desktop-header">
-                    <div class="left-section">
-                        <div class="logo">
-                            <a href="./index.html">
-                                <div class="logo-image">washgogo</div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="right-section">
-                        <nav>
-                            <ul class="nav-list sign-out">
-                                <li class="nav-item">
-                                    <a href="./guide.html"><span>가이드</span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#"><span>가격표</span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#"><span>로그인</span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#"><span>회원가입</span></a>
-                                </li>
-                            </ul>
-                            <ul class="nav-list sign-in" style="display: none;">
-                                <li class="nav-item">
-                                    <a href="./index.html"><span>가이드</span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#"><span>가격표</span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#"><span>이용내역</span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#"><span>마이페이지</span></a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <button type="button" class="btn btn-primary pickup-request-btn">수거신청</button>
-                    </div>
-                </div>
-            </section>
+            <div th:replace="~{/fragments/headerFooter :: header}"></div>
         </header>
         <!---- App-Body ---->
         <div id="app-body">
