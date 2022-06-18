@@ -1,0 +1,106 @@
+
+#modal.modal-overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#modal .modal-window {
+    background: #00BA86;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 400px;
+    height: 250px;
+    position: relative;
+    padding: 10px;
+}
+
+#modal .title {
+    padding-left: 10px;
+    display: inline;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+
+}
+
+#modal .title h2 {
+    text-align: center;
+}
+
+#modal .close-area {
+    display: inline;
+    float: right;
+    padding-right: 10px;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+}
+
+#modal .content {
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+#modal .content1 {
+    padding: 0 10px;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+    text-align: center;
+    margin-left: 10px;
+}
+
+#modal .content2 {
+    padding: 0 10px;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+    text-align: center;
+}
+
+#choose1{
+    margin: 0 auto;
+    text-align: center;
+    width: fit-content;
+    border-radius: 50%;
+}
+
+#choose2{
+    float: none;
+}
+
+.remain-user,.change-user{
+    background-color: white;
+    border-radius: 0.25rem;
+    padding: 0 10px;
+}
+
+.remain-user{
+    margin-right: 10px;
+}
+
+#choose2 .remain-user{
+    margin-left: 70px;
+}
+
+input{
+    margin-left: 10px;
+}
