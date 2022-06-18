@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>워시고고 - 우리집 모바일 세탁소</title>
     <link rel="shortcut icon" type="image/x-icon" href="https://www.laundrygo.com/image/favicon/favicon_web.png">
-    <link rel="stylesheet" href="assets/css/common.css">
-    <link rel="stylesheet" href="assets/css/pricesheet.css">
+    <link rel="stylesheet" href="static/css/common.css">
+    <link rel="stylesheet" href="static/css/pricesheet.css">
 </head>
 <body>
 <div id="app">
@@ -91,423 +91,725 @@
                     <div class="price container">
                         <div class="price-item daily">
                             <h2 class="title">생활빨래</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>생활빨래3kg까지</td>
-                                    <td>8,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>5kg 초과</td>
-                                    <td>1,000원</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="more">생활빨래3kg까지</td>
+                                        <td>8,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more-info" colspan="2">
+                                            <div>
+                                                <p>
+                                                    생활빨래는 건조 이후 무게를 측정하여 무게 단위로 과금되며,
+                                                    기본 금액 이후 초과하는 만큼 추가 과금됩니다.
+                                                </p>
+                                                <p>
+                                                    별도의 검수 없이 기계 세탁 및 열풍 건조 후, 다림질 없이 개어
+                                                    보내드립니다.
+                                                </p>
+                                                <p>
+                                                    열풍 건조로 인해 소재에 따라 수축이 발생할 수 있으며, 고객
+                                                    부주의로 인한 손상 시 보상이 불가하오니 물세탁 또는 열풍 건조가
+                                                    불가능한 의류는 개별 클리닝으로 맡겨주셔야 합니다.
+                                                </p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more">5kg 초과</td>
+                                        <td>1,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more-info" colspan="2">
+                                            <div>
+                                                <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="price-item shirt">
                             <h2 class="title">와이셔츠</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>와이셔츠</td>
-                                    <td>1,800원</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="more">와이셔츠</td>
+                                        <td>1,800원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>일반셔츠로 구분되지 않는 남성 정장 셔츠</p>
+                                            <br>
+                                            <p>와이셔츠 예외브랜드 안내 (일반셔츠로 구분 됩니다)</p>
+                                            <p>
+                                                타임, 띠어리, 솔리드옴므, 시스템, 준지, 랑방, 아르마니, 보스,
+                                                마르니, 톰브라운, 에르메네질도 제냐, 꼼데가르송, 지방시, 톰포드,
+                                                입생로랑/생로랑, 발렌시아가, 까날리, 닐바렛, 마크제이콥스, 지방시,
+                                                베르사체, 메종마르지엘라, 우영미, 니나리치, 오프화이트,
+                                                페라가모, 폴스미스, 돌체앤가바나, 아미, 아페쎄(A.P.C), 산드로,
+                                                브루넬로 쿠치넬리
+                                            </p>
+                                            <p>
+                                                프리미엄 서비스 출시(6/8)에 따라 프라다, 버버리, 로로피아나,
+                                                디올, 구찌, 몽클레르는 프리미엄 셔츠로 구분됩니다.
+                                            </p>
+                                            <br>
+                                            <p>
+                                                팔에 각잡는 주름 등의 다림질을 요청사항에 작성할 경우, 일반셔츠로
+                                                구분됩니다.
+                                            </p>
+                                        </div>
+                                    </td>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="price-item shirt">
+                        <div class="price-item individual">
                             <h2 class="title">개별클리닝 - 상의</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>티셔츠</td>
-                                    <td>4,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>일반셔츠</td>
-                                    <td>2,800원</td>
-                                </tr>
-                                <tr>
-                                    <td>블라우스</td>
-                                    <td>4,500원</td>
-                                </tr>
-                                <tr>
-                                    <td>원피스, 점프수트</td>
-                                    <td>6,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>후드티, 맨투맨티</td>
-                                    <td>4,500원</td>
-                                </tr>
-                                <tr>
-                                    <td>니트, 스웨터</td>
-                                    <td>5,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>가디건</td>
-                                    <td>6,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>인조가죽, 인조세무 상의</td>
-                                    <td>6,500원</td>
-                                </tr>
-                                <tr>
-                                    <td>정장조끼</td>
-                                    <td>3,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>캐주얼 조끼</td>
-                                    <td>5,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>한복 조끼</td>
-                                    <td>3,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>한복 상의</td>
-                                    <td>6,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>스키복, 보드복 사으이</td>
-                                    <td>15,000원</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="more">티셔츠</td>
+                                        <td>4,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>민소매, 짧은팔, 긴팔의 모든 일반 티셔츠 소재, 조리복 상의</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">일반셔츠</td>
+                                        <td>2,800원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>청/모직/실크/마 함유량이 1% 이상인 셔츠</p>
+                                            <p>자개단추, 장식류 (자개단추, 와펜 등) 부착된 셔츠</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">블라우스</td>
+                                        <td>4,500원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>실크 소재이거나 일반 셔츠 형태를 벗어난 디자인</p>
+                                            <p>
+                                                (허리절개선, 레이스, 프릴, 주름, 소매 기장이 길거나 앞뒤 기장이
+                                                다른 경우)
+                                            </p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td>원피스, 점프수트</td>
+                                        <td>6,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more">후드티, 맨투맨티</td>
+                                        <td>4,500원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>안감이 타월직, 기모, 융, 네오프렌 소재로 되어 있는 형태</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">니트, 스웨터</td>
+                                        <td>5,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>짜임이 있는 조직이 있는 의류</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">가디건</td>
+                                        <td>6,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>지퍼, 단추 등이 있는 오픈형의 디자인</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td>인조가죽, 인조세무 상의</td>
+                                        <td>6,500원</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more">정장조끼</td>
+                                        <td>3,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>정장, 교복, 교복 니트 조끼</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">캐주얼 조끼</td>
+                                        <td>5,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>후리스, 니트 등 정장조끼, 패딩조끼를 제외한 모든 조끼</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">한복 조끼</td>
+                                        <td>3,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>개량한복, 아동한복 조끼</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">한복 상의</td>
+                                        <td>6,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>개량한복, 아동한복 상의</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td>스키복, 보드복 상의</td>
+                                        <td>15,000원</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="price-item shirt">
+                        <div class="price-item individual">
                             <h2 class="title">개별클리닝 - 하의
                             </h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>바지</td>
-                                    <td>4,500원</td>
-                                </tr>
-                                <tr>
-                                    <td>정장바지</td>
-                                    <td>4,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>스커트</td>
-                                    <td>4,500원</td>
-                                </tr>
-                                <tr>
-                                    <td>패딩바지</td>
-                                    <td>9,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>인조가죽, 인조세무</td>
-                                    <td>8,500원</td>
-                                </tr>
-                                <tr>
-                                    <td>스키복, 보드복 하의</td>
-                                    <td>10,500원</td>
-                                </tr>
-                                <tr>
-                                    <td>한복 하의</td>
-                                    <td>7,000원</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="more">바지</td>
+                                        <td>4,500원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>정장하의를 제외한 면바지, 청바지, 골덴바지, 마바지 등 모든 바지류</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">정장바지</td>
+                                        <td>4,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>수트로 나오는 디자인의 정장하의</p>
+                                            <p>
+                                                여성 하의의 경우 핏이나 소재 등의 이유로 세탁 과정이 차이가나므로
+                                                바지품목으로 분류됩니다.
+                                            </p>
+                                            <br>
+                                            <p>제외소재 및 품목 안내 (바지로 분류 됩니다)</p>
+                                            <ul>
+                                                <li>- 면, 실크, 마 : 50% 이상</li>
+                                                <li>- 캐시미어 100%</li>
+                                                <li>- 벨벳, 코듀로이</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td>스커트</td>
+                                        <td>4,500원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>패딩바지</td>
+                                        <td>9,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>인조가죽, 인조세무</td>
+                                        <td>8,500원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>스키복, 보드복 하의</td>
+                                        <td>10,500원</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more">한복 하의</td>
+                                        <td>7,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>개량한복, 아동한복 하의, 한복 속치마</p>
+                                        </div>
+                                    </td>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="price-item shirt">
+                        <div class="price-item individual">
                             <h2 class="title">개별클리닝 - 아우터</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>점퍼</td>
-                                    <td>6,500원</td>
-                                </tr>
-                                <tr>
-                                    <td>재킷</td>
-                                    <td>7,500원</td>
-                                </tr>
-                                <tr>
-                                    <td>정장재킷</td>
-                                    <td>4,500원</td>
-                                </tr>
-                                <tr>
-                                    <td>경량, 일반패딩</td>
-                                    <td>10,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>다운패딩</td>
-                                    <td>15,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>롱패딩점퍼</td>
-                                    <td>18,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>패딩조끼</td>
-                                    <td>7,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>코트, 트렌치코트</td>
-                                    <td>12,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>캐시미어, 알파카, 라마, 양모 코트</td>
-                                    <td>18,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>인조가죽, 인조세무, 인조모피, 인조무스탕</td>
-                                    <td>15,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>부분 천연 모피/가죽 코트, 점퍼</td>
-                                    <td>20,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>기능성의류</td>
-                                    <td>9,000원</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="more">점퍼</td>
+                                        <td>6,500원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">재킷</td>
+                                        <td>7,500원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">정장재킷</td>
+                                        <td>4,500원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">경량, 일반패딩</td>
+                                        <td>10,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td>다운패딩</td>
+                                        <td>15,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more">롱패딩점퍼</td>
+                                        <td>18,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td>패딩조끼</td>
+                                        <td>7,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more">코트, 트렌치코트</td>
+                                        <td>12,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">캐시미어, 알파카, 라마, 양모 코트</td>
+                                        <td>18,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">인조가죽, 인조세무, 인조모피, 인조무스탕</td>
+                                        <td>15,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">부분 천연 모피/가죽 코트, 점퍼</td>
+                                        <td>20,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">기능성의류</td>
+                                        <td>9,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="price-item shirt">
+                        <div class="price-item bedding">
                             <h2 class="title">이불</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>커버류, 이불패드</td>
-                                    <td>9,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>일반 이불, 극세사 패드</td>
-                                    <td>12,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>극세사 이불, 일반 토퍼</td>
-                                    <td>18,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>구스이불, 양모이불, 실크이불</td>
-                                    <td>23,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>구스토퍼</td>
-                                    <td>30,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>구스 베개</td>
-                                    <td>12,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>아동이불, 무릎담요</td>
-                                    <td>7,000원</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="more">커버류, 이불패드</td>
+                                        <td>9,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">일반 이불, 극세사 패드</td>
+                                        <td>12,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">극세사 이불, 일반 토퍼</td>
+                                        <td>18,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">구스이불, 양모이불, 실크이불</td>
+                                        <td>23,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td>구스토퍼</td>
+                                        <td>30,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>구스 베개</td>
+                                        <td>12,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>아동이불, 무릎담요</td>
+                                        <td>7,000원</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="price-item shirt">
+                        <div class="price-item living">
                             <h2 class="title">리빙</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>일반 커튼</td>
-                                    <td>15,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>암막 커튼</td>
-                                    <td>25,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>이중 커튼</td>
-                                    <td>20,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>러그, 카펫</td>
-                                    <td>18,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>식탁보</td>
-                                    <td>12,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>배개 커버, 쿠션 커버</td>
-                                    <td>3,500원</td>
-                                </tr>
-                                <tr>
-                                    <td>쇼파 커버 - 3인이상</td>
-                                    <td>20,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>쇼파 커버 - 2인이상</td>
-                                    <td>15,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>차량용 양털시트</td>
-                                    <td>20,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>발매트</td>
-                                    <td>5,000원</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="more">일반 커튼</td>
+                                        <td>15,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">암막 커튼</td>
+                                        <td>25,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">이중 커튼</td>
+                                        <td>20,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">러그, 카펫</td>
+                                        <td>18,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">식탁보</td>
+                                        <td>12,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td>배개 커버, 쿠션 커버</td>
+                                        <td>3,500원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>쇼파 커버 - 3인이상</td>
+                                        <td>20,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>쇼파 커버 - 2인이상</td>
+                                        <td>15,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more">차량용 양털시트</td>
+                                        <td>20,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td>발매트</td>
+                                        <td>5,000원</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="price-item shirt">
+                        <div class="price-item goods">
                             <h2 class="title">잡화</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>일반모자</td>
-                                    <td>4,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>캡모자</td>
-                                    <td>6,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>스카프, 장갑, 목도리</td>
-                                    <td>4,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>숄</td>
-                                    <td>8,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>넥타이</td>
-                                    <td>2,500원</td>
-                                </tr>
-                                <tr>
-                                    <td>레시가드, 수영복</td>
-                                    <td>6,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>가운</td>
-                                    <td>7,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>에코백</td>
-                                    <td>3,500원</td>
-                                </tr>
-                                <tr>
-                                    <td>인형</td>
-                                    <td>7,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>대형 인형</td>
-                                    <td>20,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>앞치마</td>
-                                    <td>3,000원</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="more">일반모자</td>
+                                        <td>4,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td>캡모자</td>
+                                        <td>6,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>스카프, 장갑, 목도리</td>
+                                        <td>4,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>숄</td>
+                                        <td>8,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>넥타이</td>
+                                        <td>2,500원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>레시가드, 수영복</td>
+                                        <td>6,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more">가운</td>
+                                        <td>7,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td>에코백</td>
+                                        <td>3,500원</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more">인형</td>
+                                        <td>7,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">대형 인형</td>
+                                        <td>20,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">앞치마</td>
+                                        <td>3,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="price-item shirt">
+                        <div class="price-item shoes">
                             <h2 class="title">신발</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>일반 운동화</td>
-                                    <td>6,500원</td>
-                                </tr>
-                                <tr>
-                                    <td>운동화 - 부분 세무/가죽</td>
-                                    <td>8,500원</td>
-                                </tr>
-                                <tr>
-                                    <td>운동화 - 전체 세무/가죽</td>
-                                    <td>11,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>축구화</td>
-                                    <td>9,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>하이탑</td>
-                                    <td>9,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>골프화, 등산화</td>
-                                    <td>11,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>아동 신발</td>
-                                    <td>5,500원</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="more">일반 운동화</td>
+                                        <td>6,500원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">운동화 - 부분 세무/가죽</td>
+                                        <td>8,500원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td>운동화 - 전체 세무/가죽</td>
+                                        <td>11,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>축구화</td>
+                                        <td>9,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more">하이탑</td>
+                                        <td>9,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td>골프화, 등산화</td>
+                                        <td>11,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more">아동 신발</td>
+                                        <td>5,500원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="price-item shirt">
+                        <div class="price-item always">
                             <h2 class="title">배송비</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>배송비</td>
-                                    <td>3,500원</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="more">배송비</td>
+                                        <td>3,500원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </section>
                 <!---- Price-Premium ---->
-                <section class="price-premium">
+                <section class="price-premium" style="display: none;">
                     <div class="category container">
                         <div class="category-header">
                             <h2 class="title">프리미엄 세탁 가격표</h2>
@@ -532,198 +834,283 @@
                     <div class="price container">
                         <div class="price-item daily">
                             <h2 class="title">아우터</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>자켓</td>
-                                    <td>25,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>코트</td>
-                                    <td>50,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>일반패딩</td>
-                                    <td>40,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>특수패딩</td>
-                                    <td>50,000원</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>자켓</td>
+                                        <td>25,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more">코트</td>
+                                        <td>50,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">일반패딩</td>
+                                        <td>40,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">특수패딩</td>
+                                        <td>50,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="price-item shirt">
                             <h2 class="title">상의</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>셔츠</td>
-                                    <td>10,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>블라우스</td>
-                                    <td>15,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>일반상의</td>
-                                    <td>12,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>후드티, 맨투맨티</td>
-                                    <td>15,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>니트</td>
-                                    <td>18,000원</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>셔츠</td>
+                                        <td>10,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more">블라우스</td>
+                                        <td>15,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td>일반상의</td>
+                                        <td>12,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>후드티, 맨투맨티</td>
+                                        <td>15,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td>니트</td>
+                                        <td>18,000원</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="price-item shirt">
                             <h2 class="title">하의</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>일반하의</td>
-                                    <td>12,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>패딩하의</td>
-                                    <td>25,000원</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="more">일반하의</td>
+                                        <td>12,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td>패딩하의</td>
+                                        <td>25,000원</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="price-item shirt">
                             <h2 class="title">원피스</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>원피스</td>
-                                    <td>25,000원</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>원피스</td>
+                                        <td>25,000원</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="price-item shirt">
                             <h2 class="title">신발</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>운동화</td>
-                                    <td>25,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>가죽운동화</td>
-                                    <td>25,000원</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>운동화</td>
+                                        <td>25,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="more">가죽운동화</td>
+                                        <td>25,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="price-item shirt">
                             <h2 class="title">리빙/잡화</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>잡화</td>
-                                    <td>12,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>패브릭</td>
-                                    <td class="yet">준비중</td>
-                                </tr>
-                                <tr>
-                                    <td>특수패브릭</td>
-                                    <td class="yet">준비중</td>
-                                </tr>
-                                <tr>
-                                    <td>침구</td>
-                                    <td class="yet">준비중</td>
-                                </tr>
-                                <tr>
-                                    <td>특수침구</td>
-                                    <td class="yet">준비중</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="more">잡화</td>
+                                        <td>12,000원</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">패브릭</td>
+                                        <td class="yet">준비중</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">특수패브릭</td>
+                                        <td class="yet">준비중</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">침구</td>
+                                        <td class="yet">준비중</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">특수침구</td>
+                                        <td class="yet">준비중</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="price-item shirt">
                             <h2 class="title">가죽</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>인조가죽</td>
-                                    <td class="yet">준비중</td>
-                                </tr>
-                                <tr>
-                                    <td>천연가죽</td>
-                                    <td class="yet">준비중</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="more">인조가죽</td>
+                                        <td class="yet">준비중</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td class="more">천연가죽</td>
+                                        <td class="yet">준비중</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="price-item shirt">
                             <h2 class="title">기타</h2>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>항목</td>
-                                    <td>정가</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>기능성</td>
-                                    <td class="yet">준비중</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>항목</td>
+                                        <td>정가</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="more">기능성</td>
+                                        <td class="yet">준비중</td>
+                                    </tr>
+                                    <td class="more-info" colspan="2">
+                                        <div>
+                                            <p>3kg 기준에서 0.5kg 단위로 추가 과금됩니다.</p>
+                                        </div>
+                                    </td>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </section>
                 </section>
                 <div class="information">
                     <h2 class="title">세탁불가 품목 안내</h2>
@@ -761,7 +1148,7 @@
         <div class="footer-container-row terms">
             <div class="term-container">
                 <div class="col-content term-content">
-                    <img src="assets/img/logoGray.jpg" alt="logo" class="logo">
+                    <img src="static/img/logoGray.jpg" alt="logo" class="logo">
                     <div class="col-content-list-term">
                         <a href="#" class="text term">이용약관</a>
                         <a href="#" class="text term">개인정보처리방침</a>
@@ -803,5 +1190,5 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="./assets/js/pricesheet.js"></script>
+<script src="static/js/pricesheet.js"></script>
 </html>

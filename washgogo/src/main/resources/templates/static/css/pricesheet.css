@@ -1,0 +1,229 @@
+/* -----------------App-Body------------------- */
+@media screen and (min-width: 768px) {
+    .pricesheet{
+        width: 60.625rem;
+        padding: 0;
+    }
+}
+/*-----pricesheet-tab-----*/
+.pricesheet .tab{
+    width: 60.625rem;
+    margin: 0 auto;
+    padding-top: 3rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+.pricesheet .tab a{
+    width: 13.7rem;
+    text-align: center;
+    height: 3rem;
+    color: #c9c9c9;
+}
+.pricesheet .tab a.active{
+    border-bottom: 0.35rem solid #CFFD5F;
+    color: #000;
+}.pricesheet .tab a:last-child{
+     margin-left: 2rem;
+ }
+/*-----contents-----*/
+.pricesheet .category{
+    margin-top: 2rem;
+}
+.pricesheet .category .category-header h2.title{
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.4375rem;
+    line-height: 1.5;
+    letter-spacing: normal;
+}
+.pricesheet .category .desc{
+    margin-top: 1rem;
+    color: #a3a3a3;
+    line-height: 1.7;
+}
+.pricesheet .category .desc li{
+    padding-left: 2rem;
+    position: relative;
+    line-height: 1.8;
+}
+.pricesheet .category .desc li:not(:last-child)::before{
+    content:"";
+    display: block;
+    background: url("../img/checkGray.png") no-repeat center;
+    background-size: contain;
+    width: 1rem;
+    height: 100%;
+    position: absolute;
+    left: 0;
+}
+.pricesheet .category .desc li a{
+    color: #2196f3;
+}
+.pricesheet .category .laundry-category-list{
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0.75rem;
+    margin: 2rem 0;
+    border-bottom: 0.08rem solid rgba(0, 0, 0, 0.08);
+}
+.pricesheet .category .laundry-item{
+    width: 20%;
+    padding: 0.35rem;
+}
+.pricesheet .category .laundry-item>a{
+    font-size: .875rem;
+    background-color: rgba(0, 0, 0, 0.08);
+    color: #a3a3a3;
+    display: block;
+    width: 100%;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    border-radius: 0.25rem;
+    text-align: center;
+}
+.pricesheet .category .laundry-item>a:hover,
+.pricesheet .category .laundry-item>a.active{
+    background-color: #CFFD5F;
+    color: #000;
+    font-weight: 500;
+}
+@media screen and (min-width: 768px){
+    .pricesheet .category .laundry-category-list{
+        padding-bottom: 1.5rem;
+        margin: 2rem 0 2rem;
+    }
+    .pricesheet .category .laundry-item{
+        width: unset;
+    }
+    .pricesheet .category .laundry-item>a{
+        font-size: 1.1rem;
+        padding: 0 1rem 0;
+        text-align: center;
+    }
+}
+.pricesheet .price .price-item{
+    margin-bottom: 3rem;
+}
+.pricesheet .price .price-item .title{
+    margin-bottom: 1rem;
+}
+.pricesheet .price .price-item > div{
+    border-bottom: 0.055rem solid rgba(0, 0, 0, 0.3);
+}
+.pricesheet .price .price-item table{
+    width: 100%;
+    font-size: 1.2rem;
+}
+.pricesheet .price .price-item table thead{
+    color: #a3a3a3;
+    line-height: 3;
+    border-bottom: 0.055rem solid rgba(0, 0, 0, 0.3);
+}
+.pricesheet .price .price-item table td{
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+.pricesheet .price .price-item table td:last-child{
+    text-align: right;
+}
+.pricesheet .price .price-item table tbody{
+    line-height: 3;
+}
+.pricesheet .price .price-item table tbody tr:not(:last-child){
+    border-bottom: 0.025rem solid rgba(0, 0, 0, 0.08);
+}
+.pricesheet .price .price-item table tbody tr.on{
+    border-bottom: none;
+}
+.pricesheet .price .price-item table td.more{
+    position: relative;
+}
+.pricesheet .price .price-item table td.more::before{
+    content:"";
+    display: block;
+    background: url("../img/icon_arrow_down.png") no-repeat center;
+    background-size: contain;
+    width: 1.3rem;
+    height: 100%;
+    position: absolute;
+    left: 1rem;
+}
+.pricesheet .price .price-item table tbody tr.on td.more::before{
+    content:"";
+    display: block;
+    background: url("../img/icon_arrow_up.png") no-repeat center;
+    background-size: contain;
+    width: 1.3rem;
+    height: 100%;
+    position: absolute;
+    left: 1rem;
+}
+.pricesheet .price .price-item table td.more-info{
+    background-color: rgba(0,0,0,0.02);
+}
+.pricesheet .price .price-item table td.more-info div{
+    font-size: 1rem;
+    text-align: left;
+    line-height: 1.5;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #a3a3a3;
+}
+.pricesheet .price-premium .preparing{
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: #4564fd;
+    background-color: rgba(28,136,239,0.14);
+    border-radius: 0.4rem;
+    line-height: 2.2;
+}
+.pricesheet .price-premium .yet{
+    color: #2196f3;
+}
+.pricesheet .information{
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+.pricesheet .information h2.title{
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.4375rem;
+    line-height: 1.5;
+    letter-spacing: normal;
+    padding-left: 2rem;
+    position: relative;
+}
+.pricesheet .information h2.title::before{
+    content:"";
+    display: block;
+    background: url("../img/iconInfo.png") no-repeat center;
+    background-size: contain;
+    width: 1.5rem;
+    height: 100%;
+    position: absolute;
+    left: 0;
+}
+.pricesheet .information li{
+    padding-left: 2rem;
+    position: relative;
+    line-height: 1.8;
+}
+
+.pricesheet .information li::before{
+    content:"";
+    display: block;
+    background: url("../img/check.png") no-repeat center;
+    background-size: contain;
+    width: 0.9rem;
+    height: 100%;
+    position: absolute;
+    left: 0;
+}
+.pricesheet .information .desc{
+    margin-top: 1rem;
+    color: #a3a3a3;
+    line-height: 1.7;
+}

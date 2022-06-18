@@ -123,7 +123,7 @@ form{ padding: 10px; }
   position: relative; top: 4px;
   cursor: pointer; /* 마우스 올렸을때 손모양 처리 */
 
-  background-image: url(templates/assets/img/check_gray.png);
+  background-image: url(../img/check_gray.png);
   background-size: 70%;
   background-repeat: no-repeat;
   background-position: center;
@@ -132,7 +132,7 @@ form{ padding: 10px; }
 #chk-after:checked + .circle{
   background-color: #00BA86;
   border-color: #00BA86;
-  background-image: url(templates/assets/img/check_white.png);
+  background-image: url(../img/check_white.png);
 }
 
 /* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
@@ -141,7 +141,7 @@ form{ padding: 10px; }
 #chk-direct:checked + .circle{
     background-color: #00BA86;
     border-color: #00BA86;
-    background-image: url(templates/assets/img/check_white.png);
+    background-image: url(../img/check_white.png);
   }
   
   /* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
@@ -217,7 +217,7 @@ form{ padding: 10px; }
   position: relative; top: 4px;
   cursor: pointer; /* 마우스 올렸을때 손모양 처리 */
 
-  background-image: url(templates/assets/img/check_gray.png);
+  background-image: url(../img/check_gray.png);
   background-size: 70%;
   background-repeat: no-repeat;
   background-position: center;
@@ -226,7 +226,7 @@ form{ padding: 10px; }
 #chk-life:checked + .circle2{
     background-color: #00BA86;
     border-color: #00BA86;
-    background-image: url(templates/assets/img/check_white.png);
+    background-image: url(../img/check_white.png);
   }
   
   /* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
@@ -235,7 +235,7 @@ form{ padding: 10px; }
 #chk-other:checked + .circle2{
     background-color: #00BA86;
     border-color: #00BA86;
-    background-image: url(templates/assets/img/check_white.png);
+    background-image: url(../img/check_white.png);
   }
   
   /* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
