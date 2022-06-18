@@ -229,7 +229,7 @@
 }
 /* modal */
 .modal-bg{
-    /* display: none; */
+    display: none;
     position: fixed;
     left: 0;
     top: 0;
@@ -239,7 +239,7 @@
     background: url("../img/modal-bg.png") repeat;
 }
 .modal-container{
-    /* display: none; */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
