@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아이디·비밀번호 찾기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="assets/css/findIdPw.css">
+</head>
+<body>
+	<div th:replace="~{/fragments/headerFooter :: header}"></div>
+	<section>
+		<div class="findIdPw-page">
+			<h2>아이디·비밀번호 찾기</h2>
+			<div class="card">
+                <nav>
+                    <button id="show-findId-container" onclick="clickFindId">아이디 찾기</button>
+                    <button id="show-findPw-container" onclick="clickFindPw">비밀번호 찾기</button>
+                </nav>
+				<div class="find-container findId-container">
+					<div class="col">
+						<fieldset>
+							<legend>가입한 휴대 전화 번호를 입력해주세요</legend>
+							<div>
+								<input type="text" name="phonenum" placeholder="휴대 전화 번호를 입력해주세요">
+							</div>
+							<div class="invalid-feedback">
+								휴대 전화 번호를 정확히 입력해주세요.
+                            </div>
+                            <div class="feedback">
+                                <small>휴대 전화 번호를 통해<br>가입하신 아이디를 확인하실 수 있습니다.</small>
+                            </div>
+						</fieldset>
+					</div>
+					<div class="col">
+						<button class="btn find-btn"><span>아이디 미리보기</span></button>
+					</div>
+				</div>
+				<div class="find-container findPw-container">
+					<div class="col">
+						<fieldset>
+							<legend>가입한 이메일 주소를 입력해주세요</legend>
+							<div>
+								<input type="email" name="email" placeholder="example@washgogo.com">
+							</div>
+							<div class="invalid-feedback">
+								<small>이메일 주소를 입력해주세요.</small>
+								<!-- <small>올바른 이메일 주소를 입력해주세요.</small> -->
+							</div>
+                            <div class="feedback">
+                                <small>가입하신 이메일 주소를 입력해주시면<br>새로운 비밀번호를 설정 가능한 링크를 보내드립니다.</small>
+                            </div>
+						</fieldset>
+					</div>
+					<div class="col">
+						<button class="btn find-btn"><span>이메일 전송하기</span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div th:replace="~{/fragments/headerFooter :: footer}"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	/* 아이디 찾기 클릭 시 */
+	function clickFindId() {
+		$(".findPw-container").hide();
+		$(".findId-container").show();
+	}
+
+	/* 비밀번호 찾기 클릭 시 */
+	function clickFindPw() {
+		$(".findId-container").hide();
+		$(".findPw-container").show();
+	}
+
+	/* 파라미터 해석 */
+	const param = window.location.search;
+	if (param.includes("id")) {
+		console.log("들어옴");
+		$("#show-findId-container").trigger('click');
+	} else if (param.includes("pw")) {
+		$("#show-findPw-container").trigger('click');
+	};
+</script>
+</html>
