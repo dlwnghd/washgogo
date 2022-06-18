@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비밀번호 재설정</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="assets/css/resetPw.css">
+</head>
+<body>
+	<div th:replace="~{/fragments/headerFooter :: header}"></div>
+	<section>
+		<div class="reset-page">
+			<h2>비밀번호 재설정</h2>
+			<div class="card">
+				<div class="reset-container">
+					<div class="col">
+						<fieldset>
+							<legend>새로운 비밀번호</legend>
+							<div class="password-wrapper">
+								<input type="password" name="pw" placeholder="영문+숫자 조합 8자리 이상 입력해주세요">
+								<button class="pw-show"></button>
+							</div>
+							<div class="invalid-feedback">
+								<small>영문+숫자 조합 8자리 이상 입력해주세요.</small>
+							</div>
+						</fieldset>
+					</div>
+					<div class="col">
+						<fieldset>
+							<legend>비밀번호</legend>
+							<div class="password-wrapper">
+								<input type="password" name="pw" placeholder="비밀번호를 한번 더 입력해주세요">
+								<button class="pw-show"></button>
+							</div>
+							<div class="invalid-feedback">
+								<small>비밀번호가 일치하지 않습니다.</small>
+							</div>
+						</fieldset>
+					</div>
+					<div class="col">
+						<button type="submit" class="btn reset-btn"><span>비밀번호 재설정 완료</span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div th:replace="~{/fragments/headerFooter :: footer}"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	/* 비밀번호 보이기, 감추기 */
+	$(".pw-show").on("click",function(){
+		$("input").toggleClass("active");
+		if($("input").hasClass("active")){
+			$(".pw-show").prev("input").attr("type","text");
+			$(".pw-show").toggleClass("pw-hide");
+		}else{
+			$(".pw-show").prev("input").attr("type","password");
+			$(".pw-show").removeClass("pw-hide");
+		}
+	});
+</script>
+</html>
