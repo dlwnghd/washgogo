@@ -58,7 +58,7 @@
 							<input type="checkbox" name="agree-terms" id="agree-terms">
 							<label for="agree-terms">
 								<p>
-									<button id="btn-terms-conditions">이용약관</button>, <button id="btn-personal-info">개인정보 수집 및 이용</button> 동의 (필수)
+									<button id="btn-terms-of-service">이용약관</button>, <button id="btn-privacy-policy">개인정보 수집 및 이용</button> 동의 (필수)
 								</p>
 							</label>
 						</div>
@@ -87,7 +87,7 @@
 							<button class="close"></button>
 						</div>
 						<div class="modal-body">
-							<div class="docs-component terms-conditions">
+							<div class="docs-component terms-of-service">
 								<div class="docs-title">
 									<h1>이용 약관</h1>
 								</div>
@@ -402,7 +402,7 @@
 									</ol>
 								</div>
 							</div>
-							<div class="docs-component personal-info">
+							<div class="docs-component privacy-policy">
 								<div class="docs-title">
 									<h1>개인정보 수집 및 이용 안내</h1>
 								</div>
@@ -726,15 +726,15 @@
 	});
 
 	/* 이용 약관 버튼 클릭 시 모달 열림 */
-	$("#btn-termsz").click(function() {
+	$("#btn-terms-of-service").click(function() {
 		$(".modal-outer").show();
-		$(".terms-conditions").show();
+		$(".terms-of-service").show();
 	});
 
 	/* 개인정보 약관 버튼 클릭 시 모달 열림 */
-	$("#btn-personal-info").click(function() {
+	$("#btn-privacy-policy").click(function() {
 		$(".modal-outer").show();
-		$(".personal-info").show();
+		$(".privacy-policy").show();
 	});
 </script>
 </html>
