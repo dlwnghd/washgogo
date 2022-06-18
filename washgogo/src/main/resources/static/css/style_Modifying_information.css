@@ -1,43 +1,43 @@
-h1[data-v-5e02e480] {
+h1[add] {
     line-height: 2.5625rem;
     font-size: 1.75rem;
     font-weight: 500;
     color: #323232;
     margin: 3rem 0;
 }
-.profile-image[data-v-5e02e480] {
+.profile-image[add] {
     position: relative;
     width: 6.25rem;
     height: 6.25rem;
     margin: 0 auto;
 }
-.camera-icon[data-v-5e02e480] {
+.camera-icon[add] {
     cursor: pointer;
     position: absolute;
     right: 0;
     bottom: 0;
 }
-section[data-v-5e02e480] {
+section[add] {
     font-size: 0.875rem;
     margin: 3rem 0 5.125rem;
 }
-.account-info[data-v-5e02e480] {
+.account-info[add] {
     margin-bottom: 3rem;
 }
-.item-container[data-v-5e02e480] {
+.item-container[add] {
     cursor: pointer;
     display: flex;
     align-items: center;
     padding: 1rem 0 1rem 0.5rem;
     border-bottom: 0.0625rem solid #f2f2f2;
 }
-.item[data-v-5e02e480] {
+.item[add] {
     flex: 1;
     color: #323232;
 }
-.item-title[data-v-5e02e480] {
+.item-title[add] {
     color: #b5b5b5;
 }
-.item-info[data-v-5e02e480] {
+.item-info[add] {
     padding-top: 0.25rem;
 }
