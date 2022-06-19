@@ -45,32 +45,45 @@
 .guide .tab, .guide .tab-depth{
     display: flex;
     justify-content: center;
-    /*
-    position: -webkit-sticky;
-    position: sticky;
-    */
 }
 .guide .tab{
     font-weight: 700;
     font-size: 1.5rem;
-}.guide .tab-depth{
-     font-weight: 500;
-     font-size: 1rem;
-     margin-top: 1rem;
- }
+}
 .guide .tab a, .guide .tab-depth a{
-    width: 13.7rem;
     text-align: center;
 }
 .guide .tab a{
+    width: 13.7rem;
     height: 3rem;
 }
 .guide .tab a.active{
     border-bottom: 0.15rem solid #000;
 }
-.guide .tab-depth a:first-child{
-    border-right: 0.15rem solid rgba(0, 0, 0, 0.3);
+.guide .tab-depth{
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-top: 1rem;
 }
+.guide .tab-depth a{
+    width: 6.7rem;
+    color: rgba(0, 0, 0, 0.3);
+}
+.guide .tab-depth a.active{
+    color: #00BA86;
+    font-weight: 700;
+}
+.guide .tab-depth a:first-child{
+    padding-right: 1rem;
+    position: relative;
+}
+.guide .tab-depth a:first-child::after{
+    content: "|";
+    color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    right: 0;
+}
+
 /*-----contents-----*/
 /*first-use-guide*/
 .first-use{
@@ -171,7 +184,374 @@
     font-style: normal;
     font-weight: 500;
 }
+
 /*next-use-guide*/
+.next-use{
+    margin: 2.5rem auto 4rem;
+    width: 60.625rem;
+}
+.next-use .content .title-wrap .step{
+    font-weight: 700;
+    color: #000;
+    line-height: 3;
+    border-bottom: 0.19rem solid #000;
+}
+.next-use .title-wrap div,
+.next-use .inner-inner .text-content div{
+    height: 100%;
+    position: relative;
+    margin-top: 3rem;
+}
+.next-use .title-wrap .highlight,
+.next-use .inner-inner .highlight{
+    display: inline-block;
+    font-size: 1.4rem;
+    height: 0.7rem;
+    color: transparent;
+    background-color: #CFFD5F;
+    position: absolute;
+    bottom: 0;
+}
+.next-use .title-wrap .title,
+.next-use .inner-inner .title{
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    position: relative;
+    top: -2.1rem;
+}
+.next-use .title-wrap p{
+    font-size: 1.2rem;
+    margin-top: -1.3rem;
+}
+.next-use .laundret .content .item{
+    padding: 0 1rem;
+}
+.next-use .laundret .laundret-setting .title-wrap + .item{
+    margin-top: -0.8rem;
+}
+.next-use .laundret .laundret-setting .title-wrap + .item .image-content{
+    background-color: rgba(0, 0, 0, 0.8);
+    height: fit-content;
+    border-radius: 1rem;
+}
+.next-use .laundret .laundret-setting .item:not(:last-child){
+    padding-bottom: 3rem;
+    border-bottom: 0.06rem dashed #aaa;
+}
+.next-use .content .item .image-content img{
+    width: 56.625rem;
+    margin: 1rem;
+}
+.next-use .content .item .text-content h3{
+    font-size: 1.3rem;
+    margin-top: 1rem;
+}
+.next-use .content .item .text-content p{
+    color: #737373;
+    padding-top: 1rem;
+    font-size: 1.2rem;
+}
+.next-use .content .item .number-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax( 10rem ,1fr));
+    grid-row-gap: 0.6rem;
+    margin-top: 1.5rem;
+}
+.next-use .content .item .number-list li,
+.kitDetail .number-list li{
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+.next-use .content .item .number-list .number,
+.kitDetail .number-list .number,
+.key .number-list .number{
+    display: inline-block;
+    width: 1.45rem;
+    height: inherit;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    font-weight: 500;
+    text-align: center;
+    vertical-align: center;
+    font-size: 0.9rem;
+}
+.next-use .content .item .number-list span,
+.kitDetail .number-list span{
+    padding-left: 0.5rem;
+}
+.next-use .content .item button{
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1d86d9;
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+    background-color: rgba(161,213,255,0.28);
+    border: 0.05rem solid rgba(28,136,239,0.44);
+    margin-top: 2rem;
+}
+.next-use .laundret-setting .item:nth-child(3){
+    background-color: #eee;
+    padding: 2rem 1rem;
+}
+.next-use .laundret-setting .item:nth-child(3) .img-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax( 10rem ,1fr));
+    grid-row-gap: 0.6rem;
+    margin-top: 1.5rem;
+}
+.next-use .laundret-setting .item:nth-child(3) .image-content{
+    width: 100%;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+.next-use .laundret-setting .item:nth-child(3) img{
+    width: inherit;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+.next-use .laundret-setting .item:nth-child(3) .number-list li{
+    text-align: center;
+}
+.next-use .laundret-setting .item:nth-child(3) .number-list span{
+    margin-top: 1rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+.next-use .laundry-setting, .next-use .get-laundry,
+.next-use .lightbag-setting, .next-use .get-lightbag{
+    margin-top: 3rem;
+}
+.next-use .laundry-setting .title-wrap + .item,
+.next-use .lightbag-setting .title-wrap + .item{
+    margin-top: 2rem;
+    padding: 4rem 4rem 2rem;
+    position: relative;
+}
+.next-use .content.laundry-setting .item,
+.next-use .content.lightbag-setting .item{
+    background-color: #eee;
+    padding: 4rem 4rem 0;
+}
+.next-use .laundry-setting .inner,
+.next-use .lightbag-setting .inner{
+    padding: 2rem 2rem 0;
+    background-color: #fff;
+    border: 0.05rem solid #ccc;
+    border-radius: 1.5rem;
+}
+.next-use .laundry-setting .inner .title-content h3,
+.next-use .lightbag-setting .inner .title-content h3{
+    font-size: 1.25rem;
+    font-weight: 600;
+    display: inline-block;
+    padding: 0.4rem 2em;
+    border: 0.12rem solid rgba(28,136,239,0.55);
+    border-radius: 1.5rem;
+    background-color: #fff;
+    top: 2.5rem;
+    position: absolute;
+}
+#btnCautionDetail{
+    padding-left: 2rem;
+    position: relative;
+}
+#btnCautionDetail::before{
+    content: "";
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    left: 0.699rem;
+    top: 0.625rem;
+    background: url("../img/noticeBlue.png") no-repeat center;
+    background-size: contain;
+}
+.next-use .laundry-setting .inner .setting-guide li{
+    display: flex;
+    border-bottom: 0.08rem dashed #aaa;
+    padding-top: 1rem;
+}
+.next-use .laundry-setting .inner .setting-guide li:first-child{
+    padding-top: 2rem;
+}
+.next-use .laundry-setting .inner .setting-guide li:last-child{
+    border: none;
+}
+.next-use .laundry-setting .inner .setting-guide h3{
+    margin-bottom: 1rem;
+}
+.next-use .laundry-setting .inner .setting-guide .text-content span{
+    font-size: 1.2rem;
+}
+.next-use .laundry-setting .inner .setting-guide .text-content p{
+    font-size: 1.1rem;
+}
+.next-use .laundry-setting .inner .setting-guide img{
+    width: 12rem;
+    margin: 2rem;
+}
+.next-use .laundry-setting .item .number-list{
+    display: block;
+}
+.next-use .laundry-setting .item .number-list .image-content,
+.next-use .lightbag-setting .item .number-list .image-content{
+    width: fit-content;
+    margin: 0 auto;
+}
+.next-use .laundry-setting .item .number-list img,
+.next-use .lightbag-setting .item .number-list .image-content img{
+    width: 45.625rem;
+}
+.next-use .laundry-setting .item .number-list .number,
+.next-use .lightbag-setting .item .number-list .number{
+    color: #fff;
+    background-color: #000;
+}
+.next-use .laundry-setting .item .number-list .text-content{
+    padding: 1.5rem 0 3rem;
+}
+.next-use .laundry-setting .item:last-child{
+    padding: 1rem 4rem 2rem;
+    border-top: 0.08rem dashed #aaa;
+}
+.next-use .laundry-setting .item:last-child button{
+    margin-top: 1rem;
+}
+.next-use .laundry-setting button + button{
+    margin-left: 1rem;
+}
+.next-use .get-laundry .image-content,
+.next-use .get-lightbag .image-content{
+    width: fit-content;
+    margin: 3rem auto 3rem;
+}
+.next-use .get-laundry .image-content img,
+.next-use .get-lightbag .image-content img{
+    width: 15rem;
+}
+.next-use .caution p{
+    padding-left: 2rem;
+    position: relative;
+    color: #aaa;
+}
+.next-use .caution p::before{
+    content: "";
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    left: 0;
+    background: url("../img/noticeGray.png") no-repeat center;
+    background-size: contain;
+}
+.pickup-btn-wrap{
+    width: 20rem;
+    height: 3.5rem;
+    margin: 2rem auto 5rem;
+}
+.pickup-btn-wrap .request-pickup{
+    color: #CFFD5F;
+    background-color: #000;
+    font-weight: 500;
+    font-size: 1rem;
+    width: 20rem;
+    height: 3.5rem;
+    margin: 2rem auto 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+}
+.next-use .lightbag .lightbag-types .number-list{
+    background-color: #f1f1f1;
+    border-radius: 1rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+.next-use .lightbag .lightbag-types .number-list li{
+    text-align: center;
+}
+.next-use .lightbag .lightbag-types .image-content img{
+    height: 25rem;
+    width: fit-content;
+    border-radius: 1rem;
+}
+.next-use .lightbag .lightbag-types .text-content > span,
+.next-use .lightbag .lightbag-setting .title-wrap span:last-child{
+    color: #737373;
+    font-size: 1.1rem;
+}
+.next-use .lightbag .lightbag-setting .title-wrap p{
+    margin-bottom: 1rem;
+}
+.next-use .content.lightbag-setting .item:not(:last-child){
+    margin-top: 2rem;
+}
+.next-use .lightbag-setting .inner .text-content h3{
+    margin-bottom: 1rem;
+}
+.next-use .lightbag-setting .inner .text-content + .title-content h3{
+    top: 26.5rem;
+}
+.next-use .lightbag-setting .inner .title-content h3 span{
+    color: rgb(28,136,239)
+}
+.next-use .lightbag-setting .item .image-content img{
+    width: 5rem;
+}
+.next-use .lightbag-setting .inner .text-content span{
+    font-size: 1.2rem;
+}
+.next-use .lightbag-setting .inner .text-content p{
+    font-size: 1.1rem;
+    padding-bottom: 2rem;
+    padding-top: 0;
+}
+.next-use .lightbag-setting .inner .inner-inner{
+    margin-top: 4.5rem;
+    border: 0.08rem dashed #aaa;
+    border-radius: 1rem;
+    padding: 2rem 2rem 0;
+    margin-bottom: 2rem;
+}
+.next-use .inner-inner .one-line{
+    position: relative;
+}
+.next-use .inner-inner .one-line span{
+    position: absolute;
+    top: -1.8rem;
+    left: 12rem;
+}
+.next-use .inner-inner .setting-guide li:not(:last-child){
+    border-bottom: 0.08rem dashed #aaa;
+}
+.next-use .inner-inner .setting-guide li + li{
+    margin-top: 2rem;
+}
+.next-use .inner-inner .setting-guide li + li .one-line span{
+    position: absolute;
+    top: -1.8rem;
+    left: 22.125rem;
+}
+.lightbag-setting div.item:last-child{
+    margin: 0;
+}
+.next-use .lightbag .lightbag-setting .number-list{
+    display: block;
+}
+.next-use .lightbag-setting .number-list .text-content em{
+    font-style: normal;
+    font-weight: 500;
+    color: #1d86d9;
+}
+.next-use .lightbag-setting .number-list .text-content p{
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+.next-use .content.lightbag-setting .item:last-child{
+    padding-bottom: 3rem;
+}
+
 /*service-area-guide*/
 .service-area .image-wrapper{
     margin: 3rem auto 0;
@@ -329,4 +709,219 @@
 .service-area span.caution em{
     font-style: normal;
     font-weight: 500;
+}
+
+/* modal-v2 common*/
+.modal-bg{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10001;
+    background: url("../img/modal-bg.png") repeat;
+}
+.modal-title{
+    font-size: 1.5rem;
+    color: #000;
+    padding-bottom: 3.438rem;
+    text-align: center;
+}
+.modal-close{
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url("../img/modal-close.png")
+    no-repeat center center;
+    background-size: 100% 100%;
+}
+.modal-content .btn-area{
+    text-align: center;
+    margin-top: 2rem;
+}
+.btn-area button{
+    display: inline-block;
+    height: 3.125rem;
+    line-height: 3.125;
+    max-width: 11.25rem;
+    width: 100%;
+    margin: 0;
+    font-size: 0.875rem;
+}
+.btn-black{
+    background: #000;
+    color: #fff;
+    border: 0.063rem solid #000;
+}
+.modal-container{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform:  translate(-50%, -50%);
+    width: 40rem;
+    height: 50rem;
+    z-index: 10001;
+    box-sizing: border-box;
+    transition: all 0.5s ease;
+    overflow: auto;
+}
+.modal-inner{
+    max-width: 41.25rem;
+    padding: 3.75rem 2.5rem;
+    position: relative;
+    width: 100%;
+    min-width: 20.625rem;
+    background: #fff;
+    border-radius: 0;
+    transition: all 0.5s ease;
+}
+/* modal - kitDetail*/
+.kitDetail .modal-content .number-list li,
+.key .modal-content .number-list li{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 2rem;
+}
+.kitDetail .modal-content .number-list .image-content,
+.key .modal-content .number-list .image-content{
+    height: 15rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.kitDetail .modal-content .number-list li > div,
+.key .modal-content .number-list li > div{
+    width: 40%;
+}
+.kitDetail .modal-content .number-list li > div:last-child,
+.key .modal-content .number-list li > div:last-child{
+    width: 45%;
+}
+.kitDetail .modal-content .number-list li p{
+    margin-top: 1rem;
+}
+.kitDetail .number-list li:nth-child(2) .text-content{padding-top: 5rem;}
+.kitDetail .number-list li:nth-child(4) .text-content{padding-top: 5rem;}
+.kitDetail .number-list li:nth-child(5) .text-content{padding-top: 3rem;}
+.kitDetail .number-list li:nth-child(6) .text-content{padding-top: 3rem;}
+.kitDetail .number-list li:nth-child(7) .text-content{padding-top: 5rem;}
+
+/* modal - cautionDetail*/
+.cautionDetail .modal-content .caution-list > li:first-child{
+    padding-bottom: 2rem;
+    border-bottom: 0.06rem dashed #ccc;
+}
+.cautionDetail .modal-content .caution-list li > div{
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem auto 1rem;
+}
+.cautionDetail .modal-content .caution-list h3{
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.cautionDetail .modal-content .caution-list > li:first-child > h3{
+    padding-top: 0;
+}
+.cautionDetail .modal-content .caution-list > li:last-child h3{
+    margin-top: 2.5rem;
+}
+.cautionDetail .image-wrap .image-content{
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 12rem;
+    height: 12rem;
+}
+.cautionDetail .image-content{
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 25rem;
+    height: 12rem;
+}
+.cautionDetail .image-wrap p{
+    font-weight: 500;
+}
+.cautionDetail .modal-content .caution-list p{
+    margin-top: 1.5rem;
+}
+.cautionDetail .modal-content .caution-list p.caution,
+.cautionDetail .modal-content .caution-list .image-wrap p{
+    margin: 0;
+}
+.cautionDetail .caution-list li:last-child h3 + p{
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+.cautionDetail .caution-list .checks li{
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+.cautionDetail .caution-list .notice{
+    padding-left: 2rem;
+    margin-top: 1rem;
+}
+.cautionDetail .caution-list .notice li{
+    color: #ddd;
+}
+.cautionDetail .donot{ color: #f94545; }
+.cautionDetail p.caution{
+    font-size: 0.9rem;
+    color: #717171;
+}
+.cautionDetail p.caution span{
+    color: #f94545;
+}
+.cautionDetail .ban{
+    padding-left: 2rem;
+    position: relative;
+}
+.cautionDetail .ban::before{
+    content: "";
+    display: block;
+    width: 1.5rem;
+    height: 100%;
+    background: url("../img/ban.png") no-repeat center;
+    background-size: contain;
+    position: absolute;
+    left: 0;
+}
+.cautionDetail .checks li{
+    padding-left: 2rem;
+    position: relative;
+}
+.cautionDetail .checks li::before{
+    content: "";
+    display: block;
+    width: 0.7rem;
+    height: 100%;
+    background: url("../img/check.png") no-repeat center;
+    background-size: contain;
+    position: absolute;
+    left: 0.5rem;
+}
+.cautionDetail .notice li{
+    list-style: disc;
+    color: #717171;
+}
+/* modal - key common*/
+.modal-container.key{
+    width: 30rem;
+    height: 47.4rem;
+}
+.key .modal-content .number-list .image-content{
+    height: 9rem;
+}
+.key .modal-content .number-list li{
+    margin: 0 0 1rem;
+}
+.key .modal-content .number-list .number{
+    margin-bottom: 0.5rem;
 }
