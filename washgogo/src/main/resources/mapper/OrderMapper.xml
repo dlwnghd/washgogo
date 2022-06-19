@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.washgogo.mapper.OrderMapper">
+    <!--?-->
+    <select id="getList" resultType="laundryVO">
+        SELECT ORDER_NUMBER, USER_NUMBER, ORDER_DATE, ORDER_PROGRESS, ORDER_ALERT, ORDER_PM_CHOOSE, ORDER_PM_OPTION, ORDER_PM_MESSAGE, ORDER_TYPE_GENERAL, ORDER_TYPE_CLEANING, ORDER_REQUEST_OPTION, ORDER_REQUEST_MESSAGE, LAUNDRY_NUMBER, ORDER_EA_QUANTITY, ORDER_TOTAL_QUANTITY, ORDER_TOTAL_PRICE
+        FROM TBL_ORDER
+    </select>
+<!--
+orderNumber
+userNumber
+orderString
+orderProgress
+orderAlert
+orderPmChoose
+orderPmOption
+orderPmMessage
+orderTypeGeneral
+orderTypeCleaning
+orderRequestOption
+orderRequestMessage
+laundryNumber
+orderEaQuantity
+orderTotalQuantity
+orderTotalPrice
+
+    INSERT INTO TBL_ORDER
+        (ORDER_NUMBER, USER_NUMBER, ORDER_DATE, ORDER_PROGRESS, ORDER_ALERT, ORDER_PM_CHOOSE, ORDER_PM_OPTION, ORDER_PM_MESSAGE, ORDER_TYPE_GENERAL,
+        ORDER_TYPE_CLEANING, ORDER_REQUEST_OPTION, ORDER_REQUEST_MESSAGE, LAUNDRY_NUMBER, ORDER_EA_QUANTITY, ORDER_TOTAL_QUANTITY, ORDER_TOTAL_PRICE)
+    VALUES('', 0, SYSDATE, '', '', '', '', '', '', '', '', '', 0, 0, 0, 0);
+-->
+</mapper>
