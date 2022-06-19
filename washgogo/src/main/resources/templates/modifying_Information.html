@@ -9,17 +9,17 @@
             rel="shortcut icon"
             type="image/x-icon"
             href="https://www.laundrygo.com/image/favicon/favicon_web.png">
-        <link rel="stylesheet" href="assets/css/common.css">
+        <link rel="stylesheet" href="../static/css/common.css">
         <link
             rel="stylesheet"
             type="text/css"
             href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <!--⭐헤더 푸터-->
-        <link rel="stylesheet" href="assets/css/style_frame.css">
+        <link rel="stylesheet" href="../static/css/style_frame.css">
         <!--⭐틀-->
-        <link rel="stylesheet" href="assets/css/modifying_information_modal.css">
+        <link rel="stylesheet" href="../static/css/modifying_information_modal.css">
         <!-- ⭐각 수정별 모달창 스타일-->
-        <link rel="stylesheet" href="assets/css/style_Modifying_information.css">
+        <link rel="stylesheet" href="../static/css/style_Modifying_information.css">
         <!-- ⭐수정 페이지 세부 -->
     </head>
     <body class="account-info" data-modal-open-count="0">
@@ -31,53 +31,42 @@
                         <div class="left-section">
                             <div class="logo">
                                 <a href="./index.html">
-                                    <img src="assets/img/headerLogo.png" alt="" style="width: 106px;">
+                                    <div class="logo-image">washgogo</div>
                                 </a>
                             </div>
                         </div>
                         <div class="right-section">
                             <nav>
-                                <!-- ⭐비로그인 헤더 -->
                                 <ul class="nav-list sign-out" style="display: none;">
                                     <li class="nav-item">
-                                        <a href="./guide.html">
-                                            <span>가이드</span></a>
+                                        <a href="./guide.html"><span>가이드</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
-                                            <span>가격표</span></a>
+                                        <a href="./pricesheet.html"><span>가격표</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
-                                            <span>로그인</span></a>
+                                        <a href="#"><span>로그인</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
-                                            <span>회원가입</span></a>
+                                        <a href="#"><span>회원가입</span></a>
                                     </li>
                                 </ul>
-                                <!-- ⭐로그인 헤더 -->
                                 <ul class="nav-list sign-in">
                                     <li class="nav-item">
-                                        <a href="./index.html">
-                                            <span>가이드</span></a>
+                                        <a href="./guide.html"><span>가이드</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
-                                            <span>가격표</span></a>
+                                        <a href="./pricesheet.html"><span>가격표</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
-                                            <span>이용내역</span></a>
+                                        <a href="#"><span>이용내역</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
-                                            <span>마이페이지</span></a>
+                                        <a href="#"><span>마이페이지</span></a>
                                     </li>
                                 </ul>
                             </nav>
                             <button type="button" class="btn btn-primary pickup-request-btn">수거신청</button>
-                        </div>
                     </div>
                 </section>
             </header>
@@ -95,10 +84,13 @@
                                     data-src="https://dmmj3ljielax6.cloudfront.net?h=320&amp;w=320"
                                     lazy="error"
                                     style="background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYSIgZD0iTTAgMGg3MnY3MkgweiIvPgogICAgICAgIDxwYXRoIGlkPSJjIiBkPSJNMCAwaDcydjcySDB6Ii8+CiAgICA8L2RlZnM+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxtYXNrIGlkPSJiIiBmaWxsPSIjZmZmIj4KICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYSIvPgogICAgICAgIDwvbWFzaz4KICAgICAgICA8ZyBtYXNrPSJ1cmwoI2IpIj4KICAgICAgICAgICAgPG1hc2sgaWQ9ImQiIGZpbGw9IiNmZmYiPgogICAgICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYyIvPgogICAgICAgICAgICA8L21hc2s+CiAgICAgICAgICAgIDx1c2UgZmlsbD0iI0YyRjJGMiIgeGxpbms6aHJlZj0iI2MiLz4KICAgICAgICAgICAgPHBhdGggZmlsbD0iI0UxRTFFMSIgZD0iTTcwLjY3NyA2Ny4wMzJjLS45NTEtMi44NDQtMi42NzQtNS43MTItNS4yMTUtNy4zODEtNC44OS0zLjIzNi0xMC41ODctNC45NjItMTYuMDk1LTYuODEtMS4zMjktLjQ2NS0yLjY4LS45Ny0zLjg5My0xLjY5LTEuMDg1LS42NDMtMS40OTItMS45Ni0xLjc0My0zLjExNy0uMTEyLS42MTItLjE4LTEuMjQtLjIxNS0xLjg1NyAzLjk5NC01LjQ0OCA2LjY0NC0xNC4zNCA2LjY0NC0yMS42M0M1MC4xNiAxMy4xNzIgNDMuNzEyIDEwIDM1Ljc2IDEwYy03Ljk1NCAwLTE0LjQgMy4xNjYtMTQuNCAxNC41NDMgMCA3LjU1MSAyLjg0IDE2LjgxNCA3LjA3NSAyMi4xOTUtLjAzOS40MjQtLjA5Ljg1LS4xNjYgMS4yNzItLjI1MiAxLjE1Ny0uNjU5IDIuNDUtMS43NDIgMy4wOTItMS4yMTYuNzItMi41NjYgMS4xNzctMy44OTUgMS42NC01LjUwOSAxLjg0OS0xMS4yMDYgMy40NzgtMTYuMDk0IDYuNzE0LTIuNTQyIDEuNjctNC4yNjQgNC43MzItNS4yMTQgNy41NzZDLjM0NiA2OS45ODItLjA1NCA3My42MzguMDA2IDc2LjZoNzEuOTg4Yy4wNi0yLjk2Mi0uMzQtNi42MTctMS4zMTctOS41Njh6IiBtYXNrPSJ1cmwoI2QpIi8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K&quot;);"></div>
-                            </div><img
-                                add=""
-                                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGc+CiAgICAgICAgICAgIDxnPgogICAgICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTYwMyAtMjg2KSB0cmFuc2xhdGUoNTM1IDIxOCkgdHJhbnNsYXRlKDY4IDY4KSB0cmFuc2xhdGUoMSAxKSI+CiAgICAgICAgICAgICAgICAgICAgICAgIDxjaXJjbGUgY3g9IjE1IiBjeT0iMTUiIHI9IjE1IiBmaWxsPSIjRkZGIiBzdHJva2U9IiNGMkYyRjIiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxnPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTAgMEwxOCAwIDE4IDE4IDAgMTh6IiBvcGFjaXR5PSIuNCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiA2KSIvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZmlsbD0iI0I1QjVCNSIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMTEuNCAybDEuNDY0IDEuNTU2SDE1LjRjLjg4IDAgMS42LjcgMS42IDEuNTU1djkuMzMzQzE3IDE1LjMgMTYuMjggMTYgMTUuNCAxNkgyLjZjLS44OCAwLTEuNi0uNy0xLjYtMS41NTZWNS4xMTFjMC0uODU1LjcyLTEuNTU1IDEuNi0xLjU1NWgyLjUzNkw2LjYgMmg0Ljh6TTkgN2MtMS42NTYgMC0zIDEuMzQ0LTMgM3MxLjM0NCAzIDMgMyAzLTEuMzQ0IDMtMy0xLjM0NC0zLTMtM3oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYgNikiLz4KICAgICAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
-                                class="camera-icon">
+                            </div>
+                            <div class="icon" id="icon">
+                                <img
+                                    id="icon"
+                                    add=""
+                                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGc+CiAgICAgICAgICAgIDxnPgogICAgICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTYwMyAtMjg2KSB0cmFuc2xhdGUoNTM1IDIxOCkgdHJhbnNsYXRlKDY4IDY4KSB0cmFuc2xhdGUoMSAxKSI+CiAgICAgICAgICAgICAgICAgICAgICAgIDxjaXJjbGUgY3g9IjE1IiBjeT0iMTUiIHI9IjE1IiBmaWxsPSIjRkZGIiBzdHJva2U9IiNGMkYyRjIiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxnPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTAgMEwxOCAwIDE4IDE4IDAgMTh6IiBvcGFjaXR5PSIuNCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNiA2KSIvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZmlsbD0iI0I1QjVCNSIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMTEuNCAybDEuNDY0IDEuNTU2SDE1LjRjLjg4IDAgMS42LjcgMS42IDEuNTU1djkuMzMzQzE3IDE1LjMgMTYuMjggMTYgMTUuNCAxNkgyLjZjLS44OCAwLTEuNi0uNy0xLjYtMS41NTZWNS4xMTFjMC0uODU1LjcyLTEuNTU1IDEuNi0xLjU1NWgyLjUzNkw2LjYgMmg0Ljh6TTkgN2MtMS42NTYgMC0zIDEuMzQ0LTMgM3MxLjM0NCAzIDMgMyAzLTEuMzQ0IDMtMy0xLjM0NC0zLTMtM3oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYgNikiLz4KICAgICAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
+                                    class="camera-icon"></div>
                         </div>
                         <section add="">
                             <ul id="account" add="" class="account-info">
@@ -107,13 +99,12 @@
                                         <div add="" class="item-title name">이름</div>
                                         <div add="" class="item-info name">이주홍</div>
                                     </div>
-                                    <div add="" class="name"><img class="name"
+                                    <div add="" class="name"><img
+                                        class="name"
                                         add=""
                                         src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
                                 </li>
-                                <li
-                                    add=""
-                                    class="item-container email">
+                                <li add="" class="item-container email">
                                     <div add="" class="item">
                                         <div add="" class="item-title">이메일</div>
                                         <div add="" class="item-info">
@@ -125,9 +116,7 @@
                                         add=""
                                         src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
                                 </li>
-                                <li
-                                    add=""
-                                    class="item-container password">
+                                <li add="" class="item-container password">
                                     <div add="" class="item">
                                         <div add="" class="item-title">비밀번호</div>
                                         <div add="" class="item-info">•••••••</div>
@@ -209,7 +198,7 @@
                 <div class="footer-container-row terms">
                     <div class="term-container">
                         <div class="col-content term-content">
-                            <img src=" assets/img/logoGray.jpg" alt="logo" class="logo">
+                            <img src="../static/img/logoGray.jpg" alt="logo" class="logo">
                             <div class="col-content-list-term">
                                 <a href="#" class="text term">이용약관</a>
                                 <a href="#" class="text term">개인정보처리방침</a>
@@ -260,31 +249,40 @@
             </nav>
         </div>
         <!-- modal -->
-        <div id="modal" class="modal-overlay">
+        <div id="modal" class="modal-overlay" style="display: none;">
             <div id="modal_window" class="modal-window">
                 <div class="close-area">X</div>
                 <div class="title">
-                    <h2 id="changeInfo" style="text-align: center;" style="display: block;">수정할 정보명</h2>
+                    <h2 id="changeInfo">수정할 정보명</h2>
                 </div>
-                <div id="withdrawals" class="content">
+                <div id="modalIcon" style="display: none;">
+                    <div
+                        data-v-231f963c=""
+                        data-name="image"
+                        class=""
+                        data-src="https://dmmj3ljielax6.cloudfront.net?h=320&amp;w=320"
+                        lazy="error"
+                        style="cursor: pointer; border-radius: 50%; width: 72px; height: 72px; margin: 0 41%; margin-bottom: 10px; background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYSIgZD0iTTAgMGg3MnY3MkgweiIvPgogICAgICAgIDxwYXRoIGlkPSJjIiBkPSJNMCAwaDcydjcySDB6Ii8+CiAgICA8L2RlZnM+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxtYXNrIGlkPSJiIiBmaWxsPSIjZmZmIj4KICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYSIvPgogICAgICAgIDwvbWFzaz4KICAgICAgICA8ZyBtYXNrPSJ1cmwoI2IpIj4KICAgICAgICAgICAgPG1hc2sgaWQ9ImQiIGZpbGw9IiNmZmYiPgogICAgICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYyIvPgogICAgICAgICAgICA8L21hc2s+CiAgICAgICAgICAgIDx1c2UgZmlsbD0iI0YyRjJGMiIgeGxpbms6aHJlZj0iI2MiLz4KICAgICAgICAgICAgPHBhdGggZmlsbD0iI0UxRTFFMSIgZD0iTTcwLjY3NyA2Ny4wMzJjLS45NTEtMi44NDQtMi42NzQtNS43MTItNS4yMTUtNy4zODEtNC44OS0zLjIzNi0xMC41ODctNC45NjItMTYuMDk1LTYuODEtMS4zMjktLjQ2NS0yLjY4LS45Ny0zLjg5My0xLjY5LTEuMDg1LS42NDMtMS40OTItMS45Ni0xLjc0My0zLjExNy0uMTEyLS42MTItLjE4LTEuMjQtLjIxNS0xLjg1NyAzLjk5NC01LjQ0OCA2LjY0NC0xNC4zNCA2LjY0NC0yMS42M0M1MC4xNiAxMy4xNzIgNDMuNzEyIDEwIDM1Ljc2IDEwYy03Ljk1NCAwLTE0LjQgMy4xNjYtMTQuNCAxNC41NDMgMCA3LjU1MSAyLjg0IDE2LjgxNCA3LjA3NSAyMi4xOTUtLjAzOS40MjQtLjA5Ljg1LS4xNjYgMS4yNzItLjI1MiAxLjE1Ny0uNjU5IDIuNDUtMS43NDIgMy4wOTItMS4yMTYuNzItMi41NjYgMS4xNzctMy44OTUgMS42NC01LjUwOSAxLjg0OS0xMS4yMDYgMy40NzgtMTYuMDk0IDYuNzE0LTIuNTQyIDEuNjctNC4yNjQgNC43MzItNS4yMTQgNy41NzZDLjM0NiA2OS45ODItLjA1NCA3My42MzguMDA2IDc2LjZoNzEuOTg4Yy4wNi0yLjk2Mi0uMzQtNi42MTctMS4zMTctOS41Njh6IiBtYXNrPSJ1cmwoI2QpIi8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K&quot;);"></div>
+                </div>
+                <div id="withdrawals" class="content" style="display: none;">
                     <p>계정 탈퇴 시 모든 개인정보가 삭제되며<br>구매하신 캐시는 환불되지 않습니다.</p>
                 </div>
-                <div id="modifyInfo" class="content">새 ***
+                <div id="modifyInfo" class="content" style="display: none;">새 ***
                     <input type="text">
                 </div>
-                <div class="content1" id="newPw">새 비밀번호
+                <div class="content1" id="newPw" style="display: none;">새 비밀번호
                     <input type="password">
                 </div>
-                <div class="content2" id="newPwCheck">새 비밀번호 확인
+                <div class="content2" id="newPwCheck" style="display: none;">새 비밀번호 확인
                     <input type="password">
                 </div>
-                <div id="choose1">
-                    <button type="button" class="remain-user" style="display: inline-block;">취소</button>
-                    <button type="button" class="change-user" style="display: inline-block;">수정</button>
+                <div id="choose1" style="display: none;">
+                    <button type="button" class="remain-user">취소</button>
+                    <button type="button" class="change-user"">수정</button>
                 </div>
-                <div id="choose2">
-                    <button type="button" class="remain-user" style="display: inline-block;">다시 생각해 볼게요</button>
-                    <button type="button" class="change-user" style="display: inline-block;">계정 탈퇴</button>
+                <div id="choose2" style="display: none;">
+                    <button type="button" class="remain-user">다시 생각해 볼게요</button>
+                    <button type="button" class="change-user">계정 탈퇴</button>
                 </div>
             </div>
         </div>
@@ -297,6 +295,48 @@
             closeBtn.addEventListener("click", e => {
                 modal.style.display = "none";
                 modal_window.style.height = '250px';
+                // 비밀번호 지우기❌
+                newPw.style.display = "none";
+                newPwCheck.style.display = "none";
+                // 계정 지우기❌
+                withdrawals.style.display = "none";
+                choose2.style.display = "none";
+                // 모달 이미지 지우기❌
+                modalIcon.style.display = 'none';
+                // 수정칸 지우기❌
+                modifyInfo.style.display = 'none';
+            })
+
+            // 아무곳이나 눌러서 모달창 닫기
+            modal.addEventListener("click", e => {
+                const evTarget = e.target
+                if (evTarget.classList.contains("modal-overlay")) {
+                    modal.style.display = "none";
+                    modal_window.style.height = '250px';
+                // 비밀번호 지우기❌
+                newPw.style.display = "none";
+                newPwCheck.style.display = "none";
+                // 계정 지우기❌
+                withdrawals.style.display = "none";
+                choose2.style.display = "none";
+                // 모달 이미지 지우기❌
+                modalIcon.style.display = 'none';
+                // 수정칸 지우기❌
+                modifyInfo.style.display = 'none';
+                }
+            })
+
+            // 이미지 수정 모달 띄우기
+            const iconBtn = app.querySelector(".icon")
+            iconBtn.addEventListener("click", e => {
+                modal.style.display = "grid";
+                // 모달 이미지 나타내기
+                modalIcon.style.display = 'block';
+                // 수정할 데이터명
+                changeInfo.innerHTML = '<h2 style="text-align: center;">아이콘 수정</h2>';
+                modifyInfo.innerHTML = "아이콘<input type=\"text\">";
+                // 수정공간 나타내기
+                choose1.style.display = 'block';
             })
 
             // 이름 수정 모달 띄우기
@@ -306,14 +346,8 @@
                 // 수정할 데이터명
                 changeInfo.innerHTML = '<h2 style="text-align: center;">이름 수정</h2>';
                 modifyInfo.innerHTML = "이름<input type=\"text\">";
-                // 비밀번호 지우기❌
-                newPw.style.display = "none";
-                newPwCheck.style.display = "none";
-                // 계정 지우기❌
-                withdrawals.style.display = "none";
-                choose2.style.display = "none";
                 // 수정공간 나타내기
-                modifyInfo.style.display = 'inline-block';
+                modifyInfo.style.display = 'block';
                 choose1.style.display = 'block';
             })
             // 이메일 수정 모달 띄우기
@@ -323,14 +357,8 @@
                 // 수정할 데이터명
                 changeInfo.innerHTML = '<h2 style="text-align: center;">이메일 수정</h2>';
                 modifyInfo.innerHTML = "이메일<input type=\"text\">";
-                // 비밀번호 지우기❌
-                newPw.style.display = "none";
-                newPwCheck.style.display = "none";
-                // 계정 지우기❌
-                withdrawals.style.display = "none";
-                choose2.style.display = "none";
                 // 수정공간 나타내기
-                modifyInfo.style.display = 'inline-block';
+                modifyInfo.style.display = 'block';
                 choose1.style.display = 'block';
             })
             // 비밀번호 수정 모달 띄우기
@@ -338,14 +366,12 @@
             passwordBtn.addEventListener("click", e => {
                 modal.style.display = "grid"
                 changeInfo.innerHTML = '<h2 style="text-align: center;">비밀번호 수정</h2>';
-                // 수정칸 지우기❌
-                modifyInfo.style.display = 'none';
-                // 비밀번호 띄우기
-                newPw.style.display = "inline-block";
-                newPwCheck.style.display = "inline-block";
-                // 계정 지우기❌
-                withdrawals.style.display = "none";
-                choose2.style.display = "none";
+                modal_window.style.height = '300px';
+                // 비밀번호 나타내기
+                newPw.style.display = "block";
+                newPwCheck.style.display = "block";
+                // 수정공간 나타내기
+                choose1.style.display = 'block';
             })
             // 휴대전화번호 수정 모달 띄우기
             const phoneNumberBtn = account.querySelector(".phoneNumber")
@@ -354,14 +380,8 @@
                 // 수정할 데이터명
                 changeInfo.innerHTML = '<h2 style="text-align: center;">휴대전화 번호 수정</h2>';
                 modifyInfo.innerHTML = "휴대전화<input type=\"text\">";;
-                // 비밀번호 지우기❌
-                newPw.style.display = "none";
-                newPwCheck.style.display = "none";
-                // 계정 지우기❌
-                withdrawals.style.display = "none";
-                choose2.style.display = "none";
                 // 수정공간 나타내기
-                modifyInfo.style.display = 'inline-block';
+                modifyInfo.style.display = 'block';
                 choose1.style.display = 'block';
             })
             // 배송지 수정 모달 띄우기
@@ -371,14 +391,8 @@
                 // 수정할 데이터명
                 changeInfo.innerHTML = '<h2 style="text-align: center;">배송지 수정</h2>';
                 modifyInfo.innerHTML = "배송지<input type=\"text\">";;
-                // 비밀번호 지우기❌
-                newPw.style.display = "none";
-                newPwCheck.style.display = "none";
-                // 계정 지우기❌
-                withdrawals.style.display = "none";
-                choose2.style.display = "none";
                 // 수정공간 나타내기
-                modifyInfo.style.display = 'inline-block';
+                modifyInfo.style.display = 'block';
                 choose1.style.display = 'block';
             })
             //  공동현관 출입방법 모달 띄우기
@@ -388,31 +402,19 @@
                 // 수정할 데이터명
                 changeInfo.innerHTML = '<h2 style="text-align: center;">공동현관 출입방법 수정</h2>';
                 modifyInfo.innerHTML = "공동현관 출입방법<input type=\"text\">";;
-                // 비밀번호 지우기❌
-                newPw.style.display = "none";
-                newPwCheck.style.display = "none";
-                // 계정 지우기❌
-                withdrawals.style.display = "none";
-                choose2.style.display = "none";
                 // 수정공간 나타내기
-                modifyInfo.style.display = 'inline-block';
+                modifyInfo.style.display = 'block';
                 choose1.style.display = 'block';
             })
             // 결제정보 수정 모달 띄우기
             const paymentBtn = account.querySelector(".payment")
             paymentBtn.addEventListener("click", e => {
                 modal.style.display = "grid";
-                 // 수정할 데이터명
+                // 수정할 데이터명
                 changeInfo.innerHTML = '<h2 style="text-align: center;">결제정보 수정</h2>';
                 modifyInfo.innerHTML = "결제정보<input type=\"text\">";;
-                // 비밀번호 지우기❌
-                newPw.style.display = "none";
-                newPwCheck.style.display = "none";
-                // 계정 지우기❌
-                withdrawals.style.display = "none";
-                choose2.style.display = "none";
                 // 수정공간 나타내기
-                modifyInfo.style.display = 'inline-block';
+                modifyInfo.style.display = 'block';
                 choose1.style.display = 'block';
             })
             // 계정탈퇴 모달 띄우기
@@ -421,25 +423,13 @@
                 modal.style.display = "grid";
                 changeInfo.innerHTML = '<h2 style="text-align: center;">정말 WASHGOGO를<br>떠나실 건가요?</h2>';
                 modal_window.style.height = '300px';
-                // 수정칸 지우기❌
-                modifyInfo.style.display = 'none';
-                choose1.style.display = 'none';
-                // 비밀번호 지우기❌
-                newPw.style.display = "none";
-                newPwCheck.style.display = "none";
                 // 계정 탈퇴 선택창 나타내기
                 withdrawals.style.display = "block";
                 choose2.style.display = "block";
+                choose1.style.display = "none";
             })
 
-            // 아무곳이나 눌러서 모달창 닫기
-            modal.addEventListener("click", e => {
-                const evTarget = e.target
-                if (evTarget.classList.contains("modal-overlay")) {
-                    modal.style.display = "none";
-                    modal_window.style.height = '250px';
-                }
-            })
+            
         </script>
     </body>
 </html>

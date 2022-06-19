@@ -13,11 +13,11 @@
             rel="stylesheet"
             type="text/css"
             href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-        <link rel="stylesheet" href="assets/css/common.css">
+        <link rel="stylesheet" href="../static/css/common.css">
         <!--⭐헤더 푸터-->
-        <link rel="stylesheet" href="assets/css/style_frame.css">
+        <link rel="stylesheet" href="../static/css/style_frame.css">
         <!--⭐틀-->
-        <link rel="stylesheet" href="assets/css/style_use_service.css">
+        <link rel="stylesheet" href="../static/css/style_use_service.css">
         <!--⭐이용중인 서비스 세부-->
     </head>
     <body>
@@ -29,7 +29,7 @@
                         <div class="left-section">
                             <div class="logo">
                                 <a href="./index.html">
-                                    <img src="assets/img/headerLogo.png" alt="" style="width: 106px;">
+                                    <div class="logo-image">washgogo</div>
                                 </a>
                             </div>
                         </div>
@@ -89,22 +89,22 @@
                         <div class="use-list">
                             <ul>
                                 <li class="service-info">신청 서비스
-                                <span style="float: right;">월정액</span>
+                                    <span style="float: right;">자유이용서비스</span>
                                 </li>
                                 <li class="service-info">신청일
                                     <span style="float: right;">2022-06-17</span>
                                 </li>
-                                <li class="service-info">이용 상태
-                                    <span style="float: right;">사용중</span>
+                                <li class="service-info">배송지
+                                    <span style="float: right;">서울특별시</span>
                                 </li>
-                                <li class="service-info">이용기간
-                                    <span style="float: right;">1일</span>
+                                <li class="service-info">연락처
+                                    <span style="float: right;">010-****-****</span>
                                 </li>
-                                <li class="service-info">결제 예정일
-                                    <span style="float: right;">매달 10일</span>
+                                <li class="service-info">이용 횟수
+                                    <span style="float: right;">5</span>
                                 </li>
                             </ul>
-                            <div style="border: 1px solid black; margin-bottom:0.5rem;"></div>
+                            <div style="border-bottom: 2px solid black; margin-bottom:0.5rem;"></div>
                             <ul>
                                 <li class="service-info">요금제
                                     <span style="float: right;">-</span>
@@ -112,16 +112,14 @@
                                 <li class="service-info">요금제 금액
                                     <span style="float: right;">-</span>
                                 </li>
+                                <li class="service-info">세탁요금
+                                    <span style="float: right;">-</span>
+                                </li>
                             </ul>
                         </div>
-                        <div class="image-boxes">
-                            <div>
-                                <img src="" alt="">
-                            </div>
-                            <div>
-                                <img src="" alt="">
-                            </div>
-                            <div>
+                        <div class="image-boxes" style="display: flex;
+                        justify-content: space-around; margin-bottom: 100px;">
+                            <div style="background-color: yellow; width: 100px; height: 100px; cursor: pointer;">변경
                                 <img src="" alt="">
                             </div>
                         </div>
@@ -151,7 +149,7 @@
                 <div class="footer-container-row terms">
                     <div class="term-container">
                         <div class="col-content term-content">
-                            <img src="assets/img/logoGray.jpg" alt="logo" class="logo">
+                            <img src="../static/img/logoGray.jpg" alt="logo" class="logo">
                             <div class="col-content-list-term">
                                 <a href="#" class="text term">이용약관</a>
                                 <a href="#" class="text term">개인정보처리방침</a>
@@ -202,4 +200,8 @@
             </nav>
         </div>
     </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </html>
