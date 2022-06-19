@@ -13,12 +13,12 @@
             rel="stylesheet"
             type="text/css"
             href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-        <link rel="stylesheet" href="assets/css/common.css">
+        <link rel="stylesheet" href="../static/css/common.css">
         <!--⭐헤더 푸터-->
-        <link rel="stylesheet" href="assets/css/style_frame.css">
+        <link rel="stylesheet" href="../static/css/style_frame.css">
         <!--⭐틀-->
-        <link rel="stylesheet" href="assets/css/style_point.css">
-        <!--⭐틀-->
+        <link rel="stylesheet" href="../static/css/style_point.css">
+        <!--⭐포인트 페이지 세부-->
     </head>
     <body class="mypage" style="padding-right: 0px;" data-modal-open-count="0">
         <div id="app" data-is-loaded="true">
@@ -29,6 +29,7 @@
                         <div class="left-section">
                             <div class="logo">
                                 <a href="./index.html">
+                                    <div class="logo-image">washgogo</div>
                                 </a>
                             </div>
                         </div>
@@ -41,26 +42,26 @@
                                             <span>가이드</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
+                                        <a href="./pricesheet.html">
                                             <span>가격표</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
+                                        <a href="./login.html">
                                             <span>로그인</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
+                                        <a href="./join.html">
                                             <span>회원가입</span></a>
                                     </li>
                                 </ul>
                                 <!-- ⭐로그인 헤더 -->
                                 <ul class="nav-list sign-in">
                                     <li class="nav-item">
-                                        <a href="./index.html">
+                                        <a href="./guide.html">
                                             <span>가이드</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
+                                        <a href="./pricesheet.html">
                                             <span>가격표</span></a>
                                     </li>
                                     <li class="nav-item">
@@ -68,7 +69,7 @@
                                             <span>이용내역</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
+                                        <a href="./mypage.html">
                                             <span>마이페이지</span></a>
                                     </li>
                                 </ul>
@@ -81,19 +82,18 @@
             <!---- App-Body ---->
             <div id="app-body">
                 <div class="container-md container">
-                    <div class="mypage-container">
+                    <div class="section1">
                         <h1 class="mypage-title">포인트</h1>
                         <h4 class="point-title">WASHGOGO 포인트
-                            <span style="float: right">999,999,999p</span>
+                            <span style="float: right">999,999,999 p</span>
                         </h4>
-                        <p class="">한달 내, 소멸 예정 포인트
-                            <span style="float: right">999,999,999p</span>
+                        <p>한달 내, 소멸 예정 포인트
+                            <span style="float: right">999,999,999 p</span>
                         </p>
-                        <button style="margin: auto;">포인트 코드 등록</button>
                     </div>
-                    <div class="mypage-container">
-                        <h4 style="border-bottom :1px solid">포인트 이용 내역</h4>
-                        <table border="1" style="width: 100%;">
+                    <div class="section2">
+                        <h4>포인트 이용 내역</h4>
+                        <table class="usage-details">
                             <tr>
                                 <th>날짜</th>
                                 <th>사용명</th>
@@ -101,15 +101,22 @@
                             </tr>
                             <tr>
                                 <td>ex)2022-06-16</td>
-                                <td>월정액</td>
-                                <td>5000</td>
+                                <td>코트</td>
+                                <td>500 p</td>
                             </tr>
                             <tr>
                                 <td>ex)2022-06-16</td>
-                                <td>자유이용</td>
-                                <td>5000</td>
+                                <td>셔츠</td>
+                                <td>5,000 p</td>
                             </tr>
                         </table>
+                    </div>
+                    <div class="section3">
+                        <h4>포인트 이용 유의사항</h4>
+                        <ul>
+                            <li>포인트 수거 신청일 기준 아닌, 자유/1회이용서비스는 배송이후 결제 시점에 사용되며 월정액서비스는 서비스 결제 시 사용됩니다.</li>
+                            <li>유효기간이 만료되면 포인트는 자동 소멸됩니다.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -136,7 +143,7 @@
                 <div class="footer-container-row terms">
                     <div class="term-container">
                         <div class="col-content term-content">
-                            <img src=" ../images/logoGray.jpg" alt="logo" class="logo">
+                            <img src="../static/img/logoGray.jpg" alt="logo" class="logo">
                             <div class="col-content-list-term">
                                 <a href="#" class="text term">이용약관</a>
                                 <a href="#" class="text term">개인정보처리방침</a>
@@ -186,6 +193,6 @@
                 </div>
             </nav>
         </div>
-    </div>
-</body>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </html>
