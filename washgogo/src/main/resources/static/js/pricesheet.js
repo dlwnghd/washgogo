@@ -127,4 +127,4 @@ $closeModal.on("click", function(){
     $modalBg.css("display", "none");
     $modal.css("display", "none");
     $body.css("overflow", "auto");
-})
+});
