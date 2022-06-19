@@ -8,7 +8,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="assets/css/join.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/join.css">
 </head>
 <body>
 	<div th:replace="~{/fragments/headerFooter :: header}"></div>
@@ -53,12 +53,23 @@
 							</div>
 						</fieldset>
 					</div>
+					<div class="col">
+						<fieldset>
+							<legend>휴대 전화 번호</legend>
+							<div>
+								<input type="text" name="phonenum" placeholder="'-' 없이 휴대 전화 번호를 입력해주세요">
+							</div>
+							<div class="invalid-feedback">
+								휴대 전화 번호를 정확히 입력해주세요.
+							</div>
+						</fieldset>
+					</div>
 					<div class="col agreements">
 						<div class="agreement agree-terms-wrapper">
 							<input type="checkbox" name="agree-terms" id="agree-terms">
 							<label for="agree-terms">
 								<p>
-									<button id="btn-terms-conditions">이용약관</button>, <button id="btn-personal-info">개인정보 수집 및 이용</button> 동의 (필수)
+									<button id="btn-terms-of-service">이용약관</button>, <button id="btn-privacy-policy">개인정보 수집 및 이용</button> 동의 (필수)
 								</p>
 							</label>
 						</div>
@@ -87,7 +98,7 @@
 							<button class="close"></button>
 						</div>
 						<div class="modal-body">
-							<div class="docs-component terms-conditions">
+							<div class="docs-component terms-of-service">
 								<div class="docs-title">
 									<h1>이용 약관</h1>
 								</div>
@@ -402,7 +413,7 @@
 									</ol>
 								</div>
 							</div>
-							<div class="docs-component personal-info">
+							<div class="docs-component privacy-policy">
 								<div class="docs-title">
 									<h1>개인정보 수집 및 이용 안내</h1>
 								</div>
@@ -726,15 +737,15 @@
 	});
 
 	/* 이용 약관 버튼 클릭 시 모달 열림 */
-	$("#btn-termsz").click(function() {
+	$("#btn-terms-of-service").click(function() {
 		$(".modal-outer").show();
-		$(".terms-conditions").show();
+		$(".terms-of-service").show();
 	});
 
 	/* 개인정보 약관 버튼 클릭 시 모달 열림 */
-	$("#btn-personal-info").click(function() {
+	$("#btn-privacy-policy").click(function() {
 		$(".modal-outer").show();
-		$(".personal-info").show();
+		$(".privacy-policy").show();
 	});
 </script>
 </html>
