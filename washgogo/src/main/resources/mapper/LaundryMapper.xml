@@ -4,6 +4,6 @@
     <!--가격표 목록-->
     <select id="getList" resultType="laundryVO">
         SELECT LAUNDRY_NUMBER, LAUNDRY_NAME, LAUNDRY_PRICE, LAUNDRY_PM_PRICE
-        FROM TBL_LAUNDRY;
+        FROM TBL_LAUNDRY
     </select>
 </mapper>

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.washgogo.mapper.UserMapper">
+    <select id="getList" resultType="userVO">
+        SELECT USER_NUMBER, USER_EMAIL, USER_PW, USER_NAME, USER_PHONENUM, USER_ADDRESS, USER_ENTRANCE_TYPE, USER_ENTRANCE_PW, USER_ENTRANCE_MESSAGE, USER_SERVICE_TYPE, USER_CARDNUM
+        FROM TBL_USER
+    </select>
+
     <!--회원 가입-->
     <insert id="insert">
         <selectKey keyProperty="userNumber" order="BEFORE" resultType="long">

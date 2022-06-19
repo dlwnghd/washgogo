@@ -7,6 +7,9 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper {
+    //    게시글 목록
+    public List<UserVO> getList();
+
 //    회원가입
     public void insert(UserVO userVO);
 //    마이페이지
