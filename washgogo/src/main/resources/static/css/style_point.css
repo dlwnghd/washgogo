@@ -1,0 +1,86 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#app-body .container-md.container {
+    max-width: 62.5rem;
+}
+
+.section1 {
+    margin: 48px 0;
+}
+
+.section1 p {
+    color: gray;
+}
+
+.section1 * {
+    padding: 0 10px;
+}
+
+.mypage-title {
+    border-bottom: 3px solid black;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+th {
+    color: gray;
+}
+
+td,
+th {
+    padding-left: 4px;
+}
+
+.section2 {
+    border-top: 3px solid black;
+    padding-top: 20px;
+}
+
+.usage-details tr {
+    line-height: 5;
+}
+
+.usage-details tr:first-child {
+    border-bottom: 1px solid gray;
+}
+
+.section3 {
+    margin: 50px 0;
+}
+
+.section3 > h3 {
+    font-weight: 700;
+}
+
+ul li {
+    list-style: disc;
+    margin-left: 25px;
+}
+
+.usage-details {
+    width: 100%;
+}
+
+td:last-child,
+th:last-child {
+    float: right;
+    text-align: right;
+    padding-right: 10px;
+}
+
+tbody > tr:not(first-child) {
+    border-bottom: 0.025rem solid lightgray;
+}
+
+td:third-child,
+tr th:third-child {
+    width: 50%;
+}
+
+tr td:not(third-child),
+tr th:not(third-child) {
+    width: 25%;
+}

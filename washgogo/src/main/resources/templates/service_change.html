@@ -17,8 +17,8 @@
         <!--⭐헤더 푸터-->
         <link rel="stylesheet" href="../static/css/style_frame.css">
         <!--⭐틀-->
-        <link rel="stylesheet" href="../static/css/style_payment_details.css">
-        <!--⭐결제내역 세부-->
+        <link rel="stylesheet" href="../static/css/style_service_change.css">
+        <!--⭐서비스 변경 세부-->
     </head>
     <body>
         <div id="app">
@@ -81,47 +81,59 @@
             </header>
             <!---- App-Body ---->
             <div id="app-body">
-                <div class="container-md container">
-                    <div class="section1">
-                        <h1 style="text-align: center;">결제내역</h1>
-                    </div>
-                    <div class="section2">
-                        <div class="month-frame">
-                            <div class="month onemonth select">1개월</div>
-                            <div class="month threemonth">3개월</div>
-                            <div class="month sixmonth">6개월</div>
+                <div class="container" style="max-width: 62.375rem; margin: 0 auto">
+                    <div class="content" style="margin-top: 50px;">
+                        <div class="title">
+                            <h1>서비스 변경</h1>
                         </div>
-                    </div>
-                    <div class="section3">
-                        <table class="usage-details">
-                            <tr>
-                                <th>날짜</th>
-                                <th>항목</th>
-                                <th>수량</th>
-                                <th>가격</th>
-                                <th>포인트 사용</th>
-                                <th>최종 결제 금액</th>
-                            </tr>
-                            <tr>
-                                <td>ex)2022-06-16</td>
-                                <td>코트</td>
-                                <td>1 개</td>
-                                <td>50,000 원</td>
-                                <td>500 p</td>
-                                <td>49,500 원</td>
-                            </tr>
-                            <tr>
-                                <td>ex)2022-06-16</td>
-                                <td>셔츠</td>
-                                <td>1 개</td>
-                                <td>5,000 원</td>
-                                <td>5,000 p</td>
-                                <td>0 원</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="section4" style="display: none;">
-                        <h4>이용 내역이 없습니다.</h4>
+                        <div class="service_question">
+                            <ul>
+                                <li>
+                                    <p class="question">어떤 요금제로 변경하시겠습니까?</p>
+                                </li>
+                                <li>
+                                    <p class="change_info">다음 결제일에 선택하신 요금제로 변경됩니다.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="section1">
+                            <div class="content-box">
+                                <div class="content-explain">
+                                    <h3>원하는 만큼 자유롭게</h3>
+                                    <h4>여러 번 이용</h4>
+                                </div>
+                                <div class="image-box">
+                                    <img src="../static/img/useSeveral.png" alt="">
+                                </div>
+                                <!-- / -->
+                                <div class="chooseSeveral" onclick="click()">
+                                    <h3 id="chooseSeveralText">변경하기</h3>
+                                </div>
+                                <div class="service_once"></div>
+                            </div>
+                            <div class="content-box">
+                                <div class="content-explain">
+                                    <h3>한 번만 이용하고 싶다면</h3>
+                                    <h4>한 번 이용</h4>
+                                </div>
+                                <div class="image-box">
+                                    <img src="../static/img/useOnce.png" alt="">
+                                </div>
+                                <div class="chooseOnce using-service" onclick="click()">
+                                    <h3 id="chooseOnceText">서비스 이용 중</h3>
+                                </div>
+                                <div class="service_once"></div>
+                            </div>
+                        </div>
+                        <div class="section2">
+                            <ul>
+                                <li>서비스 변경 예약 시, 다음 결제일부터 변경된 요금제가 적용됩니다.<br>
+                                    (사용내역, 결제 금액 등)
+                                </li>
+                                <li>결제 당일에는 변경 예약 취소가 불가능합니다</li>
+                                <li>서비스 즉시 변경은 고객센터를 통해서 가능 합니다.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -200,5 +212,5 @@
         </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../static/js/payment_details.js"></script>
+    <script src="../static/js/service_change.js"></script>
 </html>

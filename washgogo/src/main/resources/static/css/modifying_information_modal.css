@@ -84,7 +84,7 @@
     float: none;
 }
 
-.remain-user,.change-user{
+.remain-user,.change-user,.delete-user{
     background-color: white;
     border-radius: 0.25rem;
     padding: 0 10px;
@@ -94,8 +94,9 @@
     margin-right: 10px;
 }
 
-#choose2 .remain-user{
-    margin-left: 70px;
+#choose2 .delete-user{
+    margin-left: 60px;
+    margin-right: 15px;
 }
 
 input{
