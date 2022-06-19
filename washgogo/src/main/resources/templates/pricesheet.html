@@ -74,7 +74,7 @@
                             <ul class="desc">
                                 <li>안심정찰가격표 기준으로 세탁 완료 후 결제</li>
                                 <li>프리미엄 지정 브랜드의 경우, 자동으로 프리미엄 가격 적용</li>
-                                <li><a href="#">프리미엄 지정 브랜드 보기 ></a></li>
+                                <li><a class="show-brands">프리미엄 지정 브랜드 보기 ></a></li>
                             </ul>
                         </div>
                         <ul class="laundry-category-list">
@@ -815,7 +815,7 @@
                             <h2 class="title">프리미엄 세탁 가격표</h2>
                             <ul class="desc">
                                 <li>높은 수준의 케어와 주의를 요하는 프리미엄 지정 브랜드의 경우, 고객 신청여부와 관계없이 프리미엄 가격표가 적용됩니다.</li>
-                                <li><a href="#">프리미엄 지정 브랜드 보기 ></a></li>
+                                <li><a class="show-brands">프리미엄 지정 브랜드 보기 ></a></li>
                             </ul>
                         </div>
                         <div class="preparing">가격표상 준비중인 품목은 일반세탁으로 진행됩니다.</div>
@@ -832,7 +832,7 @@
                         </ul>
                     </div>
                     <div class="price container">
-                        <div class="price-item daily">
+                        <div class="price-item outer">
                             <h2 class="title">아우터</h2>
                             <div>
                                 <table>
@@ -878,7 +878,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="price-item shirt">
+                        <div class="price-item top">
                             <h2 class="title">상의</h2>
                             <div>
                                 <table>
@@ -918,7 +918,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="price-item shirt">
+                        <div class="price-item bottom">
                             <h2 class="title">하의</h2>
                             <div>
                                 <table>
@@ -946,7 +946,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="price-item shirt">
+                        <div class="price-item onepiece">
                             <h2 class="title">원피스</h2>
                             <div>
                                 <table>
@@ -965,7 +965,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="price-item shirt">
+                        <div class="price-item shoes-pr">
                             <h2 class="title">신발</h2>
                             <div>
                                 <table>
@@ -993,7 +993,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="price-item shirt">
+                        <div class="price-item living-pr">
                             <h2 class="title">리빙/잡화</h2>
                             <div>
                                 <table>
@@ -1053,7 +1053,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="price-item shirt">
+                        <div class="price-item leather">
                             <h2 class="title">가죽</h2>
                             <div>
                                 <table>
@@ -1086,7 +1086,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="price-item shirt">
+                        <div class="price-item etc">
                             <h2 class="title">기타</h2>
                             <div>
                                 <table>
@@ -1127,6 +1127,41 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="modal-bg"></div>
+    <div class="modal-container">
+        <div class="modal-inner">
+            <h2 class="modal-title">프리미엄 지정 브랜드</h2>
+            <div class="modal-content">
+                <div class="text">
+                    <p>세탁 시 주의가 필요한 지정 브랜드의 경우,</p>
+                    <p><strong>검수 단계에서 프리미엄 세탁물로 자동 분류</strong>되며,</p>
+                    <p>세탁 완료 후 프리미엄 가격표를 기준으로 과금됩니다.</p>
+                </div>
+                <div class="brands">
+                    <ul>
+                        <li><div style="background-image: url('../static/img/brand-logo-hermes.png');">에르메스</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-chanel.png');">샤넬</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-louisvuitton.png');">루이비통</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-gucci.png');">구찌</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-prada.png');">프라다</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-burberry.png');">버버리</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-celine.png');">셀린느</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-moncler.png');">몽클레르</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-valentino.png');">발렌티노</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-fendi.png');">펜디</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-dior.png');">디올</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-loropiana.png');">로로피아나</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-miumiu.png');">미우미우</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-kiton.png');">키톤</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-brioni.png');">브리오니</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-stefanoricci.png');">스테파노리치</div></li>
+                        <li><div style="background-image: url('../static/img/brand-logo-bottegaveneta.png');">보테가베네타</div></li>
+                    </ul>
+                </div>
+            </div>
+            <button type="button" class="modal-close"></button>
         </div>
     </div>
     <!---- App-Footer ---->

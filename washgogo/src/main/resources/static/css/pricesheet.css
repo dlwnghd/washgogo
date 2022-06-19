@@ -227,3 +227,92 @@
     color: #a3a3a3;
     line-height: 1.7;
 }
+/* modal */
+.modal-bg{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10001;
+    background: url("../img/modal-bg.png") repeat;
+}
+.modal-container{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10001;
+    box-sizing: border-box;
+}
+.modal-inner{
+    max-width: 41.25rem;
+    padding: 3.75rem 2.5rem;
+    margin: 7.906rem auto 3.125rem;
+    position: relative;
+    width: 100%;
+    min-width: 20.625rem;
+    background: #fff;
+    border-radius: 0;
+    transition: all 0.5s ease;
+}
+.modal-title{
+    font-size: 1.5rem;
+    color: #000;
+    padding-bottom: 3.438rem;
+    text-align: center;
+}
+.modal-content .text{
+    padding: 0 1rem;
+    line-height: 1.6;
+}
+.modal-content .brands{
+    margin-top: 3.5rem;
+    width: 100%;
+    height: 20rem;
+}
+.modal-content .brands ul{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+    grid-gap: 0.6rem;
+    margin: 0 auto;
+}
+.modal-content .brands li{
+    width: 6rem;
+    height: 4rem;
+    background-color: rgba(0,0,0,0.03);
+    border-radius: 1rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    margin: 0 auto;
+}
+.modal-content .brands li:first-child{padding-left: 0.6rem; padding-right: 0.6rem;}
+.modal-content .brands li:nth-child(2){padding-left: 1rem; padding-right: 1rem;}
+.modal-content .brands li:nth-child(3){padding-left: 1.5rem; padding-right: 1.5rem;}
+.modal-content .brands li:nth-child(10){padding-left: 0.8rem; padding-right: 0.8rem;}
+.modal-content .brands li:nth-child(11){padding-left: 1.3rem; padding-right: 1.3rem;}
+.modal-content .brands li:nth-child(14){padding-left: 0.1rem; padding-right: 0.1rem;}
+.modal-content .brands li:nth-child(15){padding-left: 1.2rem; padding-right: 1.2rem;}
+.modal-content .brands li:nth-child(16){padding-left: 0.2rem; padding-right: 0.2rem;}
+.modal-content .brands li div{
+    text-indent: -999rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+.modal-close{
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url("../img/modal-close.png")
+    no-repeat center center;
+    background-size: 100% 100%;
+}

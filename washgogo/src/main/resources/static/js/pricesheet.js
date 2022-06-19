@@ -12,7 +12,6 @@ document.onscroll = function(){
 const $tabs = $(".pricesheet .tab a");
 const $priceBasic = $(".pricesheet .price-basic")
 const $pricePremium = $(".pricesheet .price-premium")
-const $priceItems = $(".price-item");
 $tabs.on("click", function(){
     let idx = $(this).index();
     $tabs.removeClass("active");
@@ -46,12 +45,13 @@ $moreBtns.on("click", function(){
 /* 가격표 카테고리 이벤트 */
 /* basic */
 const $categoriesBasic = $(".price-basic .laundry-item");
+const $priceItemsBasic = $(".price-basic .price-item");
 
 $categoriesBasic.on("click", function(){
     let idx = $(this).index();
     let category = "";
     console.log(idx);
-    $priceItems.css("display", "none");
+    $priceItemsBasic.css("display", "none");
 
     switch(idx){
         case 1: category = "daily"; break;
@@ -64,9 +64,9 @@ $categoriesBasic.on("click", function(){
     }
 
     if(idx==0){
-        $priceItems.css("display", "block");
+        $priceItemsBasic.css("display", "block");
     } else {
-        $priceItems.each(function(index, item){
+        $priceItemsBasic.each(function(index, item){
             if($(item).hasClass(category)){
                 $(item).css("display", "block");
             }
@@ -77,29 +77,31 @@ $categoriesBasic.on("click", function(){
     }
 });
 
-/* pre,ium */
+/* premium */
 const $categoriesPremium = $(".price-premium .laundry-item");
+const $priceItemsPremium = $(".price-premium .price-item");
 
 $categoriesPremium.on("click", function(){
     let idx = $(this).index();
     let category = "";
     console.log(idx);
-    $priceItems.css("display", "none");
+    $priceItemsPremium.css("display", "none");
 
     switch(idx){
-        case 1: category = "daily"; break;
-        case 2: category = "shirt"; break;
-        case 3: category = "individual"; break;
-        case 4: category = "bedding"; break;
-        case 5: category = "living"; break;
-        case 6: category = "goods"; break;
-        case 7: category = "shoes"; break;
+        case 1: category = "outer"; break;
+        case 2: category = "top"; break;
+        case 3: category = "bottom"; break;
+        case 4: category = "onepiece"; break;
+        case 5: category = "shoes-pr"; break;
+        case 6: category = "living-pr"; break;
+        case 7: category = "leather"; break;
+        case 8: category = "etc"; break;
     }
 
     if(idx==0){
-        $priceItems.css("display", "block");
+        $priceItemsPremium.css("display", "block");
     } else {
-        $priceItems.each(function(index, item){
+        $priceItemsPremium.each(function(index, item){
             if($(item).hasClass(category)){
                 $(item).css("display", "block");
             }
@@ -108,4 +110,21 @@ $categoriesPremium.on("click", function(){
             }
         });
     }
+});
+
+/* 모달창 클릭 이벤트 */
+const $brandBtn = $(".show-brands");
+const $modalBg = $(".modal-bg");
+const $modal = $(".modal-container");
+const $closeModal = $(".modal-close");
+const $body = $("body");
+$brandBtn.on("click", function(){
+    $modalBg.css("display", "block");
+    $modal.css("display", "block");
+    $body.css("overflow", "hidden");
+});
+$closeModal.on("click", function(){
+    $modalBg.css("display", "none");
+    $modal.css("display", "none");
+    $body.css("overflow", "auto");
 });
