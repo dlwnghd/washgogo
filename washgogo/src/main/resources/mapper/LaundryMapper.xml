@@ -6,4 +6,18 @@
         SELECT LAUNDRY_NUMBER, LAUNDRY_NAME, LAUNDRY_PRICE, LAUNDRY_PM_PRICE
         FROM TBL_LAUNDRY
     </select>
+
+    <!--일반 가격 가져오기-->
+    <select id="selectPrice" resultType="_int">
+        SELECT LAUNDRY_PRICE
+        FROM TBL_LAUNDRY
+        WHERE LAUNDRY_NUMBER = #{laundryNumber}
+    </select>
+
+    <!--프리미엄 가격 가져오기-->
+    <select id="selectPmPrice" resultType="_int">
+        SELECT LAUNDRY_PM_PRICE
+        FROM TBL_LAUNDRY
+        WHERE LAUNDRY_NUMBER = #{laundryNumber}
+    </select>
 </mapper>
