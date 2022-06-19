@@ -58,22 +58,19 @@
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 20px;
 }
 
 #modal .content1 {
-    padding: 0 10px;
     text-shadow: 1px 1px 2px gray;
     color: white;
     text-align: center;
-    margin-left: 10px;
 }
 
 #modal .content2 {
-    padding: 0 10px;
     text-shadow: 1px 1px 2px gray;
     color: white;
     text-align: center;
+    margin: 20px 0;
 }
 
 #choose1{
@@ -102,5 +99,9 @@
 }
 
 input{
-    margin-left: 10px;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    border: 0 solid;
+    border-radius: 0.5rem;
 }
