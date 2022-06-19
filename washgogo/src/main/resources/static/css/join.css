@@ -206,3 +206,116 @@ div.findId a {
     color: #737373;
     text-align: center;
 }
+
+.modal-outer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: none;
+    z-index: 1040;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.modal-dialog {
+    min-height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    transform: none;
+    max-width: 62.5rem;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: auto;
+    pointer-events: none;
+}
+
+.modal-content {
+    border-radius: 0;
+    border: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    outline: 0;
+}
+
+div.modal-header {
+    padding: 1.75rem 1.75rem 0;
+    border-radius: 0;
+    border: none;
+    text-align: right;
+}
+
+button.close {
+    width: 1.125rem;
+    height: 1.125rem;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTgiIGhlaWdodD0iMTgiPjxkZWZzPjxwYXRoIGlkPSJhIiBkPSJNOSA3Ljg2OUwxNi40MzQuNDM0bDEuMTMyIDEuMTMyTDEwLjEzIDlsNy40MzUgNy40MzQtMS4xMzIgMS4xMzJMOSAxMC4xM2wtNy40MzQgNy40MzUtMS4xMzItMS4xMzJMNy44NyA5IC40MzQgMS41NjYgMS41NjYuNDM0IDkgNy44N3oiLz48L2RlZnM+PHVzZSBmaWxsPSIjMzIzMjMyIiB4bGluazpocmVmPSIjYSIvPjwvc3ZnPg==);
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    appearance: none;
+    opacity: .5;
+}
+
+div.modal-body {
+    padding: 1.75rem;
+    position: relative;
+    flex: 1 1 auto;
+}
+
+div.docs-component {
+    padding: 0;
+    font-size: .875rem;
+    display: none;
+}
+
+div.docs-title h1 {
+    margin: 0;
+    text-align: center;
+    line-height: 3.75rem;
+    letter-spacing: -.04375rem;
+    font-weight: 500;
+    font-size: 1.8125rem;
+}
+
+div.modal h4 {
+    margin-bottom: 0;
+}
+
+div.modal li {
+    margin-top: 3px;
+}
+
+div.modal ul > li {
+    list-style: disc;
+}
+
+div.modal table {
+    width: 100%;
+    border: 1px solid #444444;
+    border-collapse: collapse;
+}
+
+div.modal th, td {
+    border: 1px solid #444444;
+    padding: 3px;
+}
+
+div.modal th {
+    background-color: #d8d8d8;
+    text-align: center;
+}
