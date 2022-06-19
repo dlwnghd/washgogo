@@ -1,15 +1,16 @@
 package com.project.washgogo.mapper;
 
+import com.project.washgogo.domain.vo.OrderVO;
 import com.project.washgogo.domain.vo.UserVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.core.annotation.Order;
 
 import java.util.List;
 
 @Mapper
 public interface UserMapper {
-    //    게시글 목록
+//    게시글 목록
     public List<UserVO> getList();
-
 //    회원가입
     public void insert(UserVO userVO);
 //    마이페이지
