@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>워시고고 - 우리집 모바일 세탁소</title>
     <link rel="shortcut icon" type="image/x-icon" href="https://www.laundrygo.com/image/favicon/favicon_web.png">
-    <link rel="stylesheet" href="static/css/common.css">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 </head>
 <body>
@@ -81,7 +81,7 @@
             <div class="footer-container-row terms">
                 <div class="term-container">
                     <div class="col-content term-content">
-                        <img src="static/img/logoGray.jpg" alt="logo" class="logo">
+                        <img th:src="@{/img/logoGray.jpg}" alt="logo" class="logo">
                         <div class="col-content-list-term">
                             <a href="#" class="text term">이용약관</a>
                             <a href="#" class="text term">개인정보처리방침</a>
@@ -124,5 +124,5 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script src="./js/main.js"></script>
+<script th:src="@{/js/main.js}"></script>
 </html>

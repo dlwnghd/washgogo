@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,11 +13,11 @@
             rel="stylesheet"
             type="text/css"
             href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-        <link rel="stylesheet" href="../static/css/common.css">
+        <link rel="stylesheet" th:href="@{/css/common.css}">
         <!--⭐헤더 푸터-->
-        <link rel="stylesheet" href="../static/css/style_frame.css">
+        <link rel="stylesheet" th:href="@{static/css/style_frame.css}">
         <!--⭐틀-->
-        <link rel="stylesheet" href="../static/css/style_service_change.css">
+        <link rel="stylesheet" th:href="@{/css/style_service_change.css}">
         <!--⭐서비스 변경 세부-->
     </head>
     <body>
@@ -103,7 +103,7 @@
                                     <h4>여러 번 이용</h4>
                                 </div>
                                 <div class="image-box">
-                                    <img src="../static/img/useSeveral.png" alt="">
+                                    <img th:src="@{/img/useSeveral.png}" alt="">
                                 </div>
                                 <!-- / -->
                                 <div class="chooseSeveral" onclick="click()">
@@ -117,7 +117,7 @@
                                     <h4>한 번 이용</h4>
                                 </div>
                                 <div class="image-box">
-                                    <img src="../static/img/useOnce.png" alt="">
+                                    <img th:src="@{/img/useOnce.png}" alt="">
                                 </div>
                                 <div class="chooseOnce using-service" onclick="click()">
                                     <h3 id="chooseOnceText">서비스 이용 중</h3>
@@ -160,7 +160,7 @@
                 <div class="footer-container-row terms">
                     <div class="term-container">
                         <div class="col-content term-content">
-                            <img src="../static/img/logoGray.jpg" alt="logo" class="logo">
+                            <img th:src="@{/img/logoGray.jpg}" alt="logo" class="logo">
                             <div class="col-content-list-term">
                                 <a href="#" class="text term">이용약관</a>
                                 <a href="#" class="text term">개인정보처리방침</a>
@@ -212,5 +212,5 @@
         </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../static/js/service_change.js"></script>
+    <script th:src="@{/js/service_change.js}"></script>
 </html>
