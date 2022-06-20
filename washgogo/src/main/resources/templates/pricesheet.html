@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>워시고고 - 우리집 모바일 세탁소</title>
     <link rel="shortcut icon" type="image/x-icon" href="https://www.laundrygo.com/image/favicon/favicon_web.png">
-    <link rel="stylesheet" href="../static/css/common.css">
-    <link rel="stylesheet" href="../static/css/pricesheet.css">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/pricesheet.css}">
 </head>
 <body>
 <div id="app">
@@ -1141,23 +1141,23 @@
                 </div>
                 <div class="brands">
                     <ul>
-                        <li><div style="background-image: url('../static/img/brand-logo-hermes.png');">에르메스</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-chanel.png');">샤넬</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-louisvuitton.png');">루이비통</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-gucci.png');">구찌</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-prada.png');">프라다</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-burberry.png');">버버리</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-celine.png');">셀린느</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-moncler.png');">몽클레르</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-valentino.png');">발렌티노</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-fendi.png');">펜디</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-dior.png');">디올</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-loropiana.png');">로로피아나</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-miumiu.png');">미우미우</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-kiton.png');">키톤</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-brioni.png');">브리오니</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-stefanoricci.png');">스테파노리치</div></li>
-                        <li><div style="background-image: url('../static/img/brand-logo-bottegaveneta.png');">보테가베네타</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-hermes.png}+');'">에르메스</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-chanel.png}+');'">샤넬</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-louisvuitton.png}+');'">루이비통</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-gucci.png}+');'">구찌</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-prada.png}+');'">프라다</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-burberry.png}+');'">버버리</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-celine.png}+');'">셀린느</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-moncler.png}+');'">몽클레르</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-valentino.png}+');'">발렌티노</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-fendi.png}+');'">펜디</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-dior.png}+');'">디올</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-loropiana.png}+');'">로로피아나</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-miumiu.png}+');'">미우미우</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-kiton.png}+');'">키톤</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-brioni.png}+');'">브리오니</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-stefanoricci.png}+');'">스테파노리치</div></li>
+                        <li><div th:style="'background-image: url('+@{/img/brand-logo-bottegaveneta.png}+');'">보테가베네타</div></li>
                     </ul>
                 </div>
             </div>
@@ -1183,7 +1183,7 @@
         <div class="footer-container-row terms">
             <div class="term-container">
                 <div class="col-content term-content">
-                    <img src="../static/img/logoGray.jpg" alt="logo" class="logo">
+                    <img th:src="@{/img/logoGray.jpg}" alt="logo" class="logo">
                     <div class="col-content-list-term">
                         <a href="#" class="text term">이용약관</a>
                         <a href="#" class="text term">개인정보처리방침</a>
@@ -1225,5 +1225,5 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="../static/js/pricesheet.js"></script>
+<script th:src="@{/js/pricesheet.js}"></script>
 </html>
