@@ -9,17 +9,17 @@
             rel="shortcut icon"
             type="image/x-icon"
             href="https://www.laundrygo.com/image/favicon/favicon_web.png">
-        <link rel="stylesheet" href="../static/css/common.css">
+        <link rel="stylesheet" th:href="@{/css/common.css}">
         <link
             rel="stylesheet"
             type="text/css"
             href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <!--⭐헤더 푸터-->
-        <link rel="stylesheet" href="../static/css/style_frame.css">
+        <link rel="stylesheet" th:href="@{/css/style_frame.css}">
         <!--⭐틀-->
-        <link rel="stylesheet" href="../static/css/modifying_information_modal.css">
+        <link rel="stylesheet" th:href="@{/css/modifying_information_modal.css}">
         <!-- ⭐각 수정별 모달창 스타일-->
-        <link rel="stylesheet" href="../static/css/style_Modifying_information.css">
+        <link rel="stylesheet" th:href="@{/css/style_Modifying_information.css}">
         <!-- ⭐수정 페이지 세부 -->
     </head>
     <body class="account-info" data-modal-open-count="0">
@@ -192,7 +192,7 @@
                     <div class="footer-container-row terms">
                         <div class="term-container">
                             <div class="col-content term-content">
-                                <img src="../static/img/logoGray.jpg" alt="logo" class="logo">
+                                <img th:src="@{/img/logoGray.jpg}" alt="logo" class="logo">
                                 <div class="col-content-list-term">
                                     <a href="#" class="text term">이용약관</a>
                                     <a href="#" class="text term">개인정보처리방침</a>
@@ -275,5 +275,5 @@
             </div>
         </body>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="../static/js/modifying_Information.js"></script>
+        <script th:src="@{/js/modifying_Information.js}"></script>
     </html>

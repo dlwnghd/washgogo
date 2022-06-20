@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>requestSelect</title>
-    <link rel="stylesheet" href="../static/css/requestSelect.css">
-    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" th:href="@{/css/requestSelect.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
 </head>
 <body>
     <div id="app">
@@ -63,7 +63,7 @@
                 <article class="request-select-detail">
                     <div class="guide-take">
                         <div class="request-img-container">
-                            <img class="request-img" src="../static/img/request.png" alt="세탁물 수거">
+                            <img class="request-img" th:src="@{/img/request.png}" alt="세탁물 수거">
                         </div>
                         <div>
                             <div class="border-name">
@@ -186,7 +186,7 @@
             <div class="footer-container-row terms">
                 <div class="term-container">
                     <div class="col-content term-content">
-                        <img src="../static/img/logoGray.jpg" alt="logo" class="logo">
+                        <img th:src="@{/img/logoGray.jpg}" alt="logo" class="logo">
                         <div class="col-content-list-term">
                             <a href="#" class="text term">이용약관</a>
                             <a href="#" class="text term">개인정보처리방침</a>
