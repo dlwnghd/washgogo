@@ -19,6 +19,6 @@ public interface OrderMapper {
 //    총 금액 구하기
     public int getTotalPrice();
 //    수거 취소
-    public void delete(Long orderNumber);
+    public int delete(Long orderNumber);
 
 }

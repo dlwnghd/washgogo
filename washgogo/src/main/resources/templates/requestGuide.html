@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>requestGuide</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/requestGuide.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
     <link rel="stylesheet" th:href="@{/css/requestGuide.css}">
     <link rel="stylesheet" th:href="@{/css/common.css}">
 </head>
@@ -64,6 +66,7 @@
                     <div class="guide-group flex-container">
                         <div class="small-img-container">
                             <img class="small-img" th:src="@{/img/bed.png}" alt="기타">
+                            <img class="small-img" th:src="@{/img/shoes.png}" alt="기타">
                             <img class="small-img" th:src="@{static/img/shoes.png}" alt="기타">
                         </div>
                         <div>
@@ -80,7 +83,9 @@
                 </article>
                 <div class="check-flex-container">
                     <div></div>
-                    <a href="requestSelect.html"><div class="check-ok">네, 알겠습니다.</div></a>
+                    <form action="" name="ok">
+                        <input type="button" value="네 알겠습니다." id="check-ok">
+                    </form>
                     <div></div>
                 </div>
             </section>
@@ -145,5 +150,13 @@
         </nav>
     </div>
 </body>
-<body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    let form = document.ok;
+
+    $("#check-ok").on("click", function(){
+        $(form).attr("action", "/requestSelect");
+        form.submit();
+    });
+</script>
 </html>

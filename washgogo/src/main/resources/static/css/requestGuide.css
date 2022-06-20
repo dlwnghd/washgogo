@@ -143,7 +143,7 @@ body {
     height: 40px;
 }
 
-.check-ok{
+#check-ok{
     margin-top:20px;
     margin-bottom: 20px;
     width:300px;
@@ -156,6 +156,7 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 3px;
+    border: none;
 }
 
 .check-flex-container{

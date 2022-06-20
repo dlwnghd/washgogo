@@ -9,18 +9,18 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper {
-//    게시글 목록
+//    유저 정보 목록
     public List<UserVO> getList();
 //    회원가입
     public void insert(UserVO userVO);
 //    마이페이지
     public UserVO selectUserInfo(Long userNumber);
 //    회원 정보 수정
-    public void updateUserInfo(UserVO userVO);
+    public int updateUserInfo(UserVO userVO);
 //    서비스 변경
-    public void updateService(UserVO userVO);
+    public int updateService(UserVO userVO);
 //    주소 입력 및 수정
-    public void updateAddress(UserVO userVO);
+    public int updateAddress(UserVO userVO);
 //    회원 탈퇴
-    public void delete(Long userNumber);
+    public int delete(Long userNumber);
 }
