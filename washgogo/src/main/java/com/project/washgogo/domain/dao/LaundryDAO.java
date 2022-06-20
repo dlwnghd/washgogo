@@ -15,7 +15,7 @@ public class LaundryDAO {
     //    가격표 목록
     public List<LaundryVO> getList() { return laundryMapper.getList();}
     //    의류 하나의 정보 가져오기
-    public LaundryVO select(Long laundryNumber) { return laundryMapper.select(laundryNumber);}
+    public LaundryVO getLaundryInfo(Long laundryNumber) { return laundryMapper.select(laundryNumber);}
     //    일반 가격 가져오기
     public int getPrice() { return laundryMapper.getPrice();}
     //    프리미엄 가격 가져오기

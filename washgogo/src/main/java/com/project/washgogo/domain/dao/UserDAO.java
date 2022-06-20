@@ -12,19 +12,28 @@ import java.util.List;
 public class UserDAO {
     private final UserMapper userMapper;
 
-    //    게시글 목록
+    //    유저 정보 목록
     public List<UserVO> getList() { return userMapper.getList(); };
     //    회원가입
-    public void insert(UserVO userVO) { userMapper.insert(userVO); }
-    //    마이페이지
-    public UserVO selectUserInfo(Long userNumber) { return userMapper.selectUserInfo(userNumber); }
+    public void join(UserVO userVO) {
+        userMapper.insert(userVO); 
+    }
+    //    마이페이지 내용 불러오기
+    public UserVO loadUserInfo(Long userNumber) {
+        return userMapper.selectUserInfo(userNumber);
+    }
     //    회원 정보 수정
-    public void updateUserInfo(UserVO userVO) { userMapper.updateUserInfo(userVO); }
+    public boolean modifyUserInfo(UserVO userVO) { return userMapper.updateUserInfo(userVO) == 1; }
     //    서비스 변경
-    public void updateService(UserVO userVO) { userMapper.updateService(userVO); }
+    public boolean changeService(UserVO userVO) {
+        return userMapper.updateService(userVO) == 1;
+    }
     //    주소 입력 및 수정
-    public void updateAddress(UserVO userVO) { userMapper.updateAddress(userVO); }
+    public boolean modifyAddress(UserVO userVO) {
+        return userMapper.updateAddress(userVO) == 1;
+    }
     //    회원 탈퇴
-    public void delete(Long userNumber) { userMapper.delete(userNumber);}
-
+    public boolean resignMember(Long userNumber) {
+        return userMapper.delete(userNumber) == 1;
+    }
 }

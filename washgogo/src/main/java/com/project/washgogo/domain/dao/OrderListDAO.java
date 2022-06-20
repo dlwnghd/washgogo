@@ -16,5 +16,5 @@ public class OrderListDAO {
     //    리스트 가져오기
     public List<OrderListVO> getList() { return orderListMapper.getList();}
     //    주문상세내역 추가
-    public void insert(OrderListVO orderListVO, OrderVO orderVO) { orderListMapper.insert(orderListVO, orderVO);}
+    public void addList(OrderListVO orderListVO, OrderVO orderVO) { orderListMapper.insert(orderListVO, orderVO);}
 }

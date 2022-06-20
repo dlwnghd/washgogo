@@ -16,13 +16,13 @@ public class OrderDAO {
     //    주문내역 가져오기
     public List<OrderVO> getList() { return orderMapper.getList(); }
     //    수거 신청
-    public void insert(OrderVO orderVO, OrderListVO orderListVO) { orderMapper.insert(orderVO, orderListVO);}
+    public void requestApply(OrderVO orderVO, OrderListVO orderListVO) { orderMapper.insert(orderVO, orderListVO);}
     //    이용 내역
-    public OrderVO select(Long orderNumber) { return orderMapper.select(orderNumber);}
+    public OrderVO getLog(Long orderNumber) { return orderMapper.select(orderNumber);}
     //    총 수량 구하기
     public int getTotalQuantity() { return orderMapper.getTotalQuantity();}
     //    총 금액 구하기
     public int getTotalPrice() { return orderMapper.getTotalPrice(); }
     //    수거 취소
-    public void delete(Long orderNumber) { orderMapper.delete(orderNumber);}
+    public boolean removeRequest(Long orderNumber) { return orderMapper.delete(orderNumber) == 1;}
 }
