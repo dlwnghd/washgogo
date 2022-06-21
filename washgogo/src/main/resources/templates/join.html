@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:insert="~{/fragments/headerFooter:: style}">
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/join.css}">
 </head>
 <body>
-	<div th:replace="~{/fragments/headerFooter :: header}"></div>
+	<div th:replace="~{/fragments/headerFooter:: header}"></div>
 	<section>
 		<div class="join-page">
 			<h2>워시고고에 오신 것을<br>환영합니다</h2>
