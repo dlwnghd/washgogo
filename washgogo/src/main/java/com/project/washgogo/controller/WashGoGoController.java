@@ -127,4 +127,9 @@ public class WashGoGoController {
     public void service_changeOK(){
 
     }
+
+    @GetMapping("/change_cancel")
+    public void change_cancel(){
+
+    }
 }

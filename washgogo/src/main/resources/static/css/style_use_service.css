@@ -12,8 +12,18 @@
     font-weight: normal;
 }
 
-.image{
+.change_image{
     background: url(../img/change_icon.png) no-repeat center;
+    background-size: contain;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border: 6px solid black;
+    border-radius: 1.25rem;
+}
+
+.cancel_image{
+    background: url(../img/cancel_icon.png) no-repeat center;
     background-size: contain;
     width: 100px;
     height: 100px;

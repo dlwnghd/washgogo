@@ -17,6 +17,8 @@
         <!--⭐헤더 푸터-->
         <link rel="stylesheet" th:href="@{/css/style_frame.css}">
         <!--⭐틀-->
+        <link rel="stylesheet" th:href="@{/css/style_change_cancel.css}">
+        <!-- ⭐해지 세부 -->
     </head>
     <body>
         <div id="app">
@@ -26,8 +28,8 @@
                     <div class="desktop-header">
                         <div class="left-section">
                             <div class="logo">
-                                <a href="./index.html">
-                                    <img th:src="@{/img/headerLogo.png}" alt="" style="width: 106px;">
+                                <a href="./index">
+                                    <div class="logo-image">washgogo</div>
                                 </a>
                             </div>
                         </div>
@@ -36,30 +38,30 @@
                                 <!-- ⭐비로그인 헤더 -->
                                 <ul class="nav-list sign-out" style="display: none;">
                                     <li class="nav-item">
-                                        <a href="./guide.html">
+                                        <a href="./guide">
                                             <span>가이드</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
+                                        <a href="./pricesheet">
                                             <span>가격표</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
+                                        <a href="./login">
                                             <span>로그인</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
+                                        <a href="./join">
                                             <span>회원가입</span></a>
                                     </li>
                                 </ul>
                                 <!-- ⭐로그인 헤더 -->
                                 <ul class="nav-list sign-in">
                                     <li class="nav-item">
-                                        <a href="./index.html">
+                                        <a href="./guide">
                                             <span>가이드</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
+                                        <a href="./pricesheet">
                                             <span>가격표</span></a>
                                     </li>
                                     <li class="nav-item">
@@ -67,7 +69,7 @@
                                             <span>이용내역</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#">
+                                        <a href="./mypage">
                                             <span>마이페이지</span></a>
                                     </li>
                                 </ul>
@@ -79,7 +81,27 @@
             </header>
             <!---- App-Body ---->
             <div id="app-body">
-                <h1 style="text-align: center;">변경/해지</h1>
+                <div class="container">
+                    <div class="title">
+                        <h1 style="text-align: center;">서비스 해지</h1>
+                    </div>
+                    <div class="description">
+                        <h4>꼭 확인해주세요.</h4>
+                        <ul>
+                            <li>초과 사용 품목이 있는 경우, 해당 금액에 대한 결제가 진행됩니다.</li>
+                        </ul>
+                    </div>
+                    <div class="choice">
+                        <div class="button remain" onclick="history.go(-1)">
+                            <button>서비스 유지하기</button>
+                        </div>
+                        <form action="" method="get">
+                            <div class="button cancel">
+                                <button type="submit">지금 바로 해지하기</button>
+                            </div>
+                        </form>
+                        </div>
+                </div>
             </div>
             <!---- App-Footer ---->
             <nav id="app-footer" class="footer-container">
