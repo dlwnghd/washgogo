@@ -84,7 +84,7 @@
     float: none;
 }
 
-.remain-user,.change-user,.delete-user{
+.no-change-user, .change-user,.remain-user,.delete-user{
     background-color: white;
     border-radius: 0.25rem;
     padding: 0 10px;

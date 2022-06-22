@@ -15,7 +15,7 @@
             href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link rel="stylesheet" th:href="@{/css/common.css}">
         <!--⭐헤더 푸터-->
-        <link rel="stylesheet" th:href="@{static/css/style_frame.css}">
+        <link rel="stylesheet" th:href="@{css/style_frame.css}">
         <!--⭐틀-->
         <link rel="stylesheet" th:href="@{/css/style_service_change.css}">
         <!--⭐서비스 변경 세부-->
@@ -28,7 +28,7 @@
                     <div class="desktop-header">
                         <div class="left-section">
                             <div class="logo">
-                                <a href="./index.html">
+                                <a href="./index">
                                     <div class="logo-image">washgogo</div>
                                 </a>
                             </div>
@@ -38,30 +38,30 @@
                                 <!-- ⭐비로그인 헤더 -->
                                 <ul class="nav-list sign-out" style="display: none;">
                                     <li class="nav-item">
-                                        <a href="./guide.html">
+                                        <a href="./guide">
                                             <span>가이드</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="./pricesheet.html">
+                                        <a href="./pricesheet">
                                             <span>가격표</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="./login.html">
+                                        <a href="./login">
                                             <span>로그인</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="./join.html">
+                                        <a href="./join">
                                             <span>회원가입</span></a>
                                     </li>
                                 </ul>
                                 <!-- ⭐로그인 헤더 -->
                                 <ul class="nav-list sign-in">
                                     <li class="nav-item">
-                                        <a href="./guide.html">
+                                        <a href="./guide">
                                             <span>가이드</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="./pricesheet.html">
+                                        <a href="./pricesheet">
                                             <span>가격표</span></a>
                                     </li>
                                     <li class="nav-item">
@@ -69,7 +69,7 @@
                                             <span>이용내역</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="./mypage.html">
+                                        <a href="./mypage">
                                             <span>마이페이지</span></a>
                                     </li>
                                 </ul>
@@ -96,35 +96,37 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="section1">
-                            <div class="content-box">
-                                <div class="content-explain">
-                                    <h3>원하는 만큼 자유롭게</h3>
-                                    <h4>여러 번 이용</h4>
+                        <form action="" type="submit">
+                            <div class="section1">
+                                <div class="content-box">
+                                    <div class="content-explain">
+                                        <h3>원하는 만큼 자유롭게</h3>
+                                        <h4>여러 번 이용</h4>
+                                    </div>
+                                    <div class="image-box">
+                                        <img th:src="@{/img/useSeveral.png}" alt="">
+                                    </div>
+                                    <!-- / -->
+                                    <div class="chooseSeveral" onclick="click()">
+                                        <h3 id="chooseSeveralText">변경하기</h3>
+                                    </div>
+                                    <div class="service_once"></div>
                                 </div>
-                                <div class="image-box">
-                                    <img th:src="@{/img/useSeveral.png}" alt="">
+                                <div class="content-box">
+                                    <div class="content-explain">
+                                        <h3>한 번만 이용하고 싶다면</h3>
+                                        <h4>한 번 이용</h4>
+                                    </div>
+                                    <div class="image-box">
+                                        <img th:src="@{/img/useOnce.png}" alt="">
+                                    </div>
+                                    <div class="chooseOnce using-service" onclick="click()">
+                                        <h3 id="chooseOnceText">서비스 이용 중</h3>
+                                    </div>
+                                    <div class="service_once"></div>
                                 </div>
-                                <!-- / -->
-                                <div class="chooseSeveral" onclick="click()">
-                                    <h3 id="chooseSeveralText">변경하기</h3>
-                                </div>
-                                <div class="service_once"></div>
                             </div>
-                            <div class="content-box">
-                                <div class="content-explain">
-                                    <h3>한 번만 이용하고 싶다면</h3>
-                                    <h4>한 번 이용</h4>
-                                </div>
-                                <div class="image-box">
-                                    <img th:src="@{/img/useOnce.png}" alt="">
-                                </div>
-                                <div class="chooseOnce using-service" onclick="click()">
-                                    <h3 id="chooseOnceText">서비스 이용 중</h3>
-                                </div>
-                                <div class="service_once"></div>
-                            </div>
-                        </div>
+                        </form>
                         <div class="section2">
                             <ul>
                                 <li>서비스 변경 예약 시, 다음 결제일부터 변경된 요금제가 적용됩니다.<br>
