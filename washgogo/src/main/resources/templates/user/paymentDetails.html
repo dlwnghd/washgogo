@@ -17,8 +17,8 @@
         <!--⭐헤더 푸터-->
         <link rel="stylesheet" th:href="@{/css/style_frame.css}">
         <!--⭐틀-->
-        <link rel="stylesheet" th:href="@{/css/style_change_cancel.css}">
-        <!-- ⭐해지 세부 -->
+        <link rel="stylesheet" th:href="@{/css/style_payment_details.css}">
+        <!--⭐결제내역 세부-->
     </head>
     <body>
         <div id="app">
@@ -38,7 +38,7 @@
                                 <!-- ⭐비로그인 헤더 -->
                                 <ul class="nav-list sign-out" style="display: none;">
                                     <li class="nav-item">
-                                        <a href="./guide">
+                                        <a href="../guide">
                                             <span>가이드</span></a>
                                     </li>
                                     <li class="nav-item">
@@ -57,7 +57,7 @@
                                 <!-- ⭐로그인 헤더 -->
                                 <ul class="nav-list sign-in">
                                     <li class="nav-item">
-                                        <a href="./guide">
+                                        <a href="../guide">
                                             <span>가이드</span></a>
                                     </li>
                                     <li class="nav-item">
@@ -81,26 +81,48 @@
             </header>
             <!---- App-Body ---->
             <div id="app-body">
-                <div class="container">
-                    <div class="title">
-                        <h1 style="text-align: center;">서비스 해지</h1>
+                <div class="container-md container">
+                    <div class="section1">
+                        <h1 style="text-align: center;">결제내역</h1>
                     </div>
-                    <div class="description">
-                        <h4>꼭 확인해주세요.</h4>
-                        <ul>
-                            <li>초과 사용 품목이 있는 경우, 해당 금액에 대한 결제가 진행됩니다.</li>
-                        </ul>
+                    <div class="section2">
+                        <div class="month-frame">
+                            <div class="month onemonth select">1개월</div>
+                            <div class="month threemonth">3개월</div>
+                            <div class="month sixmonth">6개월</div>
+                        </div>
                     </div>
-                    <div class="choice">
-                        <div class="button remain" onclick="history.go(-1)">
-                            <button>서비스 유지하기</button>
-                        </div>
-                        <form action="" method="get">
-                            <div class="button cancel">
-                                <button type="submit">지금 바로 해지하기</button>
-                            </div>
-                        </form>
-                        </div>
+                    <div class="section3">
+                        <table class="usage-details">
+                            <tr>
+                                <th>날짜</th>
+                                <th>항목</th>
+                                <th>수량</th>
+                                <th>가격</th>
+                                <th>포인트 사용</th>
+                                <th>최종 결제 금액</th>
+                            </tr>
+                            <tr>
+                                <td>ex)2022-06-16</td>
+                                <td>코트</td>
+                                <td>1 개</td>
+                                <td>50,000 원</td>
+                                <td>500 p</td>
+                                <td>49,500 원</td>
+                            </tr>
+                            <tr>
+                                <td>ex)2022-06-16</td>
+                                <td>셔츠</td>
+                                <td>1 개</td>
+                                <td>5,000 원</td>
+                                <td>5,000 p</td>
+                                <td>0 원</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="section4" style="display: none;">
+                        <h4>이용 내역이 없습니다.</h4>
+                    </div>
                 </div>
             </div>
             <!---- App-Footer ---->
@@ -177,4 +199,6 @@
             </nav>
         </div>
     </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/payment_details.js}"></script>
 </html>
