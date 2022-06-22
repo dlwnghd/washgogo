@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" style="--gnb-height:72px;" class="" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,18 +9,20 @@
             rel="shortcut icon"
             type="image/x-icon"
             href="https://www.laundrygo.com/image/favicon/favicon_web.png">
+        <link rel="stylesheet" th:href="@{/css/common.css}">
         <link
             rel="stylesheet"
             type="text/css"
             href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-        <link rel="stylesheet" th:href="@{/css/common.css}">
         <!--⭐헤더 푸터-->
         <link rel="stylesheet" th:href="@{/css/style_frame.css}">
         <!--⭐틀-->
-        <link rel="stylesheet" th:href="@{css/style_point.css}">
-        <!--⭐포인트 페이지 세부-->
+        <link rel="stylesheet" th:href="@{/css/modifying_information_modal.css}">
+        <!-- ⭐각 수정별 모달창 스타일-->
+        <link rel="stylesheet" th:href="@{/css/style_Modifying_information.css}">
+        <!-- ⭐수정 페이지 세부 -->
     </head>
-    <body class="mypage" style="padding-right: 0px;" data-modal-open-count="0">
+    <body class="account-info" data-modal-open-count="0">
         <div id="app" data-is-loaded="true">
             <!---- App-Header ---->
             <header id="app-header" class="global-header hide-border-bottom">
@@ -38,7 +40,7 @@
                                 <!-- ⭐비로그인 헤더 -->
                                 <ul class="nav-list sign-out" style="display: none;">
                                     <li class="nav-item">
-                                        <a href="./guide">
+                                        <a href="../guide">
                                             <span>가이드</span></a>
                                     </li>
                                     <li class="nav-item">
@@ -57,7 +59,7 @@
                                 <!-- ⭐로그인 헤더 -->
                                 <ul class="nav-list sign-in">
                                     <li class="nav-item">
-                                        <a href="./guide">
+                                        <a href="../guide">
                                             <span>가이드</span></a>
                                     </li>
                                     <li class="nav-item">
@@ -82,42 +84,88 @@
             <!---- App-Body ---->
             <div id="app-body">
                 <div class="container-md container">
-                    <div class="section1">
-                        <h1 class="mypage-title">포인트</h1>
-                        <h4 class="point-title">WASHGOGO 포인트
-                            <span style="float: right">999,999,999 p</span>
-                        </h4>
-                        <p>한달 내, 소멸 예정 포인트
-                            <span style="float: right">999,999,999 p</span>
-                        </p>
-                    </div>
-                    <div class="section2">
-                        <h4>포인트 이용 내역</h4>
-                        <table class="usage-details">
-                            <tr>
-                                <th>날짜</th>
-                                <th>사용명</th>
-                                <th>포인트</th>
-                            </tr>
-                            <tr>
-                                <td>ex)2022-06-16</td>
-                                <td>코트</td>
-                                <td>500 p</td>
-                            </tr>
-                            <tr>
-                                <td>ex)2022-06-16</td>
-                                <td>셔츠</td>
-                                <td>5,000 p</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="section3">
-                        <h4>포인트 이용 유의사항</h4>
-                        <ul>
-                            <li>포인트 수거 신청일 기준 아닌, 자유/1회이용서비스는 배송이후 결제 시점에 사용되며 월정액서비스는 서비스 결제 시 사용됩니다.</li>
-                            <li>유효기간이 만료되면 포인트는 자동 소멸됩니다.</li>
-                        </ul>
-                    </div>
+                    <main add="" class="account-info-container">
+                        <h1 add="">계정 설정</h1>
+                        <section add="">
+                            <ul id="account" add="" class="account-info">
+                                <li add="" class="item-container name">
+                                    <div add="" class="item">
+                                        <div add="" class="item-title name">이름</div>
+                                        <div add="" id="USERNAME" class="item-info username">이주홍</div>
+                                    </div>
+                                    <div add="" class="name"><img
+                                        class="name"
+                                        add=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                                <li add="" class="item-container email">
+                                    <div add="" class="item">
+                                        <div add="" class="item-title">이메일</div>
+                                        <div add="" id="EMAIL" class="item-info">
+                                            <span add="">alion0513@naver.com</span>
+                                        </div>
+                                    </div>
+                                    <div add=""><img
+                                        add=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                                <li add="" class="item-container password">
+                                    <div add="" class="item">
+                                        <div add="" class="item-title">비밀번호</div>
+                                        <div add="" id="PASSWORD" class="item-info" type="password">•••••••</div>
+                                    </div>
+                                    <div add=""><img
+                                        add=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                                <li add="" class="item-container phoneNumber">
+                                    <div add="" class="item">
+                                        <div add="" class="item-title">휴대전화 번호</div>
+                                        <div add="" id="PHONENUMBER" class="item-info">01088580291</div>
+                                    </div>
+                                    <div add=""><img
+                                        add=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                                <li add="" class="item-container address">
+                                    <div add="" class="item">
+                                        <div add="" class="item-title">배송지</div>
+                                        <div add="" id="ADDRESS" class="item-info">안알랴쥼</div>
+                                    </div>
+                                    <div add=""><img
+                                        add=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                                <li add="" class="item-container addressDetail">
+                                    <div add="" class="item">
+                                        <div add="" class="item-title">공동현관 출입방법</div>
+                                        <div add="" id="ADDRESSDETAIL" class="item-info">안알랴쥼</div>
+                                    </div>
+                                    <div add=""><img
+                                        add=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                                <li add="" class="item-container payment">
+                                    <div add="" class="item">
+                                        <div add="" class="item-title">결제정보</div>
+                                        <div add="" id="PAYMENT" class="item-info">안알랴쥼</div>
+                                    </div>
+                                    <div add=""><img
+                                        add=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                            </ul>
+                            <ul id="withdrawal" add="" data-testid="delete-account" class="delete-account">
+                                <li add="" class="item-container accountWithdrawal">
+                                    <div add="" data-testid="delete-account-text" class="item">계정 탈퇴</div>
+                                    <div add=""><img
+                                        add=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                            </ul>
+                        </section>
+                        <!---->
+                    </main>
                 </div>
             </div>
             <!---- App-Footer ---->
@@ -193,6 +241,41 @@
                 </div>
             </nav>
         </div>
+        <!-- modal -->
+        <div id="modal" class="modal-overlay" style="display: none;">
+            <div id="modal_window" class="modal-window">
+                <div class="close-area">X</div>
+                <form action="modifying_Information" method="post">
+                    <div class="title">
+                        <h2 id="changeInfo">수정할 정보명</h2>
+                    </div>
+                    <div id="withdrawals" class="content" style="display: none;">
+                        <p>계정 탈퇴 시 모든 개인정보가 삭제되며<br>구매하신 캐시는 환불되지 않습니다.</p>
+                    </div>
+                    <div id="modifyInfo" class="content" style="display: none;">새 ***
+                        <input id="result" class="inputInfo" type="text">
+                    </div>
+                    <div id="newPw" class="content1" style="display: none;">새 비밀번호
+                        <input id="Pw" type="password">
+                    </div>
+                    <div id="newPwCheck" class="content2" style="display: none;">새 비밀번호 확인
+                        <input id="PwCheck" type="password">
+                    </div>
+                    <div id="choose1" style="display: none;">
+                        <button type="button" class="no-change-user">취소</button>
+                        <button type="submit" class="change-user">수정</button>
+                    </div>
+                    <div id="choose2" style="display: none;">
+                        <a href="./index">
+                            <button type="submit" class="delete-user">계정 탈퇴
+                            </button>
+                        </a>
+                        <button type="button" class="remain-user">다시 생각해 볼게요</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/modifying_Information.js}"></script>
 </html>
