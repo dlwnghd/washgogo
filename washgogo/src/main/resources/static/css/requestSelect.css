@@ -296,4 +296,26 @@ form{ padding: 10px; }
     border-radius: 17px;
     background-color: white;
     margin-right: 20px;
+    text-align: center;
+}
+
+.submit{
+    display: flex;
+    justify-content: space-between;
+}
+
+#request-end{
+    margin-top:20px;
+    margin-bottom: 20px;
+    width:300px;
+    height: 55px;
+    color: white;
+    background: #00BA86;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    border: none;
 }
