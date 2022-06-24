@@ -20,5 +20,3 @@ $changeOnceBtn.click(function () {
     changeSeveralText.innerHTML = '변경하기';
     changeOnceText.innerHTML = '서비스 이용 중';
 });
-
-// 
