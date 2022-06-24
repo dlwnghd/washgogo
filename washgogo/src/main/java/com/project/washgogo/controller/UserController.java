@@ -13,8 +13,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
 
 //    로그인 / 회원가입
+    @GetMapping("/join")
+    public String join(){
+        log.info("--------join/Get---------");
+        return "/user/join";
+}
+
+    @PostMapping("/join")
+    public String joinOK(UserVO userVO){
+        log.info("--------join/Post---------");
+        log.info(userVO.toString());
+        log.info("---------------------");
+        return "/user/join";
+    }
+
     @GetMapping("/login")
-    public String login(){
+    public String login(UserVO userVO){
+        log.info("---------------------");
+        log.info(userVO.toString());
+        log.info("---------------------");
         return "/user/login";
     }
 
@@ -23,17 +40,7 @@ public class UserController {
         log.info("---------------------");
         log.info(userVO.toString());
         log.info("---------------------");
-        return "/user/login";
-    }
-
-    @GetMapping("/join")
-    public String join(){
-        return "/user/join";
-    }
-
-    @PostMapping("/join")
-    public String joinOK(){
-        return "/user/join";
+        return "/index";
     }
 
     @GetMapping("/findIdPw")

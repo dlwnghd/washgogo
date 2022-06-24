@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="~{/fragments/headerFooter:: style}">
+<head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,15 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+	<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="https://www.laundrygo.com/image/favicon/favicon_web.png">
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+	<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/join.css}">
 </head>
 <body>
@@ -85,7 +94,7 @@
 					</div>
 				</div>
 				<div class="findId">
-					<a href="findIdPw.html">사용 중인 계정이 기억나지 않으시나요?</a>
+					<a href="findIdPw">사용 중인 계정이 기억나지 않으시나요?</a>
 				</div>
 			</div>
 		</div>
