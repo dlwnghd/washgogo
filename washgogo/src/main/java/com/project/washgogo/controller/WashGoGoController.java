@@ -82,4 +82,19 @@ public class WashGoGoController {
     public void requestSelectOK() {
 
     }
+
+    @GetMapping("/serviceDetail")
+    public String serviceDetail(){
+        return "/service/serviceDetail";
+    }
+
+    @GetMapping("/serviceSubscribeAddress")
+    public String serviceSubscribeAddress(){
+        return "/service/serviceSubscribeAddress";
+    }
+
+    @GetMapping("/serviceSubscribePayment")
+    public String serviceSubscribePayment(){
+        return "/service/serviceSubscribePayment";
+    }
 }
