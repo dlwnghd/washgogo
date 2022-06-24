@@ -17,6 +17,12 @@ public class UserMapperTests {
         userMapper.getList().stream().map(UserVO::toString).forEach(log::info);
     }
 
+    @Test
+    public void getTimeTest(){
+        log.info("----------------------------");
+        log.info(userMapper.getTime());
+        log.info("----------------------------");
+    }
 }
 
 
