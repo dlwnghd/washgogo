@@ -1,0 +1,13 @@
+diff a/washgogo/src/main/java/com/project/washgogo/controller/OrderController.java b/washgogo/src/main/java/com/project/washgogo/controller/OrderController.java	(rejected hunks)
+@@ -1,4 +1,11 @@
+ package com.project.washgogo.controller;
+ 
++import lombok.extern.slf4j.Slf4j;
++import org.springframework.stereotype.Controller;
++import org.springframework.web.bind.annotation.RequestMapping;
++
++@Controller
++@RequestMapping("/*")
++@Slf4j
+ public class OrderController {
+ }
