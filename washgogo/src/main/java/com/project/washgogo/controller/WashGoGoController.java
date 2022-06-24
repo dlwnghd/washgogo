@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/*")
 @Slf4j
 public class WashGoGoController {
-//    @GetMapping("/index")
-//    public void index() {
-//
-//    }
+    @GetMapping("/index")
+    public void index() {
+
+    }
 
     @GetMapping("/guide")
     public void guide() {

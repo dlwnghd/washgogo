@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 public class UserController {
     @GetMapping("myPage")
-    public void myPage(UserVO userVO){
-
+    public String myPage(UserVO userVO){
+        log.info(userVO.toString());
+        return "/user/myPage";
     }
 
     @GetMapping("notice")
@@ -24,31 +25,34 @@ public class UserController {
     }
 
     @GetMapping("point")
-    public void point(UserVO userVO) {
+    public String point(UserVO userVO) {
         log.info(userVO.toString());
+        return "/user/point";
     }
 
 
     @GetMapping("modifyingInformation")
-    public void modifyingInformation(UserVO userVO){
-
+    public String modifyingInformation(UserVO userVO){
+        return "/user/modifyingInformation";
     }
 
     @GetMapping("useService")
-    public void useService(UserVO userVO){}
+    public String useService(UserVO userVO){
+        return "/user/useService";
+    }
 
     @GetMapping("serviceChange")
-    public void serviceChange(UserVO userVO){
-
+    public String serviceChange(UserVO userVO){
+        return "/user/serviceChange";
     }
 
     @GetMapping("changeCancel")
-    public void changeCancel(UserVO userVO){
-
+    public String changeCancel(UserVO userVO){
+        return "/user/changeCancel";
     }
 
     @GetMapping("paymentDetails")
-    public void paymentDetails(OrderVO order) {
-
+    public String paymentDetails(OrderVO order) {
+        return "/user/paymentDetails";
     }
 }
