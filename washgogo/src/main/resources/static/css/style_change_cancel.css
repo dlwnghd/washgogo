@@ -43,6 +43,10 @@ button:focus {
     background-color: #00ba86;
 }
 
+.remain > button{
+    color: white;
+}
+
 .cancel{
     background-color: #b5b5b5;
 }
