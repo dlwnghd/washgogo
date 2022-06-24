@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
     @GetMapping("myPage")
     public String myPage(UserVO userVO){
+        log.info("-------------------------");
         log.info(userVO.toString());
+        log.info("-------------------------");
         return "/user/myPage";
     }
 
@@ -27,17 +29,20 @@ public class UserController {
     @GetMapping("point")
     public String point(UserVO userVO) {
         log.info(userVO.toString());
+        log.info(userVO.getUserPoint());
         return "/user/point";
     }
 
 
     @GetMapping("modifyingInformation")
     public String modifyingInformation(UserVO userVO){
+        log.info(userVO.toString());
         return "/user/modifyingInformation";
     }
 
     @PostMapping("modifyingInformation")
     public String modifyingInformationOK(UserVO userVO){
+        log.info(userVO.toString());
         return "/user/myPage";
     }
 
