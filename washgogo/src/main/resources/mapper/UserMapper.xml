@@ -47,4 +47,9 @@
         DELETE FROM TBL_USER
         WHERE USER_NUMBER = #{userNumber}
     </delete>
+
+    <!--이주홍 시간 가져오기 연습용-->
+    <select id="getTime" resultType="string">
+        SELECT SYSDATE FROM DUAL
+    </select>
 </mapper>

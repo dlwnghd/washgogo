@@ -3,6 +3,7 @@ package com.project.washgogo.mapper;
 import com.project.washgogo.domain.vo.OrderVO;
 import com.project.washgogo.domain.vo.UserVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.core.annotation.Order;
 
 import java.util.List;
@@ -23,4 +24,9 @@ public interface UserMapper {
     public int updateAddress(UserVO userVO);
 //    회원 탈퇴
     public int delete(Long userNumber);
+
+
+//    이주홍 연습용
+//    현재시간
+    public String getTime();
 }

@@ -97,4 +97,12 @@ public class WashGoGoController {
     public String serviceSubscribePayment(){
         return "/service/serviceSubscribePayment";
     }
+=======
+    public void requestSelectOK(){
+
+    }
+
+
+
+>>>>>>> b699fcfbe5916a188310e11fb673010c30f487ad
 }
