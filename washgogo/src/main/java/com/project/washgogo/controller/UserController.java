@@ -36,6 +36,11 @@ public class UserController {
         return "/user/modifyingInformation";
     }
 
+    @PostMapping("modifyingInformation")
+    public String modifyingInformationOK(UserVO userVO){
+        return "/user/myPage";
+    }
+
     @GetMapping("useService")
     public String useService(UserVO userVO){
         return "/user/useService";
@@ -54,7 +59,7 @@ public class UserController {
     @GetMapping("paymentDetails")
     public String paymentDetails(OrderVO order) {
         return "/user/paymentDetails";
-=======
+    }
 
 //    로그인 / 회원가입
     @GetMapping("/login")
@@ -98,67 +103,5 @@ public class UserController {
     @PostMapping("/resetPw")
     public String resetPwOK(){
         return "/user/resetPw";
-    }
-    
-//    마이페이지
-    @GetMapping("/mypage")
-    public String mypage(){
-
-        return "/user/mypage";
-    }
-
-    @GetMapping("/point")
-    public String point(){
-
-        return "/user/point";
-    }
-
-    @GetMapping("/paymentDetails")
-    public String payment_details(){
-
-        return "/user/paymentDetails";
-    }
-
-    @GetMapping("/notice")
-    public String notice(){
-
-        return "/user/notice";
-    }
-
-    @GetMapping("/useService")
-    public String use_service(){
-
-        return "/user/useService";
-    }
-
-    @GetMapping("/serviceChange")
-    public String service_change(){
-
-        return "/user/serviceChange";
-    }
-
-    @GetMapping("/modifyingInformation")
-    public String modifying_information(){
-
-        return "/user/modifyingInformation";
-    }
-
-    @PostMapping("/modifyingInformation")
-    public String modifying_informationOK(){
-
-        return "/user/modifyingInformation";
-    }
-
-    @PostMapping("/serviceChange")
-    public String service_changeOK(){
-
-        return "/user/serviceChange";
-    }
-
-    @GetMapping("/changeCancel")
-    public String change_cancel(){
-
-        return "/user/changeCancel";
->>>>>>> b699fcfbe5916a188310e11fb673010c30f487ad
     }
 }

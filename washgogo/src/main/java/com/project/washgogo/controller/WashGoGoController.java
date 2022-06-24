@@ -30,43 +30,6 @@ public class WashGoGoController {
 
     }
 
-    @GetMapping("/login")
-    public void login() {
-
-    }
-
-    @PostMapping("/login")
-    public void loginOK() {
-    }
-
-    @GetMapping("/join")
-    public void join() {
-
-    }
-
-    @PostMapping("/join")
-    public void joinOK() {
-    }
-
-    @GetMapping("/findIdPw")
-    public void findIdPw() {
-
-    }
-
-    @PostMapping("/findIdPw")
-    public void findIdPwOK() {
-
-    }
-
-    @GetMapping("/resetPw")
-    public void resetPw() {
-
-    }
-
-    @PostMapping("/resetPw")
-    public void resetPwOK() {
-
-    }
 
     @GetMapping("/requestGuide")
     public void requestGuide() {
@@ -97,12 +60,11 @@ public class WashGoGoController {
     public String serviceSubscribePayment(){
         return "/service/serviceSubscribePayment";
     }
-=======
-    public void requestSelectOK(){
 
-    }
+//    public void requestSelectOK(){
+//
+//    }
 
 
 
->>>>>>> b699fcfbe5916a188310e11fb673010c30f487ad
 }
