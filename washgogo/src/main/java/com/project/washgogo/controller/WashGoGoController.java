@@ -132,4 +132,19 @@ public class WashGoGoController {
     public void change_cancel(){
 
     }
+
+    @GetMapping("/serviceDetail")
+    public String serviceDetail(){
+        return "/service/serviceDetail";
+    }
+
+    @GetMapping("/serviceSubscribeAddress")
+    public String serviceSubscribeAddress(){
+        return "/service/serviceSubscribeAddress";
+    }
+
+    @GetMapping("/serviceSubscribePayment")
+    public String serviceSubscribePayment(){
+        return "/service/serviceSubscribePayment";
+    }
 }

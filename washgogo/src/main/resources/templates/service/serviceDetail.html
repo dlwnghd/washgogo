@@ -1,10 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{/fragments/headerFooter:: style}">
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>워시고고 - 우리집 모바일 세탁소</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.laundrygo.com/image/favicon/favicon_web.png">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/serviceDetail.css">
 </head>
 <body>
-$END$
+<div id="app">
+    <!---- App-Header ---->
+    <header th:replace="~{/fragments/headerFooter:: header}">
+    </header>
+    <!---- App-Body ---->
+    <div id="app-body">
+        <div class="serviceDetail container">
+            <div class="flex-aside left">
+                <div class="service-image"><img src ="/img/serviceTwice.jpg" id="size"></div>
+                <section class="service-info">
+                    <div class="title-wrap">
+                        <div><h2 class="highlight">이런 분들에게 추천해요</h2></div>
+                        <div><h2 class="title">이런 분들에게 추천해요</h2></div>
+                    </div>
+                    <ul class="to-customer">
+                        <li>
+                            <div class="image-wrap"></div>
+                            <p>
+                                런드렛으로 안전하고 프리미엄한<br>
+                                세탁&수선 서비스를 이용하고 싶은 경우
+                            </p>
+                        </li>
+                        <li>
+                            <div class="image-wrap"></div>
+                            <p>
+                                세탁과 수선 서비스를 한 달에 <br>
+                                1~2번 정도 이용하고 싶은 경우
+                            </p>
+                        </li>
+                        <li>
+                            <div class="image-wrap"></div>
+                            <p>
+                                개별클리닝,생활빨래,이불 등 <br>
+                                다양한 품목을 맡기고 싶은 경우
+                            </p>
+                        </li>
+                        <li>
+                            <div class="image-wrap"></div>
+                            <p>
+                                개별클리닝 3벌 이상이거나 <br>
+                                생활빨래가 1주에 30L 이상인 경우
+                            </p>
+                        </li>
+                    </ul>
+                </section>
+                <section class="ship">
+                    <div class="title-wrap">
+                        <div><h2 class="highlight">하루 배송</h2></div>
+                        <div><h2 class="title">하루 배송</h2></div>
+                        <p>
+                            오늘 밤 10시 전에 수거 신청하면,<br>
+                            내일 밤 깨끗하게 세탁해 문 앞으로 배송됩니다.
+                        </p>
+                    </div>
+                    <div class="inner">
+                        <h3>오늘 밤 10시 전에 </h3>
+                        <p>세탁 물을 문 앞에 내놓고 수거 신청</p>
+                        <h3>내일 밤</h3>
+                        <p>세탁 완료 후 문 앞으로 배송</p>
+                    </div>
+                </section>
+            </div>
+            <div class="flex-aside right">
+                <div class = "service-controller">
+                    <div class="service-title">
+                        <p class="service-type">자유이용 서비스</p>
+                        <h1 class="title">여러 번 이용</h1>
+                        <p>
+                            세탁과 수선이 필요한 순간마다<br>
+                            런드렛으로 안전하게 이용하세요.
+                        </p>
+                    </div>
+                    <h3>안심 정찰 가격표</h3>
+                    <p>투명한 정찰 가격으로<br>
+                        세탁&수선 금액을 미리 확인하세요
+                    </p>
+                    <ul class="price-list">
+                        <li>
+                            <span>생활빨래 (3kg기준)</span>
+                            <span>8,000원</span>
+                        </li>
+                        <li>
+                            <span>와이셔츠</span>
+                            <span>1,800원</span>
+                        </li>
+                        <li>
+                            <span>개별클리닝</span>
+                            <span>3,000원~25,000원</span>
+                        </li>
+                        <li>
+                            <span>이불</span>
+                            <span>7,000원~30,000원</span>
+                        </li>
+                        <li>
+                            <span>수거배송(1회)</span>
+                            <span>3500원</span>
+                        </li>
+                    </ul>
+                    <span>별도 케어에 따른 추가 비용은 발생하지 않으며,안심 정찰 가격표에 의해 세탁 요금이 부과됩니다.</span>
+                    <a href="/pricesheet.html">가격표 전체 보기 ></a>
+                    <div class="button-area">
+                        <button type="button" onclick="subscribe()">서비스 신청하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---- App-Footer ---->
+    <nav th:replace="~{/fragments/headerFooter:: footer}">
+    </nav>
+</div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    /* 헤더 스크롤 이벤트 */
+    const $header = $("#app-header");
+    document.onscroll = function(){
+        if(window.scrollY>0){
+            $header.removeClass("hide-border-bottom");
+        } else {
+            $header.addClass("hide-border-bottom");
+        }
+    }
+
+    function subscribe(){
+        location.href="./serviceSubscribeAddress.html";
+    }
+</script>
 </html>
