@@ -30,44 +30,6 @@ public class WashGoGoController {
 
     }
 
-    @GetMapping("/login")
-    public void login(){
-
-    }
-
-    @PostMapping("/login")
-    public void loginOK(){
-    }
-
-    @GetMapping("/join")
-    public void join(){
-
-    }
-
-    @PostMapping("/join")
-    public void joinOK(){
-    }
-
-    @GetMapping("/findIdPw")
-    public void findIdPw(){
-
-    }
-
-    @PostMapping("/findIdPw")
-    public void findIdPwOK(){
-
-    }
-
-    @GetMapping("/resetPw")
-    public void resetPw(){
-
-    }
-
-    @PostMapping("/resetPw")
-    public void resetPwOK(){
-
-    }
-
     @GetMapping("/requestGuide")
     public void requestGuide(){
 
@@ -83,68 +45,6 @@ public class WashGoGoController {
 
     }
 
-    @GetMapping("/mypage")
-    public void mypage(){
 
-    }
 
-    @GetMapping("/point")
-    public void point(){
-
-    }
-
-    @GetMapping("/payment_details")
-    public void payment_details(){
-
-    }
-
-    @GetMapping("/notice")
-    public void notice(){
-
-    }
-
-    @GetMapping("/use_service")
-    public void use_service(){
-
-    }
-
-    @GetMapping("/service_change")
-    public void service_change(){
-
-    }
-
-    @GetMapping("/modifying_information")
-    public void modifying_information(){
-
-    }
-
-    @PostMapping("/modifying_information")
-    public void modifying_informationOK(){
-
-    }
-
-    @PostMapping("/service_change")
-    public void service_changeOK(){
-
-    }
-
-    @GetMapping("/change_cancel")
-    public void change_cancel(){
-
-    }
-
-    @GetMapping("/serviceDetail")
-    public String serviceDetail(){
-        return "/service/serviceDetail";
-    }
-
-    @GetMapping("/serviceSubscribeAddress")
-    public String serviceSubscribeAddress(){
-        return "/service/serviceSubscribeAddress";
-    }
-
-    @GetMapping("/serviceSubscribePayment")
-    public String serviceSubscribePayment(){
-        return "/service/serviceSubscribePayment";
-    }
 }
