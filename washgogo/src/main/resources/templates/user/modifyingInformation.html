@@ -145,6 +145,15 @@
                                         add=""
                                         src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
                                 </li>
+                                <li add="" class="item-container payment">
+                                    <div add="" class="item">
+                                        <div add="" class="item-title">결제정보</div>
+                                        <div add="" id="PAYMENT" class="item-info">안알랴쥼</div>
+                                    </div>
+                                    <div add=""><img
+                                        add=""
+                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
                             </ul>
                             <ul id="withdrawal" add="" data-testid="delete-account" class="delete-account">
                                 <li add="" class="item-container accountWithdrawal">
@@ -236,6 +245,7 @@
         <div id="modal" class="modal-overlay" style="display: none;">
             <div id="modal_window" class="modal-window">
                 <div class="close-area">X</div>
+                <form action="modifying_Information" method="post">
                     <div class="title">
                         <h2 id="changeInfo">수정할 정보명</h2>
                     </div>
@@ -246,28 +256,22 @@
                         <input id="result" class="inputInfo" type="text">
                     </div>
                     <div id="newPw" class="content1" style="display: none;">새 비밀번호
-                        <div class="password-wrapper pw">
-                            <input id="Pw" type="password">
-                            <button class="pw-show"></button>
-                        </div>
+                        <input id="Pw" type="password">
                     </div>
                     <div id="newPwCheck" class="content2" style="display: none;">새 비밀번호 확인
-                        <div class="password-wrapper npw">
-                            <input id="PwCheck" type="password">
-                            <button class="pw-show"></button>
-                        </div>
+                        <input id="PwCheck" type="password">
                     </div>
                     <div id="choose1" style="display: none;">
-                        <button type="submit" class="change-user">수정</button>
                         <button type="button" class="no-change-user">취소</button>
+                        <button type="submit" class="change-user">수정</button>
                     </div>
                     <div id="choose2" style="display: none;">
+                        <a href="./index">
                             <button type="submit" class="delete-user">계정 탈퇴
-                                <a href="./index"></a>
                             </button>
+                        </a>
                         <button type="button" class="remain-user">다시 생각해 볼게요</button>
                     </div>
-                <form action="modifyingInformation" method="post">
                 </form>
             </div>
         </div>

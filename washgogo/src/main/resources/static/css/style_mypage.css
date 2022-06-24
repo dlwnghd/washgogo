@@ -85,8 +85,7 @@ a[data-v-4580432e] {
     font-size: 0;
     padding: 1rem 0;
     margin-bottom: 2.5rem;
-    border-bottom: 0.0625rem solid #f2f2f2;;
-    border-top: 0.0625rem solid #f2f2f2;;
+    box-shadow: 7px 7px 16px 0px black;
 }
 .profile-container a[data-v-5b32e6b8] {
     display: flex;

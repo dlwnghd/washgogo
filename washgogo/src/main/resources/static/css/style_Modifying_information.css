@@ -41,22 +41,3 @@ section[add] {
 .item-info[add] {
     padding-top: 0.25rem;
 }
-
-.pw-show {
-    position: absolute;
-    top: 0px;
-    right: -5px;
-    width: 3.125rem;
-    border: none;
-    min-width: 30px;
-    height: 100%;
-    background: url(https://static.msscdn.net/ui/build/m/img/login/ic-30-show-button.svg?v=20220503114100) no-repeat 50% 50%;
-}
-
-.pw-hide {
-    background: url(https://static.msscdn.net/ui/build/m/img/login/ic-30-hide-button.svg?v=20220615150656) no-repeat 50% 50%;
-}
-
-.password-wrapper{
-    position: relative;
-}

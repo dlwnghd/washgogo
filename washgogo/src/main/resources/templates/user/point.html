@@ -17,7 +17,7 @@
         <!--⭐헤더 푸터-->
         <link rel="stylesheet" th:href="@{/css/style_frame.css}">
         <!--⭐틀-->
-        <link rel="stylesheet" th:href="@{/css/style_point.css}">
+        <link rel="stylesheet" th:href="@{css/style_point.css}">
         <!--⭐포인트 페이지 세부-->
     </head>
     <body class="mypage" style="padding-right: 0px;" data-modal-open-count="0">
@@ -35,14 +35,33 @@
                         </div>
                         <div class="right-section">
                             <nav>
-                                <!-- ⭐로그인 헤더 -->
-                                <ul class="nav-list sign-in">
+                                <!-- ⭐비로그인 헤더 -->
+                                <ul class="nav-list sign-out" style="display: none;">
                                     <li class="nav-item">
-                                        <a href="../guide/guide">
+                                        <a href="../guide">
                                             <span>가이드</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="../guide/priceSheet">
+                                        <a href="./pricesheet">
+                                            <span>가격표</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="./login">
+                                            <span>로그인</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="./join">
+                                            <span>회원가입</span></a>
+                                    </li>
+                                </ul>
+                                <!-- ⭐로그인 헤더 -->
+                                <ul class="nav-list sign-in">
+                                    <li class="nav-item">
+                                        <a href="../guide">
+                                            <span>가이드</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="./pricesheet">
                                             <span>가격표</span></a>
                                     </li>
                                     <li class="nav-item">

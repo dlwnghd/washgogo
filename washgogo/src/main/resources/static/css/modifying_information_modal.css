@@ -1,11 +1,3 @@
-button:focus{
-    outline: none;
-}
-
-input:focus {
-    outline: none;
-    box-shadow: 0 0 0 0.2rem rgb(0 199 174 / 25%);
-}
 
 #modal.modal-overlay {
     width: 100vw;
@@ -27,13 +19,14 @@ input:focus {
 }
 
 #modal .modal-window {
-    background: #ffffff;
+    background: #00BA86;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(13.5px);
     -webkit-backdrop-filter: blur(13.5px);
+    border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     width: 400px;
-    height: 300px;
+    height: 250px;
     position: relative;
     padding: 10px;
 }
@@ -41,13 +34,13 @@ input:focus {
 #modal .title {
     padding-left: 10px;
     display: inline;
+    text-shadow: 1px 1px 2px gray;
     color: white;
 
 }
 
 #modal .title h2 {
-    text-align: initial;
-    color: black;
+    text-align: center;
 }
 
 #modal .close-area {
@@ -60,17 +53,23 @@ input:focus {
 }
 
 #modal .content {
-    color: black;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+    text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
 #modal .content1 {
-    color: black;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+    text-align: center;
 }
 
 #modal .content2 {
-    color: black;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+    text-align: center;
     margin: 20px 0;
 }
 
@@ -89,27 +88,21 @@ input:focus {
     background-color: white;
     border-radius: 0.25rem;
     padding: 0 10px;
-    line-height: 3;
-    width: 100%;
 }
 
-.change-user, .delete-user{
-    background-color: #00ba86;
-    color: white;
-    margin-bottom: 5px;
+.remain-user{
+    margin-right: 10px;
 }
 
-.no-change-user, .remain-user{
-    background-color: white;
-    color: black;
+#choose2 .delete-user{
+    margin-left: 60px;
+    margin-right: 15px;
 }
-
-
 
 input{
     margin-top: 10px;
     display: block;
     width: 100%;
-    border-radius: 4px;
-    border: 0.0625rem solid #e1e1e1;
+    border: 0 solid;
+    border-radius: 0.5rem;
 }
