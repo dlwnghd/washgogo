@@ -11,39 +11,59 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 public class WashGoGoController {
     @GetMapping("/index")
-    public void index(){
+    public void index() {
 
     }
 
     @GetMapping("/guide")
-    public void guide(){
+    public void guide() {
 
     }
 
-    @GetMapping("/pricesheet")
-    public void pricesheet(){
+    @GetMapping("/priceSheet")
+    public void priceSheet() {
 
     }
 
     @GetMapping("/life")
-    public void life(){
+    public void life() {
 
     }
 
+
     @GetMapping("/requestGuide")
-    public void requestGuide(){
+    public void requestGuide() {
 
     }
 
     @GetMapping("/requestSelect")
-    public void requestSelect(){
+    public void requestSelect() {
 
     }
 
     @PostMapping("/requestSelect")
-    public void requestSelectOK(){
+    public void requestSelectOK() {
 
     }
+
+    @GetMapping("/serviceDetail")
+    public String serviceDetail(){
+        return "/service/serviceDetail";
+    }
+
+    @GetMapping("/serviceSubscribeAddress")
+    public String serviceSubscribeAddress(){
+        return "/service/serviceSubscribeAddress";
+    }
+
+    @GetMapping("/serviceSubscribePayment")
+    public String serviceSubscribePayment(){
+        return "/service/serviceSubscribePayment";
+    }
+
+//    public void requestSelectOK(){
+//
+//    }
 
 
 
