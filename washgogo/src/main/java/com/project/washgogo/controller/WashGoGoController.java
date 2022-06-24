@@ -10,126 +10,76 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/*")
 @Slf4j
 public class WashGoGoController {
-    @GetMapping("/index")
-    public void index(){
-
-    }
+//    @GetMapping("/index")
+//    public void index() {
+//
+//    }
 
     @GetMapping("/guide")
-    public void guide(){
+    public void guide() {
 
     }
 
-    @GetMapping("/pricesheet")
-    public void pricesheet(){
+    @GetMapping("/priceSheet")
+    public void priceSheet() {
 
     }
 
     @GetMapping("/life")
-    public void life(){
+    public void life() {
 
     }
 
     @GetMapping("/login")
-    public void login(){
+    public void login() {
 
     }
 
     @PostMapping("/login")
-    public void loginOK(){
+    public void loginOK() {
     }
 
     @GetMapping("/join")
-    public void join(){
+    public void join() {
 
     }
 
     @PostMapping("/join")
-    public void joinOK(){
+    public void joinOK() {
     }
 
     @GetMapping("/findIdPw")
-    public void findIdPw(){
+    public void findIdPw() {
 
     }
 
     @PostMapping("/findIdPw")
-    public void findIdPwOK(){
+    public void findIdPwOK() {
 
     }
 
     @GetMapping("/resetPw")
-    public void resetPw(){
+    public void resetPw() {
 
     }
 
     @PostMapping("/resetPw")
-    public void resetPwOK(){
+    public void resetPwOK() {
 
     }
 
     @GetMapping("/requestGuide")
-    public void requestGuide(){
+    public void requestGuide() {
 
     }
 
     @GetMapping("/requestSelect")
-    public void requestSelect(){
+    public void requestSelect() {
 
     }
 
     @PostMapping("/requestSelect")
-    public void requestSelectOK(){
-
-    }
-
-    @GetMapping("/mypage")
-    public void mypage(){
-
-    }
-
-    @GetMapping("/point")
-    public void point(){
-
-    }
-
-    @GetMapping("/payment_details")
-    public void payment_details(){
-
-    }
-
-    @GetMapping("/notice")
-    public void notice(){
-
-    }
-
-    @GetMapping("/use_service")
-    public void use_service(){
-
-    }
-
-    @GetMapping("/service_change")
-    public void service_change(){
-
-    }
-
-    @GetMapping("/modifying_information")
-    public void modifying_information(){
-
-    }
-
-    @PostMapping("/modifying_information")
-    public void modifying_informationOK(){
-
-    }
-
-    @PostMapping("/service_change")
-    public void service_changeOK(){
-
-    }
-
-    @GetMapping("/change_cancel")
-    public void change_cancel(){
+    public void requestSelectOK() {
 
     }
 }
