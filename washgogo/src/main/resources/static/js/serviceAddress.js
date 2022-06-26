@@ -136,9 +136,6 @@ $getInInput.eq(1).on("keyup", function(){
 const $nextBtn = $("#nextBtn");
 $nextBtn.on("click", function(){
     addressForm.submit();
-
-    location.href="../../templates/serviceSubscribePayment.html";
-
 });
 
 function checkForm(){
