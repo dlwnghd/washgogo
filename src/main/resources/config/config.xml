@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="com.project.washgogo.domain.vo.UserVO" alias="userVO"/>
+        <typeAlias type="com.project.washgogo.domain.vo.OrderVO" alias="orderVO"/>
+        <typeAlias type="com.project.washgogo.domain.vo.OrderListVO" alias="orderListVO"/>
+        <typeAlias type="com.project.washgogo.domain.vo.LaundryVO" alias="laundryVO"/>
+        <typeAlias type="com.example.washgogo.domain.vo.NoticeVO" alias="noticeVO"/>
+    </typeAliases>
+</configuration>
