@@ -1,0 +1,267 @@
+.payment{
+    background-color: #fafafa;
+    padding: 3rem 0 5rem;
+}
+.payment .content-wrap{
+    width: 100%;
+    max-width: 60.625rem;
+    border-bottom: 0.1625rem solid #ddd;
+    border-radius: 0.5rem;
+    padding: 3rem 7rem;
+    margin: 1.5rem auto 0;
+    box-shadow: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+}
+.payment .content-wrap .main-title{
+    margin: 0 0 2.5rem;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: normal;
+    letter-spacing: normal;
+}
+.payment .content-wrap .address .title{
+    display: flex;
+    justify-content: space-between;
+}
+.payment .content-wrap .title{
+    margin-bottom: 0.8rem;
+}
+.payment .content-wrap .title h2{
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+.payment .content-wrap:not(:first-child) .title h2{
+    margin-bottom: 1rem;
+}
+.payment .content-wrap .title a{
+    color: #1d86d9;
+}
+.payment .info{
+    color: grey;
+    font-size: 1rem;
+}
+.payment .address .inner{
+    border: 0.1425rem solid #eee;
+    border-radius: 0.4rem;
+    padding: 1rem;
+}
+.payment .address .inner p#address-wrap{
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+.payment .laundret-choice .choice-wrap{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2rem 0 3rem;
+}
+.payment .laundret-choice .choice-wrap li{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    border: 0.1625rem solid #eee;
+    border-radius: 1rem;
+}
+.payment .laundret-choice .choice-wrap li.focus{
+    border: 0.1625rem solid #000;
+}
+.payment .laundret-choice .choice-wrap .recommend{
+    position: absolute;
+    top: -1rem;
+    left: 6rem;
+    display: block;
+    background-color: #CFFD5F;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    width: 2.6rem;
+    height: 1.5rem;
+    text-align: center;
+}
+.payment .laundret-choice .choice-wrap .text-content{
+    background-color: #f5f5f5;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    padding: 2rem 0;
+    width: 100%;
+}
+.payment .laundret-choice .choice-wrap li .image-content{
+    width: 15rem;
+    height: 20rem;
+    background-size: cover;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+.payment .laundret-choice .choice-wrap li:first-child .image-content{
+    background: url("/img/laundretRegular.jpg") repeat center;
+}
+.payment .laundret-choice .choice-wrap li:last-child .image-content{
+    background: url("/img/laundretMini.jpg") repeat center;
+}
+.payment .laundret-choice .choice-wrap .text-content{
+    text-align: center;
+}
+.payment .laundret-choice .more-info{
+    position: relative;
+    height: 1rem;
+}
+.payment .laundret-choice .more-info > a{
+    display: block;
+    width: 9rem;
+    height: 2rem;
+    font-weight: 500;
+    border-radius: 1rem;
+    background-color: #eee;
+    text-align: center;
+    padding-top: 0.25rem;
+    font-size: 0.9rem;
+    position: absolute;
+    right: 0;
+}
+.payment .payment-info .title{
+    display: flex;
+    justify-content: space-between;
+}
+.payment .payment-info .title #modify{
+    display: none;
+}
+.payment .payment-info .pay{
+    border: 0.1225rem solid #000;
+    border-radius: 0.5rem;
+    display: block;
+    width: 76%;
+    margin: 1rem auto 2rem;
+    height: 3rem;
+    font-size: 1.1rem;
+}
+/*
+.payment .payment-info .beforeRegister{
+    display: none;
+}
+*/
+.payment .card-info{
+    margin: 1rem auto 2rem;
+    width: 76%;
+    height: 5rem;
+    border-radius: 0.5rem;
+    background-color: #000;
+    padding: 1rem 3rem;
+    /*display: none;*/
+}
+.payment .card-info .card-name{
+    color: #CFFD5F;
+    font-size: 1.1rem;
+}
+.payment .card-info .card-number input{
+    background-color: #000;
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+    width: 3rem;
+    border: none;
+}
+.payment .card-info .card-number input:last-child{
+    letter-spacing: normal;
+}
+.payment .payment-info ul li::before {
+    content: "\2022";
+    color: grey;
+    font-weight: normal;
+    display: inline-block;
+    width: 1rem;
+}
+.payment .payment-info p.info{
+    display: inline-block;
+}
+.payment .payment-info .line{
+    height: 0.0625rem;
+    width: 100%;
+    color: #e1e1e1;
+    border-bottom: 0.0625rem solid #e1e1e1;
+    margin: 2rem 0;
+}
+.payment input[type="checkbox"]{
+    display: none;
+}
+.payment .payment-info label .check,
+.payment .agreement li .check{
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 0.2rem;
+    border: 0.0625rem solid #e1e1e1;
+    margin-top: 0.15rem;
+    background: url("/img/check_light_gray.jpg") repeat center;
+    background-size: contain;
+}
+.payment .payment-info label,
+.payment .agreement label{
+    display: flex;
+    cursor: pointer;
+    margin: 0.8rem 0;
+    text-align: left;;
+}
+.payment .payment-info label.active .check,
+.payment .agreement label.active .check{
+    background-color: #CFFD5F;
+    border: 0.0625rem solid #CFFD5F;
+    background: url("/img/check_black_bg.jpg") repeat center;
+    background-size: contain;
+}
+.payment .payment-info label p,
+.payment .agreement label p{
+    margin-left: 0.7rem;
+}
+.payment .agreement li{
+    display: flex;
+    justify-content: space-between;
+}
+.payment .agreement ul p.info{
+    padding-left: 1rem;
+    margin-top: 1rem;
+}
+.payment .agreement li .terms{
+    display: block;
+    color: grey;
+    background-color: #ddd;
+    border-radius: 0.5rem;
+    width: 3rem;
+    height: 1.5rem;
+    padding: 0 0.5rem;
+    text-align: center;
+}
+.payment .agreement ul p.info::before {
+    content: "\2022";
+    color: grey;
+    font-weight: normal;
+    display: inline-block;
+    width: 1rem;
+    margin-left: -1rem;
+}
+.payment .btn-area{
+    margin: 6rem auto 0;
+    width: 13rem;
+}
+.payment .btn-subscribe{
+    color: #CFFD5F;
+    background-color: #000;
+    width: 100%;
+    height: 3rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+}
+.payment .btn-subscribe.disabled{
+    cursor: default;
+    color: grey;
+    background-color: #ddd;
+}
