@@ -17,4 +17,5 @@ public class UserVO {
 	private String userEntranceMessage;
 	private String userServiceType;
 	private String userCardnum;
+	private String userPoint;
 }
