@@ -1,0 +1,62 @@
+h1[add] {
+    line-height: 2.5625rem;
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: #323232;
+    margin: 3rem 0;
+}
+.profile-image[add] {
+    position: relative;
+    width: 6.25rem;
+    height: 6.25rem;
+    margin: 0 auto;
+}
+.camera-icon[add] {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+section[add] {
+    font-size: 0.875rem;
+    margin: 3rem 0 5.125rem;
+}
+.account-info[add] {
+    margin-bottom: 3rem;
+}
+.item-container[add] {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 1rem 0 1rem 0.5rem;
+    border-bottom: 0.0625rem solid #f2f2f2;
+}
+.item[add] {
+    flex: 1;
+    color: #323232;
+}
+.item-title[add] {
+    color: #b5b5b5;
+}
+.item-info[add] {
+    padding-top: 0.25rem;
+}
+
+.pw-show {
+    position: absolute;
+    top: 0px;
+    right: -5px;
+    width: 3.125rem;
+    border: none;
+    min-width: 30px;
+    height: 100%;
+    background: url(https://static.msscdn.net/ui/build/m/img/login/ic-30-show-button.svg?v=20220503114100) no-repeat 50% 50%;
+}
+
+.pw-hide {
+    background: url(https://static.msscdn.net/ui/build/m/img/login/ic-30-hide-button.svg?v=20220615150656) no-repeat 50% 50%;
+}
+
+.password-wrapper{
+    position: relative;
+}
