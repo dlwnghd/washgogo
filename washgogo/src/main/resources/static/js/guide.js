@@ -17,6 +17,9 @@ const $infoItems = $(".info-item");
 const $tabDepthCont = $(".tab-depth");
 const $tabDepths = $(".tab-depth a");
 
+$nextUse.css("display", "none");
+$serviceArea.css("display", "none");
+
 $tabs.click(function(){
     let idx = $(this).index();
     $tabs.removeClass("active");

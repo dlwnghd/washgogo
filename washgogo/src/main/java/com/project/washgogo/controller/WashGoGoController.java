@@ -10,24 +10,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/*")
 @Slf4j
 public class WashGoGoController {
-    @GetMapping("/index")
+    @GetMapping("index")
     public void index() {
 
     }
 
-    @GetMapping("/guide")
-    public void guide() {
-
+    @GetMapping("guide")
+    public String guide() {
+        return "/guide/guide";
     }
 
-    @GetMapping("/priceSheet")
-    public void priceSheet() {
-
+    @GetMapping("priceSheet")
+    public String priceSheet() {
+        return "/guide/priceSheet";
     }
 
-    @GetMapping("/life")
-    public void life() {
-
+    @GetMapping("life")
+    public String life() {
+        return "/guide/life";
     }
 
 
@@ -46,17 +46,17 @@ public class WashGoGoController {
 
     }
 
-    @GetMapping("/serviceDetail")
+    @GetMapping("serviceDetail")
     public String serviceDetail(){
         return "/service/serviceDetail";
     }
 
-    @GetMapping("/serviceSubscribeAddress")
+    @GetMapping("serviceSubscribeAddress")
     public String serviceSubscribeAddress(){
         return "/service/serviceSubscribeAddress";
     }
 
-    @GetMapping("/serviceSubscribePayment")
+    @GetMapping("serviceSubscribePayment")
     public String serviceSubscribePayment(){
         return "/service/serviceSubscribePayment";
     }
