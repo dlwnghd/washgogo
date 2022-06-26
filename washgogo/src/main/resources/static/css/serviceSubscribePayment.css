@@ -201,7 +201,7 @@
     border-radius: 0.2rem;
     border: 0.0625rem solid #e1e1e1;
     margin-top: 0.15rem;
-    background: url("../img/check_light_gray.jpg") no-repeat center;
+    background: url("/img/check_light_gray.jpg") repeat center;
     background-size: contain;
 }
 .payment .payment-info label,
@@ -215,7 +215,7 @@
 .payment .agreement label.active .check{
     background-color: #CFFD5F;
     border: 0.0625rem solid #CFFD5F;
-    background: url("../img/check_black_bg.jpg") no-repeat center;
+    background: url("/img/check_black_bg.jpg") repeat center;
     background-size: contain;
 }
 .payment .payment-info label p,
