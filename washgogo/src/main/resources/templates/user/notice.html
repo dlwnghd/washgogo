@@ -90,6 +90,23 @@
                                     <div>
                                         <table>
                                             <tbody>
+                                            <th:block th:each="notice:${noticeList}">
+                                                <tr style="cursor: pointer;" th:object="${notice}">
+                                                    <td class="more" th:text="*{noticeTitle}">
+                                                    <td></td>
+                                                </tr>
+                                                <tr th:object="${notice}">
+                                                    <td class="more-info" colspan="2" >
+                                                        <div>
+                                                            <p th:text="*{noticeContent}"></p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </th:block>
+                                            </tbody>
+                                        </table>
+                                        <!--<table>
+                                            <tbody>
                                                 <tr style="cursor: pointer;">
                                                     <td class="more">[공지]프리미엄 서비스 오픈 및 브랜드 적용 안내</td>
                                                     <td></td>
@@ -184,7 +201,7 @@
                                                     </td>
                                                 </tr>
                                             </tbody>
-                                        </table>
+                                        </table>-->
                                     </div>
                                 </div>
                             </div>
