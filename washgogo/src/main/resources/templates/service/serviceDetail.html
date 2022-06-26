@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="~{/fragments/headerFooter:: style}">
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -109,7 +109,7 @@
                         </li>
                     </ul>
                     <span>별도 케어에 따른 추가 비용은 발생하지 않으며,안심 정찰 가격표에 의해 세탁 요금이 부과됩니다.</span>
-                    <a href="/pricesheet.html">가격표 전체 보기 ></a>
+                    <a href="/priceSheet">가격표 전체 보기 ></a>
                     <div class="button-area">
                         <button type="button" onclick="subscribe()">서비스 신청하기</button>
                     </div>
@@ -135,7 +135,7 @@
     }
 
     function subscribe(){
-        location.href="./serviceSubscribeAddress.html";
+        location.href="/serviceSubscribeAddress";
     }
 </script>
 </html>

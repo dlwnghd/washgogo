@@ -112,3 +112,5 @@ public class UserController {
         return "/user/resetPw";
     }
 }
+
+    // 자유이용서비스

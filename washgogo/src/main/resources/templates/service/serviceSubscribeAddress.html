@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="~{/fragments/headerFooter:: style}">
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,7 @@
                     <p><strong>서비스</strong>를 이용하실<br>
                         주소를 입력해주세요.</p>
                 </div>
-                <form name ="addressForm" autocomplete="off">
+                <form name ="addressForm" autocomplete="off" action="/serviceSubscribePayment">
                     <div class="form-row">
                         <div class="col">
                             <div class="title">
@@ -39,7 +39,7 @@
                             <div class="invalid-feedback">상세주소를 입력해주세요.</div>
                         </div>
                         <div class="col">
-                            <a href="./guide.html">서비스 가능 지역 확인하기 ></a>
+                            <a href="/guide">서비스 가능 지역 확인하기 ></a>
                         </div>
                         <div class="col get-in">
                             <div class="title">

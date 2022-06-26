@@ -145,7 +145,7 @@ form[name="addressForm"] .get-in .check{
     border-radius: 50%;
     border: 0.0625rem solid #e1e1e1;
     margin-top: 0.3rem;
-    background: url("/img/check_light_gray.jpg") no-repeat center;
+    background: url("/img/check_light_gray.jpg") repeat center;
     background-size: contain;
 }
 form[name="addressForm"] .get-in label{
@@ -156,7 +156,7 @@ form[name="addressForm"] .get-in label{
 form[name="addressForm"] .get-in li.active .check{
     background-color: #CFFD5F;
     border: 0.0625rem solid #CFFD5F;
-    background: url("/img/check_black_bg.jpg") no-repeat center;
+    background: url("/img/check_black_bg.jpg") repeat center;
     background-size: contain;
 }
 form[name="addressForm"] .get-in label p{
