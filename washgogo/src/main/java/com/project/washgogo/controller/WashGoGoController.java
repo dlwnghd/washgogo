@@ -1,5 +1,6 @@
 package com.project.washgogo.controller;
 
+import com.project.washgogo.domain.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 public class WashGoGoController {
     @GetMapping("index")
-    public void index() {
-
+    public void index(UserVO userVO) {
+        log.info(userVO.toString());
     }
 
     @GetMapping("guide")
@@ -31,14 +32,14 @@ public class WashGoGoController {
     }
 
 
-    @GetMapping("/requestGuide")
-    public void requestGuide() {
-
+    @GetMapping("requestGuide")
+    public String requestGuide() {
+        return "/order/requestGuide";
     }
 
-    @GetMapping("/requestSelect")
-    public void requestSelect() {
-
+    @GetMapping("requestSelect")
+    public String requestSelect() {
+        return "/order/requestSelect";
     }
 
     @PostMapping("/requestSelect")
@@ -64,6 +65,11 @@ public class WashGoGoController {
 //    public void requestSelectOK(){
 //
 //    }
+
+    @GetMapping("used")
+    public String used(){
+        return "/used";
+    }
 
 
 
