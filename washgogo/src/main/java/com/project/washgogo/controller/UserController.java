@@ -131,28 +131,29 @@ public class UserController {
         return "/user/login";
     }
 
-//    로그인 페이지로 이동
+//    로그인
     @PostMapping("login")
-    public RedirectView loginOK(UserVO userVO, String inputEmail, String inputPw, RedirectAttributes rttr){
+    public RedirectView loginOK(UserVO userVO, String userEmail, String userPw, RedirectAttributes rttr){
         log.info("---------------------");
         log.info("---loginPostMapping---");
         log.info("---------------------");
-        log.info("userVO : " + userVO.toString());
-        log.info("userMapper출력문 : "+userService.login(inputEmail, inputPw));
-        log.info("userVO : " + userVO);
+        log.info("userService출력문 : "+userService.login(userEmail, userPw));
 
-        rttr.addFlashAttribute("userNumber", userService.login(inputEmail,inputPw));
+        rttr.addFlashAttribute("userVO", userService.login(userEmail,userPw));
+        userVO = userService.login(userEmail, userPw);
 
-        if(userService.login(inputEmail, inputPw) < 1){  // 사용자의 번호가 인식되지 않는다면
+        if(userVO == null){  // 사용자의 번호가 인식되지 않는다면
             log.info("---로그인 실패---");
-            log.info("사용자가 입력한 이메일 : " + inputEmail);    // 사용자가 입력한 이메일
-            log.info("사용자가 입력한 Pw : " + inputPw);   // 사용자가 입력한 Pw
+            log.info("userVO : " + userVO);
+            log.info("사용자가 입력한 이메일 : " + userEmail);    // 사용자가 입력한 이메일
+            log.info("사용자가 입력한 Pw : " + userPw);   // 사용자가 입력한 Pw
             return new RedirectView("/user/login");
         }
 
         log.info("---로그인 성공---");
-        log.info("사용자가 입력한 이메일 : " + inputEmail);    // 사용자가 입력한 이메일
-        log.info("사용자가 입력한 Pw : " + inputPw);   // 사용자가 입력한 Pw
+        log.info("userVO : " + userVO);
+        log.info("사용자가 입력한 이메일 : " + userEmail);    // 사용자가 입력한 이메일
+        log.info("사용자가 입력한 Pw : " + userPw);   // 사용자가 입력한 Pw
         return new RedirectView("/index");
     }
 
