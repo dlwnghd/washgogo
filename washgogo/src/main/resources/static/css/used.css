@@ -3,19 +3,19 @@
 section#bigbox{
   width: 1000px;
   margin: auto;
+  background-color:#dcdcdc;
 }
 div.top{
-	background-color:black;
 	margin:auto 0;
 	padding-left:10px;
 }
 p.color{
-	color:white;
 	padding-top:20px;
 	padding-bottom:20px;
+	font-size:small;
 }
 h1.headcolor{
-	color:#B2FA5C;
+	color:#00BA86;
 }
 .arr span {
 }
@@ -44,10 +44,12 @@ div.lists{
 }
 span.loca{
 	display:inline-block;
+	font-size:small;
 }
 span.loca1{
 	display:inline-block;
 	float:right;
+	font-size:small;
 }
 ul {
   border-top: 2px solid #939393;	
@@ -85,11 +87,14 @@ strong.right{
 }
 span.price{
 	color: #939393;
+	font-size:small;
 }
 span.priceright{
 	display:inline-block;
 	color: #939393;
 	float:right;
+	font-size:small;
+	
 }
 div.terrible{
 	padding-top:10px;
