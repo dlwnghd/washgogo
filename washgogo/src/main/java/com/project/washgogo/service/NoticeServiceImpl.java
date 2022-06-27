@@ -28,18 +28,18 @@ public class NoticeServiceImpl implements NoticeService  {
         return noticeDAO.findByNoticeNumber(noticeNumber);
     }
 
-    //@Override
-    //public boolean modify(BoardVO boardVO) {
-    //    return boardDAO.modify(boardVO);
-    //}
+    @Override
+    public boolean modify(NoticeVO noticeVO) {
+        return noticeDAO.modify(noticeVO);
+    }
 
-    //@Override
-    //public boolean remove(Long boardNumber) {
-    //    return boardDAO.remove(boardNumber);
-    //}
+    @Override
+    public boolean remove(Long noticeNumber) {
+        return noticeDAO.remove(noticeNumber);
+    }
 
-    //@Override
-    //public int getTotal(Criteria criteria) {
-    //    return boardDAO.getTotal(criteria);
-    //}
+    @Override
+    public int getTotal(Criteria criteria) {
+        return noticeDAO.getTotal(criteria);
+    }
 }

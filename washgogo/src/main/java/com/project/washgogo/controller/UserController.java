@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/user/*")
 @RequiredArgsConstructor
@@ -32,11 +34,11 @@ public class UserController {
         log.info("-------------------------");
         return "/user/myPage";
     }
-
+    //공지 추가 링크
     @GetMapping("noticeAdd")
     public void noticeAdd(){
     };
-
+    //공지사항
     @GetMapping("notice")
     public String getList(Criteria criteria, Model model){
         //log.info("----------------------------");
@@ -44,10 +46,10 @@ public class UserController {
         //log.info("----------------------------");
 
         model.addAttribute("noticeList", noticeService.getList(criteria));
-        //model.addAttribute("pageDTO", new PageDTO(criteria, noticeService.getTotal(criteria)));
+        model.addAttribute("pageDTO", new PageDTO(criteria, noticeService.getTotal(criteria)));
         return "/user/notice";
     }
-
+    //신규 공지사항 추가
     @PostMapping("add")
     public RedirectView add(NoticeVO noticeVO, RedirectAttributes rttr){
         log.info("----------------------------");
@@ -63,7 +65,37 @@ public class UserController {
 //        rttr.addAttribute("boardNumber", boardVO.getBoardNumber());
         return new RedirectView("/user/notice");
     }
+    //공지사항 내용 조회 및 해당 noticeNumber 수정 폼 이동(조회 이유는 수정 폼 페이지 띄우기 위함)
+    @GetMapping({"noticeEdit", "modify"})
+    public void read(Long noticeNumber, HttpServletRequest req, Model model){
+    //    log.info("----------------------------");
+    //    log.info(req.getRequestURI() + "............. : " + boardNumber);
+    //    log.info("----------------------------");
+        model.addAttribute("notice", noticeService.get(noticeNumber));
+    }
+    //수정
+    @PostMapping("modify")
+    public RedirectView modify(NoticeVO noticeVO, RedirectAttributes rttr){
+    //    log.info("----------------------------");
+    //    log.info("modify............. : " + noticeVO);
+    //    log.info("----------------------------");
+          noticeService.modify(noticeVO);
+//        컨트롤러에서 다른 컨트롤러의 매개변수로 파라미터를 전달할 때에는
+//        addAttribute(), 쿼리스트링 방식으로 전달해야 받을 수 있다.
+//        Flash방식은 최종 응답 화면에서 사용될 파라미터를 전달할 때에만 사용하도록 한다.
+          rttr.addAttribute("noticeNumber", noticeVO.getNoticeNumber());
+          return new RedirectView("/user/notice");
+    }
+    //    삭제
+    @PostMapping("remove")
+    public String remove(Long noticeNumber, Criteria criteria, Model model){
+        //log.info("----------------------------");
+        //log.info("remove............. : " + noticeNumber);
+        //log.info("----------------------------");
 
+        noticeService.remove(noticeNumber);
+        return getList(criteria, model);
+    }
     @GetMapping("point")
     public String point(UserVO userVO) {
         log.info(userVO.toString());
