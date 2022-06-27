@@ -7,6 +7,7 @@ import com.project.washgogo.mapper.UserMapper;
 import com.project.washgogo.service.UserService;
 import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.NoticeService;
+import com.project.washgogo.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.User;
@@ -27,11 +28,15 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
     private final UserService userService;
     private final NoticeService noticeService;
+    private final UserDAO userDAO;
+    private final UserMapper userMapper;
 
     @GetMapping("myPage")
-    public String myPage(UserVO userVO){
+    public String myPage(UserVO userVO, Model model){
         log.info("-------------------------");
         log.info(userVO.toString());
+        //1l 자리에 세션을 통해 가져온 userNumber 들어갈 것
+        model.addAttribute("userVO", userService.loadUserInfo(1l));
         log.info("-------------------------");
         return "/user/myPage";
     }
@@ -104,10 +109,11 @@ public class UserController {
         return "/user/point";
     }
 
-
     @GetMapping("modifyingInformation")
-    public String modifyingInformation(UserVO userVO){
+    public String modifyingInformation(UserVO userVO, Model model){
         log.info(userVO.toString());
+        //1l 자리에 세션을 통해 가져온 userNumber 들어갈 것
+        model.addAttribute("userVO", userService.loadUserInfo(1l));
         return "/user/modifyingInformation";
     }
 
@@ -185,6 +191,7 @@ public class UserController {
         log.info("---로그인 성공---");
         log.info("사용자가 입력한 이메일 : " + inputEmail);    // 사용자가 입력한 이메일
         log.info("사용자가 입력한 Pw : " + inputPw);   // 사용자가 입력한 Pw
+        log.info(userVO.toString());
         return new RedirectView("/index");
     }
 
