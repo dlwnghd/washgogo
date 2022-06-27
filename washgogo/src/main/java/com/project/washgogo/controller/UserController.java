@@ -3,6 +3,7 @@ package com.project.washgogo.controller;
 import com.project.washgogo.domain.dao.UserDAO;
 import com.project.washgogo.domain.vo.OrderVO;
 import com.project.washgogo.domain.vo.UserVO;
+import com.project.washgogo.mapper.UserMapper;
 import com.project.washgogo.service.UserService;
 import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.NoticeService;
@@ -136,35 +137,55 @@ public class UserController {
         return "/user/paymentDetails";
     }
 
-//    로그인 / 회원가입
-    @GetMapping("/join")
+//    ###로그인 / 회원가입###
+//    회원가입 페이지로 이동
+    @GetMapping("join")
     public String join(){
         log.info("--------join/Get---------");
         return "/user/join";
-}
-
-    @PostMapping("/join")
-    public String joinOK(UserVO userVO){
-        log.info("--------join/Post---------");
-        log.info(userVO.toString());
-        log.info("---------------------");
-        return "/user/join";
     }
-
-    @GetMapping("/login")
-    public String login(UserVO userVO){
-        log.info("---------------------");
-        log.info(userVO.toString());
+//    회원가입
+    @PostMapping("join")
+    public String joinOK(Model model){
+        log.info("--------joinOK/Post---------");
+//        log.info(userVO.toString());
         log.info("---------------------");
         return "/user/login";
     }
 
-    @PostMapping("/login")
-    public String loginOK(UserVO userVO){
+
+//    로그인 페이지로 이동
+    @GetMapping("login")
+    public String login(){
         log.info("---------------------");
-        log.info(userVO.toString());
+        log.info("---loginGetMapping---");
         log.info("---------------------");
-        return "/index";
+        return "/user/login";
+    }
+
+//    로그인 페이지로 이동
+    @PostMapping("login")
+    public RedirectView loginOK(UserVO userVO, String inputEmail, String inputPw, RedirectAttributes rttr){
+        log.info("---------------------");
+        log.info("---loginPostMapping---");
+        log.info("---------------------");
+        log.info("userVO : " + userVO.toString());
+        log.info("userMapper출력문 : "+userService.login(inputEmail, inputPw));
+        log.info("userVO : " + userVO);
+
+        rttr.addFlashAttribute("userNumber", userService.login(inputEmail,inputPw));
+
+        if(userService.login(inputEmail, inputPw) < 1){  // 사용자의 번호가 인식되지 않는다면
+            log.info("---로그인 실패---");
+            log.info("사용자가 입력한 이메일 : " + inputEmail);    // 사용자가 입력한 이메일
+            log.info("사용자가 입력한 Pw : " + inputPw);   // 사용자가 입력한 Pw
+            return new RedirectView("/user/login");
+        }
+
+        log.info("---로그인 성공---");
+        log.info("사용자가 입력한 이메일 : " + inputEmail);    // 사용자가 입력한 이메일
+        log.info("사용자가 입력한 Pw : " + inputPw);   // 사용자가 입력한 Pw
+        return new RedirectView("/index");
     }
 
     @GetMapping("/findIdPw")
