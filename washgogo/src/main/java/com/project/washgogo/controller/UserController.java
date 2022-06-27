@@ -7,10 +7,8 @@ import com.project.washgogo.mapper.UserMapper;
 import com.project.washgogo.service.UserService;
 import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.NoticeService;
-import com.project.washgogo.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +34,7 @@ public class UserController {
         log.info("-------------------------");
         log.info(userVO.toString());
         //1l 자리에 세션을 통해 가져온 userNumber 들어갈 것
-        model.addAttribute("userVO", userService.loadUserInfo(1l));
+        model.addAttribute("userVO", userService.loadUserInfo(userVO.getUserNumber()));
         log.info("-------------------------");
         return "/user/myPage";
     }
@@ -111,9 +109,8 @@ public class UserController {
 
     @GetMapping("modifyingInformation")
     public String modifyingInformation(UserVO userVO, Model model){
-        log.info(userVO.toString());
         //1l 자리에 세션을 통해 가져온 userNumber 들어갈 것
-        model.addAttribute("userVO", userService.loadUserInfo(1l));
+        model.addAttribute("userVO", userService.loadUserInfo(userVO.getUserNumber()));
         return "/user/modifyingInformation";
     }
 
@@ -122,7 +119,7 @@ public class UserController {
         log.info("----------------------------");
         log.info(userVO.toString());
         log.info("----------------------------");
-//        userService.modifyUserInfo(userVO);
+        userService.modifyUserInfo(userVO);
         return "/user/myPage";
     }
 
@@ -192,15 +189,10 @@ public class UserController {
         }
 
         log.info("---로그인 성공---");
-<<<<<<< HEAD
         log.info("userVO : " + userVO);
         log.info("사용자가 입력한 이메일 : " + userEmail);    // 사용자가 입력한 이메일
         log.info("사용자가 입력한 Pw : " + userPw);   // 사용자가 입력한 Pw
-=======
-        log.info("사용자가 입력한 이메일 : " + inputEmail);    // 사용자가 입력한 이메일
-        log.info("사용자가 입력한 Pw : " + inputPw);   // 사용자가 입력한 Pw
         log.info(userVO.toString());
->>>>>>> a21100cb4ac2ed79427a6ad99af7065bb7d1bd5d
         return new RedirectView("/index");
     }
 
