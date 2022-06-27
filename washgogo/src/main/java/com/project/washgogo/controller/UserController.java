@@ -192,15 +192,10 @@ public class UserController {
         }
 
         log.info("---로그인 성공---");
-<<<<<<< HEAD
         log.info("userVO : " + userVO);
         log.info("사용자가 입력한 이메일 : " + userEmail);    // 사용자가 입력한 이메일
         log.info("사용자가 입력한 Pw : " + userPw);   // 사용자가 입력한 Pw
-=======
-        log.info("사용자가 입력한 이메일 : " + inputEmail);    // 사용자가 입력한 이메일
-        log.info("사용자가 입력한 Pw : " + inputPw);   // 사용자가 입력한 Pw
         log.info(userVO.toString());
->>>>>>> a21100cb4ac2ed79427a6ad99af7065bb7d1bd5d
         return new RedirectView("/index");
     }
 
