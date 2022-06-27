@@ -66,6 +66,11 @@ public class WashGoGoController {
 //
 //    }
 
+    @GetMapping("used")
+    public String used(){
+        return "/used";
+    }
+
 
 
 }

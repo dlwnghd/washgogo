@@ -112,7 +112,7 @@
                                 <li add="" class="item-container password">
                                     <div add="" class="item">
                                         <div add="" class="item-title">비밀번호</div>
-                                        <div add="" id="PASSWORD" class="item-info" type="password" th:text="${userVO.userPw}"></div>
+                                        <div add="" id="PASSWORD" class="item-info" type="password" th:text ="${userVO.userPw}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""
@@ -139,7 +139,7 @@
                                 <li add="" class="item-container addressDetail">
                                     <div add="" class="item">
                                         <div add="" class="item-title">공동현관 출입방법</div>
-                                        <div add="" id="ADDRESSDETAIL" class="item-info">안알랴쥼</div>
+                                        <div add="" id="ADDRESSDETAIL" class="item-info" th:text="${userVO.userEntranceType} + ${userVO.userEntrancePw}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""

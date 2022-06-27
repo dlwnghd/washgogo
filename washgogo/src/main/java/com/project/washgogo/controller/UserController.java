@@ -118,8 +118,11 @@ public class UserController {
     }
 
     @PostMapping("modifyingInformation")
-    public String modifyingInformationOK(UserVO userVO){
+    public String modifyingInformationModify(UserVO userVO){
+        log.info("----------------------------");
         log.info(userVO.toString());
+        log.info("----------------------------");
+//        userService.modifyUserInfo(userVO);
         return "/user/myPage";
     }
 
