@@ -12,11 +12,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderDAO {
     private final OrderMapper orderMapper;
-
     //    주문내역 가져오기
     public List<OrderVO> getList() { return orderMapper.getList(); }
+    //    주문번호로 조회
+    public OrderVO findByBoardNumber(Long boardNumber){
+        return boardMapper.select(boardNumber);
+    }
     //    수거 신청
-    public void requestApply(OrderVO orderVO, OrderListVO orderListVO) { orderMapper.insert(orderVO, orderListVO);}
+    public void applyRequest(OrderVO orderVO, OrderListVO orderListVO) { orderMapper.insert(orderVO, orderListVO);}
     //    이용 내역
     public OrderVO getLog(Long orderNumber) { return orderMapper.select(orderNumber);}
     //    총 수량 구하기

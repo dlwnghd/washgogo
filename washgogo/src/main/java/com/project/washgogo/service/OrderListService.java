@@ -19,4 +19,7 @@ public class OrderListService {
     public void addList(OrderListVO orderListVO, OrderVO orderVO) {
         orderListDAO.addList(orderListVO, orderVO);
     }
+    public OrderListVO getLog(Long orderNumber) {
+        return OrderListVO.getLog(orderNumber);
+    }
 }

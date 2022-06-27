@@ -2,9 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.washgogo.mapper.OrderListMapper">
     <!--주문내역 리스트-->
-    <select id="getList" resultType="OrderListVO">
+    <select id="select" resultType="OrderListVO">
         SELECT ORDER_NUMBER, LAUNDRY_NUMBER, ORDER_PM_CHOOSE, ORDER_PM_OPTION, ORDER_PM_MESSAGE, ORDER_TYPE, ORDER_EA_QUANTITY
         FROM TBL_ORDERLIST
     </select>
+
+    <!--주문내역 추가-->
+    <insert id="applyRequest">
+        INSERT INTO TBL_ORDERLIST (ORDER_NUMBER, LAUNDRY_NUMBER, ORDER_PM_CHOOSE, ORDER_PM_OPTION, ORDER_PM_MESSAGE, ORDER_TYPE, ORDER_EA_QUANTITY)
+        VALUES(#{orderNumber}, #{laundryNumber}, #{orderPmChoose}, #{orderPmOption}, #{orderPmMessage}, #{orderType}, #{orderEaQuantity})
+    </insert>
 
 </mapper>
