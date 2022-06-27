@@ -24,3 +24,28 @@ $checkboxes.on("click", function(){
         $(this).parent("label").removeClass("active");
     }
 });
+
+/* 가입버튼 클릭 이벤트 */
+const $subscribeBtn = $("#subscribeBtn");
+$subscribeBtn.on("click", function () {
+    if(checkForm()){
+        serviceForm.submit();
+    }
+})
+
+function checkForm() {
+    if(!$("input[name='useAgreement']").is(":checked")){
+        alert("이용약관에 동의해주세요.");
+        return false;
+    }
+    if(!$("input[name='personalInfoAgreement']").is(":checked")){
+        alert("개인정보 수집 및 이용에 동의해주세요.");
+        return false;
+    }
+    if(!$("input[name='serviceAgreement']").is(":checked")){
+        alert("서비스 이용사항에 동의해주세요.");
+        return false;
+    }
+
+    return true;
+}

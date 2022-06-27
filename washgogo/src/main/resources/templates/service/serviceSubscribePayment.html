@@ -27,92 +27,60 @@
                 <section class="address">
                     <div class="title">
                         <h2>수거/배송 주소</h2>
-                        <a id="modify">수정 ></a>
+                        <a id="modify" href="/serviceSubscribeAddress">수정 ></a>
                     </div>
-                    <div class ="inner">
+                    <div class ="inner" th:object="${userVO}">
                         <p id="address-wrap">
-                            <span id="address">서울특별시 강남구 강남대로 242(크리스탈빌딩)</span>
-                            <span id="addressDetail">A동 1004호</span>
+                            <span id="address" th:text="*{userAddress}"></span>
+                            <span id="addressDetail" th:text="*{userAddressDetail}"></span>
                         </p>
                         <p id="getin-wrap" class="info">
-                            <span id="means">공동현관 비밀번호</span><span class="colon">:</span>
-                            <span id="msg">#1234</span>
+                            <span id="means" th:text="*{userEntranceType}"></span><span class="colon"> :</span>
+                            <span th:text="*{userEntrancePw}" th:if="*{userEntrancePw != null}"></span>
+                            <span th:text="*{userEntranceMessage}" th:if="*{userEntranceMessage != null}"></span>
                         </p>
                     </div>
                 </section>
             </div>
             <div class="content-wrap">
-                <section class="laundret-choice">
-                    <div class="title">
-                        <h2>런드렛 선택</h2>
-                        <p class="info">
-                            고객님의 라이프스타일에 맞는 런드렛을 선택하세요.<br>
-                            세탁 완료 후 배송 시 런드렛에 담아 보내드립니다.
-                        </p>
-                    </div>
-                    <ul class="choice-wrap">
-                        <li class="focus">
-                            <div class="recommend">추천</div>
-                            <div class="text-content">
-                                <p class="info">부피가 큰 의류에</p>
-                                <h3>런드렛 레귤러</h3>
-                            </div>
-                            <div class="image-content"></div>
-                        </li>
-                        <li>
-                            <div class="text-content">
-                                <p class="info">부피가 적은 의류에</p>
-                                <h3>런드렛 미니</h3>
-                            </div>
-                            <div class="image-content"></div>
-                        </li>
-                    </ul>
-                    <div class="more-info">
-                        <a>런드렛 알아보기 ></a>
-                    </div>
-                </section>
-            </div>
-            <div class="content-wrap">
-                <section class="payment-info">
-                    <div class="title">
-                        <h2>결제 정보</h2>
-                        <a id="modifyCard">카드 변경 ></a>
-                    </div>
-                    <div class="beforeRegister">
-                        <button type="button" class="pay">+ 결제카드 등록</button>
-                        <ul>
-                            <li>
-                                <p class="info">타인 명의로 된 신용카드는 등록하실 수 없습니다.</p>
-                            </li>
-                            <li>
-                                <p class="info">[MY > 내정보 > 결제 정보]에서 결제카드를 변경하실 수 있습니다.</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="afterRegister">
-                        <div class="card-info">
-                            <h2 class="card-name">하나카드</h2>
-                            <div class="card-number">
-                                <input type="password" value="1234">
-                                <input type="password" value="1234">
-                                <input type="password" value="1234">
-                                <input type="text" value="1004">
-                            </div>
+                <section class="launderette-choice">
+                    <form name="serviceForm" action="/user/servicePaymentOk" method="post">
+                        <input type="hidden" name="userNumber" value="1">
+                        <input type="hidden" name="userServiceType" value="여러 번 이용">
+                        <div class="title">
+                            <h2>런드렛 선택</h2>
+                            <p class="info">
+                                고객님의 라이프스타일에 맞는 런드렛을 선택하세요.<br>
+                                세탁 완료 후 배송 시 런드렛에 담아 보내드립니다.
+                            </p>
                         </div>
-                        <ul>
+                        <ul class="choice-wrap">
+                            <li class="focus">
+                                <label>
+                                    <input type="radio" style="display: none" name="userLaunderetteType" value="Regular" checked>
+                                    <div class="recommend">추천</div>
+                                    <div class="text-content">
+                                        <p class="info">부피가 큰 의류에</p>
+                                        <h3>런드렛 레귤러</h3>
+                                    </div>
+                                    <div class="image-content"></div>
+                                </label>
+                            </li>
                             <li>
-                                <p class="info">선택하신 카드로 결제 금액이 자동결제 됩니다.</p>
+                                <label>
+                                    <input type="radio" style="display: none" name="userLaunderetteType" value="Mini">
+                                    <div class="text-content">
+                                        <p class="info">부피가 적은 의류에</p>
+                                        <h3>런드렛 미니</h3>
+                                    </div>
+                                    <div class="image-content"></div>
+                                </label>
                             </li>
                         </ul>
-                    </div>
-                    <div class="line"></div>
-                    <div class="check-wrap">
-                        <label>
-                            <div class="check"></div>
-                            <input type="checkbox" name="auto-payment-agree" value="agree">
-                            <p>결제 정보 저장 및 자동결제에 동의합니다.</p>
-                        </label>
-                    </div>
+                        <div class="more-info">
+                            <a>런드렛 알아보기 ></a>
+                        </div>
+                    </form>
                 </section>
             </div>
             <div class="content-wrap">
@@ -154,7 +122,7 @@
                     </ul>
                 </section>
                 <div class="btn-area">
-                    <button type="button" class="btn-subscribe">서비스 가입하기</button>
+                    <button type="button" class="btn-subscribe" id="subscribeBtn">서비스 가입하기</button>
                 </div>
             </div>
         </div>
