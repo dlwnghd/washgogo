@@ -1,8 +1,6 @@
 package com.project.washgogo.controller;
 
 import com.project.washgogo.domain.dao.UserDAO;
-import com.project.washgogo.domain.vo.OrderVO;
-import com.project.washgogo.domain.vo.UserVO;
 import com.project.washgogo.mapper.UserMapper;
 import com.project.washgogo.service.UserService;
 import com.project.washgogo.domain.vo.*;
@@ -30,12 +28,13 @@ public class UserController {
     private final UserMapper userMapper;
 
     @GetMapping("myPage")
-    public String myPage(UserVO userVO, Model model){
+    public String myPage(UserVO userVO, Model model, RedirectAttributes rttr){
         log.info("-------------------------");
         log.info(userVO.toString());
-        //1l 자리에 세션을 통해 가져온 userNumber 들어갈 것
-        model.addAttribute("userVO", userService.loadUserInfo(userVO.getUserNumber()));
         log.info("-------------------------");
+        rttr.addAttribute("userNumber", userVO.getUserNumber());
+        //세션을 통해 가져온 userNumber 들어갈 것
+//      model.addAttribute("userVO", userService.loadUserInfo(userVO.getUserNumber()));
         return "/user/myPage";
     }
     //공지 추가 링크
@@ -108,19 +107,22 @@ public class UserController {
     }
 
     @GetMapping("modifyingInformation")
-    public String modifyingInformation(UserVO userVO, Model model){
+    public String modifyingInformation(UserVO userVO, Model model, RedirectAttributes rttr){
         //1l 자리에 세션을 통해 가져온 userNumber 들어갈 것
-        model.addAttribute("userVO", userService.loadUserInfo(userVO.getUserNumber()));
+        rttr.addAttribute("userNumber", userVO.getUserNumber());
+//        model.addAttribute("userVO", userService.loadUserInfo(userVO.getUserNumber()));
         return "/user/modifyingInformation";
     }
 
     @PostMapping("modifyingInformation")
-    public String modifyingInformationModify(UserVO userVO){
+    public RedirectView modifyingInformationModify(UserVO userVO, RedirectAttributes rttr){
         log.info("----------------------------");
         log.info(userVO.toString());
         log.info("----------------------------");
+
         userService.modifyUserInfo(userVO);
-        return "/user/myPage";
+        rttr.addFlashAttribute("userNumber", userVO.getUserNumber());
+        return new RedirectView("/user/modifyingInformation");
     }
 
     @GetMapping("useService")
