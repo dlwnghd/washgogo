@@ -99,6 +99,7 @@
                                                     <td class="more-info" colspan="2" >
                                                         <div>
                                                             <p th:text="*{noticeContent}"></p>
+                                                            <a th:href="@{/user/noticeEdit(noticeNumber=*{noticeNumber})}">편집</a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -209,6 +210,20 @@
                     </div>
                 </div>
             </div>
+            <div class="big-width" style="text-align: center">
+                <a class="changePage" th:if="${pageDTO.prev}" th:href="${pageDTO.startPage - 1}"><code>&lt;</code></a>
+                <th:block th:each="num:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">
+                    <code th:text="${num}" th:if="${pageDTO.criteria.pageNum == num}"></code>
+                    <a class="changePage" th:unless="${pageDTO.criteria.pageNum == num}" th:href="${num}"><code th:text="${num}"></code></a>
+                </th:block>
+                <a class="changePage" th:if="${pageDTO.next}" th:href="${pageDTO.endPage + 1}"><code>&gt;</code></a>
+            </div>
+            <form action="/user/notice" th:object="${criteria}" name="pageForm">
+                <input type="hidden" th:field="*{pageNum}">
+                <input type="hidden" th:field="*{amount}">
+                <input type="hidden" th:field="*{type}">
+                <input type="hidden" th:field="*{keyword}">
+            </form>
             <!---- App-Footer ---->
             <nav id="app-footer" class="footer-container">
                 <div class="footer-container-row">

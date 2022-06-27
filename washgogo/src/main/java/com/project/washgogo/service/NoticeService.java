@@ -11,7 +11,7 @@ public interface NoticeService {
     public List<NoticeVO> getList(Criteria criteria);
     public void add(NoticeVO noticeVO);
     public NoticeVO get(Long noticeNumber);
-    //public boolean modify(BoardVO boardVO);
-    //public boolean remove(Long boardNumber);
-    //public int getTotal(Criteria criteria);
+    public boolean modify(NoticeVO noticeVO);
+    public boolean remove(Long noticeNumber);
+    public int getTotal(Criteria criteria);
 }

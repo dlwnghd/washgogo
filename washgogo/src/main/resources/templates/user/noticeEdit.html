@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>공지사항 수정</title>
+</head>
+<body>
+<form method="post" action="/user/modify" id="modify">
+    <div th:object="${notice}">
+        <input type="text" th:field="*{noticeNumber}" style="display:none"/>
+        <input name="noticeTitle" th:field="*{noticeTitle}" type="text" />
+        <textarea name="noticeContent" rows="6" th:field="*{noticeContent}"></textarea>
+        <button type="submit">수정</button>
+    </div>
+</form>
+<form method="post" action="/user/remove" id="removeForm">
+    <div th:object="${notice}">
+        <input type="text" th:field="*{noticeNumber}" style="display:none"/>
+        <input name="noticeTitle" th:field="*{noticeTitle}" type="text" style="display:none"/>
+        <textarea name="noticeContent" rows="6" th:field="*{noticeContent}" style="display:none"></textarea>
+        <button type="button" onclick="remove()">삭제</button>
+    </div>
+</form>
+</body>
+<script th:inline="javascript">
+    let removeForm = document.getElementById("removeForm")
+    function remove(){
+        var result = confirm("정말로 삭제 하시겠습니까?");
+        if(result == true){
+            removeForm.submit();
+        }else{
+            alert("삭제가 취소 되었습니다");
+        }
+    }
+</script>
+</html>
