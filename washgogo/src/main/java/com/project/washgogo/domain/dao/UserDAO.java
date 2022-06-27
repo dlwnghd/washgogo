@@ -17,7 +17,7 @@ public class UserDAO {
     //    회원가입
     public void join(UserVO userVO) {userMapper.insert(userVO); }
     //    로그인
-    public long selectUser(String userEmail, String userPw){return userMapper.login(userEmail, userPw);}
+    public UserVO selectUser(String userEmail, String userPw){return userMapper.login(userEmail, userPw);}
     //    마이페이지 내용 불러오기
     public UserVO loadUserInfo(Long userNumber) {
         return userMapper.selectUserInfo(userNumber);
