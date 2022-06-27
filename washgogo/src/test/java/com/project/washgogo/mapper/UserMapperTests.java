@@ -25,6 +25,23 @@ public class UserMapperTests {
 //        log.info("----------------------------");
 //    }
 
+//    회원가입 테스트
+//    @Test
+//    public void insertTest(){
+//        UserVO userVO = new UserVO();
+//        userVO.setUserEmail("tttt@naver.com");
+//        userVO.setUserPw("123456");
+//        userVO.setUserName("이주홍2");
+//        userVO.setUserPhonenum("01099999999");
+//        userMapper.insert(userVO);
+//    }
+
+    //    로그인 테스트
+//    @Test
+//    public void loginTest(){
+//        log.info(""+userMapper.login("alion0513@naver.com","1234"));
+//    }
+
     // 테스트 완료
 //    @Test
 //    public void selectUserInfoTest(){
