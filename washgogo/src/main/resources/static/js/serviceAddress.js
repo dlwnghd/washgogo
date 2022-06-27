@@ -20,7 +20,7 @@ function sample4_execDaumPostcode() {
 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             $addressInput.val(roadAddr);
-
+            $addressInput.attr("value", roadAddr);
         },
         onclose: function(state) {
             //state는 우편번호 찾기 화면이 어떻게 닫혔는지에 대한 상태 변수 이며, 상세 설명은 아래 목록에서 확인하실 수 있습니다.
@@ -149,7 +149,7 @@ function checkForm(){
         $nextBtn.addClass("disabled");
         return;
     }
-    if(!$("input[name='getInMeans']").is(":checked")){
+    if(!$("input[name='userEntranceType']").is(":checked")){
         $nextBtn.attr("disabled", true);
         $nextBtn.addClass("disabled");
         return;
@@ -169,6 +169,7 @@ function checkForm(){
         }
     }
 
+    $addressInput.attr("disabled", false);
     $nextBtn.attr("disabled", false);
     $nextBtn.removeClass("disabled");
     return;

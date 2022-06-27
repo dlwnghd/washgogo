@@ -135,7 +135,7 @@ form[name="addressForm"] .get-in{
 form[name="addressForm"] .get-in .title h2{
     margin-top: 2rem;
 }
-form[name="addressForm"] .get-in input[name="getInMeans"]{
+form[name="addressForm"] .get-in input[name="userEntranceType"]{
     display: none;
 }
 form[name="addressForm"] .get-in .check{

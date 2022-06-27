@@ -56,12 +56,12 @@
     font-weight: 500;
     margin-bottom: 0.5rem;
 }
-.payment .laundret-choice .choice-wrap{
+.payment .launderette-choice .choice-wrap{
     display: flex;
     justify-content: space-evenly;
     margin: 2rem 0 3rem;
 }
-.payment .laundret-choice .choice-wrap li{
+.payment .launderette-choice .choice-wrap li{
     position: relative;
     display: flex;
     justify-content: center;
@@ -72,10 +72,10 @@
     border: 0.1625rem solid #eee;
     border-radius: 1rem;
 }
-.payment .laundret-choice .choice-wrap li.focus{
+.payment .launderette-choice .choice-wrap li.focus{
     border: 0.1625rem solid #000;
 }
-.payment .laundret-choice .choice-wrap .recommend{
+.payment .launderette-choice .choice-wrap .recommend{
     position: absolute;
     top: -1rem;
     left: 6rem;
@@ -88,34 +88,34 @@
     height: 1.5rem;
     text-align: center;
 }
-.payment .laundret-choice .choice-wrap .text-content{
+.payment .launderette-choice .choice-wrap .text-content{
     background-color: #f5f5f5;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     padding: 2rem 0;
     width: 100%;
 }
-.payment .laundret-choice .choice-wrap li .image-content{
+.payment .launderette-choice .choice-wrap li .image-content{
     width: 15rem;
     height: 20rem;
     background-size: cover;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
 }
-.payment .laundret-choice .choice-wrap li:first-child .image-content{
+.payment .launderette-choice .choice-wrap li:first-child .image-content{
     background: url("/img/laundretRegular.jpg") repeat center;
 }
-.payment .laundret-choice .choice-wrap li:last-child .image-content{
+.payment .launderette-choice .choice-wrap li:last-child .image-content{
     background: url("/img/laundretMini.jpg") repeat center;
 }
-.payment .laundret-choice .choice-wrap .text-content{
+.payment .launderette-choice .choice-wrap .text-content{
     text-align: center;
 }
-.payment .laundret-choice .more-info{
+.payment .launderette-choice .more-info{
     position: relative;
     height: 1rem;
 }
-.payment .laundret-choice .more-info > a{
+.payment .launderette-choice .more-info > a{
     display: block;
     width: 9rem;
     height: 2rem;

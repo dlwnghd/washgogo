@@ -25,7 +25,6 @@
 		<div class="join-page">
 			<h2>워시고고에 오신 것을<br>환영합니다</h2>
 			<div class="card">
-				<form action="/user/join" method="post">
 				<div class="join-container">
 					<div class="col">
 						<fieldset>
@@ -42,11 +41,11 @@
 						<fieldset>
 							<legend>이메일</legend>
 							<div>
-								<input id="inputemail" type="text" name="id" placeholder="example@washgogo.com">
+								<input type="text" name="id" placeholder="example@washgogo.com">
 							</div>
 							<div class="invalid-feedback">
 								<small>이메일 주소를 입력해주세요.</small>
-								 <small>올바른 이메일 주소를 입력해주세요.</small>
+								<!-- <small>올바른 이메일 주소를 입력해주세요.</small> -->
 							</div>
 						</fieldset>
 					</div>
@@ -97,7 +96,6 @@
 				<div class="findId">
 					<a href="findIdPw">사용 중인 계정이 기억나지 않으시나요?</a>
 				</div>
-				</form>
 			</div>
 		</div>
 		<div th:replace="~{/fragments/headerFooter :: footer}"></div>
@@ -759,5 +757,4 @@
 		$(".privacy-policy").show();
 	});
 </script>
-<script th:src="@{/js/join.js}"></script>
 </html>

@@ -2,14 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.washgogo.mapper.UserMapper">
     <select id="getList" resultType="userVO">
-        SELECT USER_NUMBER, USER_EMAIL, USER_PW, USER_NAME, USER_PHONENUM, USER_ADDRESS, USER_ENTRANCE_TYPE, USER_ENTRANCE_PW, USER_ENTRANCE_MESSAGE, USER_SERVICE_TYPE, USER_CARDNUM, USER_POINT
+        SELECT USER_NUMBER, USER_EMAIL, USER_PW, USER_NAME, USER_PHONENUM, USER_ADDRESS, USER_ENTRANCE_TYPE, USER_ENTRANCE_PW, USER_ENTRANCE_MESSAGE, USER_SERVICE_TYPE, USER_LAUNDERETTE_TYPE, USER_CARDNUM, USER_POINT
         FROM TBL_USER
     </select>
-
-    <!--이메일 확인-->
-    <select id="checkId" parameterType="string" resultType="_int">
-		select count(USER_NUMBER) FROM TBL_USER WHERE USER_EMAIL = #{userEmail}
-	</select>
 
     <!--회원 가입-->
     <insert id="insert">
@@ -20,38 +15,39 @@
         VALUES (#{userNumber}, #{userEmail}, #{userPw}, #{userName}, #{userPhonenum})
     </insert>
 
-    <!--로그인-->
-    <select id="login" resultType="userVO">
-        SELECT USER_NUMBER
-		FROM TBL_USER
-		WHERE USER_EMAIL = #{userEmail} AND USER_PW = #{userPw}
-	</select>
-
     <!--마이페이지-->
     <select id="selectUserInfo" resultType="userVO">
-        SELECT USER_EMAIL, USER_PW, USER_NAME, USER_PHONENUM, USER_ADDRESS, USER_ENTRANCE_TYPE, USER_ENTRANCE_PW, USER_ENTRANCE_MESSAGE, USER_SERVICE_TYPE, USER_CARDNUM
-        FROM TBL_USER;
+        SELECT USER_NUMBER, USER_EMAIL, USER_PW, USER_NAME, USER_PHONENUM, USER_ADDRESS, USER_ADDRESS_DETAIL, USER_ENTRANCE_TYPE, USER_ENTRANCE_PW, USER_ENTRANCE_MESSAGE, USER_SERVICE_TYPE, USER_LAUNDERETTE_TYPE, USER_CARDNUM
+        FROM TBL_USER
+        WHERE USER_NUMBER = #{userNumber}
     </select>
 
     <!--회원 정보 수정-->
     <update id="updateUserInfo">
         UPDATE TBL_USER
-        SET USER_EMAIL = #{userEmail}, USER_PW = #{userPw}, USER_NAME = #{userName}, USER_PHONENUM = #{userPhonenum}, USER_ADDRESS = #{userAddress}, USER_ENTRANCE_TYPE = #{userEntranceType}, USER_ENTRANCE_PW = #{userEntrancePw}, USER_ENTRANCE_MESSAGE = #{userEntranceMessage}, USER_SERVICE_TYPE = #{userServiceType}, USER_CARDNUM = #{userCardNum}
+        SET USER_EMAIL = #{userEmail}, USER_PW = #{userPw}, USER_NAME = #{userName}, USER_PHONENUM = #{userPhonenum}, USER_ADDRESS = #{userAddress},  USER_ADDRESS_DETAIL = #{userAddressDetail}, USER_ENTRANCE_TYPE = #{userEntranceType}, USER_ENTRANCE_PW = #{userEntrancePw}, USER_ENTRANCE_MESSAGE = #{userEntranceMessage}, USER_SERVICE_TYPE = #{userServiceType}, USER_CARDNUM = #{userCardNum}
         WHERE USER_NUMBER=#{userNumber}
     </update>
 
     <!--서비스 변경-->
     <update id="updateService">
         UPDATE TBL_USER
-        SET USER_SERVICE_TYPE = #{userServiceType}
+        <trim prefix="SET" suffixOverrides=",">
+            USER_SERVICE_TYPE = #{userServiceType},
+            <if test="userLaunderetteType != null">USER_LAUNDERETTE_TYPE = #{userLaunderetteType},</if>
+        </trim>
         WHERE USER_NUMBER=#{userNumber}
     </update>
 
     <!--주소 입력 및 수정-->
     <update id="updateAddress">
         UPDATE TBL_USER
-        SET USER_ADDRESS = #{userAddress}, USER_ENTRANCE_TYPE = #{userEntranceType}, USER_ENTRANCE_PW = #{userEntrancePw}, USER_ENTRANCE_MESSAGE = #{userEntranceMessage}
-        WHERE USER_NUMBER=#{userNumber}
+        <trim prefix="SET" suffixOverrides=",">
+            USER_ADDRESS = #{userAddress}, USER_ADDRESS_DETAIL = #{userAddressDetail}, USER_ENTRANCE_TYPE = #{userEntranceType},
+            <if test="userEntrancePw != null">USER_ENTRANCE_PW = #{userEntrancePw},</if>
+            <if test="userEntranceMessage != null">USER_ENTRANCE_MESSAGE = #{userEntranceMessage},</if>
+        </trim>
+        WHERE USER_NUMBER = #{userNumber}
     </update>
 
     <!--회원 탈퇴-->

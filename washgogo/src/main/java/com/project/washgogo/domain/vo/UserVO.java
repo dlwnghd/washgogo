@@ -1,8 +1,6 @@
 package com.project.washgogo.domain.vo;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,9 +12,12 @@ public class UserVO {
 	private String userEmail;
 	private String userPhonenum;
 	private String userAddress;
+	private String userAddressDetail;
 	private String userEntranceType;
 	private String userEntrancePw;
 	private String userEntranceMessage;
 	private String userServiceType;
+	private String userLaunderetteType;
 	private String userCardnum;
+	private String userPoint;
 }

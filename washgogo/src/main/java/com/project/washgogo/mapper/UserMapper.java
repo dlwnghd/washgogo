@@ -14,8 +14,6 @@ public interface UserMapper {
     public List<UserVO> getList();
 //    회원가입
     public void insert(UserVO userVO);
-//    로그인
-    public UserVO login(String userEmail, String userPw);
 //    마이페이지
     public UserVO selectUserInfo(Long userNumber);
 //    회원 정보 수정
@@ -26,4 +24,9 @@ public interface UserMapper {
     public int updateAddress(UserVO userVO);
 //    회원 탈퇴
     public int delete(Long userNumber);
+
+
+//    이주홍 연습용
+//    현재시간
+    public String getTime();
 }
