@@ -3,7 +3,10 @@ package com.project.washgogo.controller;
 import com.project.washgogo.domain.dao.UserDAO;
 import com.project.washgogo.domain.vo.OrderVO;
 import com.project.washgogo.domain.vo.UserVO;
+import com.project.washgogo.service.UserService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/user/*")
+@RequiredArgsConstructor
 @Slf4j
 public class UserController {
+    private final UserService userService;
+
     @GetMapping("myPage")
     public String myPage(UserVO userVO){
         log.info(userVO.toString());
@@ -111,6 +117,26 @@ public class UserController {
     public String resetPwOK(){
         return "/user/resetPw";
     }
-}
 
     // 자유이용서비스
+    @PostMapping("/serviceAddressOk")
+    public String serviceAddressOk(UserVO userVO){
+        log.info("-------------------------------------");
+        log.info("userVO : " + userVO.toString());
+        log.info("-------------------------------------");
+
+        userService.modifyAddress(userVO);
+        return "/service/serviceSubscribePayment";
+    }
+
+    @PostMapping("/servicePaymentOk")
+    public String servicePaymentOk(UserVO userVO){
+        log.info("-------------------------------------");
+        log.info("userVO : " + userVO.toString());
+        log.info("-------------------------------------");
+
+        userService.changeService(userVO);
+        return "/index";
+    }
+
+}

@@ -12,9 +12,11 @@ public class UserVO {
 	private String userEmail;
 	private String userPhonenum;
 	private String userAddress;
+	private String userAddressDetail;
 	private String userEntranceType;
 	private String userEntrancePw;
 	private String userEntranceMessage;
 	private String userServiceType;
+	private String userLaunderetteType;
 	private String userCardnum;
 }
