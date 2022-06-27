@@ -22,7 +22,8 @@
                     <p><strong>서비스</strong>를 이용하실<br>
                         주소를 입력해주세요.</p>
                 </div>
-                <form name ="addressForm" autocomplete="off" action="/serviceSubscribePayment">
+                <form name ="addressForm" autocomplete="off" action="/user/serviceAddressOk" method="post">
+                    <input type="hidden" name="userNumber" value="1">
                     <div class="form-row">
                         <div class="col">
                             <div class="title">
@@ -31,11 +32,11 @@
                             </div>
                         </div>
                         <div class="col">
-                            <input type="text" id="sample4_roadAddress"  class="address-input" placeholder="도로명, 지번, 건물명으로 검색해주세요.">
+                            <input type="text" id="sample4_roadAddress"  name="userAddress" class="address-input" placeholder="도로명, 지번, 건물명으로 검색해주세요.">
                             <div class="invalid-feedback">주소를 입력해주세요.</div>
                         </div>
                         <div class="col">
-                            <input type="text" id="addressDetail"  class="address-input" placeholder="상세주소를 입력해주세요.">
+                            <input type="text" id="addressDetail" name="userAddressDetail" class="address-input" placeholder="상세주소를 입력해주세요.">
                             <div class="invalid-feedback">상세주소를 입력해주세요.</div>
                         </div>
                         <div class="col">
@@ -49,16 +50,16 @@
                                 <li>
                                     <label>
                                         <div class="check"></div>
-                                        <input type="radio" name="getInMeans" id="byPw" value="byPw">
+                                        <input type="radio" name="userEntranceType" id="byPw" value="공동현관 비밀번호">
                                         <p>공동현관 비밀번호</p>
                                     </label>
-                                    <input type="text" id="entrancePw" class="getin-input" placeholder="예) 종 1234 열쇠, #*1234#">
+                                    <input type="text" name="userEntrancePw" id="entrancePw" class="getin-input" placeholder="예) 종 1234 열쇠, #*1234#">
                                     <p class="caution">비밀번호가 정확하지 않을 경우, 수거/배송이 불가능 할 수 있습니다.</p>
                                 </li>
                                 <li>
                                     <label>
                                         <div class="check"></div>
-                                        <input type="radio" name="getInMeans" id="freely" value="freely">
+                                        <input type="radio" name="userEntranceType" id="freely" value="자유 출입 가능">
                                         <p>자유 출입 가능 & 공동현관 없음</p>
                                     </label>
                                     <p class="caution">방문 시 자유 출입이 불가능한 경우, 수거/배송이 불가능 할 수 있습니다.</p>
@@ -66,7 +67,7 @@
                                 <li>
                                     <label>
                                         <div class="check"></div>
-                                        <input type="radio" name="getInMeans" id="byCall" value="byCall">
+                                        <input type="radio" name="userEntranceType" id="byCall" value="경비실 호출">
                                         <p>경비실 호출</p>
                                     </label>
                                     <p class="caution">방문 시점에 경비실 호출이 정상적으로 연결되지 않는 경우, 수거/배송이 불가능 할 수 있습니다.</p>
@@ -74,10 +75,10 @@
                                 <li>
                                     <label>
                                         <div class="check"></div>
-                                        <input type="radio" name="getInMeans" id="etc" value="etc">
+                                        <input type="radio" name="userEntranceType" id="etc" value="기타">
                                         <p>기타</p>
                                     </label>
-                                    <input type="text" id="howto-getin" class="getin-input" placeholder="예) 뒷쪽 문은 항상 열려 있습니다.">
+                                    <input type="text" name="userEntranceMessage" id="howto-getin" class="getin-input" placeholder="예) 뒷쪽 문은 항상 열려 있습니다.">
                                     <p class="caution">비밀번호가 정확하지 않을 경우, 수거 배송이 불가능 할 수 있습니다.</p>
                                 </li>
                             </ul>
