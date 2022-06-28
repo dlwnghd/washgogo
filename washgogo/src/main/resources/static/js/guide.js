@@ -37,7 +37,7 @@ $tabs.click(function(){
         $tabDepthCont.css("display", "flex");
         $tabDepths.removeClass("active");
         $tabDepths.eq(0).addClass("active");
-        $laundret.css("display", "block");
+        $launderette.css("display", "block");
         $lightbag.css("display", "none");
     } else {
         $serviceArea.css("display", "block");
@@ -46,7 +46,7 @@ $tabs.click(function(){
     }
 });
 
-const $laundret = $(".guide .laundret");
+const $launderette = $(".guide .launderette");
 const $lightbag = $(".guide .lightbag") ;
 
 $tabDepths.on("click", function(){
@@ -54,11 +54,11 @@ $tabDepths.on("click", function(){
     $tabDepths.removeClass("active");
     $tabDepths.eq(idx).addClass("active");
 
-    $laundret.css("display", "none");
+    $launderette.css("display", "none");
     $lightbag.css("display", "none");
 
     if(idx==0){
-        $laundret.css("display", "block");
+        $launderette.css("display", "block");
     } else {
         $lightbag.css("display", "block");
     }

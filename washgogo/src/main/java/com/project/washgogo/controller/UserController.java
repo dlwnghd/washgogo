@@ -1,17 +1,13 @@
 package com.project.washgogo.controller;
 
-<<<<<<< HEAD
-import com.project.washgogo.domain.dao.UserDAO;
+
 import com.project.washgogo.domain.vo.OrderVO;
 import com.project.washgogo.domain.vo.UserVO;
 import com.project.washgogo.service.UserService;
-=======
 import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.NoticeService;
->>>>>>> 8a5e1d83ffc05c70007a0c91c8419a276b9ca31c
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,11 +21,9 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequiredArgsConstructor
 @Slf4j
 public class UserController {
-<<<<<<< HEAD
     private final UserService userService;
-=======
     private final NoticeService noticeService;
->>>>>>> 8a5e1d83ffc05c70007a0c91c8419a276b9ca31c
+
 
     @GetMapping("myPage")
     public String myPage(UserVO userVO){
@@ -161,7 +155,7 @@ public class UserController {
         return "/user/resetPw";
     }
 
-    // 자유이용서비스
+
     @PostMapping("/serviceAddressOk")
     public String serviceAddressOk(UserVO userVO){
         log.info("-------------------------------------");
