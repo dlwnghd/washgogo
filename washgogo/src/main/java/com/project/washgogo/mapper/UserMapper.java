@@ -15,7 +15,7 @@ public interface UserMapper {
 //    회원가입
     public void insert(UserVO userVO);
 //    로그인
-    public UserVO login(String userEmail, String userPw);
+    public Long login(String userEmail, String userPw);
 //    마이페이지
     public UserVO selectUserInfo(Long userNumber);
 //    회원 정보 수정

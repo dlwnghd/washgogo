@@ -23,8 +23,8 @@
     </select>
 
     <!--로그인-->
-    <select id="login" resultType="userVO">
-        SELECT USER_NUMBER, USER_EMAIL, USER_PW, USER_NAME, USER_PHONENUM, USER_ADDRESS, USER_ADDRESS_DETAIL, USER_ENTRANCE_TYPE, USER_ENTRANCE_PW, USER_ENTRANCE_MESSAGE, USER_SERVICE_TYPE, USER_LAUNDERETTE_TYPE, USER_POINT
+    <select id="login" resultType="long">
+        SELECT USER_NUMBER
 		FROM TBL_USER
 		WHERE USER_EMAIL = #{userEmail} AND USER_PW = #{userPw}
 	</select>
