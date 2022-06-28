@@ -1,9 +1,5 @@
 package com.project.washgogo.controller;
 
-import com.project.washgogo.service.UserService;
-import com.project.washgogo.domain.vo.*;
-import com.project.washgogo.service.NoticeService;
-
 import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.NoticeService;
 import com.project.washgogo.service.UserService;
@@ -24,7 +20,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/user/*")
 @RequiredArgsConstructor
 @Slf4j
-public class UserController {
+public class    UserController {
     private final UserService userService;
     private final NoticeService noticeService;
 
@@ -39,7 +35,16 @@ public class UserController {
     public String modifyingInformation(UserVO userVO, HttpSession session, Model model){
         long number = (long)session.getAttribute("userNumber");
         model.addAttribute("loadUserInfo", userService.loadUserInfo(number));
+        log.info(userVO.toString());
         return "/user/modifyingInformation";
+    }
+
+    @PostMapping("modifyingInformation")
+    public RedirectView modifyingInformationModify(UserVO userVO, RedirectAttributes rttr){
+        userService.modifyUserInfo(userVO);
+        rttr.addFlashAttribute("userNumber", userVO.getUserNumber());
+        log.info(userVO.toString());
+        return new RedirectView("/user/modifyingInformation");
     }
 
     //공지 추가 링크
@@ -113,19 +118,6 @@ public class UserController {
     @GetMapping("point")
     public String point(UserVO userVO) {
         return "/user/point";
-    }
-
-
-
-    @PostMapping("modifyingInformation")
-    public RedirectView modifyingInformationModify(UserVO userVO, RedirectAttributes rttr){
-        log.info("----------------------------");
-        log.info(userVO.toString());
-        log.info("----------------------------");
-
-        userService.modifyUserInfo(userVO);
-        rttr.addFlashAttribute("userNumber", userVO.getUserNumber());
-        return new RedirectView("/user/modifyingInformation");
     }
 
     @GetMapping("useService")
