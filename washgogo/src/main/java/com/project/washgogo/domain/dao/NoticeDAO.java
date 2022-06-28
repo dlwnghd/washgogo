@@ -28,16 +28,16 @@ public class NoticeDAO {
         return noticeMapper.select(noticeNumber);
     }
     //    게시글 수정
-    //public boolean modify(BoardVO boardVO){
-    //    return boardMapper.update(boardVO) == 1;
-    //}
+    public boolean modify(NoticeVO noticeVO){
+        return noticeMapper.update(noticeVO) == 1;
+    }
     //    게시글 삭제
-    //public boolean remove(Long boardNumber){
-    //    return boardMapper.delete(boardNumber) == 1;
-    //}
+    public boolean remove(Long noticeNumber){
+        return noticeMapper.delete(noticeNumber) == 1;
+    }
     //    게시글 전체 개수
-    //public int getTotal(Criteria criteria){
-    //    return boardMapper.getTotal(criteria);
-    //}
+    public int getTotal(Criteria criteria){
+        return noticeMapper.getTotal(criteria);
+    }
 
 }

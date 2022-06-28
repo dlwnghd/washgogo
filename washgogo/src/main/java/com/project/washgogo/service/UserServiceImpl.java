@@ -21,8 +21,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void join(UserVO userVO) {
-        userDAO.join(userVO);
+    public void join(UserVO userVO) { userDAO.join(userVO); }
+
+    @Override
+    public UserVO login(String userEmail, String userPw){
+        return userDAO.selectUser(userEmail,userPw);
     }
 
     @Override

@@ -11,3 +11,11 @@ $moreBtns.on("click", function(){
     let $moreInfo = $(this).next();
     $moreInfo.toggle();
 });
+
+let $pageForm = $(pageForm);
+
+$("a.changePage").on("click", function(e){
+    e.preventDefault();
+    $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
+    $pageForm.submit();
+});

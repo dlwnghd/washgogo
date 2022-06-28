@@ -13,6 +13,21 @@ public class UserServiceTests {
     @Autowired
     public UserService userService;
 
+//    @Test
+//    public void join() {
+//        UserVO userVO = new UserVO();
+//        userVO.setUserEmail("uuuu@naver.com");
+//        userVO.setUserPw("123456");
+//        userVO.setUserName("이주홍2");
+//        userVO.setUserPhonenum("01099999999");
+//        userService.join(userVO);
+//    }
+
+    @Test
+    public void login(){
+        userService.login("alion0513@naver.com","1234");
+    }
+
     // 테스트 완료
 //    @Test
 //    public void selectUserInfoTest(){

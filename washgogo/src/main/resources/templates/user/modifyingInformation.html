@@ -91,7 +91,7 @@
                                 <li add="" class="item-container name">
                                     <div add="" class="item">
                                         <div add="" class="item-title name">이름</div>
-                                        <div add="" id="USERNAME" class="item-info username">이주홍</div>
+                                        <div add="" id="USERNAME" class="item-info username" th:text="${userVO.userName}"></div>
                                     </div>
                                     <div add="" class="name"><img
                                         class="name"
@@ -102,7 +102,7 @@
                                     <div add="" class="item">
                                         <div add="" class="item-title">이메일</div>
                                         <div add="" id="EMAIL" class="item-info">
-                                            <span add="">alion0513@naver.com</span>
+                                            <span add="" th:text="${userVO.userEmail}"></span>
                                         </div>
                                     </div>
                                     <div add=""><img
@@ -112,7 +112,7 @@
                                 <li add="" class="item-container password">
                                     <div add="" class="item">
                                         <div add="" class="item-title">비밀번호</div>
-                                        <div add="" id="PASSWORD" class="item-info" type="password">•••••••</div>
+                                        <div add="" id="PASSWORD" class="item-info" type="password" th:text ="${userVO.userPw}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""
@@ -121,7 +121,7 @@
                                 <li add="" class="item-container phoneNumber">
                                     <div add="" class="item">
                                         <div add="" class="item-title">휴대전화 번호</div>
-                                        <div add="" id="PHONENUMBER" class="item-info">01088580291</div>
+                                        <div add="" id="PHONENUMBER" class="item-info" th:text="${userVO.userPhonenum}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""
@@ -130,7 +130,7 @@
                                 <li add="" class="item-container address">
                                     <div add="" class="item">
                                         <div add="" class="item-title">배송지</div>
-                                        <div add="" id="ADDRESS" class="item-info">안알랴쥼</div>
+                                        <div add="" id="ADDRESS" class="item-info" th:text="${userVO.userAddress} + ${userVO.userAddressDetail}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""
@@ -139,7 +139,7 @@
                                 <li add="" class="item-container addressDetail">
                                     <div add="" class="item">
                                         <div add="" class="item-title">공동현관 출입방법</div>
-                                        <div add="" id="ADDRESSDETAIL" class="item-info">안알랴쥼</div>
+                                        <div add="" id="ADDRESSDETAIL" class="item-info" th:text="${userVO.userEntranceType} + ${userVO.userEntrancePw}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""

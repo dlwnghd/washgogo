@@ -19,20 +19,22 @@
 	href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
 </head>
-<body>
+<body id="body">
 	<div th:replace="~{/fragments/headerFooter :: header}"></div>
 	<section>
 		<div class="login-page">
 			<h2>로그인</h2>
 			<div class="card">
+				<form action="/user/login" method="post" name="userVO">
 				<div class="login-container">
+				</div>
 					<div class="col">
 						<fieldset>
 							<legend>이메일</legend>
 							<div>
-								<input type="email" name="email" placeholder="이메일을 입력해주세요">
+								<input id="email" type="email" name="userEmail" placeholder="이메일을 입력해주세요">
 							</div>
-							<div class="invalid-feedback">
+							<div id="emailwrong" class="invalid-feedback">
 								<small>이메일 주소를 입력해주세요.</small>
 								<!-- <small>올바른 이메일 주소를 입력해주세요.</small> -->
 							</div>
@@ -42,10 +44,10 @@
 						<fieldset>
 							<legend>비밀번호</legend>
 							<div class="password-wrapper">
-								<input type="password" name="pw" placeholder="비밀번호를 입력하세요">
-								<button class="pw-show"></button>
+								<input id="password" type="password" name="userPw" placeholder="비밀번호를 입력하세요">
+								<button class="pw-show" type="button"></button>
 							</div>
-							<div class="invalid-feedback">
+							<div id="pwwrong" class="invalid-feedback">
 								<small>비밀번호를 입력해주세요.</small>
 								<!-- <small>영문+숫자 조합 8자리 이상 입력해주세요.</small> -->
 							</div>
@@ -56,9 +58,9 @@
 						<a href="findIdPw.html?p=pw" class="find find-pw">비밀번호 찾기</a>
 					</div>
 					<div class="col">
-						<button type="submit" class="btn login-btn"><span>로그인</span></button>
+						<button type="submit" class="btn login-btn" value="로그인"><span>로그인</span></button>
 					</div>
-				</div>
+				</form>
 				<div class="signup">
 					<a href="join.html">계정이 없으신가요?</a>
 				</div>
@@ -81,7 +83,28 @@
 		}
 	});
 
-	
+	console.log($("#password").val());
+
+	function close() {
+		// 비밀번호 미입력시
+		if(!$("#password").val()){
+			pwwrong.style.display = "block";
+		}else if($("#password").val()){
+			pwwrong.style.display = "none";
+		}
+
+		// 이메일 미입력시
+		if(!$("#email").val()){
+			emailwrong.style.display = "block";
+		}else if($("#email").val()){
+			emailwrong.style.display = "none";
+		}
+	}
+
+	body.addEventListener("click", e => {
+			close();
+	})
+
 
 </script>
 </html>

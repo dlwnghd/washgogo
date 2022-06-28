@@ -15,9 +15,9 @@ public interface NoticeMapper {
     //    게시글 한 개 가져오기
     public NoticeVO select(Long NoticeNumber);
     //    게시글 수정
-    //public int update(BoardVO boardVO);
+    public int update(NoticeVO noticeVO);
     //    게시글 삭제
-    //public int delete(Long boardNumber);
+    public int delete(Long boardNumber);
     //    게시글 전체 개수
-    //public int getTotal(Criteria criteria);
+    public int getTotal(Criteria criteria);
 }

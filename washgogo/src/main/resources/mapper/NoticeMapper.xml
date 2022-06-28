@@ -29,5 +29,21 @@
             )
             WHERE RN > (#{pageNum} - 1) * #{amount}
         ]]>
+        ORDER BY NOTICE_NUMBER DESC
+    </select>
+
+    <update id="update">
+        UPDATE TBL_NOTICE
+        SET NOTICE_TITLE = #{noticeTitle}, NOTICE_CONTENT = #{noticeContent}
+        WHERE NOTICE_NUMBER = #{noticeNumber}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM TBL_NOTICE
+        WHERE NOTICE_NUMBER = #{noticeNumber}
+    </delete>
+
+    <select id="getTotal" resultType="_int">
+        SELECT COUNT(NOTICE_NUMBER) FROM TBL_NOTICE
     </select>
 </mapper>
