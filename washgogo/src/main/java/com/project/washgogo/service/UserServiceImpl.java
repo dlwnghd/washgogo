@@ -29,6 +29,9 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public UserVO myPageInfo(Long userNumber) {  return userDAO.myPageInfo(userNumber);  }
+
+    @Override
     public UserVO loadUserInfo(Long userNumber) {
         return userDAO.loadUserInfo(userNumber);
     }

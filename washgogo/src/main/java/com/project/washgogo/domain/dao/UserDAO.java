@@ -19,6 +19,7 @@ public class UserDAO {
     //    로그인
     public Long selectUser(String userEmail, String userPw){return userMapper.login(userEmail, userPw);}
     //    마이페이지 내용 불러오기
+    public UserVO myPageInfo(Long userNumber) { return userMapper.selectMyPageInfo(userNumber);}
     public UserVO loadUserInfo(Long userNumber) {
         return userMapper.selectUserInfo(userNumber);
     }
