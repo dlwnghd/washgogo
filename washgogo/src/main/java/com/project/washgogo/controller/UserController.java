@@ -28,19 +28,18 @@ public class UserController {
     private final UserMapper userMapper;
 
     @GetMapping("myPage")
-    public String myPage(UserVO userVO, Model model, RedirectAttributes rttr){
+    public String myPage(UserVO userVO, RedirectAttributes rttr){
         log.info("-------------------------");
         log.info(userVO.toString());
         log.info("-------------------------");
         rttr.addAttribute("userNumber", userVO.getUserNumber());
-        //세션을 통해 가져온 userNumber 들어갈 것
-//      model.addAttribute("userVO", userService.loadUserInfo(userVO.getUserNumber()));
         return "/user/myPage";
     }
     //공지 추가 링크
     @GetMapping("noticeAdd")
     public void noticeAdd(){
     };
+
     //공지사항
     @GetMapping("notice")
     public String getList(Criteria criteria, Model model){
@@ -99,6 +98,7 @@ public class UserController {
         noticeService.remove(noticeNumber);
         return getList(criteria, model);
     }
+
     @GetMapping("point")
     public String point(UserVO userVO) {
         log.info(userVO.toString());
@@ -107,10 +107,9 @@ public class UserController {
     }
 
     @GetMapping("modifyingInformation")
-    public String modifyingInformation(UserVO userVO, Model model, RedirectAttributes rttr){
-        //1l 자리에 세션을 통해 가져온 userNumber 들어갈 것
+    public String modifyingInformation(UserVO userVO, RedirectAttributes rttr){
+        log.info(userVO.toString());
         rttr.addAttribute("userNumber", userVO.getUserNumber());
-//        model.addAttribute("userVO", userService.loadUserInfo(userVO.getUserNumber()));
         return "/user/modifyingInformation";
     }
 
@@ -196,6 +195,7 @@ public class UserController {
         log.info("사용자가 입력한 Pw : " + userPw);   // 사용자가 입력한 Pw
         log.info(userVO.toString());
         return new RedirectView("/index");
+//        return new RedirectView("/user/myPage");
     }
 
     @GetMapping("/findIdPw")
