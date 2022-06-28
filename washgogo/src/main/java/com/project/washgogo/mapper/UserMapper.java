@@ -17,6 +17,7 @@ public interface UserMapper {
 //    로그인
     public Long login(String userEmail, String userPw);
 //    마이페이지
+    public UserVO selectMyPageInfo(Long userNumber);
     public UserVO selectUserInfo(Long userNumber);
 //    회원 정보 수정
     public int updateUserInfo(UserVO userVO);
