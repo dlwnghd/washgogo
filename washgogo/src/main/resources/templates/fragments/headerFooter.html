@@ -30,25 +30,7 @@
                         </div>
                         <div class="right-section">
                             <nav>
-                                <ul class="nav-list sign-in">
-                                    <li class="nav-item">
-                                        <a href="/guide">
-                                            <span>가이드</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/priceSheet">
-                                            <span>가격표</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#">
-                                            <span>이용내역</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/user/myPage">
-                                            <span>마이페이지</span></a>
-                                    </li>
-                                </ul>
-                                <ul class="nav-list sign-out">
+                                <ul class="nav-list sign-out" th:if="${session.userNumber == null}">
                                     <li class="nav-item">
                                         <a href="/guide">
                                             <span>가이드</span></a>
@@ -66,9 +48,7 @@
                                             <span>회원가입</span></a>
                                     </li>
                                 </ul>
-<<<<<<< HEAD
-=======
-                                <ul class="nav-list sign-in" style="display: none;">
+                                <ul class="nav-list sign-in" th:unless="${session.userNumber == null}">
                                     <li class="nav-item">
                                         <a href="/guide">
                                             <span>가이드</span></a>
@@ -86,7 +66,6 @@
                                             <span>마이페이지</span></a>
                                     </li>
                                 </ul>
->>>>>>> 2c8c46f1eeef6dcf4de0c5da98760abdebce99cf
                             </nav>
                             <a href ="/requestGuide">
                             <button type="button" class="btn btn-primary pickup-request-btn">수거신청</button>
