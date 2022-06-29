@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-    <head>
+<head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>워시고고 - 우리집 모바일 세탁소</title>
-        <link
-            rel="shortcut icon"
-            type="image/x-icon"
-            href="https://www.laundrygo.com/image/favicon/favicon_web.png">
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="shortcut icon" type="image/x-icon" href="https://www.laundrygo.com/image/favicon/favicon_web.png">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link rel="stylesheet" th:href="@{/css/common.css}">
         <!--⭐헤더 푸터-->
         <link rel="stylesheet" th:href="@{/css/style_frame.css}">
@@ -31,15 +25,15 @@
                     <div class="mypage-container">
                         <h1 class="mypage-title">마이페이지</h1>
                         <div data-v-5b32e6b8="" class="profile-container underline">
-                            <a data-v-5b32e6b8="" href="./modifyingInformation" class="">
+                            <a data-v-5b32e6b8="" href="/user/modifyingInformation" class="">
                                 <div data-v-5b32e6b8="" class="user-info">
                                     <div data-v-5b32e6b8="" class="user-name">
-                                        <span data-v-5b32e6b8="" class="name-length" th:text="${userVO.userName}"></span>
+                                        <span data-v-5b32e6b8="" class="name-length" th:text="${myPageInfo.userName}"></span>
                                         고객님
                                     </div>
                                     <div data-v-5b32e6b8="" class="user-id">
                                         <!---->
-                                        <span data-v-5b32e6b8="" class="id-length" th:text="${userVO.userEmail}"></span>
+                                        <span data-v-5b32e6b8="" class="id-length" th:text="${myPageInfo.userEmail}"></span>
                                     </div>
                                 </div>
                                 <div data-v-5b32e6b8="" class="arrow">

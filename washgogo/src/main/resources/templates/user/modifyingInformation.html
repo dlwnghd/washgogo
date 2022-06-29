@@ -5,15 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>워시고고 - 우리집 모바일 세탁소</title>
-        <link
-            rel="shortcut icon"
-            type="image/x-icon"
-            href="https://www.laundrygo.com/image/favicon/favicon_web.png">
+        <link rel="shortcut icon" type="image/x-icon" href="https://www.laundrygo.com/image/favicon/favicon_web.png">
         <link rel="stylesheet" th:href="@{/css/common.css}">
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <!--⭐헤더 푸터-->
         <link rel="stylesheet" th:href="@{/css/style_frame.css}">
         <!--⭐틀-->
@@ -37,7 +31,7 @@
                                 <li add="" class="item-container name">
                                     <div add="" class="item">
                                         <div add="" class="item-title name">이름</div>
-                                        <div add="" id="USERNAME" class="item-info username" th:text="${userVO.userName}"></div>
+                                        <div add="" id="USERNAME" class="item-info username" th:text="${loadUserInfo.userName}"></div>
                                     </div>
                                     <div add="" class="name"><img
                                         class="name"
@@ -48,7 +42,7 @@
                                     <div add="" class="item">
                                         <div add="" class="item-title">이메일</div>
                                         <div add="" id="EMAIL" class="item-info">
-                                            <span add="" th:text="${userVO.userEmail}"></span>
+                                            <span add="" th:text="${loadUserInfo.userEmail}"></span>
                                         </div>
                                     </div>
                                     <div add=""><img
@@ -58,7 +52,7 @@
                                 <li add="" class="item-container password">
                                     <div add="" class="item">
                                         <div add="" class="item-title">비밀번호</div>
-                                        <div add="" id="PASSWORD" class="item-info" type="password" th:text ="${userVO.userPw}"></div>
+                                        <div add="" id="PASSWORD" class="item-info" type="password" th:text ="${loadUserInfo.userPw}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""
@@ -67,7 +61,7 @@
                                 <li add="" class="item-container phoneNumber">
                                     <div add="" class="item">
                                         <div add="" class="item-title">휴대전화 번호</div>
-                                        <div add="" id="PHONENUMBER" class="item-info" th:text="${userVO.userPhonenum}"></div>
+                                        <div add="" id="PHONENUMBER" class="item-info" th:text="${loadUserInfo.userPhonenum}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""
@@ -76,7 +70,7 @@
                                 <li add="" class="item-container address">
                                     <div add="" class="item">
                                         <div add="" class="item-title">배송지</div>
-                                        <div add="" id="ADDRESS" class="item-info" th:text="${userVO.userAddress} + ${userVO.userAddressDetail}"></div>
+                                        <div add="" id="ADDRESS" class="item-info" th:text="${loadUserInfo.userAddress} + ${loadUserInfo.userAddressDetail}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""
@@ -85,7 +79,8 @@
                                 <li add="" class="item-container addressDetail">
                                     <div add="" class="item">
                                         <div add="" class="item-title">공동현관 출입방법</div>
-                                        <div add="" id="ADDRESSDETAIL" class="item-info" th:text="${userVO.userEntranceType} + ${userVO.userEntrancePw}"></div>
+                                        <div th:text="${loadUserInfo.userEntranceType}"></div>
+                                        <div add="" id="ADDRESSDETAIL" class="item-info" th:text="${loadUserInfo.userEntrancePw}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""

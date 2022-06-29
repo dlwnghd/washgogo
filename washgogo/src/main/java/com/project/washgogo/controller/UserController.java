@@ -1,5 +1,8 @@
 package com.project.washgogo.controller;
 
+import com.project.washgogo.service.UserService;
+import com.project.washgogo.domain.vo.*;
+import com.project.washgogo.service.NoticeService;
 
 import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.NoticeService;
@@ -25,39 +28,104 @@ public class UserController {
     private final UserService userService;
     private final NoticeService noticeService;
 
-
     @GetMapping("myPage")
-    public String myPage(UserVO userVO, Model model){
-        log.info("-------------------------");
-        log.info(userVO.toString());
-        //1l 자리에 세션을 통해 가져온 userNumber 들어갈 것
-        model.addAttribute("userVO", userService.loadUserInfo(1l));
-        log.info("-------------------------");
+    public String myPage(UserVO userVO, HttpSession session, Model model){
+        long number = (long)session.getAttribute("userNumber");
+        model.addAttribute("myPageInfo", userService.myPageInfo(number));
         return "/user/myPage";
+    }
+
+    @GetMapping("modifyingInformation")
+    public String modifyingInformation(UserVO userVO, HttpSession session, Model model){
+        long number = (long)session.getAttribute("userNumber");
+        model.addAttribute("loadUserInfo", userService.loadUserInfo(number));
+        return "/user/modifyingInformation";
+    }
+
+    //공지 추가 링크
+    @GetMapping("noticeAdd")
+    public void noticeAdd(){
+    };
+
+    //공지사항
+    @GetMapping("notice")
+    public String getList(Criteria criteria, Model model){
+        //log.info("----------------------------");
+        //log.info("list............. : " + criteria);
+        //log.info("----------------------------");
+
+        model.addAttribute("noticeList", noticeService.getList(criteria));
+        model.addAttribute("pageDTO", new PageDTO(criteria, noticeService.getTotal(criteria)));
+        return "/user/notice";
+    }
+
+    //신규 공지사항 추가
+    @PostMapping("add")
+    public RedirectView add(NoticeVO noticeVO, RedirectAttributes rttr){
+        log.info("----------------------------");
+        log.info("register............. : " + noticeVO);
+        log.info("----------------------------");
+
+        noticeService.add(noticeVO);
+//        1. Flash 사용
+//         세션에 파라미터를 저장하고, request 객체가 초기화된 후 다시 request에 담아준다.
+        rttr.addFlashAttribute("noticeNumber", noticeVO.getNoticeNumber());
+
+//        2. 쿼리 스트링
+//        rttr.addAttribute("boardNumber", boardVO.getBoardNumber());
+        return new RedirectView("/user/notice");
+    }
+
+    //공지사항 내용 조회 및 해당 noticeNumber 수정 폼 이동(조회 이유는 수정 폼 페이지 띄우기 위함)
+    @GetMapping({"noticeEdit", "modify"})
+    public void read(Long noticeNumber, HttpServletRequest req, Model model){
+    //    log.info("----------------------------");
+    //    log.info(req.getRequestURI() + "............. : " + boardNumber);
+    //    log.info("----------------------------");
+        model.addAttribute("notice", noticeService.get(noticeNumber));
+    }
+
+    //수정
+    @PostMapping("modify")
+    public RedirectView modify(NoticeVO noticeVO, RedirectAttributes rttr){
+    //    log.info("----------------------------");
+    //    log.info("modify............. : " + noticeVO);
+    //    log.info("----------------------------");
+          noticeService.modify(noticeVO);
+//        컨트롤러에서 다른 컨트롤러의 매개변수로 파라미터를 전달할 때에는
+//        addAttribute(), 쿼리스트링 방식으로 전달해야 받을 수 있다.
+//        Flash방식은 최종 응답 화면에서 사용될 파라미터를 전달할 때에만 사용하도록 한다.
+          rttr.addAttribute("noticeNumber", noticeVO.getNoticeNumber());
+          return new RedirectView("/user/notice");
+    }
+
+    //    삭제
+    @PostMapping("remove")
+    public String remove(Long noticeNumber, Criteria criteria, Model model){
+        //log.info("----------------------------");
+        //log.info("remove............. : " + noticeNumber);
+        //log.info("----------------------------");
+
+        noticeService.remove(noticeNumber);
+        return getList(criteria, model);
     }
 
     @GetMapping("point")
     public String point(UserVO userVO) {
-        log.info(userVO.toString());
-        log.info(userVO.getUserPoint());
         return "/user/point";
     }
 
-    @GetMapping("modifyingInformation")
-    public String modifyingInformation(UserVO userVO, Model model){
-        log.info(userVO.toString());
-        //1l 자리에 세션을 통해 가져온 userNumber 들어갈 것
-        model.addAttribute("userVO", userService.loadUserInfo(1l));
-        return "/user/modifyingInformation";
-    }
+
 
     @PostMapping("modifyingInformation")
-    public String modifyingInformationModify(UserVO userVO){
+    public RedirectView modifyingInformationModify(UserVO userVO, RedirectAttributes rttr){
         log.info("----------------------------");
         log.info(userVO.toString());
         log.info("----------------------------");
-//        userService.modifyUserInfo(userVO);
-        return "/user/myPage";
+
+        userService.modifyUserInfo(userVO);
+        rttr.addFlashAttribute("userNumber", userVO.getUserNumber());
+        return new RedirectView("/user/modifyingInformation");
     }
 
     @GetMapping("useService")
@@ -132,6 +200,7 @@ public class UserController {
         log.info("사용자가 입력한 Pw : " + userPw);   // 사용자가 입력한 Pw
         log.info(userVO.toString());
         return new RedirectView("/index");
+//        return new RedirectView("/user/myPage");
     }
 
      */
@@ -217,68 +286,4 @@ public class UserController {
         userService.changeService(userVO);
         return new RedirectView("/requestGuide");
     }
-
-    //공지 추가 링크
-    @GetMapping("noticeAdd")
-    public void noticeAdd(){
-    };
-    //공지사항
-    @GetMapping("notice")
-    public String getList(Criteria criteria, Model model){
-        //log.info("----------------------------");
-        //log.info("list............. : " + criteria);
-        //log.info("----------------------------");
-
-        model.addAttribute("noticeList", noticeService.getList(criteria));
-        model.addAttribute("pageDTO", new PageDTO(criteria, noticeService.getTotal(criteria)));
-        return "/user/notice";
-    }
-    //신규 공지사항 추가
-    @PostMapping("add")
-    public RedirectView add(NoticeVO noticeVO, RedirectAttributes rttr){
-        log.info("----------------------------");
-        log.info("register............. : " + noticeVO);
-        log.info("----------------------------");
-
-        noticeService.add(noticeVO);
-//        1. Flash 사용
-//         세션에 파라미터를 저장하고, request 객체가 초기화된 후 다시 request에 담아준다.
-        rttr.addFlashAttribute("noticeNumber", noticeVO.getNoticeNumber());
-
-//        2. 쿼리 스트링
-//        rttr.addAttribute("boardNumber", boardVO.getBoardNumber());
-        return new RedirectView("/user/notice");
-    }
-    //공지사항 내용 조회 및 해당 noticeNumber 수정 폼 이동(조회 이유는 수정 폼 페이지 띄우기 위함)
-    @GetMapping({"noticeEdit", "modify"})
-    public void read(Long noticeNumber, HttpServletRequest req, Model model){
-        //    log.info("----------------------------");
-        //    log.info(req.getRequestURI() + "............. : " + boardNumber);
-        //    log.info("----------------------------");
-        model.addAttribute("notice", noticeService.get(noticeNumber));
-    }
-    //수정
-    @PostMapping("modify")
-    public RedirectView modify(NoticeVO noticeVO, RedirectAttributes rttr){
-        //    log.info("----------------------------");
-        //    log.info("modify............. : " + noticeVO);
-        //    log.info("----------------------------");
-        noticeService.modify(noticeVO);
-//        컨트롤러에서 다른 컨트롤러의 매개변수로 파라미터를 전달할 때에는
-//        addAttribute(), 쿼리스트링 방식으로 전달해야 받을 수 있다.
-//        Flash방식은 최종 응답 화면에서 사용될 파라미터를 전달할 때에만 사용하도록 한다.
-        rttr.addAttribute("noticeNumber", noticeVO.getNoticeNumber());
-        return new RedirectView("/user/notice");
-    }
-    //    삭제
-    @PostMapping("remove")
-    public String remove(Long noticeNumber, Criteria criteria, Model model){
-        //log.info("----------------------------");
-        //log.info("remove............. : " + noticeNumber);
-        //log.info("----------------------------");
-
-        noticeService.remove(noticeNumber);
-        return getList(criteria, model);
-    }
-
 }

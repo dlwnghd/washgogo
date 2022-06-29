@@ -16,6 +16,11 @@
     </insert>
 
     <!--마이페이지-->
+    <select id="selectMyPageInfo" resultType="userVO">
+        SELECT USER_NAME, USER_EMAIL
+        FROM TBL_USER
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
     <select id="selectUserInfo" resultType="userVO">
         SELECT USER_NUMBER, USER_EMAIL, USER_PW, USER_NAME, USER_PHONENUM, USER_ADDRESS, USER_ADDRESS_DETAIL, USER_ENTRANCE_TYPE, USER_ENTRANCE_PW, USER_ENTRANCE_MESSAGE, USER_SERVICE_TYPE, USER_LAUNDERETTE_TYPE, USER_POINT
         FROM TBL_USER
