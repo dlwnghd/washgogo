@@ -12,4 +12,5 @@ public interface OrderListMapper {
     public List<OrderListVO> getList();
 //    주문상세내역 추가
     public void insert(OrderListVO orderListVO, OrderVO orderVO);
+
 }
