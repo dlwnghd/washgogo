@@ -225,23 +225,57 @@ public class    UserController {
     }
 
     // 자유이용서비스
+    @GetMapping("serviceSubscribeAddress")
+    public String serviceSubscribeAddress(HttpSession session){
+        if(session.getAttribute("userNumber")  == null){
+            return "/user/login";
+        }
+        Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
+        UserVO user = userService.loadUserInfo(userNumber);
+        if(user.getUserAddress() != null) {
+            return "redirect:/user/servicePayment";
+        }
+        return "/service/serviceSubscribeAddress";
+    }
+
+    @PostMapping("serviceSubscribeAddress")
+    public String serviceSubscribeAddress(UserVO userVO){
+        log.info("-----------------postAddress--------------------");
+        log.info("userVO : " + userVO.toString());
+        return "/service/serviceSubscribeAddress";
+    }
+
     @PostMapping("/serviceAddressOk")
-    public String serviceAddressOk(UserVO userVO){
+    public String serviceAddressOk(UserVO userVO, HttpSession session){
         log.info("-------------------------------------");
         log.info("userVO : " + userVO.toString());
         log.info("-------------------------------------");
-
+        Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
+        userVO.setUserNumber(userNumber);
         userService.modifyAddress(userVO);
+        log.info("-------------------------------------");
+        log.info("userVO : " + userVO.toString());
+        log.info("-------------------------------------");
         return "/service/serviceSubscribePayment";
     }
 
+    @GetMapping("/servicePayment")
+    public String servicePayment(HttpSession session, Model model){
+        Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
+        UserVO user = userService.loadUserInfo(userNumber);
+        model.addAttribute("userVO", user);
+        return "/service/serviceSubscribePayment";
+
+
+    }
+
     @PostMapping("/servicePaymentOk")
-    public String servicePaymentOk(UserVO userVO){
+    public RedirectView servicePaymentOk(UserVO userVO, HttpSession session){
         log.info("-------------------------------------");
         log.info("userVO : " + userVO.toString());
         log.info("-------------------------------------");
-
+        userVO.setUserNumber(Long.parseLong(String.valueOf(session.getAttribute("userNumber"))));
         userService.changeService(userVO);
-        return "/index";
+        return new RedirectView("/requestGuide");
     }
 }

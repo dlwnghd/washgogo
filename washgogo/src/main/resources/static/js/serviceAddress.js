@@ -43,6 +43,7 @@ function sample4_execDaumPostcode() {
                 $invalidFeedback.eq(0).css("display", "none");
                 $search.css("display", "block");
                 $addressDetail.css("display", "block");
+                $addressDetail.removeClass("disabled");
             }
         }
     }).open({popupKey : 'addrpopup1',
@@ -63,12 +64,15 @@ $addressInput.on("click", function(){
 $search.on("click", function(){
     $addressInput.val("");
     $addressInput.removeClass("disabled");
+    $addressDetail.val("");
+    $addressDetail.addClass("disabled");
+    $addressDetail.attr("disabled", false);
     sample4_execDaumPostcode();
 });
 
 const $getIn = $(".get-in");
 
-/* 상세 주소 블러 이벤트 */
+/* 상세 주소 키업 이벤트 */
 $addressDetail.on("keyup", function(){
     if(!$(this).val()){
         $invalidFeedback.eq(1).css("display", "block");
@@ -83,7 +87,9 @@ $addressDetail.on("keyup", function(){
 });
 
 const $check = $(".get-in ul li");
-const $getInInput = $(".get-in .getin-input");
+const $entranceType = $("input[name='userEntranceType']");
+const $entrancePw = $(".address #entrancePw");
+const $entranceMessage = $(".address #howto-getin");
 const $caution = $(".get-in .getin-input + p.caution");
 
 /* 체크박스 클릭 이벤트 */
@@ -95,20 +101,20 @@ $check.on("click", function(){
     }
 
     if(idx==0){
-        $getInInput.eq(0).css("display", "block");
+        $entrancePw.css("display", "block");
         $caution.eq(0).css("display", "block");
     } else {
-        $getInInput.eq(0).css("display", "none");
-        $getInInput.eq(0).val("");
+        $entrancePw.css("display", "none");
+        $entrancePw.val("");
         $caution.eq(0).css("display", "none");
     }
 
     if(idx==3){
-        $getInInput.eq(1).css("display", "block");
+        $entranceMessage.css("display", "block");
         $caution.eq(1).css("display", "block");
     } else {
-        $getInInput.eq(1).css("display", "none");
-        $getInInput.eq(1).val("");
+        $entranceMessage.css("display", "none");
+        $entranceMessage.val("");
         $caution.eq(1).css("display", "none");
     }
 
@@ -116,28 +122,33 @@ $check.on("click", function(){
 });
 
 /* 공동현관 출입방법 키업 이벤트 */
-$getInInput.eq(0).on("keyup", function(){
+$entrancePw.on("keyup", function(){
     if($(this).val()){
         $caution.eq(0).css("display", "none");
     } else {
-        $caution.css("display", "block");
+        $caution.eq(0).css("display", "block");
     }
     checkForm();
 });
-$getInInput.eq(1).on("keyup", function(){
+$entranceMessage.on("keyup", function(){
     if($(this).val()){
         $caution.eq(1).css("display", "none");
     } else {
-        $caution.css("display", "block");
+        $caution.eq(1).css("display", "block");
     }
     checkForm();
 });
 
+/* 다음 버튼 클릭 이벤트 */
 const $nextBtn = $("#nextBtn");
 $nextBtn.on("click", function(){
+    $addressInput.attr("disabled", false);
+    $addressDetail.attr("disabled", false);
     addressForm.submit();
 });
 
+
+/* 검사 */
 function checkForm(){
     if(!$addressInput.val()){
         $nextBtn.attr("disabled", true);
@@ -149,28 +160,77 @@ function checkForm(){
         $nextBtn.addClass("disabled");
         return;
     }
-    if(!$("input[name='userEntranceType']").is(":checked")){
+    if(!$entranceType.is(":checked")){
         $nextBtn.attr("disabled", true);
         $nextBtn.addClass("disabled");
         return;
     }
-    if($("#byPw").is(":checked")){
-        if(!$("#entrancePw").val()){
+    if($entrancePw.is(":checked")){
+        if(!$entrancePw.val()){
             $nextBtn.attr("disabled", true);
             $nextBtn.addClass("disabled");
             return;
         }
     }
-    if($("#etc").is(":checked")){
-        if(!$("#howto-getin").val()){
+    if($entranceMessage.is(":checked")){
+        if(!$entranceMessage
+            .val()){
             $nextBtn.attr("disabled", true);
             $nextBtn.addClass("disabled");
             return;
         }
     }
 
-    $addressInput.attr("disabled", false);
+    console.log($addressInput.val());
+    console.log($addressDetail.val());
+    console.log($entranceType.is(":checked"));
+    console.log($("input[name='userEntranceType']").is(":checked"));
+
     $nextBtn.attr("disabled", false);
     $nextBtn.removeClass("disabled");
     return;
+}
+
+/* 주소 수정 시 주소가 미리 입력되어 있도록 설정 */
+if(address){
+    $addressInput.val(address);
+    $addressInput.addClass("disabled");
+    $addressInput.attr("disabled", true);
+    $addressDetail.css("display", "block");
+    $search.css("display", "block");
+    checkForm();
+}
+if(addressDetail){
+    $addressDetail.val(addressDetail);
+    $addressDetail.addClass("disabled");
+    $addressDetail.attr("disabled", true);
+    $getIn.css("display", "block");
+    checkForm();
+}
+if(entranceType){
+    switch (entranceType) {
+        case "공동현관 비밀번호":
+            $entranceType.eq(0).prop("checked", true);
+            $check.eq(0).addClass("active");
+            $entrancePw.css("display", "block");
+            $entrancePw.val(entrancePw);
+            $entrancePw.focus();
+            break;
+        case "자유 출입 가능":
+            $entranceType.eq(1).prop("checked", true);
+            $check.eq(1).addClass("active");
+            break;
+        case "경비실 호출":
+            $entranceType.eq(2).prop("checked", true);
+            $check.eq(2).addClass("active");
+            break;
+        case "기타":
+            $entranceType.eq(3).prop("checked", true);
+            $check.eq(3).addClass("active");
+            $entranceMessage.css("display", "block");
+            $entranceMessage.val(entranceMessage);
+            $entranceMessage.focus();
+            break;
+    }
+    checkForm();
 }
