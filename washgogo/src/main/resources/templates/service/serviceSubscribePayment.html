@@ -27,7 +27,7 @@
                 <section class="address">
                     <div class="title">
                         <h2>수거/배송 주소</h2>
-                        <a id="modify" href="/serviceSubscribeAddress">수정 ></a>
+                        <a id="modify" onclick="modifyAddress()">수정 ></a>
                     </div>
                     <div class ="inner" th:object="${userVO}">
                         <p id="address-wrap">
@@ -35,7 +35,7 @@
                             <span id="addressDetail" th:text="*{userAddressDetail}"></span>
                         </p>
                         <p id="getin-wrap" class="info">
-                            <span id="means" th:text="*{userEntranceType}"></span><span class="colon"> :</span>
+                            <span id="means" th:text="*{userEntranceType}"></span><span class="colon" th:if="*{userEntrancePw != null || userEntranceMessage != null}"> :</span>
                             <span th:text="*{userEntrancePw}" th:if="*{userEntrancePw != null}"></span>
                             <span th:text="*{userEntranceMessage}" th:if="*{userEntranceMessage != null}"></span>
                         </p>
@@ -45,7 +45,6 @@
             <div class="content-wrap">
                 <section class="launderette-choice">
                     <form name="serviceForm" action="/user/servicePaymentOk" method="post">
-                        <input type="hidden" name="userNumber" value="1">
                         <input type="hidden" name="userServiceType" value="여러 번 이용">
                         <div class="title">
                             <h2>런드렛 선택</h2>
@@ -134,5 +133,12 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../static/js/servicePayment.js"></script>
+<script th:inline="javascript">
+    let address = [[${userVO.userAddress}]];
+    let addressDetail = [[${userVO.userAddressDetail}]];
+    let entranceType = [[${userVO.userEntranceType}]];
+    let entrancePw = [[${userVO.userEntrancePw}]];
+    let entranceMessage = [[${userVO.userEntranceMessage}]];
+</script>
 <script th:src="@{/js/servicePayment.js}"></script>
 </html>
