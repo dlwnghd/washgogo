@@ -194,7 +194,6 @@ public class    UserController {
         return new RedirectView("/index");
 //        return new RedirectView("/user/myPage");
     }
-
      */
 
     @PostMapping("login")
