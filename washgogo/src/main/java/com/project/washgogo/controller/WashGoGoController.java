@@ -1,8 +1,8 @@
 package com.project.washgogo.controller;
 
+import com.project.washgogo.domain.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,11 +51,6 @@ public class WashGoGoController {
     @GetMapping("serviceDetail")
     public String serviceDetail(){
         return "/service/serviceDetail";
-    }
-
-    @GetMapping("serviceSubscribeAddress")
-    public String serviceSubscribeAddress(){
-        return "/service/serviceSubscribeAddress";
     }
 
     @GetMapping("serviceSubscribePayment")

@@ -23,7 +23,6 @@
                         주소를 입력해주세요.</p>
                 </div>
                 <form name ="addressForm" autocomplete="off" action="/user/serviceAddressOk" method="post">
-                    <input type="hidden" name="userNumber" value="1">
                     <div class="form-row">
                         <div class="col">
                             <div class="title">
@@ -98,5 +97,12 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script th:inline="javascript">
+    let address = [[${userVO.userAddress}]];
+    let addressDetail = [[${userVO.userAddressDetail}]];
+    let entranceType = [[${userVO.userEntranceType}]];
+    let entrancePw = [[${userVO.userEntrancePw}]];
+    let entranceMessage = [[${userVO.userEntranceMessage}]];
+</script>
 <script th:src="@{/js/serviceAddress.js}"></script>
 </html>
