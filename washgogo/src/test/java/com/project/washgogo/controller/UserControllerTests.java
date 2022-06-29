@@ -26,6 +26,20 @@ public class UserControllerTests {
     }
 
 //    @Test
+//    public void joinTest() throws Exception{
+//        log.info(mockMvc.perform(MockMvcRequestBuilders.get("/user/join")).andReturn().getModelAndView().getModelMap().toString());
+//    }
+
+//    @Test
+//    public void joinTest() throws Exception{
+//        log.info(mockMvc.perform(MockMvcRequestBuilders.post("/user/join")
+//                .param("userEmail","dummy2@naver.com")
+//                .param("userPw","1234")
+//                .param("userName","더미2")
+//                .param("userPhonenum","01099998888")).andReturn().getModelAndView().toString());
+//    }
+
+//    @Test
 //    public void loginTest() throws Exception{
 //        log.info(mockMvc.perform(MockMvcRequestBuilders.get("/user/login")).andReturn().getModelAndView().getModelMap().toString());
 //    }

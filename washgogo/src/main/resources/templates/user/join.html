@@ -25,16 +25,15 @@
 		<div class="join-page">
 			<h2>워시고고에 오신 것을<br>환영합니다</h2>
 			<div class="card">
-				<form action="/user/join" method="post">
-				<div class="join-container">
+				<form action="/user/join" method="post" name="userVO">
+				<div class="join-container" onmouseover = "notEnough()">
 					<div class="col">
 						<fieldset>
 							<legend>이름</legend>
 							<div>
-								<input type="text" name="id" placeholder="이름(실명)을 입력해주세요">
+								<input id="userName" type="text" name="userName" placeholder="이름(실명)을 입력해주세요" oninput = "checkName()">
 							</div>
-							<div class="invalid-feedback">
-								이름을 입력해주세요.
+							<div class="invalid-feedback invalid-feedback-name">
 							</div>
 						</fieldset>
 					</div>
@@ -42,11 +41,9 @@
 						<fieldset>
 							<legend>이메일</legend>
 							<div>
-								<input id="inputemail" type="text" name="id" placeholder="example@washgogo.com">
+								<input id="userEmail" type="email" name="userEmail" placeholder="example@washgogo.com" oninput = "checkEmail()">
 							</div>
-							<div class="invalid-feedback">
-								<small>이메일 주소를 입력해주세요.</small>
-								 <small>올바른 이메일 주소를 입력해주세요.</small>
+							<div class="invalid-feedback invalid-feedback-email">
 							</div>
 						</fieldset>
 					</div>
@@ -54,12 +51,10 @@
 						<fieldset>
 							<legend>비밀번호</legend>
 							<div class="password-wrapper">
-								<input type="password" name="pw" placeholder="영문+숫자 조합 8자리 이상 입력해주세요">
-								<button class="pw-show"></button>
+								<input id="userPw" type="password" name="userPw" placeholder="영문+숫자 조합 8자리 이상 입력해주세요" oninput = "checkPassWord()">
+								<button class="pw-show" type="button"></button>
 							</div>
-							<div class="invalid-feedback">
-								<small>비밀번호를 입력해주세요.</small>
-								<!-- <small>영문+숫자 조합 8자리 이상 입력해주세요.</small> -->
+							<div class="invalid-feedback invalid-feedback-password">
 							</div>
 						</fieldset>
 					</div>
@@ -67,10 +62,9 @@
 						<fieldset>
 							<legend>휴대 전화 번호</legend>
 							<div>
-								<input type="text" name="phonenum" placeholder="'-' 없이 휴대 전화 번호를 입력해주세요">
+								<input id="userPhoneNum" type="text" name="userPhonenum" placeholder="'-' 없이 휴대 전화 번호를 입력해주세요" oninput = "checkPhoneNum()">
 							</div>
-							<div class="invalid-feedback">
-								휴대 전화 번호를 정확히 입력해주세요.
+							<div class="invalid-feedback invalid-feedback-phonenum">
 							</div>
 						</fieldset>
 					</div>
@@ -79,7 +73,7 @@
 							<input type="checkbox" name="agree-terms" id="agree-terms">
 							<label for="agree-terms">
 								<p>
-									<button id="btn-terms-of-service">이용약관</button>, <button id="btn-privacy-policy">개인정보 수집 및 이용</button> 동의 (필수)
+									<button id="btn-terms-of-service" type="button">이용약관</button>, <button id="btn-privacy-policy" type="button">개인정보 수집 및 이용</button> 동의 (필수)
 								</p>
 							</label>
 						</div>
@@ -716,48 +710,12 @@
 							</div>
 						</div>
 					</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-	/* 비밀번호 보이기, 감추기 */
-	$(".pw-show").on("click",function(){
-		$("input").toggleClass("active");
-		if($("input").hasClass("active")){
-			$(".pw-show").prev("input").attr("type","text");
-			$(".pw-show").toggleClass("pw-hide");
-		}else{
-			$(".pw-show").prev("input").attr("type","password");
-			$(".pw-show").removeClass("pw-hide");
-		}
-	});
-
-	/* 모달 클릭 시 닫힘 */
-	$(".modal-outer").click(function() {
-		$(".modal-outer").hide();
-		$(".docs-component").hide();
-	});
-
-	/* 모달 X 클릭 시 닫힘 */
-	$("button.close").click(function() {
-		$(".modal-outer").hide();
-		$(".docs-component").hide();
-	});
-
-	/* 이용 약관 버튼 클릭 시 모달 열림 */
-	$("#btn-terms-of-service").click(function() {
-		$(".modal-outer").show();
-		$(".terms-of-service").show();
-	});
-
-	/* 개인정보 약관 버튼 클릭 시 모달 열림 */
-	$("#btn-privacy-policy").click(function() {
-		$(".modal-outer").show();
-		$(".privacy-policy").show();
-	});
-</script>
 <script th:src="@{/js/join.js}"></script>
 </html>

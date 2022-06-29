@@ -37,4 +37,6 @@ public class UserDAO {
     public boolean resignMember(Long userNumber) {
         return userMapper.delete(userNumber) == 1;
     }
+    //    이메일 중복 확인
+    public boolean checkEmail(String userEmail) { return userMapper.checkEmail(userEmail) ;}
 }

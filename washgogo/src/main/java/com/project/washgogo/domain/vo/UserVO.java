@@ -18,6 +18,5 @@ public class UserVO {
 	private String userEntranceMessage;
 	private String userServiceType;
 	private String userLaunderetteType;
-	private String userCardnum;
 	private String userPoint;
 }

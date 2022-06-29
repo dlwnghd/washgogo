@@ -23,10 +23,16 @@ public class UserServiceTests {
 //        userService.join(userVO);
 //    }
 
-    @Test
-    public void login(){
-        userService.login("alion0513@naver.com","1234");
-    }
+//    이메일 중복 테스트
+//    @Test
+//    public void checkEmail(){
+//        userService.checkEmail("alion0513@naver.com");
+//    }
+
+//    @Test
+//    public void login(){
+//        userService.login("alion0513@naver.com","1234");
+//    }
 
     // 테스트 완료
 //    @Test
