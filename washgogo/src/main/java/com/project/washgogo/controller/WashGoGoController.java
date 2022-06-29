@@ -33,21 +33,6 @@ public class WashGoGoController {
     }
 
 
-    @GetMapping("requestGuide")
-    public String requestGuide() {
-        return "/order/requestGuide";
-    }
-
-    @GetMapping("requestSelect")
-    public String requestSelect() {
-        return "/order/requestSelect";
-    }
-
-    @PostMapping("/requestSelect")
-    public void requestSelectOK() {
-
-    }
-
     @GetMapping("serviceDetail")
     public String serviceDetail(){
         return "/service/serviceDetail";
@@ -64,7 +49,7 @@ public class WashGoGoController {
 
     @GetMapping("used")
     public String used(){
-        return "/used";
+        return "/user/used";
     }
 
 
