@@ -18,5 +18,5 @@ public class OrderListDAO {
     //    주문상세내역 추가
     public void addList(OrderListVO orderListVO, OrderVO orderVO) { orderListMapper.insert(orderListVO, orderVO);}
     //    이용 내역
-    public OrderListVO getLog(Long orderNumber) { return orderListMapper.select(orderNumber);}
+//    public OrderListVO getLog(Long orderNumber) { return orderListMapper.select(orderNumber);}
 }

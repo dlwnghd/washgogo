@@ -13,9 +13,7 @@
 <body>
     <div id="app">
         <!---- App-Header ---->
-        <header id="app-header" class="global-header hide-border-bottom">
-            <div th:replace="~{/fragments/headerFooter :: header}"></div>
-        </header>
+        <header th:replace="~{/fragments/headerFooter :: header}"></header>
         <!---- App-Body ---->
         <div id="app-body">
             <section class="request-guide-container">
@@ -67,7 +65,6 @@
                         <div class="small-img-container">
                             <img class="small-img" th:src="@{/img/bed.png}" alt="기타">
                             <img class="small-img" th:src="@{/img/shoes.png}" alt="기타">
-                            <img class="small-img" th:src="@{static/img/shoes.png}" alt="기타">
                         </div>
                         <div>
                             <div class="border-name border-main-name">기타</div>
@@ -83,80 +80,14 @@
                 </article>
                 <div class="check-flex-container">
                     <div></div>
-                    <form action="" name="ok">
-                        <input type="button" value="네 알겠습니다." id="check-ok">
-                    </form>
+                    <a href="/order/requestSelect" id="check-ok">네 알겠습니다.</a>
                     <div></div>
                 </div>
             </section>
         </div>
         <!---- App-Footer ---->
-        <nav id="app-footer" class="footer-container">
-            <div class="footer-container-row">
-                <div class="col-content">
-                    <p class="contact">1833-1900</p>
-                    <p class="text-middle">
-                        평일 10:00 - 18:00
-                        <br>
-                        (점심시간 13:00 - 14:00 제외 · 주말/공휴일 제외)
-                    </p>
-                </div>
-                <div class="col-content right">
-                    <a href="#" class="download"><img src="https://assets.cdn.soomgo.com/icons/icon-download-appstore.svg" alt="앱스토어">APP STORE</a>
-                    <a href="#" class="download"><img src="https://assets.cdn.soomgo.com/icons/icon-download-palystore.svg" alt="구글플레이">PLAY STORE</a>
-                </div>
-            </div>
-            <div class="footer-container-row terms">
-                <div class="term-container">
-                    <div class="col-content term-content">
-                        <img th:src="@{/img/logoGray.jpg}" alt="logo" class="logo">
-                        <div class="col-content-list-term">
-                            <a href="#" class="text term">이용약관</a>
-                            <a href="#" class="text term">개인정보처리방침</a>
-                            <a href="#" class="text term">사업자 정보확인</a>
-                        </div>
-                        <div>
-                            <ul class="col-content-guide">
-                                <li class="text">(주)워시고고컴퍼니</li>
-                                <li class="text">대표 : 송민경 사업자 등록번호:561-87-00950</li>
-                                <li class="text">통신판매업신고 : 제2022-서울강서-2052호</li>
-                                <li class="text">주소 : 서울특별시 강서구 양천로 60길 1004(01004)</li>
-                                <li class="text">개인정보담당자 : 송민경 이메일:privacy@washgogo.kr</li>
-                                <li class="text">고객센터 : 1833-1900</li>
-                                <li class="text">Copyright2022 &copy; Washgogo All rights reserved</li>
-                            </ul>
-                        </div>
-                        
-                    </div>
-                    <div class="col-content badge-list right">
-                        <a href="#" target="_blank" class="footer-badge">
-                            <img src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-facebook.svg" alt="워시고고 페이스북 계정">
-                        </a>
-                        <a href="#" target="_blank" class="footer-badge">
-                            <img src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-instagram.svg" alt="워시고고 인스타그램">
-                        </a>
-                        <a href="#" target="_blank" class="footer-badge">
-                            <img src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-naverblog.svg" alt="워시고고 블로그">
-                        </a>
-                        <a href="#" target="_blank" class="footer-badge">
-                            <img src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-naverpost.svg" alt="워시고고 포스트">
-                        </a>
-                        <a href="#" target="_blank" class="footer-badge">
-                            <img src="https://assets.cdn.soomgo.com/icons/icon-footer-sns-tistory.svg" alt="워시고고 스토리">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        <footer th:replace="~{/fragments/headerFooter :: footer}"></footer>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    let form = document.ok;
-
-    $("#check-ok").on("click", function(){
-        $(form).attr("action", "/requestSelect");
-        form.submit();
-    });
-</script>
 </html>

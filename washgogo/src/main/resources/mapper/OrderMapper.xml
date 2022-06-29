@@ -13,7 +13,7 @@
             SELECT SEQ_ORDER.NEXTVAL FROM DUAL
         </selectKey>
         INSERT INTO TBL_ORDER (ORDER_NUMBER, USER_NUMBER, ORDER_REQUEST_OPTION, ORDER_REQUEST_MESSAGE)
-        VALUES (#{orderNumber}, #{userNumber}, #{orderRequestOption}, #{orderRequestMessage})
+        VALUES (SEQ_ORDER.NEXTVAL, #{userNumber}, #{orderRequestOption}, #{orderRequestMessage})
     </insert>
 
     <!--총 수량, 가격 삽입-->

@@ -15,8 +15,8 @@ public class OrderDAO {
     //    주문내역 가져오기
     public List<OrderVO> getList() { return orderMapper.getList(); }
     //    주문번호로 조회
-    public OrderVO findByBoardNumber(Long boardNumber){
-        return boardMapper.select(boardNumber);
+    public OrderVO findByBoardNumber(Long orderNumber){
+        return orderMapper.select(orderNumber);
     }
     //    수거 신청
     public void applyRequest(OrderVO orderVO, OrderListVO orderListVO) { orderMapper.insert(orderVO, orderListVO);}
