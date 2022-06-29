@@ -36,6 +36,12 @@ public class UserMapperTests {
 //        userMapper.insert(userVO);
 //    }
 
+//    이메일 중복 테스트
+//    @Test
+//    public void checkEmailTest(){
+//        log.info(""+userMapper.checkEmail("alion0513@naver.com"));
+//    }
+
     //    로그인 테스트
 //    @Test
 //    public void loginTest(){

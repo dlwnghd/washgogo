@@ -16,4 +16,5 @@ public interface UserService {
     public boolean changeService(UserVO userVO);
     public boolean modifyAddress(UserVO userVO);
     public boolean resignMember(Long userNumber);
+    public boolean checkEmail(String userEmail);
 }

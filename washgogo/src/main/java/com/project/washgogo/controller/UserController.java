@@ -3,13 +3,16 @@ package com.project.washgogo.controller;
 import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.NoticeService;
 import com.project.washgogo.service.UserService;
+import com.project.washgogo.domain.vo.OrderVO;
+import com.project.washgogo.domain.vo.UserVO;
+import com.project.washgogo.service.UserService;
+import com.project.washgogo.domain.vo.*;
+import com.project.washgogo.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -147,12 +150,36 @@ public class    UserController {
         log.info("--------join/Get---------");
         return "/user/join";
     }
+
+//    이메일 중복 확인
+    @ResponseBody //REST
+    @PostMapping("checkEmail")
+    public boolean checkEmail(@RequestBody String userEmail){
+        log.info("--------join/Get---------");
+        log.info("전달받은 email : "+ userEmail);
+        log.info("userService : "+userService.checkEmail(userEmail));
+        return userService.checkEmail(userEmail);   // true : 이미 사용하고 있는 이메일
+        //SELECT COUNT(USER_EMAIL) FROM TBL_USER WHERE USER_EMAIL = #{userEmail}
+    }
+
 //    회원가입
     @PostMapping("join")
-    public String joinOK(Model model){
+    public String joinOK( UserVO userVO){
         log.info("--------joinOK/Post---------");
-//        log.info(userVO.toString());
+        log.info(userVO.toString());
         log.info("---------------------");
+
+        userService.join(userVO);
+
+        if(userVO == null){  // 사용자의 번호가 인식되지 않는다면
+            log.info("---회원가입 실패---");
+            log.info("userVO : " + userVO);
+            return "/user/join";
+        }
+
+        log.info("---회원가입 성공---");
+        log.info("userVO : " + userVO);
+        log.info(userVO.toString());
         return "/user/login";
     }
 
@@ -210,6 +237,8 @@ public class    UserController {
 
     @PostMapping("/findIdPw")
     public String findIdPwOK(){
+
+
         return "/user/findIdPw";
     }
 

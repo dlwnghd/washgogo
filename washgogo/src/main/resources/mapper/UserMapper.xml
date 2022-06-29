@@ -6,6 +6,13 @@
         FROM TBL_USER
     </select>
 
+    <!--이메일 중복 확인-->
+    <select id="checkEmail" resultType="boolean">
+        SELECT COUNT(USER_EMAIL)
+        FROM TBL_USER
+        WHERE USER_EMAIL = #{userEmail}
+    </select>
+
     <!--회원 가입-->
     <insert id="insert">
         <selectKey keyProperty="userNumber" order="BEFORE" resultType="long">
