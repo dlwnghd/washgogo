@@ -94,7 +94,8 @@ form[name="addressForm"] #sample4_roadAddress{
 form[name="addressForm"] #sample4_roadAddress:focus{
     border-color: #e1e1e1;
 }
-form[name="addressForm"] #sample4_roadAddress.disabled{
+form[name="addressForm"] #sample4_roadAddress.disabled,
+form[name="addressForm"] #addressDetail.disabled{
     color: grey;
     cursor: default;
     background-color: rgba(238,238,238,0.34);

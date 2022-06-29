@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user/*")
@@ -24,18 +25,24 @@ public class UserController {
     private final NoticeService noticeService;
 
     @GetMapping("myPage")
-    public String myPage(UserVO userVO, Model model){
-        log.info("-------------------------");
-        log.info(userVO.toString());
-        //1l 자리에 세션을 통해 가져온 userNumber 들어갈 것
-        model.addAttribute("userVO", userService.loadUserInfo(1l));
-        log.info("-------------------------");
+    public String myPage(UserVO userVO, HttpSession session, Model model){
+        long number = (long)session.getAttribute("userNumber");
+        model.addAttribute("myPageInfo", userService.myPageInfo(number));
         return "/user/myPage";
     }
+
+    @GetMapping("modifyingInformation")
+    public String modifyingInformation(UserVO userVO, HttpSession session, Model model){
+        long number = (long)session.getAttribute("userNumber");
+        model.addAttribute("loadUserInfo", userService.loadUserInfo(number));
+        return "/user/modifyingInformation";
+    }
+
     //공지 추가 링크
     @GetMapping("noticeAdd")
     public void noticeAdd(){
     };
+
     //공지사항
     @GetMapping("notice")
     public String getList(Criteria criteria, Model model){
@@ -47,6 +54,7 @@ public class UserController {
         model.addAttribute("pageDTO", new PageDTO(criteria, noticeService.getTotal(criteria)));
         return "/user/notice";
     }
+
     //신규 공지사항 추가
     @PostMapping("add")
     public RedirectView add(NoticeVO noticeVO, RedirectAttributes rttr){
@@ -63,6 +71,7 @@ public class UserController {
 //        rttr.addAttribute("boardNumber", boardVO.getBoardNumber());
         return new RedirectView("/user/notice");
     }
+
     //공지사항 내용 조회 및 해당 noticeNumber 수정 폼 이동(조회 이유는 수정 폼 페이지 띄우기 위함)
     @GetMapping({"noticeEdit", "modify"})
     public void read(Long noticeNumber, HttpServletRequest req, Model model){
@@ -71,6 +80,7 @@ public class UserController {
     //    log.info("----------------------------");
         model.addAttribute("notice", noticeService.get(noticeNumber));
     }
+
     //수정
     @PostMapping("modify")
     public RedirectView modify(NoticeVO noticeVO, RedirectAttributes rttr){
@@ -84,6 +94,7 @@ public class UserController {
           rttr.addAttribute("noticeNumber", noticeVO.getNoticeNumber());
           return new RedirectView("/user/notice");
     }
+
     //    삭제
     @PostMapping("remove")
     public String remove(Long noticeNumber, Criteria criteria, Model model){
@@ -94,28 +105,23 @@ public class UserController {
         noticeService.remove(noticeNumber);
         return getList(criteria, model);
     }
+
     @GetMapping("point")
     public String point(UserVO userVO) {
-        log.info(userVO.toString());
-        log.info(userVO.getUserPoint());
         return "/user/point";
     }
 
-    @GetMapping("modifyingInformation")
-    public String modifyingInformation(UserVO userVO, Model model){
-        log.info(userVO.toString());
-        //1l 자리에 세션을 통해 가져온 userNumber 들어갈 것
-        model.addAttribute("userVO", userService.loadUserInfo(1l));
-        return "/user/modifyingInformation";
-    }
+
 
     @PostMapping("modifyingInformation")
-    public String modifyingInformationModify(UserVO userVO){
+    public RedirectView modifyingInformationModify(UserVO userVO, RedirectAttributes rttr){
         log.info("----------------------------");
         log.info(userVO.toString());
         log.info("----------------------------");
-//        userService.modifyUserInfo(userVO);
-        return "/user/myPage";
+
+        userService.modifyUserInfo(userVO);
+        rttr.addFlashAttribute("userNumber", userVO.getUserNumber());
+        return new RedirectView("/user/modifyingInformation");
     }
 
     @GetMapping("useService")
@@ -249,24 +255,57 @@ public class UserController {
     }
 
     // 자유이용서비스
+    @GetMapping("serviceSubscribeAddress")
+    public String serviceSubscribeAddress(HttpSession session){
+        if(session.getAttribute("userNumber")  == null){
+            return "/user/login";
+        }
+        Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
+        UserVO user = userService.loadUserInfo(userNumber);
+        if(user.getUserAddress() != null) {
+            return "redirect:/user/servicePayment";
+        }
+        return "/service/serviceSubscribeAddress";
+    }
+
+    @PostMapping("serviceSubscribeAddress")
+    public String serviceSubscribeAddress(UserVO userVO){
+        log.info("-----------------postAddress--------------------");
+        log.info("userVO : " + userVO.toString());
+        return "/service/serviceSubscribeAddress";
+    }
+
     @PostMapping("/serviceAddressOk")
-    public String serviceAddressOk(UserVO userVO){
+    public String serviceAddressOk(UserVO userVO, HttpSession session){
         log.info("-------------------------------------");
         log.info("userVO : " + userVO.toString());
         log.info("-------------------------------------");
-
+        Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
+        userVO.setUserNumber(userNumber);
         userService.modifyAddress(userVO);
+        log.info("-------------------------------------");
+        log.info("userVO : " + userVO.toString());
+        log.info("-------------------------------------");
         return "/service/serviceSubscribePayment";
     }
 
+    @GetMapping("/servicePayment")
+    public String servicePayment(HttpSession session, Model model){
+        Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
+        UserVO user = userService.loadUserInfo(userNumber);
+        model.addAttribute("userVO", user);
+        return "/service/serviceSubscribePayment";
+
+
+    }
+
     @PostMapping("/servicePaymentOk")
-    public String servicePaymentOk(UserVO userVO){
+    public RedirectView servicePaymentOk(UserVO userVO, HttpSession session){
         log.info("-------------------------------------");
         log.info("userVO : " + userVO.toString());
         log.info("-------------------------------------");
-
+        userVO.setUserNumber(Long.parseLong(String.valueOf(session.getAttribute("userNumber"))));
         userService.changeService(userVO);
-        return "/index";
+        return new RedirectView("/requestGuide");
     }
-
 }

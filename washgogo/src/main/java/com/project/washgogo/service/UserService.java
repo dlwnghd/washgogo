@@ -10,6 +10,10 @@ public interface UserService {
     public List<UserVO> getList();
     public void join(UserVO userVO);
     public Long login(String userEmail, String userPw);
+<<<<<<< HEAD
+=======
+    public UserVO myPageInfo(Long userNumber);
+>>>>>>> 4bd22e1459bfb95bffe20a68877b0e167557b849
     public UserVO loadUserInfo(Long userNumber);
     public boolean modifyUserInfo(UserVO userVO);
     public boolean changeService(UserVO userVO);

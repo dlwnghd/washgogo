@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/*")
 @Slf4j
 public class WashGoGoController {
     @GetMapping("index")
-    public void index(UserVO userVO) {
-        log.info(userVO.toString());
+    public void index() {
     }
 
     @GetMapping("guide")
@@ -50,11 +51,6 @@ public class WashGoGoController {
     @GetMapping("serviceDetail")
     public String serviceDetail(){
         return "/service/serviceDetail";
-    }
-
-    @GetMapping("serviceSubscribeAddress")
-    public String serviceSubscribeAddress(){
-        return "/service/serviceSubscribeAddress";
     }
 
     @GetMapping("serviceSubscribePayment")
