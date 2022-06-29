@@ -9,10 +9,11 @@ import java.util.List;
 public interface UserService {
     public List<UserVO> getList();
     public void join(UserVO userVO);
-    public UserVO login(String userEmail, String userPw);
+    public Long login(String userEmail, String userPw);
     public UserVO loadUserInfo(Long userNumber);
     public boolean modifyUserInfo(UserVO userVO);
     public boolean changeService(UserVO userVO);
     public boolean modifyAddress(UserVO userVO);
     public boolean resignMember(Long userNumber);
+    public boolean checkEmail(String userEmail);
 }

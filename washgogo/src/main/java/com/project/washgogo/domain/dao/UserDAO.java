@@ -17,7 +17,7 @@ public class UserDAO {
     //    회원가입
     public void join(UserVO userVO) {userMapper.insert(userVO); }
     //    로그인
-    public UserVO selectUser(String userEmail, String userPw){return userMapper.login(userEmail, userPw);}
+    public Long selectUser(String userEmail, String userPw){return userMapper.login(userEmail, userPw);}
     //    마이페이지 내용 불러오기
     public UserVO loadUserInfo(Long userNumber) {
         return userMapper.selectUserInfo(userNumber);
@@ -36,4 +36,6 @@ public class UserDAO {
     public boolean resignMember(Long userNumber) {
         return userMapper.delete(userNumber) == 1;
     }
+    //    이메일 중복 확인
+    public boolean checkEmail(String userEmail) { return userMapper.checkEmail(userEmail) ;}
 }

@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService{
     public void join(UserVO userVO) { userDAO.join(userVO); }
 
     @Override
-    public UserVO login(String userEmail, String userPw){
+    public Long login(String userEmail, String userPw){
         return userDAO.selectUser(userEmail,userPw);
     }
 
@@ -52,4 +52,7 @@ public class UserServiceImpl implements UserService{
     public boolean resignMember(Long userNumber) {
         return userDAO.resignMember(userNumber);
     }
+
+    @Override
+    public boolean checkEmail(String userEmail){ return userDAO.checkEmail(userEmail);}
 }
