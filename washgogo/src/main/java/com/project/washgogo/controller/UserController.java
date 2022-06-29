@@ -1,16 +1,14 @@
 package com.project.washgogo.controller;
 
-import com.project.washgogo.domain.dao.UserDAO;
-import com.project.washgogo.domain.vo.OrderVO;
-import com.project.washgogo.domain.vo.UserVO;
-import com.project.washgogo.mapper.UserMapper;
 import com.project.washgogo.service.UserService;
 import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.NoticeService;
-import com.project.washgogo.service.UserServiceImpl;
+
+import com.project.washgogo.domain.vo.*;
+import com.project.washgogo.service.NoticeService;
+import com.project.washgogo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user/*")
@@ -28,22 +27,26 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
     private final UserService userService;
     private final NoticeService noticeService;
-    private final UserDAO userDAO;
-    private final UserMapper userMapper;
 
     @GetMapping("myPage")
-    public String myPage(UserVO userVO, Model model){
-        log.info("-------------------------");
-        log.info(userVO.toString());
-        //1l 자리에 세션을 통해 가져온 userNumber 들어갈 것
-        model.addAttribute("userVO", userService.loadUserInfo(1l));
-        log.info("-------------------------");
+    public String myPage(UserVO userVO, HttpSession session, Model model){
+        long number = (long)session.getAttribute("userNumber");
+        model.addAttribute("myPageInfo", userService.myPageInfo(number));
         return "/user/myPage";
     }
+
+    @GetMapping("modifyingInformation")
+    public String modifyingInformation(UserVO userVO, HttpSession session, Model model){
+        long number = (long)session.getAttribute("userNumber");
+        model.addAttribute("loadUserInfo", userService.loadUserInfo(number));
+        return "/user/modifyingInformation";
+    }
+
     //공지 추가 링크
     @GetMapping("noticeAdd")
     public void noticeAdd(){
     };
+
     //공지사항
     @GetMapping("notice")
     public String getList(Criteria criteria, Model model){
@@ -55,6 +58,7 @@ public class UserController {
         model.addAttribute("pageDTO", new PageDTO(criteria, noticeService.getTotal(criteria)));
         return "/user/notice";
     }
+
     //신규 공지사항 추가
     @PostMapping("add")
     public RedirectView add(NoticeVO noticeVO, RedirectAttributes rttr){
@@ -71,6 +75,7 @@ public class UserController {
 //        rttr.addAttribute("boardNumber", boardVO.getBoardNumber());
         return new RedirectView("/user/notice");
     }
+
     //공지사항 내용 조회 및 해당 noticeNumber 수정 폼 이동(조회 이유는 수정 폼 페이지 띄우기 위함)
     @GetMapping({"noticeEdit", "modify"})
     public void read(Long noticeNumber, HttpServletRequest req, Model model){
@@ -79,6 +84,7 @@ public class UserController {
     //    log.info("----------------------------");
         model.addAttribute("notice", noticeService.get(noticeNumber));
     }
+
     //수정
     @PostMapping("modify")
     public RedirectView modify(NoticeVO noticeVO, RedirectAttributes rttr){
@@ -92,6 +98,7 @@ public class UserController {
           rttr.addAttribute("noticeNumber", noticeVO.getNoticeNumber());
           return new RedirectView("/user/notice");
     }
+
     //    삭제
     @PostMapping("remove")
     public String remove(Long noticeNumber, Criteria criteria, Model model){
@@ -102,28 +109,23 @@ public class UserController {
         noticeService.remove(noticeNumber);
         return getList(criteria, model);
     }
+
     @GetMapping("point")
     public String point(UserVO userVO) {
-        log.info(userVO.toString());
-        log.info(userVO.getUserPoint());
         return "/user/point";
     }
 
-    @GetMapping("modifyingInformation")
-    public String modifyingInformation(UserVO userVO, Model model){
-        log.info(userVO.toString());
-        //1l 자리에 세션을 통해 가져온 userNumber 들어갈 것
-        model.addAttribute("userVO", userService.loadUserInfo(1l));
-        return "/user/modifyingInformation";
-    }
+
 
     @PostMapping("modifyingInformation")
-    public String modifyingInformationModify(UserVO userVO){
+    public RedirectView modifyingInformationModify(UserVO userVO, RedirectAttributes rttr){
         log.info("----------------------------");
         log.info(userVO.toString());
         log.info("----------------------------");
-//        userService.modifyUserInfo(userVO);
-        return "/user/myPage";
+
+        userService.modifyUserInfo(userVO);
+        rttr.addFlashAttribute("userNumber", userVO.getUserNumber());
+        return new RedirectView("/user/modifyingInformation");
     }
 
     @GetMapping("useService")
@@ -173,6 +175,7 @@ public class UserController {
     }
 
 //    로그인
+    /*
     @PostMapping("login")
     public RedirectView loginOK(UserVO userVO, String userEmail, String userPw, RedirectAttributes rttr){
         log.info("---------------------");
@@ -196,6 +199,16 @@ public class UserController {
         log.info("사용자가 입력한 이메일 : " + userEmail);    // 사용자가 입력한 이메일
         log.info("사용자가 입력한 Pw : " + userPw);   // 사용자가 입력한 Pw
         log.info(userVO.toString());
+        return new RedirectView("/index");
+//        return new RedirectView("/user/myPage");
+    }
+
+     */
+
+    @PostMapping("login")
+    public RedirectView loginOK(UserVO userVO, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.setAttribute("userNumber", userService.login(userVO.getUserEmail(), userVO.getUserPw()));
         return new RedirectView("/index");
     }
 
@@ -239,5 +252,4 @@ public class UserController {
         userService.changeService(userVO);
         return "/index";
     }
-
 }

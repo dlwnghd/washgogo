@@ -24,9 +24,12 @@ public class UserServiceImpl implements UserService{
     public void join(UserVO userVO) { userDAO.join(userVO); }
 
     @Override
-    public UserVO login(String userEmail, String userPw){
+    public Long login(String userEmail, String userPw){
         return userDAO.selectUser(userEmail,userPw);
     }
+
+    @Override
+    public UserVO myPageInfo(Long userNumber) {  return userDAO.myPageInfo(userNumber);  }
 
     @Override
     public UserVO loadUserInfo(Long userNumber) {
