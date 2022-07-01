@@ -37,6 +37,15 @@ public class UserDAOTests {
 //        log.info(""+userDAO.selectUser("alion0513@naver.com","1234"));
 //    }
 
+//    //    임시 비밀번호 테스트
+//    @Test
+//    public void temporaryPwTest(){
+//        UserVO userVO = userDAO.loadUserInfo(21L);
+//        String TPPW = "asdf1234";
+//        userVO.setUserPw(TPPW);
+//        userDAO.findPW(userVO);
+//    }
+
     // 테스트 완료
 //    @Test
 //    public void selectUserInfoTest(){

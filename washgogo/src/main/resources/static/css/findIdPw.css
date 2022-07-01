@@ -61,34 +61,6 @@ div.card {
     box-shadow: none;
 }
 
-nav {
-    display: flex;
-    height: 45px;
-}
-
-nav button {
-    display: flex;
-    position: relative;
-    padding: 0 10px;
-    font-size: 16px;
-    flex: 1 1;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background: none;
-}
-
-nav button::before {
-    display: block;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 1px;
-    background-color: #d1d1d1;
-    content: '';
-}
-
 nav button:focus::before {
     height: 2px;
     background-color: #00c7ae;
