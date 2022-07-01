@@ -19,8 +19,8 @@ public class OrderService {
     public void requestApply(OrderVO orderVO, OrderListVO orderListVO) {
         orderDAO.applyRequest(orderVO, orderListVO);
     }
-    public OrderVO getLog(Long orderNumber) {
-        return orderDAO.getLog(orderNumber);
+    public OrderVO getRecent(Long userNumber) {
+        return orderDAO.getRecent(userNumber);
     }
     public int getTotalQuantity() {
         return orderDAO.getTotalQuantity();

@@ -30,15 +30,5 @@ public class WashGoGoController {
         return "/guide/life";
     }
 
-//    public void requestSelectOK(){
-//
-//    }
-
-    @GetMapping("used")
-    public String used(){
-        return "/user/used";
-    }
-
-
 
 }

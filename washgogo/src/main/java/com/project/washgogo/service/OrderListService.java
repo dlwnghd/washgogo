@@ -16,9 +16,11 @@ public class OrderListService {
     public List<OrderListVO> getList() {
         return orderListDAO.getList();
     }
-    public void addList(OrderListVO orderListVO, OrderVO orderVO) {
-        orderListDAO.addList(orderListVO, orderVO);
+
+    public List<OrderListVO> getRecentList(Long orderNumber) {
+        return orderListDAO.getRecentList(orderNumber);
     }
+
 //    public OrderListVO getLog(Long orderNumber) {
 //        return orderListDAO.getLog(orderNumber);
 //    }

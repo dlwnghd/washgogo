@@ -7,71 +7,92 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/used.css}">
-	<title>Document</title>
+	<title>이용 내역</title>
 </head>
 <body>
 	<div id="app">
 		<!---- App-Header ---->
 		<header th:replace="~{/fragments/headerFooter :: header}"></header>
 		<!---- App-Body ---->
-		<section id="bigbox">
-			<div class ="top">
-				<div class="arr">
-					<span></span>
-				</div>
-				<p class="color">2021년 6월 16일(목)</p>
-				<h1 class="headcolor">세탁이 진행되고 있습니다</h1>
-				<p class="color">고객님의 빨래가 깨끗하게 세탁중입니다</p>
-			</div>
-			<div class="bottom">
-				<div class="words">
-					<strong class ="bold">진행상태</strong>
-					<strong class ="bold">결제예상금액</strong>
-				</div>
-				<div class ="lists">
-					<span class="loca">세탁 인수증</span>
-					<span class="loca1">3개 품목</span>
-					<ul>
-						<li>
-							<div class ="img">사진</div>
-							<div class="center">
-								<span class = "inline">물빨래 1개</span>
-								<strong class ="right">세탁중</strong>
+		<section>
+			<div class="present-condition-page">
+				<div class="card">
+					<h2>세탁이 진행되고 있습니다.</h2>
+					<h4>고객님의 빨래가 깨끗하게 세탁 중입니다.</h4>
+					<div class="present-condition-container">
+						<div class="col">
+							<fieldset>
+								<legend>
+									<span>세탁 인수증</span>
+									<span>$orderTotalQuantity개 품목</span>
+								</legend>
+								<div>
+									<ul class="order-list">
+
+										<!--<th:block th:each="order:${orderList}">
+											<li>
+												<div class="laundry-img">
+													<img src="" alt="이미지">
+												</div>
+												<div class="laundry-name">
+													&lt;!&ndash; $orderPMChoose $laundryName &ndash;&gt;
+													<span th:text="${orderList.laundryName}">이름</span><br>
+													&lt;!&ndash; $orderNumber+$laundryNumber &ndash;&gt;
+													<span th:text="${orderList.laundryNumber}">번호</span>
+												</div>
+												<div class="laundry-condition">
+													&lt;!&ndash; $orderProgress &ndash;&gt;
+													<span th:text="${order.orderProgress}">진행 상태</span><br>
+													&lt;!&ndash; $laundryPrice원 &ndash;&gt;
+													<span th:text="${orderList.laundryPrice}">단가</span>
+												</div>
+											</li>
+										</th:block>-->
+
+										<!-- orderList의 개수만큼 li -->
+										<li>
+											<div class="laundry-img">
+												<img src="" alt="이미지">
+											</div>
+											<div class="laundry-name">
+												<!-- $orderPMChoose $laundryName -->
+												<span>이름</span><br>
+												<!-- $orderNumber+$laundryNumber -->
+												<span>번호</span>
+											</div>
+											<div class="laundry-condition">
+												<!-- $orderProgress -->
+												<span>진행 상태</span><br>
+												<!-- $laundryPrice원 -->
+												<span>단가</span>
+											</div>
+										</li>
+
+									</ul>
+								</div>
+							</fieldset>
+							<div class="total-price">
+								<span>총액</span>
+								<!-- $orderTotalPrice -->
+								<span>액수</span>
 							</div>
-						</li>
-						<li>
-							<div class ="img">사진</div>
-							<div class="center">
-								<span class = "inline">손빨래 1개</span>
-								<strong class ="right">세탁중</strong>
-							</div>
-						</li>
-						<li>
-							<div class ="img">사진</div>
-							<div class="center">
-								<span class = "inline">드라이 1개</span>
-								<strong class ="right">세탁중</strong>
-							</div>
-						</li>
-					</ul>
-					<strong>총 금액</strong>
-					<div class="terrible">
-						<span class="price">물빨래</span>
-						<span class="priceright">3000원</span>
+						</div>
+						<div class="col col2">
+							<fieldset>
+								<legend>결제 금액</legend>
+								<div>
+									<ul class="price-list">
+										<!-- orderList의 개수만큼 li -->
+										<li>
+											<span>$laundryName</span>
+											<span>$laundryPrice원</span>
+										</li>
+									</ul>
+								</div>
+							</fieldset>
+						</div>
 					</div>
-					<div class="terrible">
-						<span class="price">손빨래</span>
-						<span class="priceright">2000원</span>
-					</div>
-					<div class="terrible">
-						<span class="price">드라이</span>
-						<span class="priceright">2000원</span>
-					</div>
-					<hr class="line">
-					<div class="terrible">
-						<span class="strongprice">총액</span>
-						<span class="strongpriceright">7000원</span>
-					</div>
+
 				</div>
 			</div>
 		</section>
