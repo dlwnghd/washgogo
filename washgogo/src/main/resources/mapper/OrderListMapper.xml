@@ -7,6 +7,13 @@
         FROM TBL_ORDERLIST
     </select>
 
+    <!--상세 이용 내역-->
+    <select id="getRecentList" resultType="orderListVO">
+        SELECT ORDER_NUMBER, LAUNDRY_NUMBER, ORDER_PM_CHOOSE, ORDER_PM_OPTION, ORDER_PM_MESSAGE, ORDER_TYPE, ORDER_EA_QUANTITY
+        FROM TBL_ORDERLIST
+        WHERE ORDER_NUMBER = #{orderNumber}
+    </select>
+
     <!--주문내역 추가-->
     <insert id="applyRequest">
         INSERT INTO TBL_ORDERLIST (ORDER_NUMBER, LAUNDRY_NUMBER, ORDER_PM_CHOOSE, ORDER_PM_OPTION, ORDER_PM_MESSAGE, ORDER_TYPE, ORDER_EA_QUANTITY)

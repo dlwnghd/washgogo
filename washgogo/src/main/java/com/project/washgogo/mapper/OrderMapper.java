@@ -2,6 +2,7 @@ package com.project.washgogo.mapper;
 
 import com.project.washgogo.domain.vo.OrderListVO;
 import com.project.washgogo.domain.vo.OrderVO;
+import com.project.washgogo.domain.vo.UserVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface OrderMapper {
 //    수거 신청
     public void insert(OrderVO orderVO, OrderListVO orderListVO);
 //    이용 내역
-    public OrderVO select(Long orderNumber);
+    public OrderVO selectRecentRequest(Long userNumber);
 //    총 수량 구하기
     public int getTotalQuantity();
 //    총 금액 구하기

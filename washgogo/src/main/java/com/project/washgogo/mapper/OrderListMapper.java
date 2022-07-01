@@ -10,7 +10,11 @@ import java.util.List;
 public interface OrderListMapper {
 //    리스트 가져오기
     public List<OrderListVO> getList();
-//    주문상세내역 추가
+
+    //    주문내역 리스트
+    public List<OrderListVO> getRecentList(Long orderNumber);
+
+    //    주문상세내역 추가
     public void insert(OrderListVO orderListVO, OrderVO orderVO);
 
 }
