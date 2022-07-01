@@ -111,6 +111,7 @@
                     <span>별도 케어에 따른 추가 비용은 발생하지 않으며,안심 정찰 가격표에 의해 세탁 요금이 부과됩니다.</span>
                     <a href="/priceSheet">가격표 전체 보기 ></a>
                     <div class="button-area">
+                        <script>console.log("ho");</script>
                         <button type="button" th:if="${userServiceType == null}" onclick="subscribe()">서비스 신청하기</button>
                         <button type="button" th:if="${userServiceType == '여러 번 이용'}" onclick="modal()">서비스 신청하기</button>
                     </div>
@@ -137,16 +138,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    /* 헤더 스크롤 이벤트 */
-    const $header = $("#app-header");
-    document.onscroll = function(){
-        if(window.scrollY>0){
-            $header.removeClass("hide-border-bottom");
-        } else {
-            $header.addClass("hide-border-bottom");
-        }
-    }
-
     const $modalBg = $(".modal-bg");
     const $body = $("body");
     const $closeModal = $(".modal-close");
@@ -154,7 +145,6 @@
     const $modal = $(".modal-container");
 
     /* 서비스 신청 버튼 이벤트 */
-
     function subscribe() {
         location.href = "/user/serviceSubscribeAddress";
     }
@@ -163,6 +153,7 @@
         $modal.css("display", "block");
         modalOn();
     }
+
     /* 모달창 이벤트 */
     $closeModal.on("click", function(){
         modalOff();
@@ -179,5 +170,6 @@
         $modal.css("display", "none");
         $body.css("overflow", "auto");
     }
+
 </script>
 </html>

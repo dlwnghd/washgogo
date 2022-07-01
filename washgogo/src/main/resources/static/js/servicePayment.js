@@ -57,7 +57,7 @@ $modifyAddressBtn.on("click", function () {
     const newForm = $('<form></form>')
     newForm.attr("name", "newForm");
     newForm.attr("method", "post");
-    newForm.attr("action", "/user/serviceSubscribeAddress");
+    newForm.attr("action", "/user/modifyAddress");
 
     newForm.append($('<input/>', {type: 'hidden', name: 'userAddress', value: address}));
     newForm.append($('<input/>', {type: 'hidden', name: 'userAddressDetail', value: addressDetail}));

@@ -336,19 +336,22 @@ public class UserController {
         if(session.getAttribute("userNumber")  == null){
             return "/user/login";
         }
+
         Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
         UserVO user = userService.loadUserInfo(userNumber);
         if(user.getUserAddress() != null) {
             return "redirect:/user/servicePayment";
         }
-        return "/service/serviceSubscribeAddress";
+
+        return "service/serviceSubscribeAddress";
     }
 
-    @PostMapping("serviceSubscribeAddress")
-    public String serviceSubscribeAddress(UserVO userVO){
+    @PostMapping("modifyAddress")
+    public String modifyAddress(UserVO userVO){
         log.info("-----------------postAddress--------------------");
         log.info("userVO : " + userVO.toString());
-        return "/service/serviceSubscribeAddress";
+
+        return "/service/modifyAddress";
     }
 
     @PostMapping("/serviceAddressOk")
