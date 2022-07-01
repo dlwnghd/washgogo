@@ -109,7 +109,7 @@ const $smartKeyInfoBtn = $("#btnSmartKeyInfo");
 const $modalBg = $(".modal-bg");
 const $modals = $(".modal-container");
 const $closeModal = $(".modal-close");
-const $okModal = $(".modal-container .btn-black")
+const $okModal = $(".modal-container .btn-black");
 const $body = $("body");
 
 $closeModal.on("click", function(){

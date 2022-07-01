@@ -226,7 +226,10 @@ public class    UserController {
     @PostMapping("login")
     public RedirectView loginOK(UserVO userVO, HttpServletRequest request){
         HttpSession session = request.getSession();
-        session.setAttribute("userNumber", userService.login(userVO.getUserEmail(), userVO.getUserPw()));
+        Long userNumber = userService.login(userVO.getUserEmail(), userVO.getUserPw());
+        String userName = userService.loadUserInfo(userNumber).getUserName();
+        session.setAttribute("userNumber", userNumber);
+        session.setAttribute("userName", userName);
         return new RedirectView("/index");
     }
 
@@ -253,6 +256,17 @@ public class    UserController {
     }
 
     // 자유이용서비스
+    @GetMapping("serviceDetail")
+    public String serviceDetail(HttpSession session, Model model){
+        if(session.getAttribute("userNumber")  == null){
+            return "/service/serviceDetail";
+        }
+        Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
+        UserVO user = userService.loadUserInfo(userNumber);
+        model.addAttribute("userServiceType", user.getUserServiceType());
+        return "/service/serviceDetail";
+    }
+
     @GetMapping("serviceSubscribeAddress")
     public String serviceSubscribeAddress(HttpSession session){
         if(session.getAttribute("userNumber")  == null){
@@ -293,8 +307,11 @@ public class    UserController {
         UserVO user = userService.loadUserInfo(userNumber);
         model.addAttribute("userVO", user);
         return "/service/serviceSubscribePayment";
+    }
 
-
+    @GetMapping("serviceSubscribePayment")
+    public String serviceSubscribePayment(){
+        return "/service/serviceSubscribePayment";
     }
 
     @PostMapping("/servicePaymentOk")
@@ -304,6 +321,6 @@ public class    UserController {
         log.info("-------------------------------------");
         userVO.setUserNumber(Long.parseLong(String.valueOf(session.getAttribute("userNumber"))));
         userService.changeService(userVO);
-        return new RedirectView("/requestGuide");
+        return new RedirectView("/order/requestGuide");
     }
 }

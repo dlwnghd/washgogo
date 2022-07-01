@@ -181,11 +181,6 @@ function checkForm(){
         }
     }
 
-    console.log($addressInput.val());
-    console.log($addressDetail.val());
-    console.log($entranceType.is(":checked"));
-    console.log($("input[name='userEntranceType']").is(":checked"));
-
     $nextBtn.attr("disabled", false);
     $nextBtn.removeClass("disabled");
     return;

@@ -35,7 +35,8 @@
                             <span id="addressDetail" th:text="*{userAddressDetail}"></span>
                         </p>
                         <p id="getin-wrap" class="info">
-                            <span id="means" th:text="*{userEntranceType}"></span><span class="colon" th:if="*{userEntrancePw != null || userEntranceMessage != null}"> :</span>
+                            <span id="means" th:text="*{userEntranceType}"></span>
+                            <span class="colon" th:if="*{(userEntrancePw != null && userEntrancePw !='')|| (userEntranceMessage != null && userEntranceMessage != '')}"> :</span>
                             <span th:text="*{userEntrancePw}" th:if="*{userEntrancePw != null}"></span>
                             <span th:text="*{userEntranceMessage}" th:if="*{userEntranceMessage != null}"></span>
                         </p>
