@@ -61,12 +61,25 @@
                                         <a href="/used">
                                             <span>이용내역</span></a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="/user/myPage">
+                                    <li class="nav-item usermenu">
+                                        <div class="usermenu-button">
                                             <div class="user-profile-picture">
                                                 <div data-name="image" style="background-image: url('/img/user-profile-image.jpg')"></div>
                                             </div>
-                                        </a>
+                                            <div class="arrow"></div>
+                                        </div>
+                                        <div class="usermenu-dropdown">
+                                            <div data-name="user-info">
+                                                <h4 data-name="name" th:text="|${session.userName} 고객님|"></h4>
+                                            </div>
+                                            <ul data-name="usermenu-control">
+                                                <li id="progressState"><a>이용 내역</a></li>
+                                                <li id="myPage"><a>마이페이지</a></li>
+                                            </ul>
+                                            <div data-name="signout-control">
+                                                <button type="button" class="btn btn-secondary btn-sm">로그아웃</button>
+                                            </div>
+                                        </div>
                                     </li>
                                 </ul>
                             </nav>
@@ -76,6 +89,42 @@
                         </div>
                     </div>
                 </section>
+                <script>
+                    /* 헤더 스크롤 이벤트 */
+                    const header = document.getElementById("app-header");
+                    document.onscroll = function(){
+                        if(window.scrollY>0){
+                            header.classList.remove("hide-border-bottom");
+                        } else {
+                            header.classList.add("hide-border-bottom");
+                        }
+                    }
+
+                    /* 프로필 클릭 이벤트 */
+                    const dropdownUserMenu = document.querySelector(".desktop-header .nav-list .usermenu-dropdown");
+                    const userMenuBtn = document.querySelector(".desktop-header .usermenu .usermenu-button");
+                    userMenuBtn.addEventListener("click", ()=>{
+                        if(!(userMenuBtn.classList.contains("menu-open"))){
+                            userMenuBtn.classList.add("menu-open");
+                            dropdownUserMenu.style.display = "block";
+                        } else {
+                            userMenuBtn.classList.remove("menu-open");
+                            dropdownUserMenu.style.display = "none";
+                        }
+                    });
+
+                    /* 이용 내역 버튼 클릭 이벤트 */
+                    const progressState = document.getElementById("progressState");
+                    progressState.addEventListener("click", ()=>{
+                        location.href = "/used";
+                    });
+                    /* 마이페이지 버튼 클릭 이벤트 */
+                    const myPage = document.getElementById("myPage");
+                    myPage.addEventListener("click", ()=>{
+                        location.href = "/user/myPage";
+                    });
+                    /* 로그아웃 버튼 클릭 이벤트 */
+                </script>
             </header>
             <!---- App-Body ---->
             <div id="app-body"></div>
