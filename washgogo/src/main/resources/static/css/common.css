@@ -107,6 +107,8 @@ body{
     background-color: #00BA86;
     border-color: #00BA86;
 }
+.btn-secondary{
+    color:#737373}
 .btn-primary:hover{
     color: #fff;
     background-color: #008A63;
@@ -123,6 +125,11 @@ body{
     background-color: #00BA86;
     border-color: #00BA86;
     padding: 0.3875rem 0.75rem;
+}
+.btn-sm{
+    padding: 0.59375rem 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.2rem;
 }
 .container{
     width: 100%;
@@ -224,9 +231,16 @@ body{
     margin-left: 1.7rem;
     font-weight: 500;
 }
-.desktop-header .nav-item .user-profile-picture{
+.desktop-header .nav-item .usermenu-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.desktop-header .nav-item .usermenu-button .user-profile-picture{
     width: 2rem;
     height: 2rem;
+    margin-right: 0.5rem;
     position: relative;
     cursor: pointer;
 }
@@ -235,21 +249,86 @@ body{
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 0.0625rem solid #f2f2f2;
-    overflow: hidden;
+    border: 0.0625rem solid #e1e1e1;
     background-size: cover;
     background-position: 50% 50%;
     background-color: #e1e1e1;
 }
-.desktop-header .user-profile-picture div[data-name=image]:after{
+.desktop-header .usermenu-button.menu-open .user-profile-picture div[data-name=image]{
+    border: 0.125rem solid #00BA86;
+}
+.desktop-header .nav-item .usermenu-button .arrow{
+    width: 0.8rem;
+    height: 0.8rem;
+    background: url("/img/icon_arrow_down_grey.png") no-repeat center;
+    background-size: contain;
+}
+.desktop-header .nav-item .usermenu-button.menu-open .arrow{
+    background: url("/img/icon_arrow_up_grey.png") no-repeat center;
+    background-size: contain;
+}
+.desktop-header .nav-item .usermenu-dropdown{
+    z-index: 100;
     position: absolute;
-    content: "";
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    border-radius: 50%;
+    right: 0;
+    bottom: -12px;
+    transform: translateY(103%);
+    background-color: #fff;
     border: 0.0625rem solid #e1e1e1;
+    border-radius: 0.25rem;
+    padding: 1.3125rem;
+    width: 15rem;
+    overflow: visible;
+    box-shadow: 0 0 0.625rem 0 rgb(0 0 0 / 10%);
+    text-align: left;
+    display: none;
+}
+.desktop-header .usermenu-dropdown div[data-name="user-info"] h4[data-name="name"]{
+    font-size: 1rem;
+    margin-bottom: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 0;
+    line-height: 2.0625rem;
+    font-weight: 500;
+    letter-spacing: -0.025rem;
+}
+.desktop-header .usermenu-dropdown ul[data-name="usermenu-control"]{
+    margin-top: 1rem;
+    margin-bottom: 1.3125rem;
+    font-size: 0.875rem;
+    line-height: 1.3125rem;
+    font-weight: 400;
+    letter-spacing: -0.0125rem;
+}
+.desktop-header .usermenu-dropdown ul[data-name="usermenu-control"] li{
+    padding: 0.65625rem 0;
+    cursor: pointer;
+}
+.desktop-header .usermenu-dropdown ul[data-name="usermenu-control"] li a{
+    color: #323232;
+}
+.desktop-header .usermenu-dropdown div[data-name="signout-control"]{
+    margin: 1.3125rem -1.3125rem -1.3125rem;
+    background-color: #fafafa;
+    font-size: 0.875rem;
+    line-height: 1.3125rem;
+    font-weight: 400;
+    letter-spacing: -0.0125rem;
+}
+.desktop-header .usermenu-dropdown div[data-name="signout-control"] .btn{
+    font-weight: 700;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    text-align: center;
+}
+.desktop-header .usermenu-dropdown div[data-name="signout-control"] .btn:active{
+    color: #323232;
+    background-color: #c8c8c8;
+    border-color: #c1c1c1;
+    box-shadow: none;
 }
 .desktop-header .pickup-request-btn{
     margin-left: 1.7rem;
