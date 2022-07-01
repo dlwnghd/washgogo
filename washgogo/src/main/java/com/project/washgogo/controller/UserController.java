@@ -14,7 +14,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.lang.reflect.Method;
+
+//SMS용으로 추가
+import java.util.HashMap;
+import org.json.simple.JSONObject;
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
+import java.util.Random;
+
 
 @Controller
 @RequestMapping("/user/*")
@@ -23,6 +34,12 @@ import javax.servlet.http.HttpSession;
 public class UserController {
     private final UserService userService;
     private final NoticeService noticeService;
+    Random random = new Random();		//랜덤 함수 선언
+    int createNum = 0;  			//1자리 난수
+    String ranNum = ""; 			//1자리 난수 형변환 변수
+    int letter    = 6;			//난수 자릿수:6
+    String resultNum = "";      //결과 난수
+
 
     @GetMapping("myPage")
     public String myPage(UserVO userVO, HttpSession session, Model model){
@@ -156,11 +173,62 @@ public class UserController {
     @ResponseBody //REST
     @PostMapping("checkEmail")
     public boolean checkEmail(@RequestBody String userEmail){
-        log.info("--------join/Get---------");
         log.info("전달받은 email : "+ userEmail);
         log.info("userService : "+userService.checkEmail(userEmail));
         return userService.checkEmail(userEmail);   // true : 이미 사용하고 있는 이메일
         //SELECT COUNT(USER_EMAIL) FROM TBL_USER WHERE USER_EMAIL = #{userEmail}
+    }
+
+//    인증번호 확인
+    @ResponseBody //REST
+    @PostMapping("VerifyNumber")
+    public boolean VerifyNumber(@RequestBody String VerifyNumber){
+        log.info("전달받은 인증번호 : "+ VerifyNumber);
+        log.info(VerifyNumber.equals(resultNum)+"");
+        return VerifyNumber.equals(resultNum);   // true : 이미 사용하고 있는 이메일
+    }
+
+    //    회원 존재 확인
+    @ResponseBody //REST
+    @PostMapping("/checkUser")
+    public boolean checkUser(@RequestBody UserVO userVO){
+        log.info("---------------------");
+        log.info("---findIdPwPostMapping---");
+        log.info("---------------------");
+        log.info("전달받은 email : "+ userVO.getUserEmail());
+        log.info("전달받은 전화번호 : "+ userVO.getUserPhonenum());
+        log.info("userService : " + userService.checkUser(userVO));
+
+        for (int i=0; i<letter; i++) {
+
+            createNum = random.nextInt(9);		//0부터 9까지 올 수 있는 1자리 난수 생성
+            ranNum =  Integer.toString(createNum);  //1자리 난수를 String으로 형변환
+            resultNum += ranNum;			//생성된 난수(문자열)을 원하는 수(letter)만큼 더하며 나열
+        }
+
+////        휴대폰에 인증번호 전송
+//        String api_key = "NCSHUXHNNINOL8AT";
+//        String api_secret = "IMDMEXAZSWQWO7OR993KMVDEXCOK0ZDV";
+//        Message coolsms = new Message(api_key, api_secret);
+//
+//        // 4 params(to, from, type, text) are mandatory. must be filled
+//        HashMap<String, String> params = new HashMap<String, String>();
+//        params.put("to", userVO.getUserPhonenum());    // 인증번호 받는 사람
+//        params.put("from", "01088580291");  // 인증번호 보내는 사람
+//        params.put("type", "SMS");  // 문자형태
+//        params.put("text", "[WashGoGo] 인증번호 ["+ resultNum +"]를 입력하세요. 이주홍52");   // 보내는 문자
+//        params.put("app_version", "test app 1.2"); // application name and version
+//
+//        try {
+//            JSONObject obj = (JSONObject) coolsms.send(params);
+//            System.out.println(obj.toString());
+//        } catch (CoolsmsException e) {
+//            System.out.println(e.getMessage());
+//            System.out.println(e.getCode());
+//        }
+
+        log.info("resultNum : " + resultNum);
+        return userService.checkUser(userVO);   // true : 존재하는 있는 유저
     }
 
 //    회원가입
@@ -194,53 +262,47 @@ public class UserController {
         return "/user/login";
     }
 
-//    로그인
-    /*
     @PostMapping("login")
-    public RedirectView loginOK(UserVO userVO, String userEmail, String userPw, RedirectAttributes rttr){
-        log.info("---------------------");
-        log.info("---loginPostMapping---");
-        log.info("---------------------");
-        log.info("userService출력문 : "+userService.login(userEmail, userPw));
+    public RedirectView loginOK(UserVO userVO, HttpServletRequest request) throws IOException {
+        HttpSession session = request.getSession();
 
-        rttr.addFlashAttribute("userVO", userService.login(userEmail,userPw));
-        userVO = userService.login(userEmail, userPw);
-
-        if(userVO == null){  // 사용자의 번호가 인식되지 않는다면
-            log.info("---로그인 실패---");
-            log.info("userVO : " + userVO);
-            log.info("사용자가 입력한 이메일 : " + userEmail);    // 사용자가 입력한 이메일
-            log.info("사용자가 입력한 Pw : " + userPw);   // 사용자가 입력한 Pw
+//        존재하지 않는 user면⭐강사님께 물어보기
+        if(userService.login(userVO.getUserEmail(), userVO.getUserPw()) == null){
             return new RedirectView("/user/login");
         }
 
-        log.info("---로그인 성공---");
-        log.info("userVO : " + userVO);
-        log.info("사용자가 입력한 이메일 : " + userEmail);    // 사용자가 입력한 이메일
-        log.info("사용자가 입력한 Pw : " + userPw);   // 사용자가 입력한 Pw
-        log.info(userVO.toString());
-        return new RedirectView("/index");
-//        return new RedirectView("/user/myPage");
-    }
-
-     */
-
-    @PostMapping("login")
-    public RedirectView loginOK(UserVO userVO, HttpServletRequest request){
-        HttpSession session = request.getSession();
         session.setAttribute("userNumber", userService.login(userVO.getUserEmail(), userVO.getUserPw()));
+        log.info("login에서 session : "+session.getAttribute("userNumber").toString());
         return new RedirectView("/index");
     }
 
+//    로그아웃
+    @GetMapping("logout")
+    public RedirectView logout(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        log.info("logout에서 session : "+session.getAttribute("userNumber").toString());
+        session.removeAttribute("userNumber");
+        return new RedirectView("/index");
+    }
+
+//    비밀번호 찾기 페이지로 이동
     @GetMapping("/findIdPw")
     public String findIdPw(){
+        log.info("---------------------");
+        log.info("---findIdPwGetMapping---");
+        log.info("---------------------");
+        log.info("resultNum : " + resultNum);
         return "/user/findIdPw";
     }
 
+
+//    비밀번호 찾기
     @PostMapping("/findIdPw")
     public String findIdPwOK(){
-
-
+        log.info("---------------------");
+        log.info("---findIdPwPostMapping---");
+        log.info("---------------------");
+        log.info("resultNum : " + resultNum);
         return "/user/findIdPw";
     }
 

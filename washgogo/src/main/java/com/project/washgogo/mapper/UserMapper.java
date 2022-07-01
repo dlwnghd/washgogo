@@ -26,4 +26,8 @@ public interface UserMapper {
     public int delete(Long userNumber);
 //    이메일 중복 확인
     public boolean checkEmail(String userEmail);
+//    비밀번호 임시비밀번호로 수정
+    public boolean temporaryPw(UserVO userVO);
+//    회원 존재 확인
+public boolean checkUser(UserVO userVO);
 }

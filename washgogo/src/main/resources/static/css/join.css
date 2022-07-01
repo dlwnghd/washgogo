@@ -152,7 +152,7 @@ label::before {
 }
 
 input:checked + label::before {
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9IiMwMEM3QUUiIHJ4PSIyIi8+PHBhdGggc3Ryb2tlPSIjRkZGIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTUgOS4yMTlMOC4zIDEyLjVsNS44NjctNS44MzMiLz48L2c+PC9zdmc+);
+    background-image: url("../img/joincheck.png");
 }
 
 div.agreement p {
@@ -164,7 +164,7 @@ div.agreement p {
 }
 
 div.agreement button {
-    color: #00c7ae;
+    color:  #00ba86;
     text-decoration: underline;
     cursor: pointer;
     border: none;
@@ -183,8 +183,8 @@ div.col button.btn {
 
 button.join-btn {
     color: #fff;
-    background-color: #00c7ae;
-    border-color: #00c7ae;
+    background-color:  #00ba86;
+    border-color:  #00ba86;
     text-align: center;
     vertical-align: middle;
     border: 0.0625rem solid transparent;

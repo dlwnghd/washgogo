@@ -13,6 +13,20 @@
         WHERE USER_EMAIL = #{userEmail}
     </select>
 
+    <!--이메일 중복 확인-->
+    <select id="checkUser" resultType="boolean">
+        SELECT COUNT(USER_Number)
+        FROM TBL_USER
+        WHERE USER_EMAIL = #{userEmail} AND USER_PHONENUM = #{userPhonenum}
+    </select>
+
+    <!--비밀번호 임시비밀번호로 수정-->
+    <update id="temporaryPw">
+        UPDATE TBL_USER
+        SET USER_PW = #{"temporaryPw"}
+        WHERE USER_EMAIL = #{userEmail} AND USER_PHONENUM = #{userPhonenum}
+    </update>
+
     <!--회원 가입-->
     <insert id="insert">
         <selectKey keyProperty="userNumber" order="BEFORE" resultType="long">
@@ -75,8 +89,5 @@
         WHERE USER_NUMBER = #{userNumber}
     </delete>
 
-    <!--이주홍 시간 가져오기 연습용-->
-    <select id="getTime" resultType="string">
-        SELECT SYSDATE FROM DUAL
-    </select>
+
 </mapper>

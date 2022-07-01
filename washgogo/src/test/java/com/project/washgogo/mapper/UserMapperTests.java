@@ -18,13 +18,6 @@ public class UserMapperTests {
 //        userMapper.getList().stream().map(UserVO::toString).forEach(log::info);
 //    }
 
-//    @Test
-//    public void getTimeTest(){
-//        log.info("----------------------------");
-//        log.info(userMapper.getTime());
-//        log.info("----------------------------");
-//    }
-
 //    회원가입 테스트
 //    @Test
 //    public void insertTest(){
@@ -37,15 +30,35 @@ public class UserMapperTests {
 //    }
 
 //    이메일 중복 테스트
+    @Test
+    public void checkEmailTest(){
+        log.info(""+userMapper.checkEmail("alion0513@naver.com"));
+    }
+
+//    회원확인 테스트
 //    @Test
-//    public void checkEmailTest(){
-//        log.info(""+userMapper.checkEmail("alion0513@naver.com"));
+//    public void checkUSerTest(){
+//        UserVO userVO = new UserVO();
+//        userVO.setUserEmail("alion0512313@naver.com");
+//        userVO.setUserPw("zxcv1234");
+//        userVO.setUserName("이주홍52");
+//        userVO.setUserPhonenum("01088580291");
+//        log.info(""+userMapper.checkUser(userVO));
 //    }
 
     //    로그인 테스트
 //    @Test
-//    public void loginTest(){
-//        log.info(""+userMapper.login("alion0513@naver.com","1234"));
+//    public void loginTest() {
+//        log.info("" + userMapper.login("alion0513@naver.com", "poiu9876"));
+//    }
+
+    //   비밀번호를 임시 비밀번호로 변경
+//    @Test
+//    public void temporaryPwTest(){
+//        UserVO userVO = userMapper.selectUserInfo(21L);
+//        String TPPW = "zxcv1234";
+//        userVO.setUserPw(TPPW);
+//        userMapper.temporaryPw(userVO);
 //    }
 
     // 테스트 완료
@@ -76,9 +89,7 @@ public class UserMapperTests {
 //        log.info("SERVICE UPDATE COUNT : " + userMapper.updateService(userVO));
 //    }
 
-
 }
-
 
 
 
