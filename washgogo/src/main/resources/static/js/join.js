@@ -38,35 +38,39 @@ function checkEmail() {
     let userEmail = $('#userEmail').val(); //userEmail값이 "userEmail"인 입력란의 값을 저장
     const feedback = $("div.invalid-feedback-email");
     let str = "";
+    var chk_at = userEmail.search("@");
     if (!userEmail) {
     	str = "<small>이메일 주소를 입력해주세요.</small>";
     	feedback.html(str);
-    	return;
+    } else if(chk_at < 0){
+        str = "<small>이메일 형식으로 입력해주세요.</small>";
+        feedback.html(str);
+    } else{
+        $.ajax({	// ajax선언
+            url: '/user/checkEmail', //Controller에서 인식할 주소
+            type: 'post', //POST 방식으로 전달
+            dataType: "json",
+            data: userEmail,	// 데이터 타입은 userEmail타입이고 userEmail이 들어감
+            contentType: "application/json",
+            success: function (result) {	// 외부로부터 result를 받아오면 => 만약 이메일 전송에 성공하면
+                let str = "";	// str 빈칸으로 정의
+                const feedback = $("div.invalid-feedback-email");	// const타입 feedback은 클래스가 invalid-feedback인 div태그
+                console.log("처리 성공 시 변경되는 내용");	// 출력문
+
+                if (result) { // 이메일 중복있을 때 result는 boolean타입
+                    str = "<small>이미 사용중인 이메일입니다.</small>";
+                } //else { // 이메일 중복 없을 때
+                  //  str = "<small>사용가능한 이메일입니다.</small>";
+                //}
+
+                feedback.html(str);
+            },
+            error: function () {
+                alert("에러입니다");
+            }
+        });
     }
-
-    $.ajax({	// ajax선언
-        url: '/user/checkEmail', //Controller에서 인식할 주소
-        type: 'post', //POST 방식으로 전달
-        dataType: "json",
-        data: userEmail,	// 데이터 타입은 userEmail타입이고 userEmail이 들어감
-        contentType: "application/json",
-        success: function (result) {	// 외부로부터 result를 받아오면 => 만약 이메일 전송에 성공하면
-            let str = "";	// str 빈칸으로 정의
-            const feedback = $("div.invalid-feedback-email");	// const타입 feedback은 클래스가 invalid-feedback인 div태그
-            console.log("처리 성공 시 변경되는 내용");	// 출력문
-
-            if (result) { // 이메일 중복있을 때 result는 boolean타입
-                str = "<small>이미 사용중인 이메일입니다.</small>";
-            } //else { // 이메일 중복 없을 때
-              //  str = "<small>사용가능한 이메일입니다.</small>";
-            //}
-
-            feedback.html(str);
-        },
-        error: function () {
-            alert("에러입니다");
-        }
-    });
+    notEnough();
 }
 
 function checkName() {
@@ -76,18 +80,16 @@ function checkName() {
     if (!userName) {
         str = "<small>이름을 입력해주세요.</small>";
         feedback.html(str);
-        return;
     } else if(userName.length < 2){
         str = "<small>이름은 최소 2자 이상 입력해주세요.</small>";
         feedback.html(str);
-        return;
     }
     else {
         str = "";
         feedback.html(str);
-        return;
     }
-
+    notEnough();
+    return;
 }
 
 function checkPassWord() {
@@ -99,22 +101,19 @@ function checkPassWord() {
     if (!userPw) {
         str = "<small>비밀번호를 입력해주세요.</small>";
         feedback.html(str);
-        return;
     } else if(chk_num < 0 || chk_eng < 0){
         str = "<small>비밀번호는 숫자와 영문자를 혼용하여야 합니다.</small>";
         feedback.html(str);
-        return;
     } else if(userPw.length < 8){
         str = "<small>비밀번호는 최소 8자 이상 입력해주세요.</small>";
         feedback.html(str);
-        return;
     }
     else {
         str = "";
         feedback.html(str);
-        return;
     }
-
+    notEnough();
+    return;
 }
 
 function checkPhoneNum() {
@@ -124,17 +123,16 @@ function checkPhoneNum() {
     if (!userPhoneNum) {
         str = "<small>휴대 전화 번호를 입력해주세요.</small>";
         feedback.html(str);
-        return;
     } else if(userPhoneNum.length < 11 || userPhoneNum.length > 11 ){
         str = "<small>올바른 휴대 전화 번호를 입력해주세요.</small>";
         feedback.html(str);
-        return;
     }
     else {
         str = "";
         feedback.html(str);
-        return;
     }
+    notEnough();
+    return;
 }
 
 $("#agree-terms").on('click', function() {
@@ -147,7 +145,7 @@ $("#agree-14").on('click', function() {
     notEnough();
 });
 
-
+// 회원가입 버튼 type 바꾸기
 // 만약 입력칸에 입력을 안하거나 필수체크란에 동의를 하지 않았다면
 function notEnough() {
     if($("div.invalid-feedback-name").html() != ""

@@ -29,9 +29,19 @@ public class UserServiceTests {
 //        userService.checkEmail("alion0513@naver.com");
 //    }
 
+//    로그인 테스트
 //    @Test
 //    public void login(){
 //        userService.login("alion0513@naver.com","1234");
+//    }
+
+//    임시 비밀번호 테스트
+//    @Test
+//    public void temporaryPwTest(){
+//        UserVO userVO = userService.loadUserInfo(21L);
+//        String TPPW = "zxcv1234";
+//        userVO.setUserPw(TPPW);
+//        userService.findPW(userVO);
 //    }
 
     // 테스트 완료

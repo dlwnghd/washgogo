@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>아이디·비밀번호 찾기</title>
+    <title>비밀번호 찾기</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -23,77 +23,124 @@
 	<div th:replace="~{/fragments/headerFooter :: header}"></div>
 	<section>
 		<div class="findIdPw-page">
-			<h2>아이디·비밀번호 찾기</h2>
-			<div class="card">
-                <nav>
-                    <button id="show-findId-container" onclick="clickFindId">아이디 찾기</button>
-                    <button id="show-findPw-container" onclick="clickFindPw">비밀번호 찾기</button>
-                </nav>
-				<div class="find-container findId-container">
-					<div class="col">
-						<fieldset>
-							<legend>가입한 휴대 전화 번호를 입력해주세요</legend>
-							<div>
-								<input type="text" name="phonenum" placeholder="휴대 전화 번호를 입력해주세요">
+			<h2>비밀번호 찾기</h2>
+				<div class="card">
+					<form class="submit" action="/user/checkUser" method="post" name="userVO">
+						<div class="find-container findId-container">
+							<div class="col">
+								<fieldset>
+									<legend>가입한 휴대 전화 번호를 입력해주세요</legend>
+									<div>
+										<input id="userPhonenum" type="text" name="userPhonenum" placeholder="휴대 전화 번호를 입력해주세요">
+									</div>
+									<div class="invalid-feedback">
+									</div>
+								</fieldset>
 							</div>
-							<div class="invalid-feedback">
-								휴대 전화 번호를 정확히 입력해주세요.
-                            </div>
-                            <div class="feedback">
-                                <small>휴대 전화 번호를 통해<br>가입하신 아이디를 확인하실 수 있습니다.</small>
-                            </div>
-						</fieldset>
-					</div>
-					<div class="col">
-						<button class="btn find-btn"><span>아이디 미리보기</span></button>
+							<div class="col">
+								<fieldset>
+									<legend>가입한 이메일 주소를 입력해주세요</legend>
+									<div>
+										<input id="userEmail" type="email" name="userEmail" placeholder="example@washgogo.com">
+									</div>
+									<div class="invalid-feedback">
+									</div>
+									<div class="feedback">
+										<small>휴대 전화 번호 인증을 통해<br>비밀번호를 재설정하실 수 있습니다.</small>
+									</div>
+								</fieldset>
+							</div>
+							<div class="col verifyNum" style="display: none">
+								<fieldset>
+									<legend>인증 번호를 입력해주세요</legend>
+									<div>
+										<input id="verifyNumber" type="text" name="verifyNumber" placeholder="인증 번호를 입력해주세요">
+									</div>
+									<div class="invalid-feedback">
+									</div>
+								</fieldset>
+							</div>
+							<div class="col">
+							<div class="col">
+							<button type="button" class="btn find-btn" onclick="getNumber()"><span>인증번호 받기</span></button>
+						</div>
 					</div>
 				</div>
-				<div class="find-container findPw-container">
-					<div class="col">
-						<fieldset>
-							<legend>가입한 이메일 주소를 입력해주세요</legend>
-							<div>
-								<input type="email" name="email" placeholder="example@washgogo.com">
-							</div>
-							<div class="invalid-feedback">
-								<small>이메일 주소를 입력해주세요.</small>
-								<!-- <small>올바른 이메일 주소를 입력해주세요.</small> -->
-							</div>
-                            <div class="feedback">
-                                <small>가입하신 이메일 주소를 입력해주시면<br>새로운 비밀번호를 설정 가능한 링크를 보내드립니다.</small>
-                            </div>
-						</fieldset>
-					</div>
-					<div class="col">
-						<button class="btn find-btn"><span>이메일 전송하기</span></button>
-					</div>
-				</div>
+					</form>
 			</div>
 		</div>
 	</section>
 	<div th:replace="~{/fragments/headerFooter :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/findPw.js}"></script>
 <script>
-	/* 아이디 찾기 클릭 시 */
-	function clickFindId() {
-		$(".findPw-container").hide();
-		$(".findId-container").show();
+	function getNumber() {
+		let userEmail = $('#userEmail').val();
+		let userPhonenum = $('#userPhonenum').val();
+		var userVO = {
+			userPhonenum : userPhonenum,
+			userEmail : userEmail
+		}
+		// 이메일이 없다면
+		if(userPhonenum == ""){
+			alert("휴대전화를 입력해주세요");
+			return;
+		} else if(userEmail == ""){
+			alert("이메일을 입력해주세요");
+			return;
+		}
+		$.ajax({	// ajax선언
+			url: '/user/checkUser', //Controller에서 인식할 주소
+			type: 'post', //POST 방식으로 전달
+			dataType: "json",
+			data: JSON.stringify(userVO), 	// 데이터 타입은 userVO타입
+			contentType: "application/json",
+			success: function (result) {
+				if(result){
+					console.log("success result :" + result);
+					// console.log($("button.find-btn").html());
+					// console.log(typeof($("button.find-btn").html()));
+					$("button.find-btn").html("<span>인증번호 확인</span>");	// 버튼 내용 변경
+					$("button.find-btn").prop("type", "submit");	// 버튼 타입 변경
+					$("button.find-btn").attr("onclick", "checkNumber()");	// onclick변경
+					$("div.verifyNum").css('display','block');
+					$("form.submit").attr("action", "/user/VerifyNumber");
+				} else{
+					alert("존재하지 않는 회원입니다.");
+				}
+
+			},
+			error: function () {
+				alert("에러입니다");
+			}
+		});
 	}
 
-	/* 비밀번호 찾기 클릭 시 */
-	function clickFindPw() {
-		$(".findId-container").hide();
-		$(".findPw-container").show();
+	function checkNumber() {
+		let verifyNumber = $('#verifyNumber').val();
+		// 인증 번호가 없다면
+		if(verifyNumber == ""){
+			alert("인증번호를 입력해주세요");
+			return;
+		}
+		$.ajax({	// ajax선언
+			url: '/user/VerifyNumber', //Controller에서 인식할 주소
+			type: 'post', //POST 방식으로 전달
+			dataType: "json",
+			data: verifyNumber, 	// 데이터 타입은 userVO타입
+			contentType: "application/json",
+			success: function (result) {
+				if(result){
+					console.log("success result :" + result);
+				} else{
+					alert("존재하지 않는 회원입니다.");
+				}
+			},
+			error: function () {
+				alert("에러입니다");
+			}
+		});
 	}
-
-	/* 파라미터 해석 */
-	const param = window.location.search;
-	if (param.includes("id")) {
-		console.log("들어옴");
-		$("#show-findId-container").trigger('click');
-	} else if (param.includes("pw")) {
-		$("#show-findPw-container").trigger('click');
-	};
 </script>
 </html>

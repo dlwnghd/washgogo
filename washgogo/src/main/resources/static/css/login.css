@@ -106,7 +106,6 @@ input:focus {
 }
 
 div.invalid-feedback {
-    display: none;
     width: 100%;
     margin-top: 0.25rem;
     font-size: 80%;
@@ -144,15 +143,6 @@ a.find {
     padding-left: 15px;
 }
 
-a.find-email::before {
-    position: absolute;
-    content: "";
-    width: 1.5px;
-    background-color: #a8a8a8;
-    height: 14px;
-    right: 105px;
-    top: 6px;
-}
 
 div.col button.btn {
     width: 100%;
@@ -161,8 +151,8 @@ div.col button.btn {
 
 button.login-btn {
     color: #fff;
-    background-color: #00c7ae;
-    border-color: #00c7ae;
+    background-color:  #00ba86;
+    border-color:  #00ba86;
     text-align: center;
     vertical-align: middle;
     border: 0.0625rem solid transparent;

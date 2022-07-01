@@ -39,4 +39,8 @@ public class UserDAO {
     }
     //    이메일 중복 확인
     public boolean checkEmail(String userEmail) { return userMapper.checkEmail(userEmail) ;}
+    //    임시 비밀번호로 수정
+    public boolean findPW(UserVO userVO) { return userMapper.temporaryPw(userVO);}
+    //    회원 존재 확인
+    public boolean checkUser(UserVO userVO) { return userMapper.checkUser(userVO);}
 }
