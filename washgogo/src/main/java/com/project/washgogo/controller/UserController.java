@@ -319,6 +319,16 @@ public class UserController {
         return "/user/resetPw";
     }
 
+    // 이용 내역
+    @GetMapping("used")
+    public String used(HttpSession session, Model model){
+        //        long userNumber = (long)session.getAttribute("userNumber");
+        //        model.addAttribute("order", orderService.getRecent(userNumber));
+
+        //        model.addAttribute("orderList", orderListService.getRecentList(order.getOrderNumber()));
+        return "/user/used";
+    }
+
     // 자유이용서비스
     @GetMapping("serviceDetail")
     public String serviceDetail(HttpSession session, Model model){
