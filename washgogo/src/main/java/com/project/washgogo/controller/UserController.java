@@ -50,20 +50,32 @@ public class UserController {
         long number = (long)session.getAttribute("userNumber");
         userVO.setUserNumber(number);
         model.addAttribute("loadUserInfo", userService.loadUserInfo(userVO.getUserNumber()));
-        log.info(userVO.toString());
         return "/user/modifyingInformation";
     }
 
     @PostMapping("modifyingInformation")
-    public RedirectView modifyingInformationModify(UserVO userVO, HttpSession session){
-        userService.modifyUserInfo(userVO);
+    public RedirectView modifyingInformationAction(UserVO userVO, HttpSession session){
         log.info(userVO.toString());
+        //변경
+        if(userService.modifyUserInfo(userVO)) {
+            return new RedirectView("/user/modifyingInformation");
+        }
+        //모달창 계정삭제
         if(userService.resignMember(userVO.getUserNumber())){
             session.removeAttribute("userNumber");
             session.removeAttribute("userName");
             return new RedirectView("/index");
         }
+        //모달창 계정 삭제하지 않음
         return new RedirectView("/user/modifyingInformation");
+    }
+
+    @GetMapping("point")
+    public String point(UserVO userVO, HttpSession session, Model model) {
+        long number = (long)session.getAttribute("userNumber");
+        userVO.setUserNumber(number);
+        model.addAttribute("myPageInfo", userService.loadUserInfo(userVO.getUserNumber()));
+        return "/user/point";
     }
 
     //공지 추가 링크
@@ -134,13 +146,6 @@ public class UserController {
         return getList(criteria, model);
     }
 
-    @GetMapping("point")
-    public String point(UserVO userVO, HttpSession session, Model model) {
-        long number = (long)session.getAttribute("userNumber");
-        userVO.setUserNumber(number);
-        model.addAttribute("myPageInfo", userService.myPageInfo(userVO.getUserNumber()));
-        return "/user/point";
-    }
 
     @GetMapping("useService")
     public String useService(UserVO userVO){

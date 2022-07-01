@@ -95,13 +95,11 @@
                                         src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
                                 </li>
                             </ul>
-                            <div class="check-flex-container">
+                            <form action="modifyingInformation" th:method="post" class="change-flex-container">
                                 <div></div>
-                                <form method="post" action="/user/modifyingInformation" id="modifyForm">
-                                    <li><input type="submit" class="button" value="변경 완료" /></li>
-                                </form>
+                                <li><input type="submit" class="button" id=change-ok value="변경 완료"></li>
                                 <div></div>
-                            </div>
+                            </form>
                         </section>
                         <!---->
                     </main>
@@ -142,12 +140,10 @@
                     </div>
                     <div id="choose2" style="display: none;">
                             <button type="submit" class="delete-user">계정 탈퇴
-                                <a href="./index"></a>
+                                <a href="/index"></a>
                             </button>
                         <button type="button" class="remain-user">다시 생각해 볼게요</button>
                     </div>
-                <form action="modifyingInformation" method="post">
-                </form>
             </div>
         </div>
     </body>
