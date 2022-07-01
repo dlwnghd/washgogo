@@ -55,10 +55,14 @@ public class UserController {
     }
 
     @PostMapping("modifyingInformation")
-    public RedirectView modifyingInformationModify(UserVO userVO, RedirectAttributes rttr){
+    public RedirectView modifyingInformationModify(UserVO userVO, HttpSession session){
         userService.modifyUserInfo(userVO);
-        rttr.addFlashAttribute("userNumber", userVO.getUserNumber());
         log.info(userVO.toString());
+        if(userService.resignMember(userVO.getUserNumber())){
+            session.removeAttribute("userNumber");
+            session.removeAttribute("userName");
+            return new RedirectView("/index");
+        }
         return new RedirectView("/user/modifyingInformation");
     }
 
