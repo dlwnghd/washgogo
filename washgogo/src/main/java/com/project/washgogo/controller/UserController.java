@@ -263,16 +263,19 @@ public class UserController {
     }
 
     @PostMapping("login")
-    public RedirectView loginOK(UserVO userVO, HttpServletRequest request) throws IOException {
+    public RedirectView loginOK(UserVO userVO, HttpServletRequest request){
         HttpSession session = request.getSession();
+        Long userNumber = userService.login(userVO.getUserEmail(), userVO.getUserPw());
+        String userName = userService.loadUserInfo(userNumber).getUserName();
 
-//        존재하지 않는 user면⭐강사님께 물어보기
+        //        존재하지 않는 user면? => ⭐강사님께 물어보기
         if(userService.login(userVO.getUserEmail(), userVO.getUserPw()) == null){
+            log.info("---로그인 실패---");
             return new RedirectView("/user/login");
         }
-
-        session.setAttribute("userNumber", userService.login(userVO.getUserEmail(), userVO.getUserPw()));
-        log.info("login에서 session : "+session.getAttribute("userNumber").toString());
+        log.info("---로그인 성공---");
+        session.setAttribute("userNumber", userNumber);
+        session.setAttribute("userName", userName);
         return new RedirectView("/index");
     }
 
@@ -317,6 +320,17 @@ public class UserController {
     }
 
     // 자유이용서비스
+    @GetMapping("serviceDetail")
+    public String serviceDetail(HttpSession session, Model model){
+        if(session.getAttribute("userNumber")  == null){
+            return "/service/serviceDetail";
+        }
+        Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
+        UserVO user = userService.loadUserInfo(userNumber);
+        model.addAttribute("userServiceType", user.getUserServiceType());
+        return "/service/serviceDetail";
+    }
+
     @GetMapping("serviceSubscribeAddress")
     public String serviceSubscribeAddress(HttpSession session){
         if(session.getAttribute("userNumber")  == null){
@@ -357,8 +371,11 @@ public class UserController {
         UserVO user = userService.loadUserInfo(userNumber);
         model.addAttribute("userVO", user);
         return "/service/serviceSubscribePayment";
+    }
 
-
+    @GetMapping("serviceSubscribePayment")
+    public String serviceSubscribePayment(){
+        return "/service/serviceSubscribePayment";
     }
 
     @PostMapping("/servicePaymentOk")
@@ -368,6 +385,6 @@ public class UserController {
         log.info("-------------------------------------");
         userVO.setUserNumber(Long.parseLong(String.valueOf(session.getAttribute("userNumber"))));
         userService.changeService(userVO);
-        return new RedirectView("/requestGuide");
+        return new RedirectView("/order/requestGuide");
     }
 }

@@ -17,7 +17,7 @@ public class OrderService {
         return orderDAO.getList();
     }
     public void requestApply(OrderVO orderVO, OrderListVO orderListVO) {
-        orderDAO.requestApply(orderVO, orderListVO);
+        orderDAO.applyRequest(orderVO, orderListVO);
     }
     public OrderVO getLog(Long orderNumber) {
         return orderDAO.getLog(orderNumber);

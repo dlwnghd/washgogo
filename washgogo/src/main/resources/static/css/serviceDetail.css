@@ -202,3 +202,74 @@
     border-radius: 1rem;
     font-weight: 700;
 }
+
+/* modal-v2 common*/
+.modal-bg{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10001;
+    background: url("/img/modal-bg.png") repeat;
+}
+.modal-title{
+    font-size: 1.2rem;
+    color: #000;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+.modal-close{
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url("../img/modal-close.png")
+    no-repeat center center;
+    background-size: 100% 100%;
+}
+.modal-content .btn-area{
+    text-align: center;
+    margin-top: 2rem;
+}
+.btn-area button{
+    display: inline-block;
+    height: 3.125rem;
+    line-height: 3.125;
+    max-width: 11.25rem;
+    width: 100%;
+    margin: 0;
+    font-size: 0.875rem;
+}
+.btn-black{
+    background: #000;
+    color: #fff;
+    border: 0.063rem solid #000;
+}
+.modal-container{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform:  translate(-50%, -50%);
+    width: 25rem;
+    height: 18rem;
+    z-index: 10001;
+    box-sizing: border-box;
+    transition: all 0.5s ease;
+    overflow: auto;
+}
+.modal-inner{
+    max-width: 41.25rem;
+    padding: 3.75rem 2.5rem;
+    position: relative;
+    width: 100%;
+    min-width: 20.625rem;
+    background: #fff;
+    border-radius: 0;
+    transition: all 0.5s ease;
+}
