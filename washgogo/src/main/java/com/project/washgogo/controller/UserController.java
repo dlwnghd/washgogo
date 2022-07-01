@@ -1,13 +1,7 @@
 package com.project.washgogo.controller;
 
 import com.project.washgogo.domain.vo.*;
-import com.project.washgogo.service.NoticeService;
-import com.project.washgogo.service.UserService;
-import com.project.washgogo.domain.vo.OrderVO;
-import com.project.washgogo.domain.vo.UserVO;
-import com.project.washgogo.service.UserService;
-import com.project.washgogo.domain.vo.*;
-import com.project.washgogo.service.NoticeService;
+import com.project.washgogo.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -34,7 +28,7 @@ import java.util.Random;
 @RequestMapping("/user/*")
 @RequiredArgsConstructor
 @Slf4j
-public class    UserController {
+public class UserController {
     private final UserService userService;
     private final NoticeService noticeService;
     Random random = new Random();		//랜덤 함수 선언
@@ -54,7 +48,8 @@ public class    UserController {
     @GetMapping("modifyingInformation")
     public String modifyingInformation(UserVO userVO, HttpSession session, Model model){
         long number = (long)session.getAttribute("userNumber");
-        model.addAttribute("loadUserInfo", userService.loadUserInfo(number));
+        userVO.setUserNumber(number);
+        model.addAttribute("loadUserInfo", userService.loadUserInfo(userVO.getUserNumber()));
         log.info(userVO.toString());
         return "/user/modifyingInformation";
     }
@@ -136,7 +131,10 @@ public class    UserController {
     }
 
     @GetMapping("point")
-    public String point(UserVO userVO) {
+    public String point(UserVO userVO, HttpSession session, Model model) {
+        long number = (long)session.getAttribute("userNumber");
+        userVO.setUserNumber(number);
+        model.addAttribute("myPageInfo", userService.myPageInfo(userVO.getUserNumber()));
         return "/user/point";
     }
 
@@ -261,7 +259,6 @@ public class    UserController {
         return "/user/login";
     }
 
-<<<<<<< HEAD
 //    로그인
     /*
     @PostMapping("login")
@@ -292,8 +289,6 @@ public class    UserController {
     }
      */
 
-=======
->>>>>>> 753b8d6e4391f34dc69d68014a15c686d322831a
     @PostMapping("login")
     public RedirectView loginOK(UserVO userVO, HttpServletRequest request){
         HttpSession session = request.getSession();
