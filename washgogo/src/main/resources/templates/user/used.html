@@ -24,7 +24,7 @@
 							<fieldset>
 								<legend>
 									<span>세탁 인수증</span>
-									<span>$orderTotalQuantity개 품목</span>
+									<span>(${orderVO.orderTotalQuantity})개 품목</span>
 								</legend>
 								<div>
 									<ul class="order-list">
@@ -56,15 +56,15 @@
 											</div>
 											<div class="laundry-name">
 												<!-- $orderPMChoose $laundryName -->
-												<span>이름</span><br>
+												<span>이름(${laundryVO.laulaundryName})</span><br>
 												<!-- $orderNumber+$laundryNumber -->
-												<span>번호</span>
+												<span>번호(${oderVO.orderNumber}+${oderVO.laundryNumber})</span>
 											</div>
 											<div class="laundry-condition">
 												<!-- $orderProgress -->
-												<span>진행 상태</span><br>
+												<span>진행 상태(${oderVO.orderProgress})</span><br>
 												<!-- $laundryPrice원 -->
-												<span>단가</span>
+												<span>단가(${laundryVO.laundryPrice})</span>
 											</div>
 										</li>
 
@@ -74,7 +74,7 @@
 							<div class="total-price">
 								<span>총액</span>
 								<!-- $orderTotalPrice -->
-								<span>액수</span>
+								<span>액수(${orderVO.orderTotalPrice})</span>
 							</div>
 						</div>
 						<div class="col col2">
@@ -84,8 +84,8 @@
 									<ul class="price-list">
 										<!-- orderList의 개수만큼 li -->
 										<li>
-											<span>$laundryName</span>
-											<span>$laundryPrice원</span>
+											<span>빨래이름(${laundryVO.laundryName})</span>
+											<span>단가(${laundryVO.laundryPrice})원</span>
 										</li>
 									</ul>
 								</div>
