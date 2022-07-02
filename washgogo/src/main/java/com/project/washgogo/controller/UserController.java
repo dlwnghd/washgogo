@@ -49,6 +49,7 @@ public class UserController {
     public String modifyingInformation(UserVO userVO, HttpSession session, Model model){
         long number = (long)session.getAttribute("userNumber");
         userVO.setUserNumber(number);
+        log.info(userVO.toString());
         model.addAttribute("loadUserInfo", userService.loadUserInfo(userVO.getUserNumber()));
         return "/user/modifyingInformation";
     }
@@ -73,8 +74,7 @@ public class UserController {
     @GetMapping("point")
     public String point(UserVO userVO, HttpSession session, Model model) {
         long number = (long)session.getAttribute("userNumber");
-        userVO.setUserNumber(number);
-        model.addAttribute("myPageInfo", userService.loadUserInfo(userVO.getUserNumber()));
+        model.addAttribute("myPageInfo", userService.loadUserInfo(number));
         return "/user/point";
     }
 
