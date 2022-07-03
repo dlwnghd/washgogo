@@ -3,20 +3,13 @@
 <mapper namespace="com.project.washgogo.mapper.LaundryMapper">
     <!--가격표 목록-->
     <select id="getList" resultType="laundryVO">
-        SELECT LAUNDRY_NUMBER, LAUNDRY_NAME, LAUNDRY_PRICE, LAUNDRY_PM_PRICE
+        SELECT LAUNDRY_NUMBER, LAUNDRY_NAME, LAUNDRY_PRICE, LAUNDRY_PM_PRICE, LAUNDRY_URL
         FROM TBL_LAUNDRY
     </select>
 
-    <!--일반 가격 가져오기-->
-    <select id="selectPrice" resultType="_int">
-        SELECT LAUNDRY_PRICE
-        FROM TBL_LAUNDRY
-        WHERE LAUNDRY_NUMBER = #{laundryNumber}
-    </select>
-
-    <!--프리미엄 가격 가져오기-->
-    <select id="selectPmPrice" resultType="_int">
-        SELECT LAUNDRY_PM_PRICE
+    <!--의류 하나의 정보 가져오기-->
+    <select id="selectlaundryInfo" resultType="laundryVO">
+        SELECT LAUNDRY_NUMBER, LAUNDRY_NAME, LAUNDRY_PRICE, LAUNDRY_PM_PRICE, LAUNDRY_URL
         FROM TBL_LAUNDRY
         WHERE LAUNDRY_NUMBER = #{laundryNumber}
     </select>

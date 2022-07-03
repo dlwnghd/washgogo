@@ -127,6 +127,11 @@ ul.order-list div {
 
 ul.order-list div.laundry-img {
 	width: 8rem;
+	text-align: center;
+}
+
+ul.order-list div.laundry-img img {
+	width: 80%;
 }
 
 ul.order-list div.laundry-name {
@@ -135,12 +140,6 @@ ul.order-list div.laundry-name {
 	width: 100%;
 }
 
-ul.price-list li {
-	display: flex;
-	justify-content: space-between;
-	height: auto;
-}
-
-div.col2 {
-	padding-top: 2.5rem;
+ul.order-list div.laundry-condition {
+	text-align: right;
 }
