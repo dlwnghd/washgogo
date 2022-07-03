@@ -37,13 +37,22 @@ public class UserMapperTests {
 
 //    회원확인 테스트
 //    @Test
-//    public void checkUSerTest(){
+//    public void checkUserTest(){
 //        UserVO userVO = new UserVO();
 //        userVO.setUserEmail("alion0512313@naver.com");
 //        userVO.setUserPw("zxcv1234");
 //        userVO.setUserName("이주홍52");
 //        userVO.setUserPhonenum("01088580291");
 //        log.info(""+userMapper.checkUser(userVO));
+//    }
+
+//    회원 번호 찾기 테스트
+//    @Test
+//    public void findUserNumberTest(){
+//        UserVO userVO = new UserVO();
+//        userVO.setUserEmail("alion0513@naver.com");
+//        userVO.setUserPhonenum("01088580291");
+//        log.info(""+userMapper.findUserNumber(userVO));
 //    }
 
     //    로그인 테스트

@@ -1,30 +1,28 @@
 /* 비밀번호 보이기, 감추기 */
 $(".pw-show").on("click",function(){
-    $("input").toggleClass("active");
-    if($("input").hasClass("active")){
-        $(".pw-show").prev("input").attr("type","text");
-        $(".pw-show").toggleClass("pw-hide");
+    $("input").toggleClass("active");   // class변경 토글형식으로 줫다 뺏다가 가능
+    if($("input").hasClass("active")){  // active라는 이름의 class를 가진다면
+        $(".pw-show").prev("input").attr("type","text");    // pw-show의 이전 input은 타입이 text로 변경된다
+        $(".pw-show").toggleClass("pw-hide");   // class변경 pw-hide
     }else{
         $(".pw-show").prev("input").attr("type","password");
         $(".pw-show").removeClass("pw-hide");
     }
+    checkPassWord();
+    close();
 });
 
-console.log($("#password").val());
+console.log($("#userPw").val());
 
 function close() {
     // 비밀번호 미입력시
-    if(!$("#password").val()){
+    if(!$("#userPw").val()){
         pwwrong.style.display = "block";
-    }else if($("#password").val()){
-        pwwrong.style.display = "none";
     }
 
     // 이메일 미입력시
-    if(!$("#email").val()){
+    if(!$("#userEmail").val()){
         emailwrong.style.display = "block";
-    }else if($("#email").val()){
-        emailwrong.style.display = "none";
     }
 }
 
@@ -32,8 +30,9 @@ body.addEventListener("click", e => {
     close();
 })
 
+// 이메일 확인
 function checkEmail() {
-    let userEmail = $('#email').val(); //userEmail값이 "userEmail"인 입력란의 값을 저장
+    let userEmail = $('#userEmail').val(); //userEmail값이 "userEmail"인 입력란의 값을 저장
     const feedback = $("div.invalid-feedback-email");
     let str = "";
     var chk_at = userEmail.search("@");
@@ -57,6 +56,7 @@ function checkEmail() {
                 feedback.html(str);
             },
             error: function () {
+                console.log("로그인 오류 체크1");
                 alert("에러입니다");
             }
         });
@@ -64,8 +64,9 @@ function checkEmail() {
     notEnough();
 }
 
+// 비밀번호 확인
 function checkPassWord() {
-    let userPw = $('#password').val(); //userEmail값이 "userEmail"인 입력란의 값을 저장
+    let userPw = $('#userPw').val(); //userPw값이 "userPw"인 입력란의 값을 저장
     const feedback = $("div.invalid-feedback-password");
     let str = "";
     var chk_num = userPw.search(/[0-9]/g);
@@ -89,22 +90,57 @@ function checkPassWord() {
 
 // 로그인 버튼 type 바꾸기
 // 만약 입력칸에 입력을 안하거나 필수체크란에 동의를 하지 않았다면
+// 전송을 불가능하게 막는 구간
 function notEnough() {
     if($("div.invalid-feedback-email").html() != ""
         || $("div.invalid-feedback-password").html() != ""){
         $(".login-btn").prop("type", "button");
         console.log("로그인 X");
     }else{
-        $(".login-btn").prop("type", "submit");
+        // $(".login-btn").prop("type", "submit");
     }
 }
 
-
-
-$(".login-btn").on('click', function(){
+// 로그인 버튼 클릭시
+function checkUser() {
+    let userEmail = $('#userEmail').val();
+    let userPw = $('#userPw').val();
+    var userVO = {
+        userPw : userPw,
+        userEmail : userEmail
+    }
+    let userform = document.querySelector("form[name='userVO']");
     if($("div.invalid-feedback-email").html() != ""){
         alert('이메일을 입력하세요!')
+        return;
     } else if($("div.invalid-feedback-password").html() != ""){
         alert('비밀번호를 입력하세요!')
+        return;
+    }else{
+        // 회원 확인
+        $.ajax({	// ajax선언
+            url: '/user/loginCheck', //Controller에서 인식할 주소
+            type: 'post', //POST 방식으로 전달
+            dataType: "json",
+            data: JSON.stringify(userVO), 	// 전송할 데이터 타입은 userVO타입
+            contentType: "application/json",    // 보내는 데이터의 타입
+            success: function (result) {
+                if(result == true){
+                    // console.log("success result1 :" + result);
+                    $("form#form").attr("action","/user/login");
+                    $("button.login-btn").prop("type", "submit");
+                    userform.submit();
+                }else if(result == false){
+                    console.log("success result2 :" + result);
+                    $("button.login-btn").prop("type", "button");
+                    alert("존재하지 않는 회원입니다1.");
+                }
+            },
+            error: function () {
+                $("button.login-btn").prop("type", "button");
+                alert("존재하지 않는 회원입니다2.");
+            }
+        });
+        return;
     }
-});
+}
