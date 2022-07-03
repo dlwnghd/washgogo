@@ -10,4 +10,5 @@ public class LaundryVO {
 	private String laundryName;
 	private Long laundryPrice;
 	private Long laundryPmPrice;
+	private String laundryURL;
 }

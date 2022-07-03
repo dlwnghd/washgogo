@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class OrderListService {
-    private OrderListDAO orderListDAO;
+    private final OrderListDAO orderListDAO;
 
     public List<OrderListVO> getList() {
         return orderListDAO.getList();
@@ -21,7 +21,4 @@ public class OrderListService {
         return orderListDAO.getRecentList(orderNumber);
     }
 
-//    public OrderListVO getLog(Long orderNumber) {
-//        return orderListDAO.getLog(orderNumber);
-//    }
 }
