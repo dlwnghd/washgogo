@@ -24,75 +24,36 @@
 							<fieldset>
 								<legend>
 									<span>세탁 인수증</span>
-									<span>(${orderVO.orderTotalQuantity})개 품목</span>
+									<span th:text="|총 ${#aggregates.sum(orderList.![orderEAQuantity]) - 1}개 품목|">총 수량</span>
 								</legend>
 								<div>
 									<ul class="order-list">
-
-										<!--<th:block th:each="order:${orderList}">
+										<th:block th:each="orderList:${orderList}">
 											<li>
 												<div class="laundry-img">
-													<img src="" alt="이미지">
+													<img th:if="${orderList.laundryURL} != null" th:src="@{/img/laundry/} + ${orderList.laundryURL}" alt="이미지">
+													<img th:if="${orderList.laundryURL} == null" th:src="@{/img/laundry/preparation.jpg}" alt="이미지">
 												</div>
 												<div class="laundry-name">
-													&lt;!&ndash; $orderPMChoose $laundryName &ndash;&gt;
 													<span th:text="${orderList.laundryName}">이름</span><br>
-													&lt;!&ndash; $orderNumber+$laundryNumber &ndash;&gt;
-													<span th:text="${orderList.laundryNumber}">번호</span>
+													<span th:if="${orderList.laundryName} != '배송비'" th:text="|O${orderList.orderNumber}L${orderList.laundryNumber}|">번호</span>
 												</div>
 												<div class="laundry-condition">
-													&lt;!&ndash; $orderProgress &ndash;&gt;
-													<span th:text="${order.orderProgress}">진행 상태</span><br>
-													&lt;!&ndash; $laundryPrice원 &ndash;&gt;
-													<span th:text="${orderList.laundryPrice}">단가</span>
+													<span th:if="${orderList.laundryName} != '배송비'"  th:text="|${orderList.orderEAQuantity}개|">개수</span>
+													<span th:if="${orderList.laundryName} != '배송비'"><br></span>
+													<span th:text="${orderList.laundryPrice} * ${orderList.orderEAQuantity} + '원'">단가</span>
 												</div>
 											</li>
-										</th:block>-->
-
-										<!-- orderList의 개수만큼 li -->
-										<li>
-											<div class="laundry-img">
-												<img src="" alt="이미지">
-											</div>
-											<div class="laundry-name">
-												<!-- $orderPMChoose $laundryName -->
-												<span>이름(${laundryVO.laulaundryName})</span><br>
-												<!-- $orderNumber+$laundryNumber -->
-												<span>번호(${oderVO.orderNumber}+${oderVO.laundryNumber})</span>
-											</div>
-											<div class="laundry-condition">
-												<!-- $orderProgress -->
-												<span>진행 상태(${oderVO.orderProgress})</span><br>
-												<!-- $laundryPrice원 -->
-												<span>단가(${laundryVO.laundryPrice})</span>
-											</div>
-										</li>
-
+										</th:block>
 									</ul>
 								</div>
 							</fieldset>
 							<div class="total-price">
 								<span>총액</span>
-								<!-- $orderTotalPrice -->
-								<span>액수(${orderVO.orderTotalPrice})</span>
+								<span>질문!!</span>
 							</div>
 						</div>
-						<div class="col col2">
-							<fieldset>
-								<legend>결제 금액</legend>
-								<div>
-									<ul class="price-list">
-										<!-- orderList의 개수만큼 li -->
-										<li>
-											<span>빨래이름(${laundryVO.laundryName})</span>
-											<span>단가(${laundryVO.laundryPrice})원</span>
-										</li>
-									</ul>
-								</div>
-							</fieldset>
-						</div>
 					</div>
-
 				</div>
 			</div>
 		</section>

@@ -12,5 +12,9 @@ public class OrderListVO {
 	private String orderPmOption;
 	private String orderPmMessage;
 	private String orderType;
-	private Long orderEaQuantity;
+	private Long orderEAQuantity;
+	private String laundryName;
+	private Long laundryPrice;
+	private Long laundryPmPrice;
+	private String laundryURL;
 }

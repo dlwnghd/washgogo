@@ -15,16 +15,7 @@ public class LaundryService {
     public List<LaundryVO> getList() {
         return laundryDAO.getList();
     }
-
     public LaundryVO getLaundryInfo(Long laundryNumber){
         return laundryDAO.getLaundryInfo(laundryNumber);
-    }
-
-    public int getPrice(){
-        return laundryDAO.getPrice();
-    }
-
-    public int getPmPrice(){
-        return laundryDAO.getPmPrice();
     }
 }

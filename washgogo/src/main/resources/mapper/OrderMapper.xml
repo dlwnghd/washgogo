@@ -9,7 +9,7 @@
             WHERE USER_NUMBER = #{userNumber}
             ORDER BY ORDER_DATE DESC
             )
-        WHERE ROWNUM = 1;
+        WHERE ROWNUM = 1
     </select>
 
     <!--수거 신청-->
