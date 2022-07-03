@@ -2,6 +2,8 @@ package com.project.washgogo.controller;
 
 import com.project.washgogo.domain.vo.OrderVO;
 import com.project.washgogo.domain.vo.UserVO;
+import com.project.washgogo.service.OrderListService;
+import com.project.washgogo.service.OrderService;
 import com.project.washgogo.service.UserService;
 import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.NoticeService;
@@ -24,6 +26,8 @@ import java.util.HashMap;
 import org.json.simple.JSONObject;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
+
+import java.util.List;
 import java.util.Random;
 
 
@@ -33,6 +37,8 @@ import java.util.Random;
 @Slf4j
 public class UserController {
     private final UserService userService;
+    private final OrderService orderService;
+    private final OrderListService orderListService;
     private final NoticeService noticeService;
     Random random = new Random();		//랜덤 함수 선언
     int createNum = 0;  			//1자리 난수
@@ -351,10 +357,12 @@ public class UserController {
     // 이용 내역
     @GetMapping("used")
     public String used(HttpSession session, Model model){
-        //        long userNumber = (long)session.getAttribute("userNumber");
-        //        model.addAttribute("order", orderService.getRecent(userNumber));
+        long userNumber = (long)session.getAttribute("userNumber");
+        OrderVO order = orderService.getRecent(userNumber);
+        List<OrderListVO> orderList = orderListService.getRecentList(order.getOrderNumber());
 
-        //        model.addAttribute("orderList", orderListService.getRecentList(order.getOrderNumber()));
+        model.addAttribute("order", order);
+        model.addAttribute("orderList", orderList);
         return "/user/used";
     }
 
