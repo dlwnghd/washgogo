@@ -4,14 +4,16 @@ import com.project.washgogo.domain.dao.OrderDAO;
 import com.project.washgogo.domain.vo.OrderListVO;
 import com.project.washgogo.domain.vo.OrderVO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class OrderService {
-    private OrderDAO orderDAO;
+    private final OrderDAO orderDAO;
 
     public List<OrderVO> getList() {
         return orderDAO.getList();
