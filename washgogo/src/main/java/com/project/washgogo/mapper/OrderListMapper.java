@@ -15,6 +15,6 @@ public interface OrderListMapper {
     public List<OrderListVO> getRecentList(Long orderNumber);
 
     //    주문상세내역 추가
-    public void insert(OrderListVO orderListVO, OrderVO orderVO);
+    public void insertShipping(Long orderNumber);
 
 }

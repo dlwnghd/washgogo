@@ -3,7 +3,7 @@
 <mapper namespace="com.project.washgogo.mapper.OrderMapper">
     <!--이용 내역-->
     <select id="selectRecentRequest" resultType="orderVO">
-        SELECT ORDER_NUMBER, USER_NUMBER, ORDER_DATE, ORDER_PROGRESS, ORDER_ALERT, ORDER_REQUEST_OPTION, ORDER_REQUEST_MESSAGE, ORDER_TOTAL_QUANTITY, ORDER_TOTAL_PRICE
+        SELECT ORDER_NUMBER, ORDER_DATE, ORDER_PROGRESS, ORDER_ALERT, ORDER_REQUEST_MESSAGE, ORDER_TOTAL_PRICE
         FROM (
             SELECT * FROM TBL_ORDER
             WHERE USER_NUMBER = #{userNumber}
@@ -17,14 +17,14 @@
         <selectKey keyProperty="orderNumber" order="BEFORE" resultType="long">
             SELECT SEQ_ORDER.NEXTVAL FROM DUAL
         </selectKey>
-        INSERT INTO TBL_ORDER (ORDER_NUMBER, USER_NUMBER, ORDER_REQUEST_OPTION, ORDER_REQUEST_MESSAGE)
-        VALUES (SEQ_ORDER.NEXTVAL, #{userNumber}, #{orderRequestOption}, #{orderRequestMessage})
+        INSERT INTO TBL_ORDER (ORDER_NUMBER, USER_NUMBER, ORDER_ALERT, ORDER_REQUEST_MESSAGE)
+        VALUES (#{orderNumber}, #{userNumber}, #{orderAlert}, #{orderRequestMessage})
     </insert>
 
-    <!--총 수량, 가격 삽입-->
+    <!--총 금액 삽입-->
     <update id="updateTotal">
         UPDATE TBL_ORDER
-        SET ORDER_TOTAL_QUANTITY = #{orderTotalQuantity}, ORDER_TOTAL_PRICE = #{orderTotalPrice}
+        SET ORDER_TOTAL_PRICE = #{orderTotalPrice}
         WHERE ORDER_NUMBER = #{orderNumber}
     </update>
 

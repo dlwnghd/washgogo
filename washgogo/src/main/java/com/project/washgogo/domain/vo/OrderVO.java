@@ -11,8 +11,6 @@ public class OrderVO {
 	private String orderDate;
 	private String orderProgress;
 	private String orderAlert;
-	private String orderRequestOption;
 	private String orderRequestMessage;
-	private Long orderTotalQuantity;
 	private Long orderTotalPrice;
 }

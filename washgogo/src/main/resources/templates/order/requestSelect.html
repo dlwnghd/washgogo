@@ -14,130 +14,141 @@
         <header th:replace="~{/fragments/headerFooter :: header}"></header>
         <!---- App-Body ---->
         <div id="app-body">
-            <!--form 태그 하나로 바꾸기-->
             <!--input 태그 type 확실하게 바꾸기-->
             <section class="request-select-container">
                 <article class="request-select-detail" th:object="${userVO}">
-                    <div class="guide-take">
-                        <div class="request-img-container">
-                            <img class="request-img" th:src="@{/img/request.png}" alt="세탁물 수거">
-                        </div>
-                        <div>
-                            <div class="border-name">
-                                <div class="border-title client-name">
-                                    <span th:text="*{userName}"></span>
-                                </div>
-                                <div class="tonight-title">님, 오늘 밤<br>문 앞의 세탁물을 수거하러 갑니다.</div>
+                    <form name ="requestForm" autocomplete="off" action="/order/requestSelectOk" method="post">
+                        <div class="guide-take">
+                            <div class="request-img-container">
+                                <img class="request-img" th:src="@{/img/request.png}" alt="세탁물 수거">
                             </div>
-                        </div>
-                    </div>
-                    <div class="adr">
-                        <div class="request-where-title">
-                            <div class="border-title">수거 배송/주소</div>
-                            <!--수정 페이지 만들고 연결-->
-                            <a class="update-address">수정 > </a>
-                        </div>
-                        <div class="request-where-main">
-                            <div class="address-doorlock">
-                                <div class="address font-weight500" th:text="*{userAddress}">주소</div>
-                                <div class="address font-weight500" th:text="*{userAddressDetail}">세부주소</div>
-                                <div class="doorlock-password get-in">
-                                    <span th:text="*{userEntranceType}"></span><span class="colon" th:if="*{userEntrancePw != null || userEntranceMessage != null}"> :</span>
-                                    <span th:text="*{userEntrancePw}" th:if="*{userEntrancePw != null}"></span>
-                                    <span th:text="*{userEntranceMessage}" th:if="*{userEntranceMessage != null}"></span>
+                            <div>
+                                <div class="border-name">
+                                    <div class="border-title client-name">
+                                        <span th:text="*{userName}"></span>
+                                    </div>
+                                    <div class="tonight-title">님, 오늘 밤<br>문 앞의 세탁물을 수거하러 갑니다.</div>
                                 </div>
                             </div>
-                            <div class="alarm-message">
-                                <div class="alarm-message-text font-weight500">알림 메시지 전송 시간</div>
-                                <div class="checkbox-container-wrap">
-                                    <!--라디오 버튼으로 바꾸기-->
-                                    <div class="checkbox-container">
-                                        <form action="#">
+                        </div>
+                        <div class="adr">
+                            <div class="request-where-title">
+                                <div class="border-title">수거 배송/주소</div>
+                                <!--수정 페이지 만들고 연결-->
+                                <a class="update-address">수정 > </a>
+                            </div>
+                            <div class="request-where-main">
+                                <div class="address-doorlock">
+                                    <div class="address font-weight500" th:text="*{userAddress}">주소</div>
+                                    <div class="address font-weight500" th:text="*{userAddressDetail}">세부주소</div>
+                                    <div class="doorlock-password get-in">
+                                        <span th:text="*{userEntranceType}"></span>
+                                        <span class="colon" th:if="*{userEntrancePw != null || userEntranceMessage != null}">: </span>
+                                        <span th:if="*{userEntrancePw != null}" th:text="*{userEntrancePw}"></span>
+                                        <span th:if="*{userEntranceMessage != null}" th:text="*{userEntranceMessage}"></span>
+                                    </div>
+                                </div>
+                                <div class="alarm-message">
+                                    <div class="alarm-message-text font-weight500">알림 메시지 전송 시간</div>
+                                    <div class="checkbox-container-wrap">
+                                        <div class="checkbox-container">
                                             <label for="chk-after">
-                                                <input type="checkbox" id="chk-after">
+                                                <input type="radio" name="orderAlert" value="seven" id="chk-after">
                                                 <i class="circle"></i>
                                                 <span class="alarm-choose-text">오전 7시 이후</span>
                                             </label>
-                                        </form>
-                                    </div>
-                                    <div class="checkbox-container">
-                                        <form action="#">
+                                        </div>
+                                        <div class="checkbox-container">
                                             <label for="chk-direct">
-                                                <input type="checkbox" id="chk-direct">
+                                                <input type="radio" name="orderAlert" value="immediately" id="chk-direct">
                                                 <i class="circle"></i>
                                                 <span class="alarm-choose-text">수거/배송 즉시</span>
                                             </label>
-                                        </form>
+                                        </div>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="pre">
-                        <div class="premium">
-                            <div class="premium-title border-title">프리미엄 서비스</div>
-                            <div class="guide-premium">프리미엄 서비스 안내 </div>
-                        </div>
-                        <div class="premium-main">  
-                            <div class="select-premium">
-                                <!--생각을 좀 더 해보자-->
-                                <div class="premium-text font-weight500">프리미엄 의류 선택하기</div>
-                                <div>></div>
+                        <div class="pre">
+                            <div class="premium">
+                                <div class="premium-title border-title">프리미엄 서비스</div>
+                                <div class="guide-premium">프리미엄 서비스 안내</div>
                             </div>
-                            <div class="premium-tip">
-                                <div class="tip-text">TIP</div>
-                                <!--프리미엄 가격표, 지정 브랜드 모달 만들기-->
-                                <div class="guide-premium-detail">프리미엄 가격표/ 지정 브랜드 보기</div>
+                            <div class="premium-main">
+                                <div class="select-premium">
+                                    <!--생각을 좀 더 해보자-->
+                                    <div class="premium-text font-weight500">프리미엄 의류 선택하기</div>
+                                    <div>></div>
+                                </div>
+                                <div class="premium-tip">
+                                    <div class="tip-text">TIP</div>
+                                    <!--프리미엄 가격표, 지정 브랜드 모달 만들기-->
+                                    <div class="guide-premium-detail">프리미엄 가격표/ 지정 브랜드 보기</div>
+                                </div>
+                            </div>
+                            <div class="premium-brand-guide">프리미엄 지정 브랜드는
+                                <div class="premium-service-color">프리미엄 서비스로 자동 적용</div>됩니다.
                             </div>
                         </div>
-                        <div class="premium-brand-guide">프리미엄 지정 브랜드는 <div class="premium-service-color">프리미엄 서비스로 자동 적용</div>됩니다.</div>
-                    </div>
-                    <div class="cleaning">
-                        <div class="cleaning-title">
-                            <div class="border-title">맡기실 세탁물 선택하기</div>
-                        </div>
-                        <div class="select-cleaning">
-                            <div class="checkbox-container-wrap-cleaning">
-                                <div class="checkbox-container-cleaning">
-                                    <form action="#">
+                        <div class="cleaning">
+                            <div class="cleaning-title">
+                                <div class="border-title">맡기실 세탁물 선택하기</div>
+                            </div>
+                            <div class="select-cleaning">
+                                <div class="checkbox-container-wrap-cleaning">
+                                    <div class="checkbox-container-cleaning">
                                         <label for="chk-life">
-                                        <input type="checkbox" id="chk-life">
-                                        <i class="circle2"></i>
-                                        <span class="cleaning-choose-text">생활 빨래</span>
-                                        <div class="help-text">티셔츠, 수건과 같은 세탁기에 돌리는 빨래입니다.</div>
+                                            <input type="checkbox" id="chk-life" name="washer">
+                                            <i class="circle2"></i>
+                                            <span class="cleaning-choose-text">생활 빨래</span>
+                                            <div class="help-text">티셔츠, 수건과 같은 세탁기에 돌리는 빨래입니다.</div>
                                         </label>
-                                    </form>
-                                </div>
-                                <div class="checkbox-container-cleaning">
-                                    <form action="#">
+                                    </div>
+                                    <div class="checkbox-container-cleaning">
                                         <label for="chk-other">
-                                        <input type="checkbox" id="chk-other">
-                                        <i class="circle2"></i>
-                                        <span class="cleaning-choose-text">개별 클리닝</span>
-                                        <div class="help-text">드라이클리닝, 신발, 이불 등의 개별로 과금되는 세탁물입니다.</div>
+                                            <input type="checkbox" id="chk-other">
+                                            <i class="circle2"></i>
+                                            <span class="cleaning-choose-text">개별 클리닝</span>
+                                            <div class="help-text">드라이클리닝, 신발, 이불 등의 개별로 과금되는 세탁물입니다.</div>
                                         </label>
-                                </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="req">
-                        <div class="cleaning-requests-title">
-                            <div class="border-title">세탁 요청사항</div>
+                        <div class="req">
+                            <div class="cleaning-requests-title">
+                                <div class="border-title">세탁 요청사항</div>
+                            </div>
+                            <div class="cleaning-requests-container">
+                                <!-- <div class="cleaning-requests-select">
+                                    <input type="checkbox" name="orderOptionStain" id="stain-opt"></input>
+                                    <label for="stain-opt" class="requests-select-box">얼룩케어</label>
+
+                                    <input type="checkbox" name="orderOptionDirt" id="dirt-opt"></input>
+                                    <label for="dirt-opt" class="requests-select-box">소매/목때 케어</label>
+
+                                    <input type="checkbox" name="orderOptionCaution" id="caution-opt"></input>
+                                    <label for="caution-opt" class="requests-select-box">세탁 주의</label>
+
+                                    <input type="checkbox" name="orderOptionAddtion" id="addtion-opt"></input>
+                                    <label for="addtion-opt" class="requests-select-box">추가 요청사항</label>
+                                </div> -->
+                                <div class="cleaning-requests-message">
+                                    <div>
+                                        <span>추가 요청사항을 입력하세요.</span>
+                                        <span>최대 150자</span>
+                                    </div>
+                                    <textarea name="orderRequestMessage" id="request-msg" placeholder="의류 종류와 요청사항을 상세히 입력해주세요."
+                                              cols="5" rows="3" maxlength="150"></textarea>
+                                </div>
+                            </div>
                         </div>
-                        <!--선택하면 입력창 나오게 만들기-->
-                        <form class="cleaning-requests-select">
-                            <input class="requests-select-box" value="얼룩케어" type="button"></input>
-                            <input class="requests-select-box" value="소매/목때 케어" type="button"></input>
-                            <input class="requests-select-box" value="세탁 주의" type="button"></input>
-                            <input class="requests-select-box" value="추가 요청사항" type="button"></input>
-                        </form>
-                    </div>
-                    <div class="submit">
-                        <div></div>
-                        <button href="/index" id="request-end">수거 신청</button>
-                        <div></div>
-                    </div>
+                        <div class="submit">
+                            <div></div>
+                            <button type="button" id="request-end">수거 신청</button>
+                            <div></div>
+                        </div>
+                    </form>
                 </article>
             </section>
         </div>
@@ -147,7 +158,8 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-
-
+    $("#request-end").on("click", function(){
+        document.requestForm.submit();
+    })
 </script>
 </html>

@@ -14,7 +14,9 @@ public class OrderListDAO {
     private final OrderListMapper orderListMapper;
 
     //    리스트 가져오기
-    public List<OrderListVO> getList() { return orderListMapper.getList();}
+    public List<OrderListVO> getList() {
+        return orderListMapper.getList();
+    }
 
     //    상세 이용 내역
     public List<OrderListVO> getRecentList(Long orderNumber) {
@@ -22,7 +24,7 @@ public class OrderListDAO {
     }
 
     //    주문상세내역 추가
-    public void addList(OrderListVO orderListVO, OrderVO orderVO) { orderListMapper.insert(orderListVO, orderVO);}
-    //    이용 내역
-//    public OrderListVO getLog(Long orderNumber) { return orderListMapper.select(orderNumber);}
+    public void insertShipping(Long orderNumber) {
+        orderListMapper.insertShipping(orderNumber);
+    }
 }
