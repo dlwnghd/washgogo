@@ -189,15 +189,32 @@ $(".pw-show").on("click",function(){
     }
 });
 
+let userName = $("#USERNAME").text();
+let userEmail = $("#EMAIL").text();
+let userPw = $("#PASSWORD").text();
+let userPhonenum = $("#PHONENUMBER").text();
+let userAddress = $("#ADDRESS").text();
+let userAddressDetail = $("#ADDRESSDETAIL").text();
+let userEntranceType = $("#ENTRANCETYPE").text();
+let userEntrancePw = $("#ENTRANCEPW").text();
+console.log(userName);
+console.log(userEmail);
+console.log(userPw);
+console.log(userPhonenum);
+console.log(userAddress);
+console.log(userAddressDetail);
+console.log(userEntranceType);
+console.log(userEntrancePw);
+
 function modify() {
-    let userName = $("#USERNAME").val();
-    let userEmail = $("#EMAIL").val();
-    let userPw = $("#PASSWORD").val();
-    let userPhonenum = $("#PHONENUMBER").val();
-    let userAddress = $("#ADDRESS").val();
-    let userAddressDetail = $("#ADDRESSDETAIL").val();
-    let userEntranceType = $("#ENTRANCETYPE").val();
-    let userEntracePw = $("#ENTRANCEPW").val();
+    let userName = $("#USERNAME").text();
+    let userEmail = $("#EMAIL").text();
+    let userPw = $("#PASSWORD").text();
+    let userPhonenum = $("#PHONENUMBER").text();
+    let userAddress = $("#ADDRESS").text();
+    let userAddressDetail = $("#ADDRESSDETAIL").text();
+    let userEntranceType = $("#ENTRANCETYPE").text();
+    let userEntrancePw = $("#ENTRANCEPW").text();
     var userVO = {
         userName : userName,
         userEmail : userEmail,
@@ -206,12 +223,12 @@ function modify() {
         userAddress : userAddress,
         userAddressDetail : userAddressDetail,
         userEntranceType : userEntranceType,
-        userEntracePw : userEntracePw
+        userEntrancePw : userEntrancePw
     }
+    console.log(userVO);
     $.ajax({
-        url: '/user/modifyingInformationAction',
+        url: '/user/modifyingInformation',
         type: 'post',
-        dataType: "json",
         data: JSON.stringify(userVO),
         contentType: "application/json",
         success: function (result) {
@@ -224,7 +241,7 @@ function modify() {
     });
 }
 
-const modifyBtn = modal.querySelector(".change-ok");
+const modifyBtn = document.querySelector("#change-ok");
 modifyBtn.addEventListener("click", e => {
     modify();
 })

@@ -64,26 +64,6 @@ public class UserController {
         return "/user/modifyingInformation";
     }
 
-    @PostMapping("modifyingInformation")
-    public RedirectView modifyingInformationAction(UserVO userVO, HttpSession session){
-        String url = "";
-        long number = (long)session.getAttribute("userNumber");
-        userVO = userService.loadUserInfo(number);
-        log.info(userVO.toString());
-        //변경
-        if(userService.modifyUserInfo(userVO)) {
-            url = "/user/modifyingInformation";
-        }
-        //모달창 계정삭제
-//        if(userService.resignMember(userVO.getUserNumber())){
-//            session.removeAttribute("userNumber");
-//            session.removeAttribute("userName");
-//            url = "/index";
-//       }
-        log.info(url.toString());
-        return new RedirectView(url);
-    }
-
     @GetMapping("point")
     public String point(UserVO userVO, HttpSession session, Model model) {
         long number = (long)session.getAttribute("userNumber");
@@ -94,6 +74,26 @@ public class UserController {
     @GetMapping("useService")
     public String useService(UserVO userVO){
         return "/user/useService";
+    }
+
+
+    @PostMapping("modifyingInformation")
+    @ResponseBody
+    public String modifyingInformationAction(@RequestBody UserVO userVO, HttpSession session){
+        long number = (long)session.getAttribute("userNumber");
+        log.info(String.valueOf(number));
+        userVO.setUserNumber(number);
+        log.info("불러온 후 vo 출력 : " + userVO.toString());
+        //변경
+        userService.modifyUserInfo(userVO);
+        log.info(userVO.toString());
+        //모달창 계정삭제
+//        if(userService.resignMember(userVO.getUserNumber())){
+//            session.removeAttribute("userNumber");
+//            session.removeAttribute("userName");
+//            url = "/index";
+//       }
+        return "수정 성공입니다.";
     }
 
     @GetMapping("serviceChange")

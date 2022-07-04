@@ -41,8 +41,8 @@
                                 <li add="" class="item-container email">
                                     <div add="" class="item">
                                         <div add="" class="item-title">이메일</div>
-                                        <div add="" id="EMAIL" class="item-info">
-                                            <span add="" th:text="${loadUserInfo.userEmail}"></span>
+                                        <div add="" class="item-info">
+                                            <div id="EMAIL" add="" th:text="${loadUserInfo.userEmail}"></div>
                                         </div>
                                     </div>
                                     <div add=""><img
@@ -96,11 +96,9 @@
                                         src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
                                 </li>
                             </ul>
-                            <form action="modifyingInformation" th:method="post" class="change-flex-container">
                                 <div></div>
-                                <li><input type="submit" class="button" id=change-ok value="변경 완료"></li>
+                                    <input type="button" class="button" id=change-ok value="변경 완료">
                                 <div></div>
-                            </form>
                         </section>
                         <!---->
                     </main>
