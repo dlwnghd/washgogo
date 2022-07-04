@@ -84,3 +84,12 @@ tr td:not(third-child),
 tr th:not(third-child) {
     width: 25%;
 }
+
+.point-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.point-title-name{
+    padding: 0 0;
+}

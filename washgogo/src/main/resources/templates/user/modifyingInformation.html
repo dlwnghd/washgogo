@@ -41,8 +41,8 @@
                                 <li add="" class="item-container email">
                                     <div add="" class="item">
                                         <div add="" class="item-title">이메일</div>
-                                        <div add="" id="EMAIL" class="item-info">
-                                            <span add="" th:text="${loadUserInfo.userEmail}"></span>
+                                        <div add="" class="item-info">
+                                            <div id="EMAIL" add="" th:text="${loadUserInfo.userEmail}"></div>
                                         </div>
                                     </div>
                                     <div add=""><img
@@ -70,7 +70,8 @@
                                 <li add="" class="item-container address">
                                     <div add="" class="item">
                                         <div add="" class="item-title">배송지</div>
-                                        <div add="" id="ADDRESS" class="item-info" th:text="${loadUserInfo.userAddress} + ${loadUserInfo.userAddressDetail}"></div>
+                                        <div add="" id="ADDRESS" class="item-info" th:text="${loadUserInfo.userAddress}"></div>
+                                        <div add="" id="ADDRESSDETAIL" class="item-info" th:text="${loadUserInfo.userAddressDetail}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""
@@ -79,8 +80,8 @@
                                 <li add="" class="item-container addressDetail">
                                     <div add="" class="item">
                                         <div add="" class="item-title">공동현관 출입방법</div>
-                                        <div th:text="${loadUserInfo.userEntranceType}"></div>
-                                        <div add="" id="ADDRESSDETAIL" class="item-info" th:text="${loadUserInfo.userEntrancePw}"></div>
+                                        <div id="ENTRANCETYPE" th:text="${loadUserInfo.userEntranceType}"></div>
+                                        <div add="" id="ENTRANCEPW" class="item-info" th:text="${loadUserInfo.userEntrancePw}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""
@@ -95,6 +96,9 @@
                                         src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
                                 </li>
                             </ul>
+                                <div></div>
+                                    <input type="button" class="button" id=change-ok value="변경 완료">
+                                <div></div>
                         </section>
                         <!---->
                     </main>
@@ -135,12 +139,10 @@
                     </div>
                     <div id="choose2" style="display: none;">
                             <button type="submit" class="delete-user">계정 탈퇴
-                                <a href="./index"></a>
+                                <a href="/index"></a>
                             </button>
                         <button type="button" class="remain-user">다시 생각해 볼게요</button>
                     </div>
-                <form action="modifyingInformation" method="post">
-                </form>
             </div>
         </div>
     </body>

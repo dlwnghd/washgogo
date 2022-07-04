@@ -65,7 +65,7 @@
     <!--회원 정보 수정-->
     <update id="updateUserInfo">
         UPDATE TBL_USER
-        SET USER_EMAIL = #{userEmail}, USER_PW = #{userPw}, USER_NAME = #{userName}, USER_PHONENUM = #{userPhonenum}, USER_ADDRESS = #{userAddress},  USER_ADDRESS_DETAIL = #{userAddressDetail}, USER_ENTRANCE_TYPE = #{userEntranceType}, USER_ENTRANCE_PW = #{userEntrancePw}, USER_ENTRANCE_MESSAGE = #{userEntranceMessage}, USER_SERVICE_TYPE = #{userServiceType}
+        SET USER_EMAIL = #{userEmail}, USER_PW = #{userPw}, USER_NAME = #{userName}, USER_PHONENUM = #{userPhonenum}, USER_ADDRESS = #{userAddress},  USER_ADDRESS_DETAIL = #{userAddressDetail}, USER_ENTRANCE_TYPE = #{userEntranceType}, USER_ENTRANCE_PW = #{userEntrancePw}
         WHERE USER_NUMBER=#{userNumber}
     </update>
 

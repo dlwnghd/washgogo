@@ -6,7 +6,7 @@ const $email = $("#EMAIL");
 const $password = $("#PASSWORD");
 const $phonenumber = $("#PHONENUMBER");
 const $address = $("#ADDRESS");
-const $addressdetail = $("#ADDRESSDETAIL");
+const $entrancepw = $("#ENTRANCEPW")
 
 const $inputInfo = $("#modifyInfo");
 const $pw = $("#pw");
@@ -45,7 +45,7 @@ changeuserBtn.addEventListener('click', e => {
             $address.text(document.getElementById("result").value); // ⭐기능 구현되는 코드
             break;
         case '공동현관 출입방법 수정':
-            $addressdetail.text(document.getElementById("result").value); // ⭐기능 구현되는 코드
+            $entrancepw.text(document.getElementById("result").value); // ⭐기능 구현되는 코드
             break;
     }
     close();
@@ -80,6 +80,7 @@ remainBtn.addEventListener("click", e => {
 // 계정 탈퇴 버튼으로 닫기
 const deleteBtn = document.querySelector(".delete-user");
 deleteBtn.addEventListener("click", e => {
+    userMapper.delete(userVO.getUserNumber) == 1;
     close();
 })
 
@@ -187,3 +188,60 @@ $(".pw-show").on("click",function(){
         $(".pw-show").removeClass("pw-hide");
     }
 });
+
+let userName = $("#USERNAME").text();
+let userEmail = $("#EMAIL").text();
+let userPw = $("#PASSWORD").text();
+let userPhonenum = $("#PHONENUMBER").text();
+let userAddress = $("#ADDRESS").text();
+let userAddressDetail = $("#ADDRESSDETAIL").text();
+let userEntranceType = $("#ENTRANCETYPE").text();
+let userEntrancePw = $("#ENTRANCEPW").text();
+console.log(userName);
+console.log(userEmail);
+console.log(userPw);
+console.log(userPhonenum);
+console.log(userAddress);
+console.log(userAddressDetail);
+console.log(userEntranceType);
+console.log(userEntrancePw);
+
+function modify() {
+    let userName = $("#USERNAME").text();
+    let userEmail = $("#EMAIL").text();
+    let userPw = $("#PASSWORD").text();
+    let userPhonenum = $("#PHONENUMBER").text();
+    let userAddress = $("#ADDRESS").text();
+    let userAddressDetail = $("#ADDRESSDETAIL").text();
+    let userEntranceType = $("#ENTRANCETYPE").text();
+    let userEntrancePw = $("#ENTRANCEPW").text();
+    var userVO = {
+        userName : userName,
+        userEmail : userEmail,
+        userPw : userPw,
+        userPhonenum : userPhonenum,
+        userAddress : userAddress,
+        userAddressDetail : userAddressDetail,
+        userEntranceType : userEntranceType,
+        userEntrancePw : userEntrancePw
+    }
+    console.log(userVO);
+    $.ajax({
+        url: '/user/modifyingInformation',
+        type: 'post',
+        data: JSON.stringify(userVO),
+        contentType: "application/json",
+        success: function (result) {
+            console.log(result);
+            location.href = "/user/modifyingInformation";
+        },
+        error: function () {
+            alert("에러입니다");
+        }
+    });
+}
+
+const modifyBtn = document.querySelector("#change-ok");
+modifyBtn.addEventListener("click", e => {
+    modify();
+})

@@ -6,7 +6,7 @@ import com.project.washgogo.service.OrderListService;
 import com.project.washgogo.service.OrderService;
 import com.project.washgogo.service.UserService;
 import com.project.washgogo.domain.vo.*;
-import com.project.washgogo.service.NoticeService;
+import com.project.washgogo.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -62,6 +62,53 @@ public class UserController {
         long number = (long)session.getAttribute("userNumber");
         model.addAttribute("loadUserInfo", userService.loadUserInfo(number));
         return "/user/modifyingInformation";
+    }
+
+    @GetMapping("point")
+    public String point(UserVO userVO, HttpSession session, Model model) {
+        long number = (long)session.getAttribute("userNumber");
+        model.addAttribute("myPageInfo", userService.loadUserInfo(number));
+        return "/user/point";
+    }
+
+    @GetMapping("useService")
+    public String useService(UserVO userVO){
+        return "/user/useService";
+    }
+
+
+    @PostMapping("modifyingInformation")
+    @ResponseBody
+    public String modifyingInformationAction(@RequestBody UserVO userVO, HttpSession session){
+        long number = (long)session.getAttribute("userNumber");
+        log.info(String.valueOf(number));
+        userVO.setUserNumber(number);
+        log.info("불러온 후 vo 출력 : " + userVO.toString());
+        //변경
+        userService.modifyUserInfo(userVO);
+        log.info(userVO.toString());
+        //모달창 계정삭제
+//        if(userService.resignMember(userVO.getUserNumber())){
+//            session.removeAttribute("userNumber");
+//            session.removeAttribute("userName");
+//            url = "/index";
+//       }
+        return "수정 성공입니다.";
+    }
+
+    @GetMapping("serviceChange")
+    public String serviceChange(UserVO userVO){
+        return "/user/serviceChange";
+    }
+
+    @GetMapping("changeCancel")
+    public String changeCancel(UserVO userVO){
+        return "/user/changeCancel";
+    }
+
+    @GetMapping("paymentDetails")
+    public String paymentDetails(OrderVO order) {
+        return "/user/paymentDetails";
     }
 
     //공지 추가 링크
@@ -130,44 +177,6 @@ public class UserController {
 
         noticeService.remove(noticeNumber);
         return getList(criteria, model);
-    }
-
-    @GetMapping("point")
-    public String point(UserVO userVO) {
-        return "/user/point";
-    }
-
-
-
-    @PostMapping("modifyingInformation")
-    public RedirectView modifyingInformationModify(UserVO userVO, RedirectAttributes rttr){
-        log.info("----------------------------");
-        log.info(userVO.toString());
-        log.info("----------------------------");
-
-        userService.modifyUserInfo(userVO);
-        rttr.addFlashAttribute("userNumber", userVO.getUserNumber());
-        return new RedirectView("/user/modifyingInformation");
-    }
-
-    @GetMapping("useService")
-    public String useService(UserVO userVO){
-        return "/user/useService";
-    }
-
-    @GetMapping("serviceChange")
-    public String serviceChange(UserVO userVO){
-        return "/user/serviceChange";
-    }
-
-    @GetMapping("changeCancel")
-    public String changeCancel(UserVO userVO){
-        return "/user/changeCancel";
-    }
-
-    @GetMapping("paymentDetails")
-    public String paymentDetails(OrderVO order) {
-        return "/user/paymentDetails";
     }
 
 //    ###로그인 / 회원가입###
@@ -282,6 +291,36 @@ public class UserController {
         log.info("---------------------");
         return "/user/login";
     }
+
+//    로그인
+    /*
+    @PostMapping("login")
+    public RedirectView loginOK(UserVO userVO, String userEmail, String userPw, RedirectAttributes rttr){
+        log.info("---------------------");
+        log.info("---loginPostMapping---");
+        log.info("---------------------");
+        log.info("userService출력문 : "+userService.login(userEmail, userPw));
+
+        rttr.addFlashAttribute("userVO", userService.login(userEmail,userPw));
+        userVO = userService.login(userEmail, userPw);
+
+        if(userVO == null){  // 사용자의 번호가 인식되지 않는다면
+            log.info("---로그인 실패---");
+            log.info("userVO : " + userVO);
+            log.info("사용자가 입력한 이메일 : " + userEmail);    // 사용자가 입력한 이메일
+            log.info("사용자가 입력한 Pw : " + userPw);   // 사용자가 입력한 Pw
+            return new RedirectView("/user/login");
+        }
+
+        log.info("---로그인 성공---");
+        log.info("userVO : " + userVO);
+        log.info("사용자가 입력한 이메일 : " + userEmail);    // 사용자가 입력한 이메일
+        log.info("사용자가 입력한 Pw : " + userPw);   // 사용자가 입력한 Pw
+        log.info(userVO.toString());
+        return new RedirectView("/index");
+//        return new RedirectView("/user/myPage");
+    }
+     */
 
 //    로그인 시 유저 존재 확인
     @ResponseBody //REST
