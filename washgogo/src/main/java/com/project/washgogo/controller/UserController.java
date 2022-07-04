@@ -1,9 +1,16 @@
 package com.project.washgogo.controller;
 
+import com.project.washgogo.domain.vo.OrderVO;
+import com.project.washgogo.domain.vo.UserVO;
+import com.project.washgogo.service.OrderListService;
+import com.project.washgogo.service.OrderService;
+import com.project.washgogo.service.UserService;
 import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,16 +21,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 
 //SMS용으로 추가
-import java.util.ArrayList;
 import java.util.HashMap;
 import org.json.simple.JSONObject;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
-
-import java.util.List;
 import java.util.Random;
 
 
@@ -33,6 +38,8 @@ import java.util.Random;
 @Slf4j
 public class UserController {
     private final UserService userService;
+    private final OrderService orderService;
+    private final OrderListService orderListService;
     private final NoticeService noticeService;
     Random random = new Random();		//랜덤 함수 선언
     int createNum = 0;  			//1자리 난수
@@ -188,28 +195,21 @@ public class UserController {
         //SELECT COUNT(USER_EMAIL) FROM TBL_USER WHERE USER_EMAIL = #{userEmail}
     }
 
-//    인증번호 확인
-    @ResponseBody //REST
-    @PostMapping("VerifyNumber")
-    public boolean VerifyNumber(@RequestBody String VerifyNumber){
-        log.info("전달받은 인증번호 : "+ VerifyNumber);
-        log.info(VerifyNumber.equals(resultNum)+"");
-        return VerifyNumber.equals(resultNum);   // true : 이미 사용하고 있는 이메일
-    }
-
-    //    회원 존재 확인
+    //    회원 존재 확인 및 인증번호 생성
+    //    return을 boolean이 아닌 인증번호를 전달해 주어야 한다.
     @ResponseBody //REST
     @PostMapping("/checkUser")
-    public boolean checkUser(@RequestBody UserVO userVO){
+    public String checkUser(@RequestBody UserVO userVO){
         log.info("---------------------");
         log.info("---findIdPwPostMapping---");
         log.info("---------------------");
         log.info("전달받은 email : "+ userVO.getUserEmail());
         log.info("전달받은 전화번호 : "+ userVO.getUserPhonenum());
         log.info("userService : " + userService.checkUser(userVO));
+        resultNum = "";     // 인증번호가 쌓이는 것을 방지하기 위해 인증번호 초기화
 
+        // 반복문으로 인증번호를 생성
         for (int i=0; i<letter; i++) {
-
             createNum = random.nextInt(9);		//0부터 9까지 올 수 있는 1자리 난수 생성
             ranNum =  Integer.toString(createNum);  //1자리 난수를 String으로 형변환
             resultNum += ranNum;			//생성된 난수(문자열)을 원하는 수(letter)만큼 더하며 나열
@@ -236,8 +236,17 @@ public class UserController {
 //            System.out.println(e.getCode());
 //        }
 
-        log.info("resultNum : " + resultNum);
-        return userService.checkUser(userVO);   // true : 존재하는 있는 유저
+        log.info("resultNum : " + resultNum);   // 인증번호 확인용 log.info
+        return userService.checkUser(userVO) ? resultNum : null;   // userService.checkUser(userVO)이 true : 존재하는 유저
+    }
+
+//    인증번호 확인 성공
+    @PostMapping("/checkVerifyNum")
+    public RedirectView verifyOK(UserVO userVO, RedirectAttributes rttr){
+        log.info("userService : " + userService.findUserNumber(userVO));
+        log.info("찾는 유저의 번호 : " + userService.findUserNumber(userVO));
+        rttr.addFlashAttribute("userNumber",userService.findUserNumber(userVO));
+        return new RedirectView("/user/resetPw");
     }
 
 //    회원가입
@@ -301,17 +310,40 @@ public class UserController {
     }
      */
 
+//    로그인 시 유저 존재 확인
+    @ResponseBody //REST
+    @PostMapping("/loginCheck")
+    public boolean loginCheck(@RequestBody UserVO userVO){
+            log.info("userEmail : " + userVO.getUserEmail());
+            log.info("userPw : " + userVO.getUserPw());
+            log.info("userNumber : " + userVO.getUserNumber());
+            log.info("userNumber 찾기 : " + userService.login(userVO.getUserEmail(), userVO.getUserPw()));
+        if(userService.login(userVO.getUserEmail(), userVO.getUserPw()) == null){
+            log.info("---유저 없음---");
+            return false;
+        }
+        log.info("---로그인 성공---");
+        return true;
+    }
+
+//    로그인
     @PostMapping("login")
     public RedirectView loginOK(UserVO userVO, HttpServletRequest request){
+        //        존재하지 않는 user면? => ⭐강사님께 물어보기
+        log.info("loginCheck : "+loginCheck(userVO));
+        if(userService.login(userVO.getUserEmail(), userVO.getUserPw()) == null){
+            log.info("---로그인 실패---");
+            log.info("userEmail : " + userVO.getUserEmail());
+            log.info("userPw : " + userVO.getUserPw());
+            log.info("userNumber : " + userVO.getUserNumber());
+//            null을 보낸다고 해도 redirect를 막을 수는 없음;;
+
+            return null;
+        }
         HttpSession session = request.getSession();
         Long userNumber = userService.login(userVO.getUserEmail(), userVO.getUserPw());
         String userName = userService.loadUserInfo(userNumber).getUserName();
 
-        //        존재하지 않는 user면? => ⭐강사님께 물어보기
-        if(userService.login(userVO.getUserEmail(), userVO.getUserPw()) == null){
-            log.info("---로그인 실패---");
-            return new RedirectView("/user/login");
-        }
         log.info("---로그인 성공---");
         session.setAttribute("userNumber", userNumber);
         session.setAttribute("userName", userName);
@@ -340,12 +372,16 @@ public class UserController {
 
 //    비밀번호 찾기
     @PostMapping("/findIdPw")
-    public String findIdPwOK(){
+    public String findIdPwOK(UserVO userVO){
         log.info("---------------------");
         log.info("---findIdPwPostMapping---");
         log.info("---------------------");
-        log.info("resultNum : " + resultNum);
-        return "/user/findIdPw";
+        log.info("유저번호 : "+userVO.getUserNumber());
+        log.info("유저의 비밀번호1 :"+userVO.getUserPw());
+        userVO.setUserPw(userVO.getUserPw());
+        log.info("유저의 비밀번호2 :"+userVO.getUserPw());
+        userService.changePw(userVO);
+        return "/user/login";
     }
 
     @GetMapping("/resetPw")
@@ -361,10 +397,12 @@ public class UserController {
     // 이용 내역
     @GetMapping("used")
     public String used(HttpSession session, Model model){
-        //        long userNumber = (long)session.getAttribute("userNumber");
-        //        model.addAttribute("order", orderService.getRecent(userNumber));
+        long userNumber = (long)session.getAttribute("userNumber");
+        OrderVO order = orderService.getRecent(userNumber);
+        List<OrderListVO> orderList = orderListService.getRecentList(order.getOrderNumber());
 
-        //        model.addAttribute("orderList", orderListService.getRecentList(order.getOrderNumber()));
+        model.addAttribute("order", order);
+        model.addAttribute("orderList", orderList);
         return "/user/used";
     }
 
@@ -377,11 +415,24 @@ public class UserController {
         Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
         UserVO user = userService.loadUserInfo(userNumber);
         model.addAttribute("userServiceType", user.getUserServiceType());
+        model.addAttribute("selectedServiceType", "Several");
         return "/service/serviceDetail";
     }
 
+    @GetMapping("serviceOnceDetail")
+    public String serviceOnceDetail(HttpSession session, Model model){
+        if(session.getAttribute("userNumber")  == null){
+            return "/service/serviceOnceDetail";
+        }
+        Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
+        UserVO user = userService.loadUserInfo(userNumber);
+        model.addAttribute("userServiceType", user.getUserServiceType());
+        model.addAttribute("selectedServiceType", "Once");
+        return "/service/serviceOnceDetail";
+    }
+
     @GetMapping("serviceSubscribeAddress")
-    public String serviceSubscribeAddress(HttpSession session){
+    public String serviceSubscribeAddress(HttpSession session, @ModelAttribute("selectedServiceType") String selectedServiceType, RedirectAttributes rttr){
         if(session.getAttribute("userNumber")  == null){
             return "/user/login";
         }
@@ -389,54 +440,62 @@ public class UserController {
         Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
         UserVO user = userService.loadUserInfo(userNumber);
         if(user.getUserAddress() != null) {
+            rttr.addAttribute("selectedServiceType", selectedServiceType);
             return "redirect:/user/servicePayment";
         }
 
+        rttr.addAttribute("selectedServiceType", selectedServiceType);
         return "service/serviceSubscribeAddress";
     }
 
     @PostMapping("modifyAddress")
-    public String modifyAddress(UserVO userVO){
+    public String modifyAddress(HttpSession session, UserVO userVO, @ModelAttribute("selectedServiceType") String selectedServiceType){
         log.info("-----------------postAddress--------------------");
         log.info("userVO : " + userVO.toString());
+        log.info("-------------------------------------");
 
         return "/service/modifyAddress";
     }
 
     @PostMapping("/serviceAddressOk")
-    public String serviceAddressOk(UserVO userVO, HttpSession session){
+    public String serviceAddressOk(HttpSession session, UserVO userVO, @ModelAttribute("selectedServiceType") String selectedServiceType, Model model){
         log.info("-------------------------------------");
         log.info("userVO : " + userVO.toString());
         log.info("-------------------------------------");
         Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
         userVO.setUserNumber(userNumber);
         userService.modifyAddress(userVO);
-        log.info("-------------------------------------");
-        log.info("userVO : " + userVO.toString());
-        log.info("-------------------------------------");
+        UserVO user = userService.loadUserInfo(userNumber);
+        model.addAttribute("selectedServiceType", selectedServiceType);
+        model.addAttribute("userServiceType", user.getUserServiceType());
         return "/service/serviceSubscribePayment";
     }
 
+    // serviceSubscribeAddress 건너뛰고 바로 serviceSubscribePayment로 이동했을 때
     @GetMapping("/servicePayment")
-    public String servicePayment(HttpSession session, Model model){
+    public String servicePayment(HttpSession session, @ModelAttribute("selectedServiceType") String selectedServiceType, Model model){
         Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
         UserVO user = userService.loadUserInfo(userNumber);
         model.addAttribute("userVO", user);
+        model.addAttribute("selectedServiceType",selectedServiceType);
+        model.addAttribute("userServiceType", user.getUserServiceType());
         return "/service/serviceSubscribePayment";
     }
 
-    @GetMapping("serviceSubscribePayment")
-    public String serviceSubscribePayment(){
-        return "/service/serviceSubscribePayment";
-    }
-
-    @PostMapping("/servicePaymentOk")
-    public RedirectView servicePaymentOk(UserVO userVO, HttpSession session){
+    @PatchMapping("/servicePaymentOk")
+    @ResponseBody
+    public boolean servicePaymentOk(@RequestBody UserVO userVO, HttpSession session){
         log.info("-------------------------------------");
         log.info("userVO : " + userVO.toString());
         log.info("-------------------------------------");
         userVO.setUserNumber(Long.parseLong(String.valueOf(session.getAttribute("userNumber"))));
-        userService.changeService(userVO);
-        return new RedirectView("/order/requestGuide");
+        boolean isSuccess = userService.changeService(userVO);
+        return isSuccess;
     }
+
+    @GetMapping("/serviceChangeComplete")
+    public String serviceChangeComplete(){
+        return "/service/serviceChangeComplete";
+    }
+
 }

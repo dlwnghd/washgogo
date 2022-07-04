@@ -25,14 +25,13 @@
 		<div class="login-page">
 			<h2>로그인</h2>
 			<div class="card">
-				<form action="/user/login" method="post" name="userVO">
+				<form id="form" action="/user/loginCheck" method="post" name="userVO">
 				<div class="login-container">
-				</div>
 					<div class="col">
 						<fieldset>
 							<legend>이메일</legend>
 							<div>
-								<input id="email" type="email" name="userEmail" placeholder="이메일을 입력해주세요" oninput = "checkEmail()">
+								<input id="userEmail" type="email" name="userEmail" placeholder="이메일을 입력해주세요" oninput = "checkEmail()">
 							</div>
 							<div id="emailwrong" class="invalid-feedback invalid-feedback-email">
 							</div>
@@ -42,7 +41,7 @@
 						<fieldset>
 							<legend>비밀번호</legend>
 							<div class="password-wrapper">
-								<input id="password" type="password" name="userPw" placeholder="비밀번호를 입력하세요" oninput = "checkPassWord()">
+								<input id="userPw" type="password" name="userPw" placeholder="비밀번호를 입력하세요" oninput = "checkPassWord()">
 								<button class="pw-show" type="button"></button>
 							</div>
 							<div id="pwwrong" class="invalid-feedback invalid-feedback-password">
@@ -53,8 +52,9 @@
 						<a href="findIdPw" class="find find-pw">비밀번호 찾기</a>
 					</div>
 					<div class="col">
-						<button type="button" class="btn login-btn" value="로그인"><span>로그인</span></button>
+						<button type="button" class="btn login-btn" value="로그인" th:onclick="checkUser()"><span>로그인</span></button>
 					</div>
+				</div>
 				</form>
 				<div class="signup">
 					<a href="join">계정이 없으신가요?</a>

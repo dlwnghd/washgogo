@@ -19,8 +19,18 @@
         <div class="payment">
             <div class="content-wrap">
                 <div class="main-title">
-                    <p>
+                    <p th:if="${selectedServiceType == 'Several' && userServiceType == 'Once'}">
+                        <strong>
+                            다음 배송 시 고객님의 라이프 스타일에 맞는<br>
+                            런드렛에 담아 배송됩니다.
+                        </strong>
+                    </p>
+                    <p th:if="${selectedServiceType == 'Several' && userServiceType != 'Once'}">
                         <strong>자유이용 서비스</strong>로<br>
+                        빨래 없는 생활을 시작해보세요.
+                    </p>
+                    <p th:if="${selectedServiceType == 'Once'}">
+                        <strong>1회 이용 서비스</strong>로<br>
                         빨래 없는 생활을 시작해보세요.
                     </p>
                 </div>
@@ -43,46 +53,46 @@
                     </div>
                 </section>
             </div>
-            <div class="content-wrap">
-                <section class="launderette-choice">
-                    <form name="serviceForm" action="/user/servicePaymentOk" method="post">
-                        <input type="hidden" name="userServiceType" value="여러 번 이용">
-                        <div class="title">
-                            <h2>런드렛 선택</h2>
-                            <p class="info">
-                                고객님의 라이프스타일에 맞는 런드렛을 선택하세요.<br>
-                                세탁 완료 후 배송 시 런드렛에 담아 보내드립니다.
-                            </p>
-                        </div>
-                        <ul class="choice-wrap">
-                            <li class="focus">
-                                <label>
-                                    <input type="radio" style="display: none" name="userLaunderetteType" value="Regular" checked>
-                                    <div class="recommend">추천</div>
-                                    <div class="text-content">
-                                        <p class="info">부피가 큰 의류에</p>
-                                        <h3>런드렛 레귤러</h3>
-                                    </div>
-                                    <div class="image-content"></div>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <input type="radio" style="display: none" name="userLaunderetteType" value="Mini">
-                                    <div class="text-content">
-                                        <p class="info">부피가 적은 의류에</p>
-                                        <h3>런드렛 미니</h3>
-                                    </div>
-                                    <div class="image-content"></div>
-                                </label>
-                            </li>
-                        </ul>
-                        <div class="more-info">
-                            <a>런드렛 알아보기 ></a>
-                        </div>
-                    </form>
-                </section>
-            </div>
+            <form name="serviceForm" action="/user/servicePaymentOk" method="patch">
+                <input type="hidden" name="userServiceType" th:value="${selectedServiceType}">
+                <div class="content-wrap" th:if="${selectedServiceType == 'Several'}">
+                    <section class="launderette-choice">
+                            <div class="title">
+                                <h2>런드렛 선택</h2>
+                                <p class="info">
+                                    고객님의 라이프스타일에 맞는 런드렛을 선택하세요.<br>
+                                    세탁 완료 후 배송 시 런드렛에 담아 보내드립니다.
+                                </p>
+                            </div>
+                            <ul class="choice-wrap">
+                                <li class="focus">
+                                    <label>
+                                        <input type="radio" style="display: none" name="userLaunderetteType" id="Regular" value="Regular">
+                                        <div class="recommend">추천</div>
+                                        <div class="text-content">
+                                            <p class="info">부피가 큰 의류에</p>
+                                            <h3>런드렛 레귤러</h3>
+                                        </div>
+                                        <div class="image-content"></div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" style="display: none" name="userLaunderetteType" id="Mini" value="Mini">
+                                        <div class="text-content">
+                                            <p class="info">부피가 적은 의류에</p>
+                                            <h3>런드렛 미니</h3>
+                                        </div>
+                                        <div class="image-content"></div>
+                                    </label>
+                                </li>
+                            </ul>
+                            <div class="more-info">
+                                <a>런드렛 알아보기 ></a>
+                            </div>
+                    </section>
+                </div>
+            </form>
             <div class="content-wrap">
                 <section class="agreement">
                     <div class="title">
@@ -122,8 +132,114 @@
                     </ul>
                 </section>
                 <div class="btn-area">
-                    <button type="button" class="btn-subscribe" id="subscribeBtn">서비스 가입하기</button>
+                    <button type="button" class="btn-subscribe" id="serviceChangeBtn" th:if="${selectedServiceType == 'Several' && userServiceType == 'Once'}">서비스 변경하기</button>
+                    <button type="button" class="btn-subscribe" id="subscribeBtn" th:unless="${selectedServiceType == 'Several' && userServiceType == 'Once'}">서비스 가입하기</button>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div id="commonMessageBoxBg"></div>
+    <div id="successMessageBox">
+        <div class="modalContentsBox">
+            <div class="modalImage">
+                <div class="image"></div>
+            </div>
+            <div class="modalContent">
+                <p class="modalMsg">서비스 가입이 완료되었습니다.</p>
+                <div class="btn-area">
+                    <a class="btn-gray btn-close-msg-Box">OK</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="commonMessageBox">
+        <div class="modalContentsBox">
+            <div class="modalHead">
+                <h1>서비스가 변경됩니다.</h1>
+            </div>
+            <div class="modalContent">
+                <p class="modalMsg"><span>자유이용서비스 요금제</span>로 변경됩니다.</p>
+                <div class="btn-area">
+                    <button type="button" class="btn-white btn-close-msg-Box">닫기</button>
+                    <button type="button" class="btn-black btnOk">확인</button>
+                </div>
+            </div>
+        </div>
+        <a class="modalCloseBtn">팝업닫기</a>
+    </div>
+    <div id="launderetteMsgBox">
+        <div class="modalContentsBox">
+            <div class="modalHead">
+                <h1>알림</h1>
+            </div>
+            <div class="modalContent">
+                <p class="modalMsg">
+                    런드렛 미니 이용 시, 부피가 큰 의류가 포함된 <br>
+                    경우 배송 시 구김이 발생할 수 있습니다. <br>
+                    그래도 변경 하시겠습니까?
+                </p>
+                <div class="btn-area">
+                    <button type="button" class="btn-white btn-change-launderette">변경하기</button>
+                    <button type="button" class="btn-black btn-close-msg-Box">변경하지 않기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-container launderetteDetail">
+        <div class="modal-inner">
+            <h3 class="modal-title">나에게 맞는 런드렛 사이즈</h3>
+            <div class="modal-content">
+                <h2>
+                    고객님의 라이프 스타일에 따라, <br>
+                    런드렛 사이즈를 선택하실 수 있습니다.
+                </h2>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <div class="content-title">
+                            <h3>런드렛 미니</h3>
+                        </div>
+                        <div class="image-content"></div>
+                        <ul class="text-content">
+                            <li>
+                                <p class="text-title">추천</p>
+                                <p class="text">
+                                    1인 가구 또는<br>
+                                    빨래 양이 적은 경우
+                                </p>
+                            <li/>
+                            <li>
+                                <p class="text-title">적정빨래양</p>
+                                <p class="text">
+                                    와이셔츠&드라이의류 7개<br>
+                                    물빨래 30L 2개
+                                </p>
+                            <li/>
+                        </ul>
+                    </div>
+                    <div class="flex-item">
+                        <div class="content-title">
+                            <h3>런드렛 레귤러</h3>
+                        </div>
+                        <div class="image-content"></div>
+                        <ul class="text-content">
+                            <li>
+                                <p class="text-title">추천</p>
+                                <p class="text">
+                                    가구 수에 상관없이<br>
+                                    빨래 양이 많은 경우
+                                </p>
+                            <li/>
+                            <li>
+                                <p class="text-title">적정빨래양</p>
+                                <p class="text">
+                                    와이셔츠&드라이의류 15개<br>
+                                    물빨래 30L 2개
+                                </p>
+                            <li/>
+                        </ul>
+                    </div>
+                </div>
+            <button type="button" class="modal-close"></button>
             </div>
         </div>
     </div>
@@ -133,13 +249,13 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/js/servicePayment.js"></script>
 <script th:inline="javascript">
     let address = [[${userVO.userAddress}]];
     let addressDetail = [[${userVO.userAddressDetail}]];
     let entranceType = [[${userVO.userEntranceType}]];
     let entrancePw = [[${userVO.userEntrancePw}]];
     let entranceMessage = [[${userVO.userEntranceMessage}]];
+    let selectedServiceType = [[${selectedServiceType}]];
 </script>
-<script th:src="@{/js/servicePayment.js}"></script>
+<script src="/js/servicePayment.js"></script>
 </html>

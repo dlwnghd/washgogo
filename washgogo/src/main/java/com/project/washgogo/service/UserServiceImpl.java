@@ -60,8 +60,11 @@ public class UserServiceImpl implements UserService{
     public boolean checkEmail(String userEmail){ return userDAO.checkEmail(userEmail);}
 
     @Override
-    public boolean findPW(UserVO userVO) {return userDAO.findPW(userVO); }
+    public boolean checkUser(UserVO userVO) {return userDAO.checkUser(userVO); }
 
     @Override
-    public boolean checkUser(UserVO userVO) {return userDAO.checkUser(userVO); }
+    public int findUserNumber(UserVO userVO) {return userDAO.findUserNumber(userVO); }
+
+    @Override
+    public void changePw(UserVO userVO) {userDAO.changePw(userVO); }
 }

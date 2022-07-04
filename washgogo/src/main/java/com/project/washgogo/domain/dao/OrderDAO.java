@@ -2,14 +2,17 @@ package com.project.washgogo.domain.dao;
 
 import com.project.washgogo.domain.vo.OrderListVO;
 import com.project.washgogo.domain.vo.OrderVO;
+import com.project.washgogo.domain.vo.UserVO;
 import com.project.washgogo.mapper.OrderMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
+@Slf4j
 public class OrderDAO {
     private final OrderMapper orderMapper;
 
@@ -20,9 +23,9 @@ public class OrderDAO {
         return orderMapper.selectRecentRequest(userNumber);
     }
     //    수거 신청
-    public void applyRequest(OrderVO orderVO, OrderListVO orderListVO) { orderMapper.insert(orderVO, orderListVO);}
-    //    총 수량 구하기
-    public int getTotalQuantity() { return orderMapper.getTotalQuantity();}
+    public void applyRequest(OrderVO orderVO) {
+        orderMapper.applyRequest(orderVO);
+    }
     //    총 금액 구하기
     public int getTotalPrice() { return orderMapper.getTotalPrice(); }
     //    수거 취소

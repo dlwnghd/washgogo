@@ -9,15 +9,16 @@
 
     <!--상세 이용 내역-->
     <select id="getRecentList" resultType="orderListVO">
-        SELECT ORDER_NUMBER, LAUNDRY_NUMBER, ORDER_PM_CHOOSE, ORDER_PM_OPTION, ORDER_PM_MESSAGE, ORDER_TYPE, ORDER_EA_QUANTITY
-        FROM TBL_ORDERLIST
-        WHERE ORDER_NUMBER = #{orderNumber}
+        SELECT A.ORDER_NUMBER, A.LAUNDRY_NUMBER, A.ORDER_TYPE, A.ORDER_PM_OPTION, A.ORDER_PM_MESSAGE, A.ORDER_EA_QUANTITY, B.LAUNDRY_NAME, B.LAUNDRY_PRICE, B.LAUNDRY_PM_PRICE, B.LAUNDRY_URL
+        FROM TBL_ORDERLIST A, TBL_LAUNDRY B
+        WHERE A.LAUNDRY_NUMBER = B.LAUNDRY_NUMBER
+        AND A.ORDER_NUMBER = #{orderNumber}
+        ORDER BY A.ORDER_NUMBER ASC
     </select>
 
-    <!--주문내역 추가-->
-    <insert id="applyRequest">
-        INSERT INTO TBL_ORDERLIST (ORDER_NUMBER, LAUNDRY_NUMBER, ORDER_PM_CHOOSE, ORDER_PM_OPTION, ORDER_PM_MESSAGE, ORDER_TYPE, ORDER_EA_QUANTITY)
-        VALUES(#{orderNumber}, #{laundryNumber}, #{orderPmChoose}, #{orderPmOption}, #{orderPmMessage}, #{orderType}, #{orderEaQuantity})
+    <!--배송비 추가-->
+    <insert id="insertShipping">
+        INSERT INTO TBL_ORDERLIST (ORDER_NUMBER, LAUNDRY_NUMBER, ORDER_EA_QUANTITY)
+        VALUES(#{orderNumber}, 71, 1)
     </insert>
-
 </mapper>
