@@ -17,10 +17,13 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 //SMS용으로 추가
+import java.util.ArrayList;
 import java.util.HashMap;
 import org.json.simple.JSONObject;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
+
+import java.util.List;
 import java.util.Random;
 
 
@@ -48,26 +51,26 @@ public class UserController {
     @GetMapping("modifyingInformation")
     public String modifyingInformation(UserVO userVO, HttpSession session, Model model){
         long number = (long)session.getAttribute("userNumber");
-        userVO.setUserNumber(number);
-        log.info(userVO.toString());
-        model.addAttribute("loadUserInfo", userService.loadUserInfo(userVO.getUserNumber()));
+        model.addAttribute("loadUserInfo", userService.loadUserInfo(number));
         return "/user/modifyingInformation";
     }
 
     @PostMapping("modifyingInformation")
     public RedirectView modifyingInformationAction(UserVO userVO, HttpSession session){
+        long number = (long)session.getAttribute("userNumber");
+        userVO = userService.loadUserInfo(number);
         log.info(userVO.toString());
         //변경
         if(userService.modifyUserInfo(userVO)) {
             return new RedirectView("/user/modifyingInformation");
         }
-        //모달창 계정삭제
-        if(userService.resignMember(userVO.getUserNumber())){
-            session.removeAttribute("userNumber");
-            session.removeAttribute("userName");
-            return new RedirectView("/index");
-        }
-        //모달창 계정 삭제하지 않음
+//        //모달창 계정삭제
+//        if(userService.resignMember(userVO.getUserNumber())){
+//            session.removeAttribute("userNumber");
+//            session.removeAttribute("userName");
+//            return new RedirectView("/index");
+//        }
+//        //모달창 계정 삭제하지 않음
         return new RedirectView("/user/modifyingInformation");
     }
 

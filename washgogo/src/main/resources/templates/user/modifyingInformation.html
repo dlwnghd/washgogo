@@ -70,7 +70,8 @@
                                 <li add="" class="item-container address">
                                     <div add="" class="item">
                                         <div add="" class="item-title">배송지</div>
-                                        <div add="" id="ADDRESS" class="item-info" th:text="${loadUserInfo.userAddress} + ${loadUserInfo.userAddressDetail}"></div>
+                                        <div add="" id="ADDRESS" class="item-info" th:text="${loadUserInfo.userAddress}"></div>
+                                        <div add="" id="ADDRESSDETAIL" class="item-info" th:text="${loadUserInfo.userAddressDetail}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""
@@ -79,8 +80,8 @@
                                 <li add="" class="item-container addressDetail">
                                     <div add="" class="item">
                                         <div add="" class="item-title">공동현관 출입방법</div>
-                                        <div th:text="${loadUserInfo.userEntranceType}"></div>
-                                        <div add="" id="ADDRESSDETAIL" class="item-info" th:text="${loadUserInfo.userEntrancePw}"></div>
+                                        <div id="ENTRANCETYPE" th:text="${loadUserInfo.userEntranceType}"></div>
+                                        <div add="" id="ENTRANCEPW" class="item-info" th:text="${loadUserInfo.userEntrancePw}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""

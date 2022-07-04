@@ -6,7 +6,7 @@ const $email = $("#EMAIL");
 const $password = $("#PASSWORD");
 const $phonenumber = $("#PHONENUMBER");
 const $address = $("#ADDRESS");
-const $addressdetail = $("#ADDRESSDETAIL");
+const $entrancepw = $("#ENTRANCEPW")
 
 const $inputInfo = $("#modifyInfo");
 const $pw = $("#pw");
@@ -45,7 +45,7 @@ changeuserBtn.addEventListener('click', e => {
             $address.text(document.getElementById("result").value); // ⭐기능 구현되는 코드
             break;
         case '공동현관 출입방법 수정':
-            $addressdetail.text(document.getElementById("result").value); // ⭐기능 구현되는 코드
+            $entrancepw.text(document.getElementById("result").value); // ⭐기능 구현되는 코드
             break;
     }
     close();
@@ -188,3 +188,41 @@ $(".pw-show").on("click",function(){
     }
 });
 
+function modify() {
+    let userName = $("#USERNAME").val();
+    let userEmail = $("#EMAIL").val();
+    let userPw = $("#PASSWORD").val();
+    let userPhonenum = $("#PHONENUMBER").val();
+    let userAddress = $("#ADDRESS").val();
+    let userAddressDetail = $("#ADDRESSDETAIL").val();
+    let userEntranceType = $("#ENTRANCETYPE").val();
+    let userEntracePw = $("#ENTRANCEPW").val();
+    var userVO = {
+        userName : userName,
+        userEmail : userEmail,
+        userPw : userPw,
+        userPhonenum : userPhonenum,
+        userAddress : userAddress,
+        userAddressDetail : userAddressDetail,
+        userEntranceType : userEntranceType,
+        userEntracePw : userEntracePw
+    }
+    $.ajax({
+        url: '/user/modifyingInformation',
+        type: 'post',
+        dataType: "json",
+        data: JSON.stringify(userVO),
+        contentType: "application/json",
+        success: function (result) {
+            console.log(result);
+        },
+        error: function () {
+            alert("에러입니다");
+        }
+    });
+}
+
+const modifyBtn = modal.querySelector(".change-ok");
+modifyBtn.addEventListener("click", e => {
+    modify();
+})
