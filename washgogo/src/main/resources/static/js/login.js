@@ -12,21 +12,35 @@ $(".pw-show").on("click",function(){
     close();
 });
 
-console.log($("#userPw").val());
+// console.log($("#userPw").val());
 
 function close() {
     // 비밀번호 미입력시
-    if(!$("#userPw").val()){
+    if(!$("#userPw").val() || $("div.invalid-feedback-password").html() != ""){
         pwwrong.style.display = "block";
+        userPw.style.boxShadow = "0 0 0 0.1rem rgb(251 89 114)";
+    }else if($("div.invalid-feedback-password").html() == ""){
+        userPw.style.boxShadow = "none";
     }
 
     // 이메일 미입력시
-    if(!$("#userEmail").val()){
+    if(!$("#userEmail").val() || $("div.invalid-feedback-email").html() != ""){
         emailwrong.style.display = "block";
+        userEmail.style.boxShadow = "0 0 0 0.1rem rgb(251 89 114)";
+    }else if($("div.invalid-feedback-email").html() == ""){
+        userEmail.style.boxShadow = "none";
     }
 }
 
-body.addEventListener("click", e => {
+form.addEventListener("mouseover", e => {
+    close();
+})
+
+form.addEventListener("mouseout", e => {
+    close();
+})
+
+body.addEventListener("keyup", e => {
     close();
 })
 
@@ -35,7 +49,8 @@ function checkEmail() {
     let userEmail = $('#userEmail').val(); //userEmail값이 "userEmail"인 입력란의 값을 저장
     const feedback = $("div.invalid-feedback-email");
     let str = "";
-    var chk_at = userEmail.search("@");
+    var pattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    var chk_at = userEmail.search(pattern);
     if (!userEmail) {
         str = "<small>이메일 주소를 입력해주세요.</small>";
         feedback.html(str);
@@ -52,15 +67,15 @@ function checkEmail() {
             success: function (result) {	// 외부로부터 result를 받아오면 => 만약 이메일 전송에 성공하면
                 let str = "";	// str 빈칸으로 정의
                 const feedback = $("div.invalid-feedback-email");	// const타입 feedback은 클래스가 invalid-feedback인 div태그
-                console.log("처리 성공 시 변경되는 내용");	// 출력문
                 feedback.html(str);
             },
             error: function () {
-                console.log("로그인 오류 체크1");
+                console.log("로그인 오류 체크");
                 alert("에러입니다");
             }
         });
     }
+    close();
     notEnough();
 }
 
@@ -73,18 +88,16 @@ function checkPassWord() {
     var chk_eng = userPw.search(/[a-z]/ig);
     if (!userPw) {
         str = "<small>비밀번호를 입력해주세요.</small>";
-        feedback.html(str);
     } else if(chk_num < 0 || chk_eng < 0){
         str = "<small>비밀번호는 숫자와 영문자를 혼용하여야 합니다.</small>";
-        feedback.html(str);
     } else if(userPw.length < 8){
         str = "<small>비밀번호는 최소 8자 이상 입력해주세요.</small>";
-        feedback.html(str);
     }
     else {
         str = "";
-        feedback.html(str);
     }
+    feedback.html(str);
+    close();
     notEnough();
 }
 
@@ -95,9 +108,6 @@ function notEnough() {
     if($("div.invalid-feedback-email").html() != ""
         || $("div.invalid-feedback-password").html() != ""){
         $(".login-btn").prop("type", "button");
-        console.log("로그인 X");
-    }else{
-        // $(".login-btn").prop("type", "submit");
     }
 }
 
@@ -111,10 +121,12 @@ function checkUser() {
     }
     let userform = document.querySelector("form[name='userVO']");
     if($("div.invalid-feedback-email").html() != ""){
-        alert('이메일을 입력하세요!')
+        checkEmail();
+        checkPassWord();
         return;
     } else if($("div.invalid-feedback-password").html() != ""){
-        alert('비밀번호를 입력하세요!')
+        checkEmail();
+        checkPassWord();
         return;
     }else{
         // 회원 확인
@@ -131,16 +143,39 @@ function checkUser() {
                     $("button.login-btn").prop("type", "submit");
                     userform.submit();
                 }else if(result == false){
-                    console.log("success result2 :" + result);
                     $("button.login-btn").prop("type", "button");
-                    alert("존재하지 않는 회원입니다1.");
+                    modal.style.display = "flex";
                 }
             },
             error: function () {
                 $("button.login-btn").prop("type", "button");
-                alert("존재하지 않는 회원입니다2.");
+                alert("에러입니다.");
             }
         });
         return;
     }
 }
+
+function closeModal() {
+    modal.style.display = "none";
+}
+
+// 모달창 X버튼으로 닫기
+const closeBtn = modal.querySelector(".close-area")
+closeBtn.addEventListener("click", e => {
+    closeModal();
+})
+
+// 모달창 확인 버튼으로 닫기
+const okayBtn = modal.querySelector(".close")
+okayBtn.addEventListener("click", e => {
+    closeModal();
+})
+
+// 아무곳이나 눌러서 모달창 닫기
+modal.addEventListener("click", e => {
+    const evTarget = e.target
+    if (evTarget.classList.contains("modal-overlay")) {
+        closeModal();
+    }
+})

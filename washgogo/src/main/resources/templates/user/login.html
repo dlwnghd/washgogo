@@ -63,6 +63,21 @@
 		</div>
 	</section>
 	<div th:replace="~{/fragments/headerFooter :: footer}"></div>
+	<!-- modal -->
+	<div id="modal" class="modal-overlay" style="display: none;">
+		<div id="modal_window" class="modal-window">
+			<div class="close-area">X</div>
+			<div class="title">
+				<h2>로그인에 실패하였습니다</h2>
+			</div>
+			<div class="info">
+				<p>이메일이나 비밀번호가 올바르게 입력되었는지 확인 후 <br>다시 시도하십시오.</p>
+			</div>
+			<div class="close">
+				<button class="close-text">확인</button>
+			</div>
+		</div>
+	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:src="@{/js/login.js}"></script>

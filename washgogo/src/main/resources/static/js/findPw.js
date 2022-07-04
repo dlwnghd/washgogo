@@ -9,7 +9,88 @@ if (param.includes("id")) {
 
 let resultNum = "";
 
+function close() {
+    // 비밀번호 미입력시
+    if(!$("#userPhonenum").val() || $("div.invalid-feedback-phonenum").html() != ""){
+        phonenumwrong.style.display = "block";
+        userPhonenum.style.boxShadow = "0 0 0 0.1rem rgb(251 89 114)";
+    }else if($("div.invalid-feedback-phonenum").html() == ""){
+        userPhonenum.style.boxShadow = "none";
+    }
 
+    // 이메일 미입력시
+    if(!$("#userEmail").val() || $("div.invalid-feedback-email").html() != ""){
+        emailwrong.style.display = "block";
+        userEmail.style.boxShadow = "0 0 0 0.1rem rgb(251 89 114)";
+    }else if($("div.invalid-feedback-email").html() == ""){
+        userEmail.style.boxShadow = "none";
+    }
+}
+
+form.addEventListener("mouseover", e => {
+    close();
+})
+
+form.addEventListener("mouseout", e => {
+    close();
+})
+
+body.addEventListener("keyup", e => {
+    close();
+})
+
+// 전화번호 확인
+function checkPhoneNum() {
+    let userPhoneNum = $('#userPhonenum').val(); //userEmail값이 "userEmail"인 입력란의 값을 저장
+    const feedback = $("div.invalid-feedback-phonenum");
+    let str = "";
+    if (!userPhoneNum) {
+        str = "<small>휴대 전화 번호를 입력해주세요.</small>";
+        feedback.html(str);
+    } else if(userPhoneNum.length < 11 || userPhoneNum.length > 11 ){
+        str = "<small>올바른 휴대 전화 번호를 입력해주세요.</small>";
+        feedback.html(str);
+    }
+    else {
+        str = "";
+        feedback.html(str);
+    }
+    return;
+}
+
+// 이메일 확인
+function checkEmail() {
+    let userEmail = $('#userEmail').val(); //userEmail값이 "userEmail"인 입력란의 값을 저장
+    const feedback = $("div.invalid-feedback-email");
+    let str = "";
+    var pattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    var chk_at = userEmail.search(pattern);
+    if (!userEmail) {
+        str = "<small>이메일 주소를 입력해주세요.</small>";
+        feedback.html(str);
+    } else if(chk_at < 0){
+        str = "<small>이메일 형식으로 입력해주세요.</small>";
+        feedback.html(str);
+    } else {
+        $.ajax({	// ajax선언
+            url: '/user/checkEmail', //Controller에서 인식할 주소
+            type: 'post', //POST 방식으로 전달
+            dataType: "json",
+            data: userEmail,	// 데이터 타입은 userEmail타입이고 userEmail이 들어감
+            contentType: "application/json",
+            success: function (result) {	// 외부로부터 result를 받아오면 => 만약 이메일 전송에 성공하면
+                let str = "";	// str 빈칸으로 정의
+                const feedback = $("div.invalid-feedback-email");	// const타입 feedback은 클래스가 invalid-feedback인 div태그
+                feedback.html(str);
+            },
+            error: function () {
+                console.log("로그인 오류 체크");
+                alert("에러입니다");
+            }
+        });
+    }
+    close();
+}
 
 // 인증번호 받기 버튼 클릭시
 function getNumber() {
@@ -23,10 +104,12 @@ function getNumber() {
 
     // 휴대 전화 번호가 없다면
     if(userPhonenum == ""){
-        alert("휴대전화를 입력해주세요");
+        checkPhoneNum();
+        checkEmail();
         return;
     } else if(userEmail == ""){	// 이메일이 없다면
-        alert("이메일을 입력해주세요");
+        checkPhoneNum();
+        checkEmail();
         return;
     } else{
         // 회원 확인
@@ -37,7 +120,6 @@ function getNumber() {
             data: JSON.stringify(userVO), 	// 데이터 타입은 userVO타입
             contentType: "application/json",
             success: function (result) {
-                console.log("success result :" + result);
                 $("button.find-btn").html("<span>인증번호 확인</span>");	// 버튼 내용 변경
                 $("button.find-btn").attr("onclick", "checkNumber()");	// onclick변경
                 $("div.verifyNum").css('display','block');
@@ -45,25 +127,64 @@ function getNumber() {
                 resultNum = result;
             },
             error: function () {
-                alert("존재하지 않는 회원입니다.");
+                modal.style.display = "flex";
             }
         });return;
+    }
+}
+
+function checkVerify() {
+    let verifyNumber = $('#verifyNumber').val();
+    const feedback = $("div.invalid-feedback-verifyNumber");
+    let str = "";
+    if(verifyNumber == ""){
+        // 인증 번호가 없다면
+        str = "<small>인증 번호를 입력해주세요.</small>";
+        feedback.html(str);
+    }else{
+        str = "";
+        feedback.html(str);
     }
 }
 
 // 인증번호 확인 버튼 클릭시
 function checkNumber() {
     let verifyNumber = $('#verifyNumber').val();
-    if(verifyNumber == ""){
-        // 인증 번호가 없다면
+    const feedback = $("div.invalid-feedback-verifyNumber");
+    let str = "";
+    if(verifyNumber != resultNum){
         $(".find-btn").prop("type", "button");
-        alert("인증번호를 입력해주세요.");
-        return;
-    }else if(verifyNumber != resultNum){
-        $(".find-btn").prop("type", "button");
-        alert("인증번호가 틀렸습니다. 다시 입력해주세요.");
+        str = "<small>인증 번호가 틀렸습니다.</small>";
+        feedback.html(str);
     }
+
     if(verifyNumber == resultNum){
         $("button.find-btn").prop("type", "submit");	// 버튼 타입 변경
     }
 }
+
+
+// 모달
+function closeModal() {
+    modal.style.display = "none";
+}
+
+// 모달창 X버튼으로 닫기
+const closeBtn = modal.querySelector(".close-area")
+closeBtn.addEventListener("click", e => {
+    closeModal();
+})
+
+// 모달창 확인 버튼으로 닫기
+const okayBtn = modal.querySelector(".close")
+okayBtn.addEventListener("click", e => {
+    closeModal();
+})
+
+// 아무곳이나 눌러서 모달창 닫기
+modal.addEventListener("click", e => {
+    const evTarget = e.target
+    if (evTarget.classList.contains("modal-overlay")) {
+        closeModal();
+    }
+})
