@@ -33,6 +33,8 @@ public class UserDAO {
     public boolean modifyAddress(UserVO userVO) {
         return userMapper.updateAddress(userVO) == 1;
     }
+    //    포인트
+    public UserVO showPoint(Long userNumber) {return userMapper.selectPoint(userNumber);}
     //    회원 탈퇴
     public boolean resignMember(Long userNumber) {
         return userMapper.delete(userNumber) == 1;

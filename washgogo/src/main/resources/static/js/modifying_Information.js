@@ -77,13 +77,6 @@ remainBtn.addEventListener("click", e => {
     close();
 })
 
-// 계정 탈퇴 버튼으로 닫기
-const deleteBtn = document.querySelector(".delete-user");
-deleteBtn.addEventListener("click", e => {
-    userMapper.delete(userVO.getUserNumber) == 1;
-    close();
-})
-
 // 모달창 X버튼으로 닫기
 const closeBtn = modal.querySelector(".close-area")
 closeBtn.addEventListener("click", e => {
@@ -146,25 +139,9 @@ phoneNumberBtn.addEventListener("click", e => {
 // 배송지 수정 모달 띄우기
 const addressBtn = account.querySelector(".address")
 addressBtn.addEventListener("click", e => {
-    modal.style.display = "grid";
-    // 수정할 데이터명
-    changeInfo.innerHTML = '<h2>배송지 수정</h2>';
-    modifyInfo.innerHTML = "배송지<input id=\"result\" type=\"text\">";;
-    // 수정공간 나타내기
-    modifyInfo.style.display = 'block';
-    choose1.style.display = 'contents';
+    location.href="/user/modifyAddress";
 })
-//  공동현관 출입방법 모달 띄우기
-const addressDetailBtn = account.querySelector(".addressDetail")
-addressDetailBtn.addEventListener("click", e => {
-    modal.style.display = "grid";
-    // 수정할 데이터명
-    changeInfo.innerHTML = '<h2>공동현관 출입방법 수정</h2>';
-    modifyInfo.innerHTML = "공동현관 출입방법<input id=\"result\" type=\"text\">";;
-    // 수정공간 나타내기
-    modifyInfo.style.display = 'block';
-    choose1.style.display = 'contents';
-})
+
 // 계정탈퇴 모달 띄우기
 const accountWithdrawalBtn = withdrawal.querySelector(".accountWithdrawal")
 accountWithdrawalBtn.addEventListener("click", e => {
@@ -189,23 +166,9 @@ $(".pw-show").on("click",function(){
     }
 });
 
-let userName = $("#USERNAME").text();
-let userEmail = $("#EMAIL").text();
-let userPw = $("#PASSWORD").text();
-let userPhonenum = $("#PHONENUMBER").text();
-let userAddress = $("#ADDRESS").text();
-let userAddressDetail = $("#ADDRESSDETAIL").text();
-let userEntranceType = $("#ENTRANCETYPE").text();
-let userEntrancePw = $("#ENTRANCEPW").text();
-console.log(userName);
-console.log(userEmail);
-console.log(userPw);
-console.log(userPhonenum);
-console.log(userAddress);
-console.log(userAddressDetail);
-console.log(userEntranceType);
-console.log(userEntrancePw);
 
+
+//수정
 function modify() {
     let userName = $("#USERNAME").text();
     let userEmail = $("#EMAIL").text();
@@ -227,13 +190,13 @@ function modify() {
     }
     console.log(userVO);
     $.ajax({
-        url: '/user/modifyingInformation',
+        url: '/user/informationModify',
         type: 'post',
         data: JSON.stringify(userVO),
         contentType: "application/json",
         success: function (result) {
             console.log(result);
-            location.href = "/user/modifyingInformation";
+            location.href = result;
         },
         error: function () {
             alert("에러입니다");
@@ -241,7 +204,29 @@ function modify() {
     });
 }
 
+//수정 버튼 클릭 시
 const modifyBtn = document.querySelector("#change-ok");
 modifyBtn.addEventListener("click", e => {
     modify();
+})
+
+//계정 탈퇴
+function remove() {
+    $.ajax({
+        url: '/user/informationRemove',
+        type: 'post',
+        success: function (result) {
+            console.log(result);
+            location.href = result;
+        },
+        error: function () {
+            alert("에러입니다");
+        }
+    });
+}
+
+// 계정 탈퇴 클릭 시
+const deleteBtn = document.querySelector(".delete-user");
+deleteBtn.addEventListener("click", e => {
+    remove();
 })

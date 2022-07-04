@@ -52,7 +52,7 @@
                                 <li add="" class="item-container password">
                                     <div add="" class="item">
                                         <div add="" class="item-title">비밀번호</div>
-                                        <div add="" id="PASSWORD" class="item-info" type="password" th:text ="${loadUserInfo.userPw}"></div>
+                                        <div add="" id="PASSWORD" class="item-info" type="password" th:text="${loadUserInfo.userPw}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""
@@ -72,13 +72,7 @@
                                         <div add="" class="item-title">배송지</div>
                                         <div add="" id="ADDRESS" class="item-info" th:text="${loadUserInfo.userAddress}"></div>
                                         <div add="" id="ADDRESSDETAIL" class="item-info" th:text="${loadUserInfo.userAddressDetail}"></div>
-                                    </div>
-                                    <div add=""><img
-                                        add=""
-                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
-                                </li>
-                                <li add="" class="item-container addressDetail">
-                                    <div add="" class="item">
+                                        <div class="height15"></div>
                                         <div add="" class="item-title">공동현관 출입방법</div>
                                         <div id="ENTRANCETYPE" th:text="${loadUserInfo.userEntranceType}"></div>
                                         <div add="" id="ENTRANCEPW" class="item-info" th:text="${loadUserInfo.userEntrancePw}"></div>
@@ -96,9 +90,11 @@
                                         src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
                                 </li>
                             </ul>
+                            <div class="change-flex-container">
                                 <div></div>
-                                    <input type="button" class="button" id=change-ok value="변경 완료">
+                                    <input type="button" class="button" id="change-ok" value="변경 완료">
                                 <div></div>
+                            </div>
                         </section>
                         <!---->
                     </main>

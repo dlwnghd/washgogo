@@ -32,4 +32,6 @@ public boolean checkUser(UserVO userVO);
 public int findUserNumber(UserVO userVO);
 //    회원 번호 확인
 public void changePw(UserVO userVO);
+//     포인트
+    public UserVO selectPoint(Long userNumber);
 }

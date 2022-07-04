@@ -55,6 +55,13 @@
         WHERE USER_NUMBER = #{userNumber}
     </select>
 
+    <!--포인트-->
+    <select id="selectPoint" resultType="userVO">
+        SELECT NVL(USER_POINT,0) USER_POINT
+        FROM TBL_USER
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
     <!--로그인-->
     <select id="login" resultType="long">
         SELECT USER_NUMBER

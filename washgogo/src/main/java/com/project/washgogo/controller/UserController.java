@@ -64,22 +64,9 @@ public class UserController {
         return "/user/modifyingInformation";
     }
 
-    @GetMapping("point")
-    public String point(UserVO userVO, HttpSession session, Model model) {
-        long number = (long)session.getAttribute("userNumber");
-        model.addAttribute("myPageInfo", userService.loadUserInfo(number));
-        return "/user/point";
-    }
-
-    @GetMapping("useService")
-    public String useService(UserVO userVO){
-        return "/user/useService";
-    }
-
-
-    @PostMapping("modifyingInformation")
+    @PostMapping("informationModify")
     @ResponseBody
-    public String modifyingInformationAction(@RequestBody UserVO userVO, HttpSession session){
+    public String informationModify(@RequestBody UserVO userVO, HttpSession session){
         long number = (long)session.getAttribute("userNumber");
         log.info(String.valueOf(number));
         userVO.setUserNumber(number);
@@ -87,13 +74,30 @@ public class UserController {
         //변경
         userService.modifyUserInfo(userVO);
         log.info(userVO.toString());
-        //모달창 계정삭제
-//        if(userService.resignMember(userVO.getUserNumber())){
-//            session.removeAttribute("userNumber");
-//            session.removeAttribute("userName");
-//            url = "/index";
-//       }
-        return "수정 성공입니다.";
+        return "/user/modifyingInformation";
+    }
+
+    @PostMapping("informationRemove")
+    @ResponseBody
+    public String informationRemove(UserVO userVO, HttpSession session){
+        long number = (long)session.getAttribute("userNumber");
+        userVO.setUserNumber(number);
+        userService.resignMember(userVO.getUserNumber());
+        session.removeAttribute("userNumber");
+        session.removeAttribute("userName");
+        return "/index";
+    }
+
+    @GetMapping("point")
+    public String point(UserVO userVO, HttpSession session, Model model) {
+        long number = (long)session.getAttribute("userNumber");
+        model.addAttribute("showPoint", userService.showPoint(number));
+        return "/user/point";
+    }
+
+    @GetMapping("useService")
+    public String useService(UserVO userVO){
+        return "/user/useService";
     }
 
     @GetMapping("serviceChange")

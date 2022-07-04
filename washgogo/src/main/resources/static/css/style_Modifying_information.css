@@ -81,3 +81,7 @@ section[add] {
     display: flex;
     justify-content: space-between;
 }
+
+.height15{
+    height: 15px;
+}

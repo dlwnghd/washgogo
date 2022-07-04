@@ -33,7 +33,7 @@
                         <h4 class="point-title">
                             <span class="point-title-name">WASHGOGO 포인트</span>
                             <span>
-                                <span th:text="${myPageInfo.userPoint}"></span>
+                                <span th:text="${showPoint.userPoint}"></span>
                                 <span style="float: right">p</span>
                             </span>
                         </h4>
@@ -76,4 +76,5 @@
         </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/point.js}"></script>
 </html>
