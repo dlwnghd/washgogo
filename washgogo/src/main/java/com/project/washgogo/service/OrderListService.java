@@ -21,4 +21,8 @@ public class OrderListService {
         return orderListDAO.getRecentList(orderNumber);
     }
 
+    public void insertShipping(Long orderNumber) {
+        orderListDAO.insertShipping(orderNumber);
+    }
+
 }

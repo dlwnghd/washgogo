@@ -1,4 +1,4 @@
-a{
+a {
     text-decoration: none;
 }
 
@@ -17,17 +17,17 @@ body {
     margin: 0 auto;
 }
 
-@media (min-width: 992px) {
+@media(min-width: 992px) {
     .request-select-container {
         padding: 0 1rem;
         box-sizing: content-box;
     }
 }
 
-@media (min-width: 992px){
-.request-select-detail {
-    background: none;
-    padding-top: 3rem;
+@media(min-width: 992px) {
+    .request-select-detail {
+        background: none;
+        padding-top: 3rem;
     }
 }
 
@@ -35,146 +35,146 @@ body {
     padding: 0;
 }
 
-.request-img-container{
+.request-img-container {
     display: flex;
 }
 
-.request-img{
+.request-img {
     width: 60px;
     height: 66px;
     margin-right: 10px;
 }
 
-.border-title{
+.border-title {
     font-weight: 600;
     margin-bottom: 15px;
 }
-.border-name{
-    display:contents;
-    font-size:1.2rem;
+
+.border-name {
+    display: contents;
+    font-size: 1.2rem;
 }
 
-.border-main-name{
-    margin-top:10px;
+.border-main-name {
+    margin-top: 10px;
 }
 
-.tonight-title{
+.tonight-title {
     display: contents;
 }
 
-.client-name{
-    display:contents;
+.client-name {
+    display: contents;
 }
 
-.guide-take{
-    margin-top:40px;
+.guide-take {
+    margin-top: 40px;
     margin-bottom: 50px;
-    font-size:1.1rem;
+    font-size: 1.1rem;
     display: flex;
 }
 
-.request-where-title{
-    display:flex;
+.request-where-title {
+    display: flex;
     justify-content: space-between;
 }
 
-.update-address{
+.update-address {
     color: #1d86d9;
-    font-size:0.9rem;
+    font-size: 0.9rem;
 }
 
-.request-where-main{
+.request-where-main {
     border: 1px solid #e2e2e2;
     border-radius: 3px;
-    padding:10px;
+    padding: 10px;
     margin-bottom: 80px;
-    font-size:0.9rem;
+    font-size: 0.9rem;
 }
 
-.address-doorlock{
+.address-doorlock {
     margin-bottom: 25px;
 }
 
-.address{
+.address {
     margin-bottom: 10px;
 }
 
-.doorlock-password{
-    color:grey;
+.doorlock-password {
+    color: grey;
     font-size: 0.8rem;
 }
 
-.checkbox-container-wrap{
-    display:flex;
+.checkbox-container-wrap {
+    display: flex;
 }
 
-.checkbox-container{
-    display:flex;
-    width:30%;
+.checkbox-container {
+    display: flex;
+    width: 30%;
 }
 
-form{ padding: 10px; }
-.circle{
-  display: inline-block; /* 영역적용가능해짐 */
-  width: 20px; height: 20px;
-  border: 2px solid #666;
-  box-sizing: border-box;
-  border-radius: 10px; /* 모서리둥글게 처리 */
-  position: relative; top: 4px;
-  cursor: pointer; /* 마우스 올렸을때 손모양 처리 */
+.circle {
+    display: inline-block; /* 영역적용가능해짐 */
+    width: 20px; height: 20px;
+    border: 2px solid #666;
+    box-sizing: border-box;
+    border-radius: 10px; /* 모서리둥글게 처리 */
+    position: relative; top: 4px;
+    cursor: pointer; /* 마우스 올렸을때 손모양 처리 */
 
-  background-image: url(../img/check_gray.png);
-  background-size: 70%;
-  background-repeat: no-repeat;
-  background-position: center;
+    background-image: url(../img/check_gray.png);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-#chk-after:checked + .circle{
-  background-color: #00BA86;
-  border-color: #00BA86;
-  background-image: url(../img/check_white.png);
-}
-
-/* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
-#chk-after{ position: absolute; left: -999em; }
-
-#chk-direct:checked + .circle{
+#chk-after:checked + .circle {
     background-color: #00BA86;
     border-color: #00BA86;
     background-image: url(../img/check_white.png);
-  }
-  
-  /* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
-#chk-direct{ position: absolute; left: -999em; }
+}
 
-.font-weight500{
+/* 체크박스는 display: none;을 주면 데이터 처리가 안됨 */
+#chk-after { position: absolute; left: -999em; }
+
+#chk-direct:checked + .circle {
+    background-color: #00BA86;
+    border-color: #00BA86;
+    background-image: url(../img/check_white.png);
+}
+
+/* 체크박스는 display: none;을 주면 데이터 처리가 안됨 */
+#chk-direct { position: absolute; left: -999em; }
+
+.font-weight500 {
     font-weight: 500;
 }
 
-.alarm-choose-text{
-    font-size:0.9rem;
+.alarm-choose-text {
+    font-size: 0.9rem;
 }
 
-.premium{
-    display:flex;
+.premium {
+    display: flex;
     justify-content: space-between;
 }
 
-.guide-premium{
-    padding-top:9px;
-    font-size:0.8rem;
+.guide-premium {
+    padding-top: 9px;
+    font-size: 0.8rem;
     text-decoration: underline;
-    color:grey;
+    color: grey;
 }
 
-.premium-main{
+.premium-main {
     border: 1px solid #e2e2e2;
     border-radius: 3px;
-    padding:10px;
-    font-size:0.9rem;
+    padding: 10px;
+    font-size: 0.9rem;
 }
 
-.select-premium{
+.select-premium {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #e2e2e2;
@@ -182,116 +182,115 @@ form{ padding: 10px; }
     padding-bottom: 25px;
 }
 
-.premium-tip{
-    font-size:0.8rem;
-    display:flex;
-    padding-top:15px;
-    padding-bottom:5px;
+.premium-tip {
+    font-size: 0.8rem;
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 5px;
 }
 
-.tip-text{
-    margin-right:3px;
-    color:#4aa8d8;
-    font-weight:600;
+.tip-text {
+    margin-right: 3px;
+    color: #4aa8d8;
+    font-weight: 600;
 }
 
-.premium-brand-guide{
-    margin-top:5px;
-    font-size:0.8rem;
-    color:grey;
+.premium-brand-guide {
+    margin-top: 5px;
+    font-size: 0.8rem;
+    color: grey;
     margin-bottom: 80px;
 }
 
-.premium-service-color{
-    display:inline;
+.premium-service-color {
+    display: inline;
     color: #ff0000;
 }
 
-form{ padding: 10px; }
-.circle2{
-  display: inline-block; /* 영역적용가능해짐 */
-  width: 20px; height: 20px;
-  border: 2px solid #666;
-  box-sizing: border-box;
-  border-radius: 3px; /* 모서리둥글게 처리 */
-  position: relative; top: 4px;
-  cursor: pointer; /* 마우스 올렸을때 손모양 처리 */
+form { padding: 10px; }
 
-  background-image: url(../img/check_gray.png);
-  background-size: 70%;
-  background-repeat: no-repeat;
-  background-position: center;
+.circle2 {
+    display: inline-block; /* 영역적용가능해짐 */
+    width: 20px; height: 20px;
+    border: 2px solid #666;
+    box-sizing: border-box;
+    border-radius: 3px; /* 모서리둥글게 처리 */
+    position: relative; top: 4px;
+    cursor: pointer; /* 마우스 올렸을때 손모양 처리 */
+
+    background-image: url(../img/check_gray.png);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-#chk-life:checked + .circle2{
+#chk-life:checked + .circle2 {
     background-color: #00BA86;
     border-color: #00BA86;
     background-image: url(../img/check_white.png);
-  }
-  
-  /* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
-#chk-life{ position: absolute; left: -999em; }
+}
 
-#chk-other:checked + .circle2{
+/* 체크박스는 display: none;을 주면 데이터 처리가 안됨 */
+#chk-life { position: absolute; left: -999em; }
+
+#chk-other:checked + .circle2 {
     background-color: #00BA86;
     border-color: #00BA86;
     background-image: url(../img/check_white.png);
-  }
-  
-  /* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
-#chk-other{ position: absolute; left: -999em; }
+}
 
-.checkbox-container-cleaning-wrap{
-    display:flex;
+/* 체크박스는 display: none;을 주면 데이터 처리가 안됨 */
+#chk-other { position: absolute; left: -999em; }
+
+.checkbox-container-cleaning-wrap {
+    display: flex;
     flex-direction: column;
 }
 
-.checkbox-container-wrap-cleaning{
-    margin-top:5px;
+.cleaning-choose-text {
+    margin-left: 5px;
+    font-size: 0.9rem;
 }
 
-.cleaning-choose-text{
-    margin-left:5px;
-    font-size:0.9rem;
+.help-text {
+    margin-left: 30px;
+    font-size: 0.8rem;
+    color: grey;
 }
 
-.help-text{
-    margin-left:30px;
-    font-size:0.8rem;
-    color:grey;
-}
-
-.cleaning{
+.cleaning {
     margin-bottom: 80px;
 }
 
-.select-cleaning{
+.select-cleaning {
     border: 1px solid #e2e2e2;
     border-radius: 3px;
-    padding:10px;
+    padding: 10px;
 }
 
-.req{
-    margin-bottom:80px;
+.req {
+    margin-bottom: 80px;
 }
 
-.cleaning-requests-title{
-    display:flex;
+.cleaning-requests-title {
+    display: flex;
     justify-content: space-between;
 }
 
-.cleaning-requests-select{
-    display: flex;
+.cleaning-requests-container {
     border: 1px solid #e2e2e2;
     border-radius: 3px;
-    padding:10px;
+    padding: 10px;
 }
 
-.requests-select-box{
-    font-size:0.8rem;
+/*
+.requests-select-box {
+    position: relative;
+    top: 2px;
+    font-size: 0.8rem;
     font-weight: 500;
-    padding:10px;
-    height:42px;
+    padding: 10px;
+    height: 42px;
     border: 1px solid #00BA86;
     border-radius: 17px;
     background-color: white;
@@ -299,15 +298,39 @@ form{ padding: 10px; }
     text-align: center;
 }
 
-.submit{
+.cleaning-requests-container input: checked + label.requests-select-box {
+    background-color: #00BA86;
+    color: #FFF;
+}
+*/
+
+div.cleaning-requests-message {
+    font-size: 0.9rem;
+}
+
+div.cleaning-requests-message div {
     display: flex;
     justify-content: space-between;
 }
 
-#request-end{
-    margin-top:20px;
+textarea#request-msg {
+    font-family: inherit;
+    font-size: 1rem;
+    color: #323232;
+    padding: 0.75rem;
+    border: 0.0625rem solid #e1e1e1;
+    resize: none;
+}
+
+.submit {
+    display: flex;
+    justify-content: space-between;
+}
+
+#request-end {
+    margin-top: 20px;
     margin-bottom: 20px;
-    width:300px;
+    width: 300px;
     height: 55px;
     color: white;
     background: #00BA86;
