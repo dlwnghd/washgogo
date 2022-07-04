@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>워시고고 - 우리집 모바일 세탁소</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.laundrygo.com/image/favicon/favicon_web.png">
+    <link rel="stylesheet" href="/css/common.css">
+    <style>
+        .complete{
+            background-color: #fafafa;
+            padding: 6rem 0;
+        }
+        .complete .content-wrap{
+            width: 100%;
+            max-width: 26.5rem;
+            border: 0.0625rem solid #f2f2f2;
+            border-radius: 0.5rem;
+            padding: 2.5rem;
+            margin: 0 auto;
+            box-shadow: none;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+        }
+        .complete .content-wrap .main-title{
+            margin: 2.5rem 0;
+            font-weight: 500;
+            font-size: 1.25rem;
+            line-height: normal;
+            letter-spacing: normal;
+        }
+        .complete .content-wrap .content-area p:first-child{
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+        .complete .content-wrap .content-area p.small{
+            font-size: 1rem;
+        }
+        .complete .btn-area{
+            margin-top: 3rem;
+        }
+        .complete .btn-order{
+            color: #CFFD5F;
+            background-color: #000;
+            width: 100%;
+            height: 2.5rem;
+            border-radius: 2rem;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!---- App-Header ---->
+    <header th:replace="~{/fragments/headerFooter:: header}">
+    </header>
+    <!---- App-Body ---->
+    <div id="app-body">
+        <div class="complete">
+            <div class="content-wrap">
+                <div class="main-title">
+                    <p>서비스 변경 완료</p>
+                </div>
+                <div class="content-area">
+                    <p>자유이용서비스 요금제로 <br>변경이 완료되었습니다.</p>
+                    <p class="small">지금 바로 수거 신청을 하시겠습니까?</p>
+                </div>
+                <div class="btn-area">
+                    <button type="button" id="orderBtn" class="btn-order">지금 바로 수거 신청하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---- App-Footer ---->
+    <nav th:replace="~{/fragments/headerFooter:: footer}">
+    </nav>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    const $orderBtn = $("#orderBtn");
+    $orderBtn.on("click", function () {
+        location.href = "/order/requestGuide";
+    });
+</script>
+</html>

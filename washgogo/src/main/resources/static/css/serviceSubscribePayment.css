@@ -265,3 +265,225 @@
     color: grey;
     background-color: #ddd;
 }
+/* 메시지모달창 */
+#commonMessageBoxBg{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10001;
+    background: url("/img/modal-bg.png") repeat;
+}
+#commonMessageBox, #successMessageBox, #launderetteMsgBox{
+    display: none;
+    position: fixed;
+    background-color: #fff;
+    z-index: 10002;
+    width: 20rem;
+    top: 50%;
+    left: 50%;
+    transform:  translate(-50%, -50%);
+}
+#successMessageBox{
+    border-radius: 1rem;
+}
+#launderetteMsgBox{
+    width: 24rem;
+}
+#commonMessageBox .modalContentsBox, #successMessageBox .modalContentsBox, #launderetteMsgBox .modalContentsBox{
+    max-width: 22.5rem;
+    padding: 2.438rem 1.875rem 1.563rem;
+    height: auto;
+}
+#commonMessageBox .modalContentsBox{
+    padding: 3.438rem 1.875rem 2.563rem;
+}
+#launderetteMsgBox .modalContentsBox{
+    max-width: 100%;
+    margin: 0 auto;
+}
+#commonMessageBox .btn-area, #successMessageBox .btn-area, #launderetteMsgBox .btn-area{
+    text-align: center;
+    margin-top: 1.25rem;
+}
+#commonMessageBox .btn-area, #launderetteMsgBox .btn-area{
+    display: flex;
+    justify-content: space-between;
+}
+#commonMessageBox .btn-area{
+    margin-top: 2rem;
+}
+#launderetteMsgBox .btn-area{
+    margin-top: 2.5rem;
+}
+#commonMessageBox .btn-area button, #successMessageBox .btn-area .btn-gray, #launderetteMsgBox .btn-area button{
+    min-width: 7.188rem;
+    padding: 0 0.625rem;
+    margin: 0 auto;
+    background: #fff;
+    color: #666;
+    border: 0.0625rem solid #666;
+    font-size: 0.875rem;
+    display: inline-block;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    vertical-align: top;
+}
+#commonMessageBox .btn-area button, #launderetteMsgBox .btn-area button{
+    border-radius: 1rem;
+}
+#launderetteMsgBox .btn-area button{
+    min-width: 8.188rem;
+}
+#commonMessageBox .btn-area button.btn-white, #launderetteMsgBox .btn-area button.btn-white{
+    color: #000;
+    border: 0.0625rem solid #000;
+}
+#commonMessageBox .btn-area button.btn-black, #launderetteMsgBox .btn-area button.btn-black{
+    color: #CFFD5F;
+    background-color: #000;
+}
+#commonMessageBox .modalCloseBtn{
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: url("/img/modal-close.png") no-repeat center center;
+    background-size: 100% 100%;
+    text-indent: -999rem;
+}
+#commonMessageBox .modalHead, #launderetteMsgBox .modalHead{
+    padding-bottom: 1.938rem;
+    font-size: 1.125rem;
+    line-height: 1.4;
+    color: #000;
+    text-align: left;
+}
+#launderetteMsgBox .modalHead{
+    padding-bottom: 1.038rem;
+}
+#commonMessageBox .modalHead h1, #launderetteMsgBox .modalHead h1{
+    font-size: 1.3rem;
+}
+#successMessageBox .modalImage{
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    background-color: #000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1.5rem;
+}
+#successMessageBox .modalImage .image{
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    background: url("/img/checkGreen.png") no-repeat center;
+    background-size: contain;
+    background-color: transparent;
+}
+#commonMessageBox .modalMsg, #successMessageBox .modalMsg, #launderetteMsgBox .modalMsg{
+    font-size: 1rem;
+    color: #000;
+    text-align: center;
+    line-height: 1.5;
+}
+#launderetteMsgBox .modalMsg{
+    color: #666;
+    text-align: left;
+}
+#commonMessageBox .modalMsg span{
+    color: #1d86d9;
+}
+/* 일반 모달창 */
+.modal-title{
+    font-size: 1rem;
+    color: #000;
+    padding-bottom: 2.438rem;
+    text-align: center;
+}
+.modal-close{
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url("../img/modal-close.png")
+    no-repeat center center;
+    background-size: 100% 100%;
+}
+.modal-container{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform:  translate(-50%, -50%);
+    width: 40rem;
+    height: 50rem;
+    z-index: 10001;
+    box-sizing: border-box;
+    transition: all 0.5s ease;
+    overflow: auto;
+}
+.modal-inner{
+    max-width: 41.25rem;
+    padding: 3.75rem 2.5rem;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 20.625rem;
+    background: #fff;
+    border-radius: 0;
+    transition: all 0.5s ease;
+}
+/* modal - launderetteDetail*/
+.launderetteDetail .modal-content h2{
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+.launderetteDetail .modal-content .flex-container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+.launderetteDetail .modal-content .flex-item{
+    width: 50%;
+}
+.launderetteDetail .modal-content .flex-item:first-child{
+    border-right: 0.0625rem solid #eee;
+}
+.launderetteDetail .modal-content .flex-item .content-title{
+    font-size: 0.9rem;
+    text-align: center;
+}
+.launderetteDetail .modal-content .flex-item .image-content{
+    width: 100%;
+    height: 22rem;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 1.5rem;
+}
+.launderetteDetail .modal-content .flex-item:first-child .image-content{
+    background-image: url("/img/launderetteMini2.jpg");
+}
+.launderetteDetail .modal-content .flex-item:last-child .image-content{
+    background-image: url("/img/launderetteRegular2.jpg");
+}
+.launderetteDetail .modal-content .flex-item .text-content li{
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #666;
+    text-align: center;
+}
+.launderetteDetail .modal-content .flex-item .text-content .text-title{
+    font-weight: 700;
+}
