@@ -9,6 +9,8 @@ import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 
 //SMS용으로 추가
@@ -375,11 +378,24 @@ public class UserController {
         Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
         UserVO user = userService.loadUserInfo(userNumber);
         model.addAttribute("userServiceType", user.getUserServiceType());
+        model.addAttribute("selectedServiceType", "Several");
         return "/service/serviceDetail";
     }
 
+    @GetMapping("serviceOnceDetail")
+    public String serviceOnceDetail(HttpSession session, Model model){
+        if(session.getAttribute("userNumber")  == null){
+            return "/service/serviceOnceDetail";
+        }
+        Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
+        UserVO user = userService.loadUserInfo(userNumber);
+        model.addAttribute("userServiceType", user.getUserServiceType());
+        model.addAttribute("selectedServiceType", "Once");
+        return "/service/serviceOnceDetail";
+    }
+
     @GetMapping("serviceSubscribeAddress")
-    public String serviceSubscribeAddress(HttpSession session){
+    public String serviceSubscribeAddress(HttpSession session, @ModelAttribute("selectedServiceType") String selectedServiceType, RedirectAttributes rttr){
         if(session.getAttribute("userNumber")  == null){
             return "/user/login";
         }
@@ -387,54 +403,62 @@ public class UserController {
         Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
         UserVO user = userService.loadUserInfo(userNumber);
         if(user.getUserAddress() != null) {
+            rttr.addAttribute("selectedServiceType", selectedServiceType);
             return "redirect:/user/servicePayment";
         }
 
+        rttr.addAttribute("selectedServiceType", selectedServiceType);
         return "service/serviceSubscribeAddress";
     }
 
     @PostMapping("modifyAddress")
-    public String modifyAddress(UserVO userVO){
+    public String modifyAddress(HttpSession session, UserVO userVO, @ModelAttribute("selectedServiceType") String selectedServiceType){
         log.info("-----------------postAddress--------------------");
         log.info("userVO : " + userVO.toString());
+        log.info("-------------------------------------");
 
         return "/service/modifyAddress";
     }
 
     @PostMapping("/serviceAddressOk")
-    public String serviceAddressOk(UserVO userVO, HttpSession session){
+    public String serviceAddressOk(HttpSession session, UserVO userVO, @ModelAttribute("selectedServiceType") String selectedServiceType, Model model){
         log.info("-------------------------------------");
         log.info("userVO : " + userVO.toString());
         log.info("-------------------------------------");
         Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
         userVO.setUserNumber(userNumber);
         userService.modifyAddress(userVO);
-        log.info("-------------------------------------");
-        log.info("userVO : " + userVO.toString());
-        log.info("-------------------------------------");
+        UserVO user = userService.loadUserInfo(userNumber);
+        model.addAttribute("selectedServiceType", selectedServiceType);
+        model.addAttribute("userServiceType", user.getUserServiceType());
         return "/service/serviceSubscribePayment";
     }
 
+    // serviceSubscribeAddress 건너뛰고 바로 serviceSubscribePayment로 이동했을 때
     @GetMapping("/servicePayment")
-    public String servicePayment(HttpSession session, Model model){
+    public String servicePayment(HttpSession session, @ModelAttribute("selectedServiceType") String selectedServiceType, Model model){
         Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
         UserVO user = userService.loadUserInfo(userNumber);
         model.addAttribute("userVO", user);
+        model.addAttribute("selectedServiceType",selectedServiceType);
+        model.addAttribute("userServiceType", user.getUserServiceType());
         return "/service/serviceSubscribePayment";
     }
 
-    @GetMapping("serviceSubscribePayment")
-    public String serviceSubscribePayment(){
-        return "/service/serviceSubscribePayment";
-    }
-
-    @PostMapping("/servicePaymentOk")
-    public RedirectView servicePaymentOk(UserVO userVO, HttpSession session){
+    @PatchMapping("/servicePaymentOk")
+    @ResponseBody
+    public boolean servicePaymentOk(@RequestBody UserVO userVO, HttpSession session){
         log.info("-------------------------------------");
         log.info("userVO : " + userVO.toString());
         log.info("-------------------------------------");
         userVO.setUserNumber(Long.parseLong(String.valueOf(session.getAttribute("userNumber"))));
-        userService.changeService(userVO);
-        return new RedirectView("/order/requestGuide");
+        boolean isSuccess = userService.changeService(userVO);
+        return isSuccess;
     }
+
+    @GetMapping("/serviceChangeComplete")
+    public String serviceChangeComplete(){
+        return "/service/serviceChangeComplete";
+    }
+
 }

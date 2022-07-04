@@ -89,11 +89,6 @@
     width: 5rem;
     height: 5rem;
 }
-.serviceDetail .to-customer li:first-child .image-wrap{ background-image: url("/img/serviceIcon01.jpg");}
-.serviceDetail .to-customer li:nth-child(2) .image-wrap{ background-image: url("/img/serviceIcon02.jpg");}
-.serviceDetail .to-customer li:nth-child(3) .image-wrap{ background-image: url("/img/serviceIcon03.jpg");}
-.serviceDetail .to-customer li:last-child .image-wrap{ background-image: url("/img/serviceIcon04.jpg");}
-
 .serviceDetail .to-customer li p{
     padding-top: 1rem;
     padding-left: 3rem;
@@ -202,74 +197,93 @@
     border-radius: 1rem;
     font-weight: 700;
 }
-
-/* modal-v2 common*/
-.modal-bg{
+/* 메시지모달창 */
+#commonMessageBoxBg{
     display: none;
     position: fixed;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     z-index: 10001;
     background: url("/img/modal-bg.png") repeat;
 }
-.modal-title{
-    font-size: 1.2rem;
-    color: #000;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    text-align: center;
+#commonMessageBox, #onceMsgBox{
+    display: none;
+    position: fixed;
+    background-color: #fff;
+    z-index: 10002;
+    width: 20rem;
+    top: 50%;
+    left: 50%;
+    transform:  translate(-50%, -50%);
 }
-.modal-close{
+#onceMsgBox{
+    width: 21rem;
+}
+#commonMessageBox .modalContentsBox, #onceMsgBox .modalContentsBox{
+    max-width: 22.5rem;
+    padding: 3.438rem 1.875rem 1.563rem;
+    height: auto;
+}
+#commonMessageBox .btn-area{
+    text-align: center;
+    margin-top: 1.25rem;
+}
+#onceMsgBox .btn-area{
+    text-align: center;
+    margin-top: 1.75rem;
+}
+#commonMessageBox .btn-area .btn-black, #onceMsgBox .btn-area .btn-black{
+    min-width: 7.188rem;
+    padding: 0 0.625rem;
+    margin: 0 auto;
+    background: #000;
+    color: #fff;
+    font-size: 0.875rem;
+    display: inline-block;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    vertical-align: top;
+}
+#onceMsgBox .btn-area .btn-black{
+    color: #CFFD5F;
+}
+#commonMessageBox .modalCloseBtn{
     position: absolute;
     right: 1.25rem;
     top: 1.25rem;
     display: block;
-    width: 1.5rem;
-    height: 1.5rem;
-    background: url("../img/modal-close.png")
-    no-repeat center center;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: url("/img/modal-close.png") no-repeat center center;
     background-size: 100% 100%;
+    text-indent: -999rem;
 }
-.modal-content .btn-area{
+#commonMessageBox .modalHead, #onceMsgBox .modalHead{
+    padding-bottom: 0.938rem;
+    font-size: 1.125rem;
+    line-height: 1.4;
+    color: #000;
     text-align: center;
-    margin-top: 2rem;
 }
-.btn-area button{
-    display: inline-block;
-    height: 3.125rem;
-    line-height: 3.125;
-    max-width: 11.25rem;
-    width: 100%;
-    margin: 0;
-    font-size: 0.875rem;
+#onceMsgBox .modalHead{
+    text-align: left;
 }
-.btn-black{
-    background: #000;
-    color: #fff;
-    border: 0.063rem solid #000;
+#commonMessageBox .modalHead h1, #onceMsgBox .modalHead h1{
+    font-size: 1.5rem;
 }
-.modal-container{
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform:  translate(-50%, -50%);
-    width: 25rem;
-    height: 18rem;
-    z-index: 10001;
-    box-sizing: border-box;
-    transition: all 0.5s ease;
-    overflow: auto;
+#commonMessageBox .modalMsg{
+    font-size: 1rem;
+    color: #000;
+    text-align: center;
+    line-height: 1.5;
 }
-.modal-inner{
-    max-width: 41.25rem;
-    padding: 3.75rem 2.5rem;
-    position: relative;
-    width: 100%;
-    min-width: 20.625rem;
-    background: #fff;
-    border-radius: 0;
-    transition: all 0.5s ease;
+#onceMsgBox .modalMsg{
+    font-size: 0.9rem;
+    text-align: left;
+    line-height: 1.3;
+}
+#onceMsgBox .modalMsg span.red{
+    color: #f94545;
 }

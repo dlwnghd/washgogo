@@ -1,13 +1,3 @@
-/* 헤더 스크롤 이벤트 */
-const $header = $("#app-header");
-document.onscroll = function(){
-    if(window.scrollY>0){
-        $header.removeClass("hide-border-bottom");
-    } else {
-        $header.addClass("hide-border-bottom");
-    }
-}
-
 /* tab 이벤트 */
 const $tabs = $(".guide .tab a");
 const $firstUse = $(".first-use");
