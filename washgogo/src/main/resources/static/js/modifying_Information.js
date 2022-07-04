@@ -80,6 +80,7 @@ remainBtn.addEventListener("click", e => {
 // 계정 탈퇴 버튼으로 닫기
 const deleteBtn = document.querySelector(".delete-user");
 deleteBtn.addEventListener("click", e => {
+    userMapper.delete(userVO.getUserNumber) == 1;
     close();
 })
 
@@ -208,13 +209,14 @@ function modify() {
         userEntracePw : userEntracePw
     }
     $.ajax({
-        url: '/user/modifyingInformation',
+        url: '/user/modifyingInformationAction',
         type: 'post',
         dataType: "json",
         data: JSON.stringify(userVO),
         contentType: "application/json",
         success: function (result) {
             console.log(result);
+            location.href = "/user/modifyingInformation";
         },
         error: function () {
             alert("에러입니다");

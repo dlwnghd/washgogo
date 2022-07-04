@@ -29,6 +29,8 @@ import java.util.HashMap;
 import org.json.simple.JSONObject;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
+
+import java.util.List;
 import java.util.Random;
 
 
@@ -64,21 +66,22 @@ public class UserController {
 
     @PostMapping("modifyingInformation")
     public RedirectView modifyingInformationAction(UserVO userVO, HttpSession session){
+        String url = "";
         long number = (long)session.getAttribute("userNumber");
         userVO = userService.loadUserInfo(number);
         log.info(userVO.toString());
         //변경
         if(userService.modifyUserInfo(userVO)) {
-            return new RedirectView("/user/modifyingInformation");
+            url = "/user/modifyingInformation";
         }
-//        //모달창 계정삭제
+        //모달창 계정삭제
 //        if(userService.resignMember(userVO.getUserNumber())){
 //            session.removeAttribute("userNumber");
 //            session.removeAttribute("userName");
-//            return new RedirectView("/index");
-//        }
-//        //모달창 계정 삭제하지 않음
-        return new RedirectView("/user/modifyingInformation");
+//            url = "/index";
+//       }
+        log.info(url.toString());
+        return new RedirectView(url);
     }
 
     @GetMapping("point")
@@ -86,6 +89,26 @@ public class UserController {
         long number = (long)session.getAttribute("userNumber");
         model.addAttribute("myPageInfo", userService.loadUserInfo(number));
         return "/user/point";
+    }
+
+    @GetMapping("useService")
+    public String useService(UserVO userVO){
+        return "/user/useService";
+    }
+
+    @GetMapping("serviceChange")
+    public String serviceChange(UserVO userVO){
+        return "/user/serviceChange";
+    }
+
+    @GetMapping("changeCancel")
+    public String changeCancel(UserVO userVO){
+        return "/user/changeCancel";
+    }
+
+    @GetMapping("paymentDetails")
+    public String paymentDetails(OrderVO order) {
+        return "/user/paymentDetails";
     }
 
     //공지 추가 링크
@@ -154,27 +177,6 @@ public class UserController {
 
         noticeService.remove(noticeNumber);
         return getList(criteria, model);
-    }
-
-
-    @GetMapping("useService")
-    public String useService(UserVO userVO){
-        return "/user/useService";
-    }
-
-    @GetMapping("serviceChange")
-    public String serviceChange(UserVO userVO){
-        return "/user/serviceChange";
-    }
-
-    @GetMapping("changeCancel")
-    public String changeCancel(UserVO userVO){
-        return "/user/changeCancel";
-    }
-
-    @GetMapping("paymentDetails")
-    public String paymentDetails(OrderVO order) {
-        return "/user/paymentDetails";
     }
 
 //    ###로그인 / 회원가입###

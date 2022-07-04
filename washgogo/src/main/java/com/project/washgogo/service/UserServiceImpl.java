@@ -52,9 +52,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean resignMember(Long userNumber) {
-        return userDAO.resignMember(userNumber);
-    }
+    public boolean resignMember(Long userNumber) { return userDAO.resignMember(userNumber); }
 
     @Override
     public boolean checkEmail(String userEmail){ return userDAO.checkEmail(userEmail);}
