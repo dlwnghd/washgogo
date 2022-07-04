@@ -19,21 +19,21 @@
 			href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/findIdPw.css}">
 </head>
-<body>
+<body id="body">
 	<div th:replace="~{/fragments/headerFooter :: header}"></div>
 	<section>
 		<div class="findIdPw-page">
 			<h2>비밀번호 찾기</h2>
 				<div class="card">
-					<form class="submit" action="/user/checkUser" method="post" name="userVO">
+					<form id="form" class="submit" action="/user/checkUser" method="post" name="userVO">
 						<div class="find-container findId-container">
 							<div class="col">
 								<fieldset>
 									<legend>가입한 휴대 전화 번호를 입력해주세요</legend>
 									<div>
-										<input id="userPhonenum" type="text" name="userPhonenum" placeholder="휴대 전화 번호를 입력해주세요">
+										<input id="userPhonenum" type="text" name="userPhonenum" placeholder="휴대 전화 번호를 입력해주세요" oninput = "checkPhoneNum()">
 									</div>
-									<div class="invalid-feedback">
+									<div id="phonenumwrong" class="invalid-feedback invalid-feedback-phonenum">
 									</div>
 								</fieldset>
 							</div>
@@ -41,9 +41,9 @@
 								<fieldset>
 									<legend>가입한 이메일 주소를 입력해주세요</legend>
 									<div>
-										<input id="userEmail" type="email" name="userEmail" placeholder="example@washgogo.com">
+										<input id="userEmail" type="email" name="userEmail" placeholder="example@washgogo.com" oninput = "checkEmail()">
 									</div>
-									<div class="invalid-feedback">
+									<div id="emailwrong" class="invalid-feedback invalid-feedback-email">
 									</div>
 									<div class="feedback">
 										<small>휴대 전화 번호 인증을 통해<br>비밀번호를 재설정하실 수 있습니다.</small>
@@ -54,9 +54,9 @@
 								<fieldset>
 									<legend>인증 번호를 입력해주세요</legend>
 									<div>
-										<input id="verifyNumber" type="text" name="verifyNumber" placeholder="인증 번호를 입력해주세요">
+										<input id="verifyNumber" type="text" name="verifyNumber" placeholder="인증 번호를 입력해주세요" oninput = "checkVerify()">
 									</div>
-									<div class="invalid-feedback">
+									<div class="invalid-feedback invalid-feedback-verifyNumber">
 									</div>
 								</fieldset>
 							</div>
@@ -71,6 +71,21 @@
 		</div>
 	</section>
 	<div th:replace="~{/fragments/headerFooter :: footer}"></div>
+	<!-- modal -->
+	<div id="modal" class="modal-overlay" style="display: none;">
+		<div id="modal_window" class="modal-window">
+			<div class="close-area">X</div>
+			<div class="title">
+				<h2>유효하지 않은 회원</h2>
+			</div>
+			<div class="info">
+				<p>유효하지 않은 회원입니다.</p>
+			</div>
+			<div class="close">
+				<button class="close-text">확인</button>
+			</div>
+		</div>
+	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:src="@{/js/findPw.js}"></script>

@@ -45,10 +45,10 @@
 						<fieldset>
 							<legend>새 비밀번호 확인</legend>
 							<div class="password-wrapper">
-								<input id="newpassword" type="password" name="userNewPw" placeholder="새 비밀번호를 다시 입력해주세요" oninput = "checkNewPassWord()">
+								<input id="new-password" type="password" name="userNewPw" placeholder="새 비밀번호를 다시 입력해주세요" oninput = "checkNewPassWord()">
 								<button class="pw-show" type="button"></button>
 							</div>
-							<div id="newpwwrong" class="invalid-feedback invalid-feedback-newpassword">
+							<div id="newpwwrong" class="invalid-feedback invalid-feedback-new-password">
 							</div>
 						</fieldset>
 					</div>
@@ -79,14 +79,14 @@
 	});
 
 	function close() {
-		// 비밀번호 미입력시
-		if(!$("#password").val()){
+		// 새 비밀번호 미입력시
+		if(!$("#password").val() || $("div.invalid-feedback-password").html() != ""){
 			pwwrong.style.display = "block";
 		}
 
-		// 이메일 미입력시
-		if(!$("#email").val()){
-			emailwrong.style.display = "block";
+		// 새 비밀번호 홧인 미입력시
+		if(!$("#newpassword").val()){
+			newpwwrong.style.display = "block";
 		}
 	}
 
@@ -99,87 +99,53 @@
 		var chk_eng = userPw.search(/[a-z]/ig);
 		if (!userPw) {
 			str = "<small>새 비밀번호를 입력해주세요.</small>";
-			feedback.html(str);
 		} else if(chk_num < 0 || chk_eng < 0){
 			str = "<small>비밀번호는 숫자와 영문자를 혼용하여야 합니다.</small>";
-			feedback.html(str);
 		} else if(userPw.length < 8){
 			str = "<small>비밀번호는 최소 8자 이상 입력해주세요.</small>";
-			feedback.html(str);
 		}
 		else {
 			str = "";
-			feedback.html(str);
 		}
+		feedback.html(str);
 	}
 
 	// // 새 비밀번호 확인
 	function checkNewPassWord() {
-		let newuserPw = $('#newpassword').val(); //userPw값이 "userPw"인 입력란의 값을 저장
+		let newuserPw = $('#new-password').val(); //userPw값이 "userPw"인 입력란의 값을 저장
 		let userPw = $('#password').val(); //userPw값이 "userPw"인 입력란의 값을 저장
-		const feedback = $("div.invalid-feedback-newpassword");
+		const feedback = $("div.invalid-feedback-new-password");
 		let str = "";
 		var chk_num = newuserPw.search(/[0-9]/g);
 		var chk_eng = newuserPw.search(/[a-z]/ig);
 		if (!newuserPw) {
-			str = "<small>비밀번호를 다시 입력해주세요.</small>";
-			feedback.html(str);
+			str = "<small>새 비밀번호를 다시 입력해주세요</small>";
 		} else if(chk_num < 0 || chk_eng < 0){
 			str = "<small>비밀번호는 숫자와 영문자를 혼용하여야 합니다.</small>";
-			feedback.html(str);
 		} else if(newuserPw.length < 8){
 			str = "<small>비밀번호는 최소 8자 이상 입력해주세요.</small>";
-			feedback.html(str);
 		} else if(newuserPw != userPw){
 			str = "<small>새 비밀번호가 일치하지 않습니다.</small>";
-			feedback.html(str);
 		}
 		else {
 			str = "";
-			feedback.html(str);
 		}
+		feedback.html(str);
 	}
 
 	// 비밀번호 재설정 버튼 클릭시
 	function checkNumber() {
 		let password = $('#password').val();
-		let newpassword = $('#newpassword').val();
-
-		if(password == "" || $("div.invalid-feedback-password").html()){
-			// 새 비밀번호가 없다면
-			$(".reset-btn").prop("type", "button");
-			alert("새 비밀번호를 입력해주세요");
-			return;
-		} else if(newpassword == "" || $("div.invalid-feedback-newpassword").html()) {
-			// 새 비밀번호 확인이 없다면
-			$(".reset-btn").prop("type", "button");
-			alert("새 비밀번호를 확인해주세요");
-			return;
-		}
+		let newpassword = $('#new-password').val();
 
 		// 새 비밀번호와 새 비밀번호 확인이 일치한다면
-		if(password == newpassword){
-			alert("비밀번호가 변경되었습니다. 다시 로그인해 주세요");
-			// var userVO = {
-			// 	userNumber      : userNumber
-			// 	, userPw       : $('#password').val()
-			// }
-			// $.ajax({	// ajax선언
-			// 	url: '/user/findIdPw', //Controller에서 인식할 주소
-			// 	type: 'post', //POST 방식으로 전달
-			// 	dataType: "json",
-			// 	data: JSON.stringify(userVO), 	// 데이터 타입은 userVO타입
-			// 	contentType: "application/json",
-			// 	success: function (result) {	// 외부로부터 result를 받아오면 => 만약 이메일 전송에 성공하면
-			// 		console.log("처리 성공 시 변경되는 내용");	// 출력문
-			// 		feedback.html(str);
-			// 	},
-			// 	error: function () {
-			// 		console.log("로그인 오류 체크1");
-			// 		alert("에러입니다");
-			// 	}
-			// });
+		if(password != newpassword || password == "" || newpassword == "") {
+			checkPassWord();
+			checkNewPassWord();
+			$(".reset-btn").prop("type", "button");
+		} else if(password != "" && newpassword != "" && password == newpassword){
 			$("button.reset-btn").prop("type", "submit");	// 버튼 타입 변경
+			alert("비밀번호가 변경되었습니다. 다시 로그인해 주세요.\n[주의] 확인 버튼을 누르지 않으면 변경되지 않습니다!");
 		}
 	}
 </script>

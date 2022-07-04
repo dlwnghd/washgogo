@@ -158,7 +158,6 @@ input:checked + label::before {
 div.agreement p {
     font-size: .875rem;
     color: #737373;
-    margin: 0 0 0.625rem 0;
     padding-left: 1.75rem;
     line-height: 1.25rem;
 }
@@ -317,4 +316,9 @@ div.modal th, td {
 div.modal th {
     background-color: #d8d8d8;
     text-align: center;
+}
+
+.invalid-feedback-agree-terms, .invalid-feedback-agree-14{
+    margin-top: 0;
+    margin-bottom: 5px;
 }
