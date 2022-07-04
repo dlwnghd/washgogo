@@ -171,7 +171,9 @@ public class UserController {
 //    회원가입 페이지로 이동
     @GetMapping("join")
     public String join(){
-        log.info("--------join/Get---------");
+        log.info("---------------------");
+        log.info("------join/Get-------");
+        log.info("---------------------");
         return "/user/join";
     }
 
@@ -179,8 +181,11 @@ public class UserController {
     @ResponseBody //REST
     @PostMapping("checkEmail")
     public boolean checkEmail(@RequestBody String userEmail){
-        log.info("전달받은 email : "+ userEmail);
-        log.info("userService : "+userService.checkEmail(userEmail));
+        log.info("---------------------");
+        log.info("---checkEmail/REST---");
+        log.info("---------------------");
+//        log.info("전달받은 email : "+ userEmail);
+//        log.info("userService : "+userService.checkEmail(userEmail));
         return userService.checkEmail(userEmail);   // true : 이미 사용하고 있는 이메일
         //SELECT COUNT(USER_EMAIL) FROM TBL_USER WHERE USER_EMAIL = #{userEmail}
     }
@@ -190,12 +195,12 @@ public class UserController {
     @ResponseBody //REST
     @PostMapping("/checkUser")
     public String checkUser(@RequestBody UserVO userVO){
-        log.info("---------------------");
+        log.info("-------------------------");
         log.info("---findIdPwPostMapping---");
-        log.info("---------------------");
-        log.info("전달받은 email : "+ userVO.getUserEmail());
-        log.info("전달받은 전화번호 : "+ userVO.getUserPhonenum());
-        log.info("userService : " + userService.checkUser(userVO));
+        log.info("-------------------------");
+//        log.info("전달받은 email : "+ userVO.getUserEmail());
+//        log.info("전달받은 전화번호 : "+ userVO.getUserPhonenum());
+//        log.info("userService : " + userService.checkUser(userVO));
         resultNum = "";     // 인증번호가 쌓이는 것을 방지하기 위해 인증번호 초기화
 
         // 반복문으로 인증번호를 생성
@@ -205,26 +210,26 @@ public class UserController {
             resultNum += ranNum;			//생성된 난수(문자열)을 원하는 수(letter)만큼 더하며 나열
         }
 
-////        휴대폰에 인증번호 전송
-//        String api_key = "NCSHUXHNNINOL8AT";
-//        String api_secret = "IMDMEXAZSWQWO7OR993KMVDEXCOK0ZDV";
-//        Message coolsms = new Message(api_key, api_secret);
-//
-//        // 4 params(to, from, type, text) are mandatory. must be filled
-//        HashMap<String, String> params = new HashMap<String, String>();
-//        params.put("to", userVO.getUserPhonenum());    // 인증번호 받는 사람
-//        params.put("from", "01088580291");  // 인증번호 보내는 사람
-//        params.put("type", "SMS");  // 문자형태
-//        params.put("text", "[WashGoGo] 인증번호 ["+ resultNum +"]를 입력하세요. 이주홍52");   // 보내는 문자
-//        params.put("app_version", "test app 1.2"); // application name and version
-//
-//        try {
-//            JSONObject obj = (JSONObject) coolsms.send(params);
-//            System.out.println(obj.toString());
-//        } catch (CoolsmsException e) {
-//            System.out.println(e.getMessage());
-//            System.out.println(e.getCode());
-//        }
+//        휴대폰에 인증번호 전송
+        String api_key = "NCSHUXHNNINOL8AT";
+        String api_secret = "IMDMEXAZSWQWO7OR993KMVDEXCOK0ZDV";
+        Message coolsms = new Message(api_key, api_secret);
+
+        // 4 params(to, from, type, text) are mandatory. must be filled
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("to", userVO.getUserPhonenum());    // 인증번호 받는 사람
+        params.put("from", "01088580291");  // 인증번호 보내는 사람
+        params.put("type", "SMS");  // 문자형태
+        params.put("text", "[WashGoGo] 인증번호 ["+ resultNum +"]를 입력하세요.");   // 보내는 문자
+        params.put("app_version", "test app 1.2"); // application name and version
+
+        try {
+            JSONObject obj = (JSONObject) coolsms.send(params);
+            System.out.println(obj.toString());
+        } catch (CoolsmsException e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.getCode());
+        }
 
         log.info("resultNum : " + resultNum);   // 인증번호 확인용 log.info
         return userService.checkUser(userVO) ? resultNum : null;   // userService.checkUser(userVO)이 true : 존재하는 유저
@@ -233,8 +238,11 @@ public class UserController {
 //    인증번호 확인 성공
     @PostMapping("/checkVerifyNum")
     public RedirectView verifyOK(UserVO userVO, RedirectAttributes rttr){
-        log.info("userService : " + userService.findUserNumber(userVO));
-        log.info("찾는 유저의 번호 : " + userService.findUserNumber(userVO));
+        log.info("-------------------------");
+        log.info("---checkVerifyNum/Post---");
+        log.info("-------------------------");
+//        log.info("userService : " + userService.findUserNumber(userVO));
+//        log.info("찾는 유저의 번호 : " + userService.findUserNumber(userVO));
         rttr.addFlashAttribute("userNumber",userService.findUserNumber(userVO));
         return new RedirectView("/user/resetPw");
     }
@@ -242,21 +250,23 @@ public class UserController {
 //    회원가입
     @PostMapping("join")
     public String joinOK( UserVO userVO){
-        log.info("--------joinOK/Post---------");
-        log.info(userVO.toString());
+        log.info("---------------------");
+        log.info("-----joinOK/Post-----");
         log.info("---------------------");
 
         userService.join(userVO);
 
         if(userVO == null){  // 사용자의 번호가 인식되지 않는다면
-            log.info("---회원가입 실패---");
-            log.info("userVO : " + userVO);
+            log.info("---------------------");
+            log.info("-----회원가입 실패-----");
+            log.info("---------------------");
+//            log.info("userVO : " + userVO);
             return "/user/join";
         }
-
-        log.info("---회원가입 성공---");
-        log.info("userVO : " + userVO);
-        log.info(userVO.toString());
+        log.info("---------------------");
+        log.info("-----회원가입 성공-----");
+        log.info("---------------------");
+//        log.info("userVO : " + userVO);
         return "/user/login";
     }
 
@@ -274,28 +284,39 @@ public class UserController {
     @ResponseBody //REST
     @PostMapping("/loginCheck")
     public boolean loginCheck(@RequestBody UserVO userVO){
-            log.info("userEmail : " + userVO.getUserEmail());
-            log.info("userPw : " + userVO.getUserPw());
-            log.info("userNumber : " + userVO.getUserNumber());
-            log.info("userNumber 찾기 : " + userService.login(userVO.getUserEmail(), userVO.getUserPw()));
+        log.info("---------------------");
+        log.info("--------loginCheck/REST--------");
+        log.info("---------------------");
+        log.info("userEmail : " + userVO.getUserEmail());
+        log.info("userPw : " + userVO.getUserPw());
+        log.info("userNumber : " + userVO.getUserNumber());
+        log.info("userNumber 찾기 : " + userService.login(userVO.getUserEmail(), userVO.getUserPw()));
         if(userService.login(userVO.getUserEmail(), userVO.getUserPw()) == null){
-            log.info("---유저 없음---");
+            log.info("---------------------");
+            log.info("-------유저 없음-------");
+            log.info("---------------------");
             return false;
         }
+        log.info("---------------------");
         log.info("---로그인 성공---");
+        log.info("---------------------");
         return true;
     }
 
 //    로그인
     @PostMapping("login")
     public RedirectView loginOK(UserVO userVO, HttpServletRequest request){
-        //        존재하지 않는 user면? => ⭐강사님께 물어보기
+        log.info("---------------------");
+        log.info("---------loginOK/POST---------");
+        log.info("---------------------");
         log.info("loginCheck : "+loginCheck(userVO));
         if(userService.login(userVO.getUserEmail(), userVO.getUserPw()) == null){
+            log.info("---------------------");
             log.info("---로그인 실패---");
-            log.info("userEmail : " + userVO.getUserEmail());
-            log.info("userPw : " + userVO.getUserPw());
-            log.info("userNumber : " + userVO.getUserNumber());
+            log.info("---------------------");
+//            log.info("userEmail : " + userVO.getUserEmail());
+//            log.info("userPw : " + userVO.getUserPw());
+//            log.info("userNumber : " + userVO.getUserNumber());
 //            null을 보낸다고 해도 redirect를 막을 수는 없음;;
 
             return null;
@@ -303,8 +324,9 @@ public class UserController {
         HttpSession session = request.getSession();
         Long userNumber = userService.login(userVO.getUserEmail(), userVO.getUserPw());
         String userName = userService.loadUserInfo(userNumber).getUserName();
-
+        log.info("---------------------");
         log.info("---로그인 성공---");
+        log.info("---------------------");
         session.setAttribute("userNumber", userNumber);
         session.setAttribute("userName", userName);
         return new RedirectView("/index");
@@ -313,6 +335,9 @@ public class UserController {
 //    로그아웃
     @GetMapping("logout")
     public RedirectView logout(HttpServletRequest request){
+        log.info("---------------------");
+        log.info("--------logout/GET---------");
+        log.info("---------------------");
         HttpSession session = request.getSession();
         log.info("logout에서 session : "+session.getAttribute("userNumber").toString());
         session.removeAttribute("userNumber");
@@ -323,7 +348,7 @@ public class UserController {
     @GetMapping("/findIdPw")
     public String findIdPw(){
         log.info("---------------------");
-        log.info("---findIdPwGetMapping---");
+        log.info("---findIdPw/GET---");
         log.info("---------------------");
         log.info("resultNum : " + resultNum);
         return "/user/findIdPw";
@@ -334,23 +359,28 @@ public class UserController {
     @PostMapping("/findIdPw")
     public String findIdPwOK(UserVO userVO){
         log.info("---------------------");
-        log.info("---findIdPwPostMapping---");
+        log.info("---findIdPw/POST---");
         log.info("---------------------");
-        log.info("유저번호 : "+userVO.getUserNumber());
-        log.info("유저의 비밀번호1 :"+userVO.getUserPw());
+//        log.info("유저번호 : " + userVO.getUserNumber());
         userVO.setUserPw(userVO.getUserPw());
-        log.info("유저의 비밀번호2 :"+userVO.getUserPw());
+//        log.info("유저의 비밀번호 : " + userVO.getUserPw());
         userService.changePw(userVO);
         return "/user/login";
     }
 
     @GetMapping("/resetPw")
     public String resetPw(){
+        log.info("---------------------");
+        log.info("---resetPw/GET---");
+        log.info("---------------------");
         return "/user/resetPw";
     }
 
     @PostMapping("/resetPw")
     public String resetPwOK(){
+        log.info("---------------------");
+        log.info("---resetPwOK/POST---");
+        log.info("---------------------");
         return "/user/resetPw";
     }
 

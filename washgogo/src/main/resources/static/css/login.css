@@ -173,3 +173,80 @@ div.signup a {
     color: #737373;
     text-align: center;
 }
+
+
+button:focus{
+    outline: none;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgb(0 199 174 / 25%);
+}
+
+#modal.modal-overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#modal .modal-window {
+    background: #ffffff;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 400px;
+    height: 200px;
+    position: relative;
+    padding: 10px;
+}
+
+#modal .title {
+    padding-left: 10px;
+    display: inline;
+}
+
+#modal .title h2 {
+    text-align: center;
+    color: black;
+    margin-bottom: 10px;
+}
+
+#modal .info, #modal .close {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.close{
+    background-color: #00ba86;
+    padding: 10px 0px;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.close-text{
+    color: white;
+}
+
+#modal .close-area {
+    display: inline;
+    float: right;
+    padding-right: 10px;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+}
