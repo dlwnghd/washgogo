@@ -78,5 +78,8 @@ public class OrderController {
 
 		return ("/index");
 	}
-
+	//공지 추가 링크
+	@GetMapping("payment")
+	public void payment(){
+	};
 }
