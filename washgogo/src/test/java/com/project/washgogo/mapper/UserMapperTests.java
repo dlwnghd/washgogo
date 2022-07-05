@@ -30,10 +30,10 @@ public class UserMapperTests {
 //    }
 
 //    이메일 중복 테스트
-    @Test
-    public void checkEmailTest(){
-        log.info(""+userMapper.checkEmail("alion0513@naver.com"));
-    }
+//    @Test
+//    public void checkEmailTest(){
+//        log.info(""+userMapper.checkEmail("alion0513@naver.com"));
+//    }
 
 //    회원확인 테스트
 //    @Test
