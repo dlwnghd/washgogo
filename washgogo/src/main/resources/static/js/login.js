@@ -9,39 +9,51 @@ $(".pw-show").on("click",function(){
         $(".pw-show").removeClass("pw-hide");
     }
     checkPassWord();
-    close();
+    emailclose();
+    pwclose();
 });
 
-// console.log($("#userPw").val());
-
-function close() {
-    // 비밀번호 미입력시
-    if(!$("#userPw").val() || $("div.invalid-feedback-password").html() != ""){
-        pwwrong.style.display = "block";
-        userPw.style.boxShadow = "0 0 0 0.1rem rgb(251 89 114)";
-    }else if($("div.invalid-feedback-password").html() == ""){
-        userPw.style.boxShadow = "none";
-    }
-
-    // 이메일 미입력시
-    if(!$("#userEmail").val() || $("div.invalid-feedback-email").html() != ""){
-        emailwrong.style.display = "block";
-        userEmail.style.boxShadow = "0 0 0 0.1rem rgb(251 89 114)";
-    }else if($("div.invalid-feedback-email").html() == ""){
-        userEmail.style.boxShadow = "none";
+// 비밀번호에서 enter키 입력 시
+function enterkey() {
+    if (window.event.keyCode == 13) {
+        checkUser();
     }
 }
 
-form.addEventListener("mouseover", e => {
-    close();
+// 이메일 부적합
+function emailclose() {
+// 이메일 미입력시
+    if($("div.invalid-feedback-email").html() != ""){
+        emailwrong.style.display = "block";
+        userEmail.style.boxShadow = "0 0 0 0.1rem rgb(251 89 114)";
+    }else if($("div.invalid-feedback-email").html() == ""){
+        userEmail.style.boxShadow = "0 0 0 0.2rem rgb(0 199 174 / 25%)";
+        userEmail.addEventListener("focusout", e => {
+            userEmail.style.boxShadow = "none";
+        })
+    }
+}
+
+userEmail.addEventListener("click", e => {
+    emailclose();
 })
 
-form.addEventListener("mouseout", e => {
-    close();
-})
+// 비밀번호 부적합
+function pwclose() {
+    // 비밀번호 미입력시
+    if($("div.invalid-feedback-password").html() != ""){
+        pwwrong.style.display = "block";
+        userPw.style.boxShadow = "0 0 0 0.1rem rgb(251 89 114)";
+    }else if($("div.invalid-feedback-password").html() == ""){
+        userPw.style.boxShadow = "0 0 0 0.2rem rgb(0 199 174 / 25%)";
+        userPw.addEventListener("focusout", e => {
+            userPw.style.boxShadow = "none";
+        })
+    }
+}
 
-body.addEventListener("keyup", e => {
-    close();
+userPw.addEventListener("click", e => {
+    pwclose();
 })
 
 // 이메일 확인
@@ -75,7 +87,7 @@ function checkEmail() {
             }
         });
     }
-    close();
+    emailclose();
     notEnough();
 }
 
@@ -97,7 +109,7 @@ function checkPassWord() {
         str = "";
     }
     feedback.html(str);
-    close();
+    pwclose();
     notEnough();
 }
 
@@ -111,6 +123,11 @@ function notEnough() {
     }
 }
 
+// 이메일 타자 칠 때마다 검사
+userEmail.addEventListener("keyup", e => {
+    emailclose();
+})
+
 // 로그인 버튼 클릭시
 function checkUser() {
     let userEmail = $('#userEmail').val();
@@ -120,15 +137,14 @@ function checkUser() {
         userEmail : userEmail
     }
     let userform = document.querySelector("form[name='userVO']");
-    if($("div.invalid-feedback-email").html() != ""){
+    if($("div.invalid-feedback-email").html() != "" ||
+        $("div.invalid-feedback-password").html() != "" ||
+        $('#userEmail').val() == "" ||
+        $('#userPw').val() == ""){
         checkEmail();
         checkPassWord();
         return;
-    } else if($("div.invalid-feedback-password").html() != ""){
-        checkEmail();
-        checkPassWord();
-        return;
-    }else{
+    } else{
         // 회원 확인
         $.ajax({	// ajax선언
             url: '/user/loginCheck', //Controller에서 인식할 주소

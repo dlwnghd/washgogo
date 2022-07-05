@@ -31,21 +31,19 @@
 						<fieldset>
 							<legend>이메일</legend>
 							<div>
-								<input id="userEmail" type="email" name="userEmail" placeholder="이메일을 입력해주세요" oninput = "checkEmail()">
+								<input id="userEmail" type="email" name="userEmail" placeholder="이메일을 입력해주세요" oninput = "checkEmail()" autocomplete="off" onkeyup="enterkey();">
 							</div>
-							<div id="emailwrong" class="invalid-feedback invalid-feedback-email">
-							</div>
+							<div id="emailwrong" class="invalid-feedback invalid-feedback-email"></div>
 						</fieldset>
 					</div>
 					<div class="col">
 						<fieldset>
 							<legend>비밀번호</legend>
 							<div class="password-wrapper">
-								<input id="userPw" type="password" name="userPw" placeholder="비밀번호를 입력하세요" oninput = "checkPassWord()">
+								<input id="userPw" type="password" name="userPw" placeholder="비밀번호를 입력하세요" oninput = "checkPassWord()" onkeyup="enterkey();">
 								<button class="pw-show" type="button"></button>
 							</div>
-							<div id="pwwrong" class="invalid-feedback invalid-feedback-password">
-							</div>
+							<div id="pwwrong" class="invalid-feedback invalid-feedback-password"></div>
 						</fieldset>
 					</div>
 					<div class="col find-container">
