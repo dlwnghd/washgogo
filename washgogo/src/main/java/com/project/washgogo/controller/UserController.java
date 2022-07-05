@@ -73,6 +73,8 @@ public class UserController {
         //변경
         userService.modifyUserInfo(userVO);
         log.info(userVO.toString());
+        session.removeAttribute("userName");
+        session.setAttribute("userName", userVO.getUserName());
         return "/user/modifyingInformation";
     }
 
