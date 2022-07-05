@@ -224,27 +224,52 @@ form { padding: 10px; }
     background-position: center;
 }
 
-#chk-life:checked + .circle2 {
+#chk-washer:checked + .circle2 {
     background-color: #00BA86;
     border-color: #00BA86;
     background-image: url(../img/check_white.png);
 }
 
 /* 체크박스는 display: none;을 주면 데이터 처리가 안됨 */
-#chk-life { position: absolute; left: -999em; }
+#chk-washer { position: absolute; left: -999em; }
 
-#chk-other:checked + .circle2 {
+#chk-cleaning:checked + .circle2 {
     background-color: #00BA86;
     border-color: #00BA86;
     background-image: url(../img/check_white.png);
 }
 
 /* 체크박스는 display: none;을 주면 데이터 처리가 안됨 */
-#chk-other { position: absolute; left: -999em; }
+#chk-cleaning { position: absolute; left: -999em; }
 
 .checkbox-container-cleaning-wrap {
     display: flex;
     flex-direction: column;
+}
+
+div.checkbox-container-cleaning {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.order-measure-wrapper {
+    /* display: none; */
+}
+
+div.order-measure-wrapper input {
+    padding: 1px 2px;
+    width: 8rem;
+    height: 30px;
+    font-family: inherit;
+    border: 1px solid #e2e2e2;
+    border-radius: 3px;
+    text-align: right;
+}
+
+span.order-measure {
+    display: inline-block;
+    width: 20px;
 }
 
 .cleaning-choose-text {

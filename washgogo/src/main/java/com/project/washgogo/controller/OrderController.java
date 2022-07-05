@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -35,7 +36,6 @@ public class OrderController {
 		long userNumber = (long)session.getAttribute("userNumber");
 		UserVO user = userService.loadUserInfo(userNumber);
 		OrderVO order = orderService.getRecent(userNumber);
-		List<OrderListVO> orderList = orderListService.getRecentList(order.getOrderNumber());
 
 		if(user.getUserServiceType() == null) {
 			response.setContentType("text/html; charset=UTF-8");
@@ -43,6 +43,10 @@ public class OrderController {
 			out.println("<script>alert('먼저 서비스를 신청해주세요.'); location.href='/index';</script>");
 			out.flush();
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 63189580d69fe878b8dd6e04c80967b682a22ae0
 		return "/order/requestGuide";
 	}
 
@@ -57,8 +61,11 @@ public class OrderController {
 	}
 
 	@PostMapping("/requestSelectOk")
-	public String requestSelectOk(OrderVO orderVO, HttpSession session) {
+	public String requestSelectOk(OrderVO orderVO, HttpSession session, HttpServletRequest request) {
 		long userNumber = (long)session.getAttribute("userNumber");
+
+		log.info("============================" + request.getParameter("washerNumber"));
+		log.info("============================" + request.getParameter("cleaningNumber"));
 
 		orderVO.setUserNumber(userNumber);
 		log.info("-------------------------------------");
@@ -66,12 +73,36 @@ public class OrderController {
 		log.info("-------------------------------------");
 		orderService.applyRequest(orderVO);
 
+		if (!request.getParameter("washerNumber").isEmpty()) {
+			Double number = Double.parseDouble(request.getParameter("washerNumber"));
+			Double temp = 0.0;
+			if (number > 3.0) {
+				log.info("=============== 3.0보다 큼");
+				temp = (number - 3) / 0.5;
+				if ((number - 3) % 0.5 > 0){
+					log.info("=============== 나머지가 0.5보다 작음");
+					temp= temp + 1.0;
+					log.info(String.valueOf(temp));
+					orderListService.insertWasher2(orderVO.getOrderNumber(), Double.valueOf(temp).longValue());
+				}
+			}
+			orderListService.insertWasher1(orderVO.getOrderNumber());
+		}
+
+		if (!request.getParameter("cleaningNumber").isEmpty()) {
+			Long cleaningNumber = Long.parseLong(request.getParameter("cleaningNumber"));
+			log.info("======================" + cleaningNumber);
+			orderListService.insertCleaning(orderVO.getOrderNumber(), cleaningNumber);
+		}
+
 		orderListService.insertShipping(orderVO.getOrderNumber());
+		orderService.setTotalPrice(orderVO.getOrderNumber());
 
 		return ("/index");
 	}
+
 	//공지 추가 링크
 	@GetMapping("payment")
 	public void payment(){
-	};
+	}
 }

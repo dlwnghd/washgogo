@@ -21,6 +21,18 @@ public class OrderListService {
         return orderListDAO.getRecentList(orderNumber);
     }
 
+    public void insertWasher1(Long orderNumber) {
+        orderListDAO.insertWasher1(orderNumber);
+    }
+
+    public void insertWasher2(Long orderNumber, Long orderEAQuantity) {
+        orderListDAO.insertWasher2(orderNumber, orderEAQuantity);
+    }
+
+    public void insertCleaning(Long orderNumber, Long orderEAQuantity) {
+        orderListDAO.insertCleaning(orderNumber, orderEAQuantity);
+    }
+
     public void insertShipping(Long orderNumber) {
         orderListDAO.insertShipping(orderNumber);
     }

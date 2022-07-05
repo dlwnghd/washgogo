@@ -452,9 +452,18 @@ public class UserController {
 
     // 이용 내역
     @GetMapping("used")
-    public String used(HttpSession session, Model model){
+    public String used(HttpSession session, Model model, HttpServletResponse response) throws IOException {
         long userNumber = (long)session.getAttribute("userNumber");
+        UserVO user = userService.loadUserInfo(userNumber);
         OrderVO order = orderService.getRecent(userNumber);
+
+        if(order == null) {
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('사용한 내역이 없습니다.'); location.href='/index';</script>");
+            out.flush();
+        }
+
         List<OrderListVO> orderList = orderListService.getRecentList(order.getOrderNumber());
 
         model.addAttribute("order", order);

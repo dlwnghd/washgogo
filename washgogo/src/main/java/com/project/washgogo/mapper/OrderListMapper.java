@@ -14,7 +14,16 @@ public interface OrderListMapper {
     //    주문내역 리스트
     public List<OrderListVO> getRecentList(Long orderNumber);
 
-    //    주문상세내역 추가
+    //    물세탁 추가
+    public void insertWasher1(Long orderNumber);
+
+    //    물세탁 추가
+    public void insertWasher2(Long orderNumber, Long orderEAQuantity);
+
+    //    개별클리닝 추가
+    public void insertCleaning(Long orderNumber, Long orderEAQuantity);
+
+    //    배송비 추가
     public void insertShipping(Long orderNumber);
 
 }
