@@ -28,7 +28,8 @@
             <!---- App-Body ---->
             <div id="app-body">
                 <div class="container" style="max-width: 62.375rem; margin: 0 auto">
-                    <div class="content" style="margin-top: 50px;">
+                    <form action="/user/serviceChange" method="post" name="userVO">
+                        <div class="content" style="margin-top: 50px;">
                         <div class="title">
                             <h1>서비스 변경</h1>
                         </div>
@@ -47,15 +48,17 @@
                                 <div class="content-box">
                                     <div class="content-explain">
                                         <h3>원하는 만큼 자유롭게</h3>
-                                        <h4>여러 번 이용</h4>
+                                        <h4>여러 번 이용<small style="font-size: 0.8rem;font-weight: 600;">(런드렛 Regular)</small></h4>
                                     </div>
                                     <div class="image-box">
                                         <img th:src="@{/img/useSeveral.png}" alt="">
                                     </div>
                                     <!-- / -->
-                                    <div class="chooseSeveral" onclick="click()">
-                                        <h3 id="chooseSeveralText">변경하기</h3>
-                                    </div>
+                                    <button type="button" id="severalButton" onclick="click()">
+                                        <div class="chooseSeveral" type="userServiceType">
+                                                <h3 id="chooseSeveralText"></h3>
+                                        </div>
+                                    </button>
                                     <div class="service_once"></div>
                                 </div>
                                 <div class="content-box">
@@ -66,12 +69,16 @@
                                     <div class="image-box">
                                         <img th:src="@{/img/useOnce.png}" alt="">
                                     </div>
-                                    <div class="chooseOnce using-service" onclick="click()">
-                                        <h3 id="chooseOnceText">서비스 이용 중</h3>
-                                    </div>
+                                    <button type="button" id="onceButton" onclick="click()">
+                                        <div class="chooseOnce" value="Once">
+                                                <h3 id="chooseOnceText"></h3>
+                                        </div>
+                                    </button>
                                     <div class="service_once"></div>
                                 </div>
                             </div>
+                            <input type="hidden" name="userServiceType" id="userServiceType" value="Several" />
+                            <input type="hidden" name="userLaunderetteType" id="userLaunderetteType" value="Regular" />
                         </form>
                         <div class="section2">
                             <ul>
@@ -83,6 +90,7 @@
                             </ul>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
             <!---- App-Footer ---->
@@ -92,4 +100,36 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script th:src="@{/js/service_change.js}"></script>
+    <script th:inline="javascript">
+        let userServiceType= [[${userVO.userServiceType}]];	// 유저 서비스 타입를 가져옴
+
+        window.addEventListener("load", e => {
+            // 한 번 이용 고객
+            if(userServiceType == "Once"){
+                changeOnceButton.addClass("using-service");
+                changeOnceButton .removeClass("no-service");
+                changeSeveralButton .removeClass("using-service");
+                changeSeveralButton.addClass("no-service");
+                changeSeveralButton.prop("type", "submit");
+                changeSeveralText.innerHTML = '변경하기';
+                changeOnceText.innerHTML = '서비스 이용 중';
+            } else if(userServiceType == "Several"){    // 여러 번 이용 고객
+                changeSeveralButton .addClass("using-service");
+                changeSeveralButton .removeClass("no-service");
+                changeOnceButton.removeClass("using-service");
+                changeOnceButton.addClass("no-service");
+                changeOnceButton.prop("type", "submit");
+                changeSeveralText.innerHTML = '서비스 이용 중';
+                changeOnceText.innerHTML = '변경하기';
+            } else {    // 아직 선택하지 않은 고객
+                changeSeveralButton.removeClass("using-service");
+                changeOnceButton.removeClass("using-service");
+                changeSeveralText.innerHTML = '사용하기';
+                changeOnceText.innerHTML = '사용하기';
+                changeOnceButton.prop("type", "submit");
+                changeSeveralButton.prop("type", "submit");
+            }
+        })
+
+    </script>
 </html>
