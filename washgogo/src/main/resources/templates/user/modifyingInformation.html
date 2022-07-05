@@ -68,62 +68,7 @@
                                     </div>
                                     <div><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
                                 </li>
-                                <li class="item-container address">
-                                    <ul class="item">
-                                        <li>
-                                            <div class="title-content">
-                                                <p class="item-title">배송지</p>
-                                            </div>
-                                            <div class="text-content">
-                                                <span id="ADDRESS" class="item-info" th:text="${loadUserInfo.userAddress}"></span>
-                                                <span id="ADDRESSDETAIL" class="item-info" th:text="${loadUserInfo.userAddressDetail}"></span>
-                                            </div>
-<<<<<<< HEAD
-                                        </div>
-                                    </div>
-                                </li>
-                                <li add="" class="item-container name">
-                                    <div add="" class="item">
-                                        <div add="" class="item-title name">이름</div>
-                                        <div add="" id="USERNAME" class="item-info username" th:text="${loadUserInfo.userName}"></div>
-                                    </div>
-                                    <div add="" class="name"><img
-                                        class="name"
-                                        add=""
-                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg">
-                                    </div>
-                                </li>
-                                <li add="" class="item-container email">
-                                    <div add="" class="item">
-                                        <div add="" class="item-title">이메일</div>
-                                        <div add="" class="item-info">
-                                            <div id="EMAIL" add="" th:text="${loadUserInfo.userEmail}"></div>
-                                        </div>
-                                    </div>
-                                    <div add=""><img
-                                        add=""
-                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg">
-                                    </div>
-                                </li>
-                                <li add="" class="item-container password">
-                                    <div add="" class="item">
-                                        <div add="" class="item-title">비밀번호</div>
-                                        <div add="" id="PASSWORD" class="item-info" type="password" th:text="${loadUserInfo.userPw}"></div>
-                                    </div>
-                                    <div add=""><img
-                                        add=""
-                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg">
-                                    </div>
-                                </li>
-                                <li add="" class="item-container phoneNumber">
-                                    <div add="" class="item">
-                                        <div add="" class="item-title">휴대전화 번호</div>
-                                        <div add="" id="PHONENUMBER" class="item-info" th:text="${loadUserInfo.userPhonenum}"></div>
-                                    </div>
-                                    <div add=""><img
-                                        add=""
-                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
-                                </li>
+
                                 <li add="" class="item-container address">
                                     <div add="" class="item">
                                         <div add="" class="item-title">배송지</div>
@@ -138,21 +83,6 @@
                                     <div add=""><img
                                         add=""
                                         src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
-=======
-                                        </li>
-                                        <li>
-                                            <div class="title-content">
-                                                <p class="item-title">공동현관<br> 출입방법</p>
-                                            </div>
-                                            <div class="text-content">
-                                                <div id="ENTRANCETYPE" th:text="${loadUserInfo.userEntranceType}"></div>
-                                                <div id="ENTRANCEPW" class="item-info" th:if="${loadUserInfo.userEntrancePw != null}" th:text="${loadUserInfo.userEntrancePw}"></div>
-                                                <div id="ENTRANCEMESSAGE" class="item-info" th:if="${loadUserInfo.userEntranceMessage != null}" th:text="${loadUserInfo.userEntranceMessage}"></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
->>>>>>> 8656e2ab70f0d73752349f9782d7476607f3c456
                                 </li>
                             </ul>
                             <ul id="withdrawal" data-testid="delete-account" class="delete-account">
