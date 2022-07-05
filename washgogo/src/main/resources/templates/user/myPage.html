@@ -20,95 +20,78 @@
             <header th:replace="~{/fragments/headerFooter:: header}">
             </header>
             <!---- App-Body ---->
-            <div id="app-body">
+            <div id="app-body" class="mypage">
                 <div class="container-md container">
                     <div class="mypage-container">
                         <h1 class="mypage-title">마이페이지</h1>
-                        <div data-v-5b32e6b8="" class="profile-container underline">
-                            <a data-v-5b32e6b8="" href="/user/modifyingInformation" class="">
-                                <div data-v-5b32e6b8="" class="user-info">
-                                    <div data-v-5b32e6b8="" class="user-name">
-                                        <span data-v-5b32e6b8="" class="name-length" th:text="${myPageInfo.userName}"></span>
+                        <div class="profile-container underline">
+                            <a href="/user/modifyingInformation" class="">
+                                <div class="thumb">
+                                    <div class="user-profile-picture">
+                                        <div data-name="image" class="is-square" lazy="loaded" style="background-image: url('/img/user-profile-image.jpg')"></div>
+                                    </div>
+                                </div>
+                                <div class="user-info">
+                                    <div class="user-name">
+                                        <span class="name-length" th:text="${myPageInfo.userName}"></span>
                                         고객님
                                     </div>
-                                    <div data-v-5b32e6b8="" class="user-id">
-                                        <!---->
-                                        <span data-v-5b32e6b8="" class="id-length" th:text="${myPageInfo.userEmail}"></span>
+                                    <div class="user-id">
+                                        <span class="id-length" th:text="${myPageInfo.userEmail}"></span>
                                     </div>
                                 </div>
-                                <div data-v-5b32e6b8="" class="arrow">
-                                    <span data-v-5b32e6b8="" class="right-arrow"><img
-                                        data-v-5b32e6b8=""
-                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span>
+                                <div class="arrow">
+                                    <span class="right-arrow"><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span>
                                 </div>
                             </a>
-                            <!---->
                         </div>
                         <div class="my-page-menu">
                             <ul >
-                                <li data-v-4580432e="" class="sub-menu-container underline escrow-list">
-                                    <a data-v-4580432e="" href="/user/point" class="sub-menu-list">
-                                        <div data-v-4580432e="" class="sub-content">
-                                            <div data-v-4580432e="" class="sub-menu">
-                                                <span data-v-4580432e="" class="sub-menu-title">포인트</span></div>
-                                            <!---->
+                                <li class="sub-menu-container underline escrow-list">
+                                    <a href="/user/point" class="sub-menu-list">
+                                        <div class="sub-content">
+                                            <div class="sub-menu">
+                                                <span class="sub-menu-title">포인트</span></div>
                                         </div>
-                                        <!---->
-                                        <div data-v-4580432e="" class="arrow">
-                                            <span data-v-4580432e="" class="right-arrow"><img
-                                                data-v-4580432e=""
-                                                src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span></div>
-                                        <!---->
+                                        <div class="arrow">
+                                            <span class="right-arrow"><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span>
+                                        </div>
                                     </a>
                                 </li>
-                                <li data-v-4580432e="" class="sub-menu-container underline escrow-list">
-                                    <a data-v-4580432e="" href="./paymentDetails" class="sub-menu-list">
-                                        <div data-v-4580432e="" class="sub-content">
-                                            <div data-v-4580432e="" class="sub-menu">
-                                                <span data-v-4580432e="" class="sub-menu-title">결제내역</span></div>
-                                            <!---->
+                                <li class="sub-menu-container underline escrow-list">
+                                    <a href="/paymentDetails" class="sub-menu-list">
+                                        <div class="sub-content">
+                                            <div class="sub-menu">
+                                                <span class="sub-menu-title">결제내역</span></div>
                                         </div>
-                                        <!---->
-                                        <div data-v-4580432e="" class="arrow">
-                                            <span data-v-4580432e="" class="right-arrow"><img
-                                                data-v-4580432e=""
-                                                src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span></div>
-                                        <!---->
+                                        <div class="arrow">
+                                            <span class="right-arrow"><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span>
+                                        </div>
                                     </a>
                                 </li>
-                                <li data-v-4580432e="" class="sub-menu-container underline escrow-list">
-                                    <a data-v-4580432e="" href="./useService" class="sub-menu-list">
-                                        <div data-v-4580432e="" class="sub-content">
-                                            <div data-v-4580432e="" class="sub-menu">
-                                                <span data-v-4580432e="" class="sub-menu-title">이용 중인 서비스</span></div>
-                                            <!---->
+                                <li class="sub-menu-container underline escrow-list">
+                                    <a href="/useService" class="sub-menu-list">
+                                        <div class="sub-content">
+                                            <div class="sub-menu">
+                                                <span class="sub-menu-title">이용 중인 서비스</span></div>
                                         </div>
-                                        <!---->
-                                        <div data-v-4580432e="" class="arrow">
-                                            <span data-v-4580432e="" class="right-arrow"><img
-                                                data-v-4580432e=""
-                                                src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span></div>
-                                        <!---->
+                                        <div class="arrow">
+                                            <span class="right-arrow"><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span>
+                                        </div>
                                     </a>
                                 </li>
-                                <li data-v-4580432e="" class="sub-menu-container underline notification">
-                                    <a data-v-4580432e="" href="./notice" class="sub-menu-list">
-                                        <div data-v-4580432e="" class="sub-content">
-                                            <div data-v-4580432e="" class="sub-menu">
-                                                <span data-v-4580432e="" class="sub-menu-title">공지사항</span></div>
-                                            <!---->
+                                <li class="sub-menu-container underline notification">
+                                    <a href="./notice" class="sub-menu-list">
+                                        <div class="sub-content">
+                                            <div class="sub-menu">
+                                                <span class="sub-menu-title">공지사항</span></div>
                                         </div>
-                                        <!---->
-                                        <div data-v-4580432e="" class="arrow">
-                                            <span data-v-4580432e="" class="right-arrow"><img
-                                                data-v-4580432e=""
-                                                src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span></div>
-                                        <!---->
+                                        <div class="arrow">
+                                            <span class="right-arrow"><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></span>
+                                        </div>
                                     </a>
                                 </li>
                             </ul>
-                            <!---->
-                            <!---->
                         </div>
                     </div>
                 </div>

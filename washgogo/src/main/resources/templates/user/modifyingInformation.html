@@ -22,23 +22,63 @@
             <header th:replace="~{/fragments/headerFooter:: header}">
             </header>
             <!---- App-Body ---->
-            <div id="app-body">
+            <div id="app-body" class="modifyInfo">
                 <div class="container-md container">
-                    <main add="" class="account-info-container">
-                        <h1 add="">계정 설정</h1>
-                        <section add="">
-                            <ul id="account" add="" class="account-info">
-                                <li add="" class="item-container profile">
-                                    <div add="" class="item">
-                                        <div class="field upload">
-                                            <div add="" class="item-title profile">프로필사진
-                                            </div>
-                                        <input type="file" name="files" class="profile-uploader" multiple>
+                    <main class="account-info-container">
+                        <h1>계정 설정</h1>
+                        <div class="profile-image">
+                            <div class="user-profile-picture">
+                                <div data-name="image" lazy="loaded" style="background-image: url('/img/user-profile-image.jpg')"></div>
+                            </div>
+                            <label>
+                                <img class="camera-icon" src="/img/camera-icon.svg" alt="카메라 아이콘">
+                                <input type="file" name="file" id="profileInput" style="display: none" accept="image/*">
+                            </label>
+
+                        </div>
+                        <section>
+                            <ul id="account" class="account-info">
+                                <li class="item-container name">
+                                    <div class="item">
+                                        <div class="item-title name">이름</div>
+                                        <div id="USERNAME" class="item-info username" th:text="${loadUserInfo.userName}"></div>
+                                    </div>
+                                    <div class="name"><img class="name" src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                                <li class="item-container email">
+                                    <div class="item">
+                                        <div class="item-title">이메일</div>
+                                        <div class="item-info">
+                                            <div id="EMAIL" th:text="${loadUserInfo.userEmail}"></div>
                                         </div>
-                                        <div class="field">
-                                            <div add="" class="file-result" id="PROFILE">
-                                                <ul></ul>
+                                    </div>
+                                    <div><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                                <li class="item-container password">
+                                    <div class="item">
+                                        <div class="item-title">비밀번호</div>
+                                        <input id="PASSWORD" class="item-info" type="password" th:value="${loadUserInfo.userPw}">
+                                    </div>
+                                    <div><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                                <li class="item-container phoneNumber">
+                                    <div class="item">
+                                        <div class="item-title">휴대전화 번호</div>
+                                        <div id="PHONENUMBER" class="item-info" th:text="${loadUserInfo.userPhonenum}"></div>
+                                    </div>
+                                    <div><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                                </li>
+                                <li class="item-container address">
+                                    <ul class="item">
+                                        <li>
+                                            <div class="title-content">
+                                                <p class="item-title">배송지</p>
                                             </div>
+                                            <div class="text-content">
+                                                <span id="ADDRESS" class="item-info" th:text="${loadUserInfo.userAddress}"></span>
+                                                <span id="ADDRESSDETAIL" class="item-info" th:text="${loadUserInfo.userAddressDetail}"></span>
+                                            </div>
+<<<<<<< HEAD
                                         </div>
                                     </div>
                                 </li>
@@ -98,23 +138,35 @@
                                     <div add=""><img
                                         add=""
                                         src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+=======
+                                        </li>
+                                        <li>
+                                            <div class="title-content">
+                                                <p class="item-title">공동현관<br> 출입방법</p>
+                                            </div>
+                                            <div class="text-content">
+                                                <div id="ENTRANCETYPE" th:text="${loadUserInfo.userEntranceType}"></div>
+                                                <div id="ENTRANCEPW" class="item-info" th:if="${loadUserInfo.userEntrancePw != null}" th:text="${loadUserInfo.userEntrancePw}"></div>
+                                                <div id="ENTRANCEMESSAGE" class="item-info" th:if="${loadUserInfo.userEntranceMessage != null}" th:text="${loadUserInfo.userEntranceMessage}"></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+>>>>>>> 8656e2ab70f0d73752349f9782d7476607f3c456
                                 </li>
                             </ul>
-                            <ul id="withdrawal" add="" data-testid="delete-account" class="delete-account">
-                                <li add="" class="item-container accountWithdrawal">
-                                    <div add="" data-testid="delete-account-text" class="item">계정 탈퇴</div>
-                                    <div add=""><img
-                                        add=""
-                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                            <ul id="withdrawal" data-testid="delete-account" class="delete-account">
+                                <li class="item-container accountWithdrawal">
+                                    <div data-testid="delete-account-text" class="item">계정 탈퇴</div>
+                                    <div><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
                                 </li>
                             </ul>
                             <div class="change-flex-container">
                                 <div></div>
-                                    <input type="button" class="button" id="change-ok" value="변경 완료">
+                                <input type="button" class="button" id="change-ok" value="변경 완료">
                                 <div></div>
                             </div>
                         </section>
-                        <!---->
                     </main>
                 </div>
             </div>

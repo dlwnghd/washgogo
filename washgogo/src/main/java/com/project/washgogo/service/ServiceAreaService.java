@@ -56,35 +56,40 @@ public class ServiceAreaService {
         provinceName = getProvince(tempProvinceName.toString());
 
         if(provinceName != null){
-
             if(provinceName.equals("서울")){
                 return true;
             } else if(provinceName.equals("인천")){
                 StringBuilder tempGuName = new StringBuilder(addressArr[1]);
                 StringBuilder tempDongName = new StringBuilder(addressArr[2]);
-                tempGuName.substring(0, tempGuName.length()-1);
-                tempDongName.substring(0, tempDongName.length()-1);
+                tempGuName.deleteCharAt(tempGuName.length()-1);
+                tempDongName.deleteCharAt(tempDongName.length()-1);
                 cityName = provinceName;
                 guName = getGu(tempGuName.toString());
                 dongName = getDong(tempDongName.toString());
             } else if(provinceName.equals("경기")){
-                StringBuilder tempStr = new StringBuilder(addressArr[2]);
                 StringBuilder tempCityName = new StringBuilder(addressArr[1]);
+                tempCityName.deleteCharAt(tempCityName.length()-1);
+                cityName = getCity(tempCityName.toString());
+                StringBuilder tempStr = new StringBuilder(addressArr[2]);
                 if(tempStr.indexOf("구")>=0){
                     StringBuilder tempGuName = new StringBuilder(addressArr[2]);
                     StringBuilder tempDongName = new StringBuilder(addressArr[3]);
-                    tempGuName.substring(0, tempGuName.length()-1);
+                    tempGuName.deleteCharAt(tempGuName.length()-1);
                     guName = getGu(tempGuName.toString());
-                    tempDongName.substring(0, tempDongName.length()-1);
+                    tempDongName.deleteCharAt(tempDongName.length()-1);
                     dongName = getDong(tempDongName.toString());
                 } else if (tempStr.indexOf("동")>=0){
                     StringBuilder tempDongName = new StringBuilder(addressArr[2]);
-                    tempDongName.substring(0, tempDongName.length()-1);
+                    tempDongName.deleteCharAt(tempDongName.length()-1);
                     dongName = getDong(tempDongName.toString());
                 }
-                tempCityName.substring(0, tempCityName.length()-1);
-                cityName = getCity(tempCityName.toString());
+
             }
+
+            log.info(provinceName);
+            log.info(cityName);
+            log.info(guName);
+            log.info(dongName);
 
             if(cityName == null){
                 return false;
