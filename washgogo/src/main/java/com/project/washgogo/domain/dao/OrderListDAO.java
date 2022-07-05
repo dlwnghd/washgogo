@@ -23,7 +23,22 @@ public class OrderListDAO {
         return orderListMapper.getRecentList(orderNumber);
     }
 
-    //    주문상세내역 추가
+    //    물세탁 추가
+    public void insertWasher1(Long orderNumber) {
+        orderListMapper.insertWasher1(orderNumber);
+    }
+
+    //    물세탁 무게 추가
+    public void insertWasher2(Long orderNumber, Long orderEAQuantity) {
+        orderListMapper.insertWasher2(orderNumber, orderEAQuantity);
+    }
+
+    //    개별클리닝 추가
+    public void insertCleaning(Long orderNumber, Long orderEAQuantity) {
+        orderListMapper.insertCleaning(orderNumber, orderEAQuantity);
+    }
+
+    //    배송비 추가
     public void insertShipping(Long orderNumber) {
         orderListMapper.insertShipping(orderNumber);
     }
