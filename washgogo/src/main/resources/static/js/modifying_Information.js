@@ -237,21 +237,10 @@ deleteBtn.addEventListener("click", e => {
     remove();
 })
 
-/* 프로필사진 업로드 */
-//프로필 업로드
-// const inputUploader = document.querySelector('.profile-uploader');
-// const uploader = document.querySelector('upload');
-//
-// uploader.addEventListener('click', () => inputUploader.click());
+/* 프로필 업로드 */
 
-// //
-const $cameraIcon = $(".modifyInfo .camera-icon");
-const $Image = $(".modifyInfo .user-profile-picture div[data-name='image']");
-$cameraIcon.on("click",function () {
-
-});
-const fResult = $("div.file-result ul");
-// let files = [[${user.profile}]];
+/* 첨부파일 공격에 대비하기 위한 업로드 파일의 확장자 제한 */
+/*
 let regex = new RegExp("(.*?)\.(jpg|png)$");
 let maxSize = 5242880; // 5MB
 
@@ -260,7 +249,6 @@ function checkExtension(fileName, fileSize){
         alert("(" + fileName + ")업로드 할 수 없는 파일의 형식입니다.")
         return false;
     }
-
     if(fileSize >= maxSize){
         alert("(" + fileName + ")파일 사이즈 초과")
         return false;
@@ -268,8 +256,9 @@ function checkExtension(fileName, fileSize){
     return true;
 }
 
-showUploadFile(files);
+const $Image = $(".modifyInfo .user-profile-picture div[data-name='image']");
 
+showUploadFile(files);
 function showUploadFile(profile){
     let str = "";
     $.each(profile, function(i, file){
@@ -282,29 +271,43 @@ function showUploadFile(profile){
         str += "</li>";
     });
     result.append(str);
+
 }
+*/
+/* 프로필사진 업로드 */
+const $cameraIcon = $(".modifyInfo .camera-icon");
+const $fileInput = $("#profileInput");
+/*
+$cameraIcon.on("click",function () {
+
+});
+
+ */
 
 //업로드 전
-let arFile = Array.from($("input[type='file']")[0].files);
+//let filePrev = $fileInput.files[0];
 
-$("input[type='file']").on("change", function(e){
+$fileInput.on("change", function (e) {
     let formData = new FormData();
-    let input = $("input[name='files']"); // 업로드 후
-    let files = input[0].files;
-    console.log(files);
-    for(let i=0; i<files.length; i++){
-        if(checkExtension(files[i].name, files[i].size)){
-            formData.append("files", files[i]);
-        }
+    // 업로드 후
+    let input = $("input[name='file']");
+    let file = input[0].files[0];
+    console.log(file);
+});
+
+    /*
+    if(checkExtension(file.name, file.size)){
+        formData.append("file", file);
     }
+
     const dataTransfer = new DataTransfer();
 
     //사용자가 업로드한 파일들의 정보를 전역변수인 arFile에 담아놓기
-    Array.from($(input[0].files)).forEach(file => arFile.push(file));
+    filePrev = file;
     //전역변수의 전체 파일들을 FileList타입으로 변경
     arFile.forEach(file => dataTransfer.items.add(file));
     //input태그에 그 동안 업로드했던 모든 파일의 정보로 덮어 씌우기
-    input[0].files = dataTransfer.files;
+    file = dataTransfer.files;
 
     $.ajax({
         url: "/upload/uploadAjax",
@@ -366,3 +369,5 @@ $("input[type='button']").on("click", function(e){
 
     $form.append(str).submit();
 });
+
+     */

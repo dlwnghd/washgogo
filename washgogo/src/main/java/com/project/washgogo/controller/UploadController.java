@@ -32,10 +32,6 @@ import java.util.UUID;
 @Slf4j
 @RequestMapping("/upload/*")
 public class UploadController {
-    @GetMapping("/uploadAjax")
-    public void uploadAjax(){
-        log.info("upload ajax");
-    }
 
     @ResponseBody //REST
     @PostMapping("/uploadAjax")
@@ -63,17 +59,12 @@ public class UploadController {
 
         if(checkImageType(saveFile)){
             FileOutputStream thumbnail = new FileOutputStream(new File(uploadDirectory, "t_" + fileName));
-//                MultipartFile객체를 통해 바로 파일을 가져올 경우,
-//                임시로 저장될 영역을 임계 영역이라 한다.
-//                apllication.properties에서 임계 영역에 대한 용량을 설정해 주어야
-//                그 영역에 먼저 업로드 후 inputStream()을 가져올 수 있다.
             Thumbnailator.createThumbnail(file.getInputStream(), thumbnail, 100, 100);
             thumbnail.close();
             profileVO.setImage(true);
         }
-        //profile.add(profileVO);
 
-        return profile;
+        return profileVO;
     }
 
     @GetMapping("display")
@@ -82,25 +73,14 @@ public class UploadController {
         return FileCopyUtils.copyToByteArray(new File("C:/upload/" + path));
     }
 
-    @GetMapping("/download")
-    @ResponseBody
-    public ResponseEntity<Resource> download(String path) throws UnsupportedEncodingException {
-        Resource resource = new FileSystemResource("C:/upload/" + path);
-        String name = resource.getFilename();
-        name = name.substring(name.indexOf("_") + 1);
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "attachment; filename=" + new String(name.getBytes("UTF-8"), "ISO-8859-1"));
-        return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
-    }
-
     @DeleteMapping("/delete")
     @ResponseBody
     public void deleteFile(String path){
-//        썸네일 삭제
+    // 썸네일 삭제
         File file = new File("C:/upload", path);
         if(file.exists()) {file.delete();}
 
-//        원본파일 삭제
+    // 원본파일 삭제
         file = new File(file.getPath().replace("t_", ""));
         if(file.exists()) {file.delete();}
     }

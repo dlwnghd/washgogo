@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface ProfileMapper {
     public void insert(ProfileVO profileVO);
-    public List<ProfileVO> select(Long userNumber);
+    public ProfileVO select(Long userNumber);
     public void delete(Long userNumber);
     public List<ProfileVO> getOldFiles();
 }
