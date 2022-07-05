@@ -83,10 +83,7 @@
     <!--서비스 변경-->
     <update id="updateService">
         UPDATE TBL_USER
-        <trim prefix="SET" suffixOverrides=",">
-            USER_SERVICE_TYPE = #{userServiceType},
-            <if test="userLaunderetteType != null">USER_LAUNDERETTE_TYPE = #{userLaunderetteType},</if>
-        </trim>
+        SET USER_SERVICE_TYPE = #{userServiceType}, USER_LAUNDERETTE_TYPE = #{userLaunderetteType}
         WHERE USER_NUMBER=#{userNumber}
     </update>
 
