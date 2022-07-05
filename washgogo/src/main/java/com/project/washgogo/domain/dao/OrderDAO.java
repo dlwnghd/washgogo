@@ -27,7 +27,7 @@ public class OrderDAO {
         orderMapper.applyRequest(orderVO);
     }
     //    총 금액 구하기
-    public int getTotalPrice() { return orderMapper.getTotalPrice(); }
+    public void setTotalPrice(Long orderNumber) { orderMapper.updateTotal(orderNumber); }
     //    수거 취소
     public boolean removeRequest(Long orderNumber) { return orderMapper.delete(orderNumber) == 1;}
 }
