@@ -68,4 +68,9 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserVO showPoint(Long userNumber) { return userDAO.showPoint(userNumber); }
+
+    @Override
+    public int removeService(Long userNumber) {
+        return userDAO.removeService(userNumber);
+    }
 }

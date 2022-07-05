@@ -34,4 +34,6 @@ public int findUserNumber(UserVO userVO);
 public void changePw(UserVO userVO);
 //     포인트
     public UserVO selectPoint(Long userNumber);
+    // 서비스 해지
+    public int removeService(Long userNumber);
 }

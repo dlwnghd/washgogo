@@ -35,13 +35,13 @@
                         <div class="use-list">
                             <ul>
                                 <li class="service-info">신청 서비스
-                                    <span style="float: right;">자유이용서비스</span>
+                                    <span style="float: right;">자유이용 서비스</span>
                                 </li>
-                                <li class="service-info">신청일
-                                    <span style="float: right;">2022년 06월 16일</span>
-                                </li>
+<!--                                <li class="service-info">신청일-->
+<!--                                    <span style="float: right;">2022년 06월 16일</span>-->
+<!--                                </li>-->
                                 <li class="service-info">이용 상태
-                                    <span style="float: right;">이용중</span>
+                                    <span class="type-service" style="float: right;" th:text="${loadUserInfo.userServiceType}"></span>
                                 </li>
                                 <li class="service-info">세탁요금
                                     <span style="float: right;">가격표에 의해 요금 부과</span>
@@ -50,13 +50,13 @@
                             <div style="border-bottom: 3px solid black; margin-bottom:16px;"></div>
                             <ul>
                                 <li class="service-info">배송지
-                                    <span style="float: right;">서울특별시</span>
+                                    <span style="float: right;" th:text="${loadUserInfo.userAddress}"></span>
                                 </li>
                                 <li class="service-info">연락처
-                                    <span style="float: right;">010-****-****</span>
+                                    <span style="float: right;" th:text="${loadUserInfo.userPhonenum}"></span>
                                 </li>
                                 <li class="service-info">공동현관 출입방법
-                                    <span style="float: right;">자유 출입 가능 & 공동현관 없음</span>
+                                    <span style="float: right;" th:text="${loadUserInfo.userEntranceType}"></span>
                                 </li>
                             </ul>
                         </div>
@@ -82,4 +82,15 @@
         </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    const type = document.querySelector(".type-service").text();
+
+    if(type == "Once"){
+        type.innerHTML = "한 번만 이용";
+    }
+
+    if(type == "serval"){
+        type.innerHTML = "여러 번 이용"
+    }
+</script>
 </html>
