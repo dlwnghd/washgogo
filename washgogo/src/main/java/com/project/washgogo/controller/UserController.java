@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 
@@ -96,7 +97,18 @@ public class UserController {
     }
 
     @GetMapping("useService")
-    public String useService(UserVO userVO){
+    public String useService(HttpServletResponse response, HttpSession session, Model model) throws IOException{
+        long number = (long)session.getAttribute("userNumber");
+
+        UserVO userVO = userService.loadUserInfo(number);
+        if(userVO.getUserServiceType() == null) {
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('먼저 서비스를 신청해주세요.'); location.href='/index';</script>");
+            out.flush();
+        }
+
+        model.addAttribute("loadUserInfo", userService.loadUserInfo(number));
         return "/user/useService";
     }
 
@@ -109,6 +121,16 @@ public class UserController {
     public String changeCancel(UserVO userVO){
         return "/user/changeCancel";
     }
+
+    @PostMapping("serviceRemove")
+    @ResponseBody
+    public String serviceRemove(HttpSession session, UserVO userVO) {
+        long number = (long)session.getAttribute("userNumber");
+        userVO.setUserNumber(number);
+        userService.removeService(number);
+        return "/user/myPage";
+    }
+
 
     @GetMapping("paymentDetails")
     public String paymentDetails(OrderVO order) {

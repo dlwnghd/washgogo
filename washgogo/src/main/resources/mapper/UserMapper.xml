@@ -72,7 +72,11 @@
     <!--회원 정보 수정-->
     <update id="updateUserInfo">
         UPDATE TBL_USER
-        SET USER_EMAIL = #{userEmail}, USER_PW = #{userPw}, USER_NAME = #{userName}, USER_PHONENUM = #{userPhonenum}, USER_ADDRESS = #{userAddress},  USER_ADDRESS_DETAIL = #{userAddressDetail}, USER_ENTRANCE_TYPE = #{userEntranceType}, USER_ENTRANCE_PW = #{userEntrancePw}
+        <trim prefix="SET" suffixOverrides=",">
+            SET USER_EMAIL = #{userEmail}, USER_PW = #{userPw}, USER_NAME = #{userName}, USER_PHONENUM = #{userPhonenum}, USER_ADDRESS = #{userAddress},  USER_ADDRESS_DETAIL = #{userAddressDetail}, USER_ENTRANCE_TYPE = #{userEntranceType}
+            <if test="userEntrancePw != null">USER_ENTRANCE_PW = #{userEntrancePw},</if>
+            <if test="userEntranceMessage != null">USER_ENTRANCE_MESSAGE = #{userEntranceMessage},</if>
+        </trim>
         WHERE USER_NUMBER=#{userNumber}
     </update>
 
@@ -103,5 +107,10 @@
         WHERE USER_NUMBER = #{userNumber}
     </delete>
 
+    <!--서비스 해지-->
+    <update id = "removeService">
+        UPDATE TBL_USER
+        SET USER_SERVICE_TYPE = NULL WHERE USER_NUMBER = #{userNumber}
+    </update>
 
 </mapper>

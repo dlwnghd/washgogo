@@ -41,11 +41,9 @@
                         <div class="button remain" onclick="history.go(-1)">
                             <button>서비스 유지하기</button>
                         </div>
-                        <form action="" method="get">
                             <div class="button cancel">
-                                <button type="submit">지금 바로 해지하기</button>
+                                <button>지금 바로 해지하기</button>
                             </div>
-                        </form>
                         </div>
                 </div>
             </div>
@@ -54,4 +52,27 @@
             </nav>
         </div>
     </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    const removeBtn = document.querySelector(".cancel");
+    removeBtn.addEventListener("click" ,e => {
+        remove();
+    })
+    
+    function remove() {
+        $.ajax({
+            url: '/user/serviceRemove',
+            type: 'post',
+            success: function (result) {
+                console.log(result);
+                alert("서비스가 해지 되었습니다")
+                location.href = result;
+            },
+            error: function () {
+                alert("에러입니다");
+            }
+        });
+
+    }
+</script>
 </html>

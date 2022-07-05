@@ -21,4 +21,5 @@ public interface UserService {
     public int findUserNumber(UserVO userVO);
     public void changePw(UserVO userVO);
     public UserVO showPoint(Long userNumber);
+    public int removeService(Long userNumber);
 }
