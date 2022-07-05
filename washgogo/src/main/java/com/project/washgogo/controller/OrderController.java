@@ -43,14 +43,6 @@ public class OrderController {
 			out.println("<script>alert('먼저 서비스를 신청해주세요.'); location.href='/index';</script>");
 			out.flush();
 		}
-
-		if(order.getOrderNumber() == null) {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('사용한 내역이 없습니다.'); location.href='/index';</script>");
-			out.flush();
-		}
-
 		return "/order/requestGuide";
 	}
 
