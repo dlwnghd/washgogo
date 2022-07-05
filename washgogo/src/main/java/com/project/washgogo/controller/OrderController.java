@@ -43,10 +43,7 @@ public class OrderController {
 			out.println("<script>alert('먼저 서비스를 신청해주세요.'); location.href='/index';</script>");
 			out.flush();
 		}
-<<<<<<< HEAD
-=======
 
->>>>>>> 63189580d69fe878b8dd6e04c80967b682a22ae0
 		return "/order/requestGuide";
 	}
 
