@@ -1,6 +1,5 @@
 package com.project.washgogo.service;
 
-import com.project.washgogo.domain.dao.UserDAO;
 import com.project.washgogo.domain.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;

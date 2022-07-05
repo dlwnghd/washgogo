@@ -10,6 +10,19 @@ const $tabDepths = $(".tab-depth a");
 $nextUse.css("display", "none");
 $serviceArea.css("display", "none");
 
+if(tabNum){
+    $tabs.removeClass("active");
+    $tabs.eq(tabNum-1).addClass("active");
+
+    $firstUse.css("display", "none");
+    $nextUse.css("display", "none");
+    $tabDepthCont.css("display", "none");
+
+    $serviceArea.css("display", "block");
+    $infoItems.css("display", "none");
+    $infoItems.eq(0).css("display", "block");
+}
+
 $tabs.click(function(){
     let idx = $(this).index();
     $tabs.removeClass("active");
@@ -88,6 +101,12 @@ $categories.click(function(){
             }
         });
     }
+});
+
+/* 수거신청 버튼 클릭 이벤트 */
+const $requestBtn = $(".request-pickup");
+$requestBtn.on("click", function () {
+    location.href = "/order/requestGuide";
 });
 
 /* 모달창 클릭 이벤트 */

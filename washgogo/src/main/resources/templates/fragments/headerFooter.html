@@ -32,7 +32,7 @@
                             <nav>
                                 <ul class="nav-list sign-out" th:if="${session.userNumber == null}">
                                     <li class="nav-item">
-                                        <a href="/guide">
+                                        <a onclick="location.href='/guide'">
                                             <span>가이드</span></a>
                                     </li>
                                     <li class="nav-item">
@@ -50,7 +50,7 @@
                                 </ul>
                                 <ul class="nav-list sign-in" th:unless="${session.userNumber == null}">
                                     <li class="nav-item">
-                                        <a href="/guide">
+                                        <a onclick="location.href='/guide'">
                                             <span>가이드</span></a>
                                     </li>
                                     <li class="nav-item">
@@ -83,8 +83,8 @@
                                     </li>
                                 </ul>
                             </nav>
-                            <a href ="/order/requestGuide">
-                            <button type="button" class="btn btn-primary pickup-request-btn">수거신청</button>
+                            <a href="/order/requestGuide">
+                                <button type="button" class="btn btn-primary pickup-request-btn">수거신청</button>
                             </a>
                         </div>
                     </div>
