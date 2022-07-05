@@ -2,9 +2,6 @@ package com.project.washgogo.controller;
 
 import com.project.washgogo.domain.vo.OrderVO;
 import com.project.washgogo.domain.vo.UserVO;
-import com.project.washgogo.service.OrderListService;
-import com.project.washgogo.service.OrderService;
-import com.project.washgogo.service.UserService;
 import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.*;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +40,7 @@ public class UserController {
     private final OrderService orderService;
     private final OrderListService orderListService;
     private final NoticeService noticeService;
+    private final ServiceAreaService serviceAreaService;
     Random random = new Random();		//랜덤 함수 선언
     int createNum = 0;  			//1자리 난수
     String ranNum = ""; 			//1자리 난수 형변환 변수
@@ -491,6 +489,12 @@ public class UserController {
         log.info("-------------------------------------");
 
         return "/service/modifyAddress";
+    }
+
+    @PostMapping("/checkServiceArea")
+    @ResponseBody
+    public boolean checkServiceArea(@RequestBody String address){
+        return serviceAreaService.isServiceArea(address);
     }
 
     @PostMapping("/serviceAddressOk")
