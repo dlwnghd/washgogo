@@ -98,6 +98,8 @@ input {
     border: 0.0625rem solid #e1e1e1;
     width: 100%;
     height: calc(1.5em + 1.5rem);
+    transition: all ease 0.5s 0s;
+    box-shadow: none;
 }
 
 input:focus {

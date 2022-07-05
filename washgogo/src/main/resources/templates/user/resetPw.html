@@ -35,21 +35,19 @@
 							<legend>새 비밀번호</legend>
 							<div class="password-wrapper">
 								<input id="password" type="password" name="userPw" placeholder="새 비밀번호를 입력하세요" oninput = "checkPassWord()">
-								<button class="pw-show" type="button"></button>
+								<button class="pw-show" type="button" tabindex="-1"></button>
 							</div>
-							<div id="pwwrong" class="invalid-feedback invalid-feedback-password">
-							</div>
+							<div id="pwwrong" class="invalid-feedback invalid-feedback-password"></div>
 						</fieldset>
 					</div>
 					<div class="col">
 						<fieldset>
 							<legend>새 비밀번호 확인</legend>
 							<div class="password-wrapper">
-								<input id="new-password" type="password" name="userNewPw" placeholder="새 비밀번호를 다시 입력해주세요" oninput = "checkNewPassWord()">
-								<button class="pw-show" type="button"></button>
+								<input id="newpassword" type="password" name="userNewPw" placeholder="새 비밀번호를 다시 입력해주세요" oninput = "checkNewPassWord()">
+								<button class="pw-show" type="button" tabindex="-1"></button>
 							</div>
-							<div id="newpwwrong" class="invalid-feedback invalid-feedback-new-password">
-							</div>
+							<div id="newpwwrong" class="invalid-feedback invalid-feedback-newpassword"></div>
 						</fieldset>
 					</div>
 					<div class="col">
@@ -90,6 +88,42 @@
 		}
 	}
 
+	// 새 비밀번호 부적합
+	function pwclose() {
+		// 새 비밀번호 미입력시
+		if($("div.invalid-feedback-password").html() != ""){
+			pwwrong.style.display = "block";
+			password.style.boxShadow = "0 0 0 0.1rem rgb(251 89 114)";
+		}else if($("div.invalid-feedback-password").html() == ""){
+			password.style.boxShadow = "0 0 0 0.2rem rgb(0 199 174 / 25%)";
+			password.addEventListener("focusout", e => {
+				password.style.boxShadow = "none";
+			})
+		}
+	}
+
+	password.addEventListener("click", e => {
+		pwclose();
+	})
+
+	// 새 비밀번호 확인 부적합
+	function newpwclose() {
+		// 비밀번호 미입력시
+		if($("div.invalid-feedback-newpassword").html() != ""){
+			newpwwrong.style.display = "block";
+			newpassword.style.boxShadow = "0 0 0 0.1rem rgb(251 89 114)";
+		}else if($("div.invalid-feedback-password").html() == ""){
+			newpassword.style.boxShadow = "0 0 0 0.2rem rgb(0 199 174 / 25%)";
+			newpassword.addEventListener("focusout", e => {
+				newpassword.style.boxShadow = "none";
+			})
+		}
+	}
+
+	newpassword.addEventListener("click", e => {
+		newpwclose();
+	})
+
 	// 새 비밀번호
 	function checkPassWord() {
 		let userPw = $('#password').val(); //userPw값이 "userPw"인 입력란의 값을 저장
@@ -108,13 +142,14 @@
 			str = "";
 		}
 		feedback.html(str);
+		pwclose();
 	}
 
 	// // 새 비밀번호 확인
 	function checkNewPassWord() {
-		let newuserPw = $('#new-password').val(); //userPw값이 "userPw"인 입력란의 값을 저장
+		let newuserPw = $('#newpassword').val(); //userPw값이 "userPw"인 입력란의 값을 저장
 		let userPw = $('#password').val(); //userPw값이 "userPw"인 입력란의 값을 저장
-		const feedback = $("div.invalid-feedback-new-password");
+		const feedback = $("div.invalid-feedback-newpassword");
 		let str = "";
 		var chk_num = newuserPw.search(/[0-9]/g);
 		var chk_eng = newuserPw.search(/[a-z]/ig);
@@ -131,12 +166,13 @@
 			str = "";
 		}
 		feedback.html(str);
+		newpwclose();
 	}
 
 	// 비밀번호 재설정 버튼 클릭시
 	function checkNumber() {
 		let password = $('#password').val();
-		let newpassword = $('#new-password').val();
+		let newpassword = $('#newpassword').val();
 
 		// 새 비밀번호와 새 비밀번호 확인이 일치한다면
 		if(password != newpassword || password == "" || newpassword == "") {
@@ -145,7 +181,6 @@
 			$(".reset-btn").prop("type", "button");
 		} else if(password != "" && newpassword != "" && password == newpassword){
 			$("button.reset-btn").prop("type", "submit");	// 버튼 타입 변경
-			alert("비밀번호가 변경되었습니다. 다시 로그인해 주세요.\n[주의] 확인 버튼을 누르지 않으면 변경되지 않습니다!");
 		}
 	}
 </script>

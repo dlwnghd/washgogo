@@ -9,34 +9,40 @@ if (param.includes("id")) {
 
 let resultNum = "";
 
-function close() {
-    // 비밀번호 미입력시
-    if(!$("#userPhonenum").val() || $("div.invalid-feedback-phonenum").html() != ""){
-        phonenumwrong.style.display = "block";
-        userPhonenum.style.boxShadow = "0 0 0 0.1rem rgb(251 89 114)";
-    }else if($("div.invalid-feedback-phonenum").html() == ""){
-        userPhonenum.style.boxShadow = "none";
-    }
-
+// 이메일 부적합
+function emailclose() {
     // 이메일 미입력시
-    if(!$("#userEmail").val() || $("div.invalid-feedback-email").html() != ""){
+    if($("div.invalid-feedback-email").html() != ""){
         emailwrong.style.display = "block";
         userEmail.style.boxShadow = "0 0 0 0.1rem rgb(251 89 114)";
     }else if($("div.invalid-feedback-email").html() == ""){
-        userEmail.style.boxShadow = "none";
+        userEmail.style.boxShadow = "0 0 0 0.2rem rgb(0 199 174 / 25%)";
+        userEmail.addEventListener("focusout", e => {
+            userEmail.style.boxShadow = "none";
+        })
     }
 }
 
-form.addEventListener("mouseover", e => {
-    close();
+userEmail.addEventListener("click", e => {
+    emailclose();
 })
 
-form.addEventListener("mouseout", e => {
-    close();
-})
+// 휴대전화 부적합
+function phonenumclose() {
+    // 전화번호 미입력시
+    if($("div.invalid-feedback-phonenum").html() != ""){
+        phonenumwrong.style.display = "block";
+        userPhonenum.style.boxShadow = "0 0 0 0.1rem rgb(251 89 114)";
+    }else if($("div.invalid-feedback-phonenum").html() == ""){
+        userPhonenum.style.boxShadow = "0 0 0 0.2rem rgb(0 199 174 / 25%)";
+        userPhonenum.addEventListener("focusout", e => {
+            userPhonenum.style.boxShadow = "none";
+        })
+    }
+}
 
-body.addEventListener("keyup", e => {
-    close();
+userPhonenum.addEventListener("click", e => {
+    phonenumclose();
 })
 
 // 전화번호 확인
@@ -46,15 +52,16 @@ function checkPhoneNum() {
     let str = "";
     if (!userPhoneNum) {
         str = "<small>휴대 전화 번호를 입력해주세요.</small>";
-        feedback.html(str);
+    } else if(isNaN(userPhoneNum)){
+        str = "<small>숫자만 입력해주세요.</small>";
     } else if(userPhoneNum.length < 11 || userPhoneNum.length > 11 ){
         str = "<small>올바른 휴대 전화 번호를 입력해주세요.</small>";
-        feedback.html(str);
     }
     else {
         str = "";
-        feedback.html(str);
     }
+    feedback.html(str);
+    phonenumclose();
     return;
 }
 
@@ -89,7 +96,7 @@ function checkEmail() {
             }
         });
     }
-    close();
+    emailclose();
 }
 
 // 인증번호 받기 버튼 클릭시

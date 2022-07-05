@@ -246,26 +246,26 @@ public class UserController {
             resultNum += ranNum;			//생성된 난수(문자열)을 원하는 수(letter)만큼 더하며 나열
         }
 
-//        휴대폰에 인증번호 전송
-        String api_key = "NCSHUXHNNINOL8AT";
-        String api_secret = "IMDMEXAZSWQWO7OR993KMVDEXCOK0ZDV";
-        Message coolsms = new Message(api_key, api_secret);
-
-        // 4 params(to, from, type, text) are mandatory. must be filled
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("to", userVO.getUserPhonenum());    // 인증번호 받는 사람
-        params.put("from", "01088580291");  // 인증번호 보내는 사람
-        params.put("type", "SMS");  // 문자형태
-        params.put("text", "[WashGoGo] 인증번호 ["+ resultNum +"]를 입력하세요.");   // 보내는 문자
-        params.put("app_version", "test app 1.2"); // application name and version
-
-        try {
-            JSONObject obj = (JSONObject) coolsms.send(params);
-            System.out.println(obj.toString());
-        } catch (CoolsmsException e) {
-            System.out.println(e.getMessage());
-            System.out.println(e.getCode());
-        }
+////        휴대폰에 인증번호 전송
+//        String api_key = "NCSHUXHNNINOL8AT";
+//        String api_secret = "IMDMEXAZSWQWO7OR993KMVDEXCOK0ZDV";
+//        Message coolsms = new Message(api_key, api_secret);
+//
+//        // 4 params(to, from, type, text) are mandatory. must be filled
+//        HashMap<String, String> params = new HashMap<String, String>();
+//        params.put("to", userVO.getUserPhonenum());    // 인증번호 받는 사람
+//        params.put("from", "01088580291");  // 인증번호 보내는 사람
+//        params.put("type", "SMS");  // 문자형태
+//        params.put("text", "[WashGoGo] 인증번호 ["+ resultNum +"]를 입력하세요.");   // 보내는 문자
+//        params.put("app_version", "test app 1.2"); // application name and version
+//
+//        try {
+//            JSONObject obj = (JSONObject) coolsms.send(params);
+//            System.out.println(obj.toString());
+//        } catch (CoolsmsException e) {
+//            System.out.println(e.getMessage());
+//            System.out.println(e.getCode());
+//        }
 
         log.info("resultNum : " + resultNum);   // 인증번호 확인용 log.info
         return userService.checkUser(userVO) ? resultNum : null;   // userService.checkUser(userVO)이 true : 존재하는 유저
