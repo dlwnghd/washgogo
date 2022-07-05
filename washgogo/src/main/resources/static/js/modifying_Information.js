@@ -224,6 +224,7 @@ function remove() {
             location.href = result;
         },
         error: function () {
+            console.log(result);
             alert("에러입니다");
         }
     });
