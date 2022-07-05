@@ -122,6 +122,8 @@ passwordBtn.addEventListener("click", e => {
     // 비밀번호 나타내기
     newPw.style.display = "block";
     newPwCheck.style.display = "block";
+
+
     // 수정공간 나타내기
     choose1.style.display = 'contents';
 })
@@ -233,14 +235,19 @@ deleteBtn.addEventListener("click", e => {
     remove();
 })
 
-
+/* 프로필사진 업로드 */
 //프로필 업로드
 // const inputUploader = document.querySelector('.profile-uploader');
 // const uploader = document.querySelector('upload');
 //
 // uploader.addEventListener('click', () => inputUploader.click());
 
-// //프로필사진 업로드
+// //
+const $cameraIcon = $(".modifyInfo .camera-icon");
+const $Image = $(".modifyInfo .user-profile-picture div[data-name='image']");
+$cameraIcon.on("click",function () {
+
+});
 const fResult = $("div.file-result ul");
 // let files = [[${user.profile}]];
 let regex = new RegExp("(.*?)\.(jpg|png)$");

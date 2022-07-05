@@ -32,7 +32,6 @@ import java.util.UUID;
 @Slf4j
 @RequestMapping("/upload/*")
 public class UploadController {
-    //    ajax를 사용한 파일 업로드
     @GetMapping("/uploadAjax")
     public void uploadAjax(){
         log.info("upload ajax");
@@ -40,41 +39,40 @@ public class UploadController {
 
     @ResponseBody //REST
     @PostMapping("/uploadAjax")
-    public List<ProfileVO> uploadAjax(MultipartFile[] files) throws IOException{
-        List<ProfileVO> profile = new ArrayList<>();
+    public ProfileVO uploadAjax(MultipartFile file) throws IOException{
         String rootDirectory = "C:/upload";
 
         File uploadDirectory = new File(rootDirectory, getDateDirectory());
         if(!uploadDirectory.exists()) {uploadDirectory.mkdirs();}
 
-        for (MultipartFile file : files){
-            log.info("------------------------------------");
-            log.info("upload file name : " + file.getOriginalFilename());
-            log.info("upload file size : " + file.getSize());
-            ProfileVO profileVO = new ProfileVO();
+        log.info("------------------------------------");
+        log.info("upload file name : " + file.getOriginalFilename());
+        log.info("upload file size : " + file.getSize());
 
-            UUID uuid = UUID.randomUUID();
-            String fileName = uuid.toString() + "_" + file.getOriginalFilename();
+        ProfileVO profileVO = new ProfileVO();
 
-            profileVO.setOriginalFileName(file.getOriginalFilename());
-            profileVO.setFileName(fileName);
-            profileVO.setUploadDirectory(getDateDirectory());
+        UUID uuid = UUID.randomUUID();
+        String fileName = uuid.toString() + "_" + file.getOriginalFilename();
 
-            File saveFile = new File(uploadDirectory, fileName);
-            file.transferTo(saveFile);
+        profileVO.setOriginalFileName(file.getOriginalFilename());
+        profileVO.setFileName(fileName);
+        profileVO.setUploadDirectory(getDateDirectory());
 
-            if(checkImageType(saveFile)){
-                FileOutputStream thumbnail = new FileOutputStream(new File(uploadDirectory, "t_" + fileName));
+        File saveFile = new File(uploadDirectory, fileName);
+        file.transferTo(saveFile);
+
+        if(checkImageType(saveFile)){
+            FileOutputStream thumbnail = new FileOutputStream(new File(uploadDirectory, "t_" + fileName));
 //                MultipartFile객체를 통해 바로 파일을 가져올 경우,
 //                임시로 저장될 영역을 임계 영역이라 한다.
 //                apllication.properties에서 임계 영역에 대한 용량을 설정해 주어야
 //                그 영역에 먼저 업로드 후 inputStream()을 가져올 수 있다.
-                Thumbnailator.createThumbnail(file.getInputStream(), thumbnail, 100, 100);
-                thumbnail.close();
-                profileVO.setImage(true);
-            }
-            profile.add(profileVO);
+            Thumbnailator.createThumbnail(file.getInputStream(), thumbnail, 100, 100);
+            thumbnail.close();
+            profileVO.setImage(true);
         }
+        //profile.add(profileVO);
+
         return profile;
     }
 

@@ -1,48 +1,92 @@
-h1[add] {
+.modifyInfo h1{
     line-height: 2.5625rem;
     font-size: 1.75rem;
     font-weight: 500;
     color: #323232;
     margin: 3rem 0;
 }
-.profile-image[add] {
+@media screen and (min-width: 768px){
+    .modifyInfo h1{
+        line-height: 3.125rem;
+        font-size: 2.125rem;
+    }
+}
+.modifyInfo .profile-image{
     position: relative;
     width: 6.25rem;
     height: 6.25rem;
     margin: 0 auto;
 }
-.camera-icon[add] {
+.modifyInfo .user-profile-picture{
+    position: relative;
+    height: 100%;
+}
+.modifyInfo .user-profile-picture div[data-name="image"]{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 0.0625rem solid #f2f2f2;
+    overflow: hidden;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: #e1e1e1;
+}
+.modifyInfo .camera-icon{
     cursor: pointer;
     position: absolute;
     right: 0;
     bottom: 0;
 }
-section[add] {
+.modifyInfo section{
     font-size: 0.875rem;
     margin: 3rem 0 5.125rem;
 }
-.account-info[add] {
+@media screen and (min-width: 768px){
+    .modifyInfo section{
+        font-size: 1rem;
+    }
+}
+.modifyInfo .account-info{
     margin-bottom: 3rem;
 }
-.item-container[add] {
+.modifyInfo .item-container{
     cursor: pointer;
     display: flex;
     align-items: center;
     padding: 1rem 0 1rem 0.5rem;
     border-bottom: 0.0625rem solid #f2f2f2;
 }
-.item[add] {
+.modifyInfo .item-container.address{
+    margin-top: 1.5rem;
+}
+.modifyInfo .item-container.address .item li{
+    display: flex;
+}
+.modifyInfo .item-container.address .item li:first-child{
+    margin-bottom: 1rem;
+}
+.modifyInfo .item{
     flex: 1;
     color: #323232;
 }
-.item-title[add] {
+.modifyInfo .item-container.address .item li div.title-content{
+    width: 20%;
+}
+.modifyInfo .item-container.address .item li div.text-content{
+    width: 80%;
+}
+.modifyInfo .item-title{
     color: #b5b5b5;
 }
-.item-info[add] {
+.modifyInfo .item-info{
     padding-top: 0.25rem;
 }
-
-.pw-show {
+.modifyInfo .item-container.password input{
+    border: none;
+    cursor: pointer;
+}
+.modifyInfo .pw-show{
     position: absolute;
     top: 0px;
     right: -5px;
@@ -53,16 +97,16 @@ section[add] {
     background: url(https://static.msscdn.net/ui/build/m/img/login/ic-30-show-button.svg?v=20220503114100) no-repeat 50% 50%;
 }
 
-.pw-hide {
+.modifyInfo .pw-hide{
     background: url(https://static.msscdn.net/ui/build/m/img/login/ic-30-hide-button.svg?v=20220615150656) no-repeat 50% 50%;
 }
 
-.password-wrapper{
+.modifyInfo .password-wrapper{
     position: relative;
 }
 
-#change-ok{
-    margin-top:20px;
+.modifyInfo #change-ok{
+    margin-top:35px;
     margin-bottom: 20px;
     width:300px;
     height: 55px;
@@ -77,16 +121,14 @@ section[add] {
     border: none;
 }
 
-.change-flex-container{
+.modifyInfo .change-flex-container{
     display: flex;
     justify-content: space-between;
 }
-
-.height15{
+.modifyInfo .height15{
     height: 15px;
 }
-
-.field {
+.modifyInfo .field {
     -moz-flex-grow: 0;
     -webkit-flex-grow: 0;
     -ms-flex-grow: 0;
@@ -97,21 +139,19 @@ section[add] {
     flex-shrink: 0;
     width: calc(100% - 1.5rem);
 }
-
-.file-result {
+.modifyInfo .file-result {
     width: 100%;
 }
-
-.file-result ul {
+.modifyInfo .file-result ul {
     display: flex;
     justify-content: center;
 }
 
-.file-result ul li {
+.modifyInfo .file-result ul li {
     list-style: none;
     padding: 15px;
 }
 
-.profile-uploader{
+.modifyInfo .profile-uploader{
     display:none;
 }
