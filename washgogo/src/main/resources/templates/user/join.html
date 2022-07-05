@@ -31,41 +31,37 @@
 						<fieldset>
 							<legend>이름</legend>
 							<div>
-								<input id="userName" type="text" name="userName" placeholder="이름(실명)을 입력해주세요" oninput = "checkName()">
+								<input id="userName" type="text" name="userName" placeholder="이름(실명)을 입력해주세요" oninput = "checkName()" autocomplete="off"  onkeyup="enterkey();">
 							</div>
-							<div class="invalid-feedback invalid-feedback-name">
-							</div>
+							<div id="namewrong" class="invalid-feedback invalid-feedback-name"></div>
 						</fieldset>
 					</div>
 					<div class="col">
 						<fieldset>
 							<legend>이메일</legend>
 							<div>
-								<input id="userEmail" type="email" name="userEmail" placeholder="example@washgogo.com" oninput = "checkEmail()">
+								<input id="userEmail" type="email" name="userEmail" placeholder="example@washgogo.com" oninput = "checkEmail()" autocomplete="off"  onkeyup="enterkey();">
 							</div>
-							<div class="invalid-feedback invalid-feedback-email">
-							</div>
+							<div id="emailwrong" class="invalid-feedback invalid-feedback-email"></div>
 						</fieldset>
 					</div>
 					<div class="col">
 						<fieldset>
 							<legend>비밀번호</legend>
 							<div class="password-wrapper">
-								<input id="userPw" type="password" name="userPw" placeholder="영문+숫자 조합 8자리 이상 입력해주세요" oninput = "checkPassWord()">
-								<button class="pw-show" type="button"></button>
+								<input id="userPw" type="password" name="userPw" placeholder="영문+숫자 조합 8자리 이상 입력해주세요" oninput = "checkPassWord()" onkeyup="enterkey();">
+								<button class="pw-show" type="button" tabindex="-1"></button>
 							</div>
-							<div class="invalid-feedback invalid-feedback-password">
-							</div>
+							<div id="pwwrong" class="invalid-feedback invalid-feedback-password"></div>
 						</fieldset>
 					</div>
 					<div class="col">
 						<fieldset>
 							<legend>휴대 전화 번호</legend>
 							<div>
-								<input id="userPhoneNum" type="text" name="userPhonenum" placeholder="'-' 없이 휴대 전화 번호를 입력해주세요" oninput = "checkPhoneNum()">
+								<input id="userPhoneNum" type="text" name="userPhonenum" placeholder="'-' 없이 휴대 전화 번호를 입력해주세요" oninput = "checkPhoneNum()" autocomplete="off" onkeyup="enterkey();">
 							</div>
-							<div class="invalid-feedback invalid-feedback-phonenum">
-							</div>
+							<div  id="phonenumwrong" class="invalid-feedback invalid-feedback-phonenum"></div>
 						</fieldset>
 					</div>
 					<div class="col agreements">
