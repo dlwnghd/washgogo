@@ -3,6 +3,8 @@ package com.project.washgogo.domain.vo;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Data
 public class UserVO {
@@ -19,4 +21,6 @@ public class UserVO {
 	private String userServiceType;     // 서비스 타입
 	private String userLaunderetteType; // 런드렛 타입
 	private String userPoint;           // 포인트
+
+	private List<ProfileVO> profile;
 }

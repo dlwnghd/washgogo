@@ -166,7 +166,9 @@ $(".pw-show").on("click",function(){
     }
 });
 
-
+// let replacePw = String(PASSWORD).length * '*';
+// console.log(replacePw);
+// let rplace = String(PASSWORD).replace('$****');
 
 //수정
 function modify() {
@@ -230,3 +232,128 @@ const deleteBtn = document.querySelector(".delete-user");
 deleteBtn.addEventListener("click", e => {
     remove();
 })
+
+
+//프로필 업로드
+// const inputUploader = document.querySelector('.profile-uploader');
+// const uploader = document.querySelector('upload');
+//
+// uploader.addEventListener('click', () => inputUploader.click());
+
+// //프로필사진 업로드
+const fResult = $("div.file-result ul");
+// let files = [[${user.profile}]];
+let regex = new RegExp("(.*?)\.(jpg|png)$");
+let maxSize = 5242880; // 5MB
+
+function checkExtension(fileName, fileSize){
+    if(!regex.test(fileName)){
+        alert("(" + fileName + ")업로드 할 수 없는 파일의 형식입니다.")
+        return false;
+    }
+
+    if(fileSize >= maxSize){
+        alert("(" + fileName + ")파일 사이즈 초과")
+        return false;
+    }
+    return true;
+}
+
+showUploadFile(files);
+
+function showUploadFile(profile){
+    let str = "";
+    $.each(profile, function(i, file){
+        str += "<li data-name='" + file.fileName + "' data-original='" + file.originalFileName + "' data-directory='" + file.uploadDirectory + "' data-image='" + file.image + "'>";
+        str += "<span data-name='" + file.originalFileName + "' data-path='" + file.uploadDirectory + "/t_" + file.fileName + "' style='cursor: pointer'>x</span>";
+        str += "<a href='/upload/download?path=" + file.uploadDirectory + "/" + file.fileName + "'>"
+        str += file.image ? "<img src='/upload/display?path=" + file.uploadDirectory + "/t_" + file.fileName + "'>"
+            : "<img src='/img/user-profile-image.jpg' width='100'>";
+        str += "</a><p>" + file.originalFileName + "</p>";
+        str += "</li>";
+    });
+    result.append(str);
+}
+
+//업로드 전
+let arFile = Array.from($("input[type='file']")[0].files);
+
+$("input[type='file']").on("change", function(e){
+    let formData = new FormData();
+    let input = $("input[name='files']"); // 업로드 후
+    let files = input[0].files;
+    console.log(files);
+    for(let i=0; i<files.length; i++){
+        if(checkExtension(files[i].name, files[i].size)){
+            formData.append("files", files[i]);
+        }
+    }
+    const dataTransfer = new DataTransfer();
+
+    //사용자가 업로드한 파일들의 정보를 전역변수인 arFile에 담아놓기
+    Array.from($(input[0].files)).forEach(file => arFile.push(file));
+    //전역변수의 전체 파일들을 FileList타입으로 변경
+    arFile.forEach(file => dataTransfer.items.add(file));
+    //input태그에 그 동안 업로드했던 모든 파일의 정보로 덮어 씌우기
+    input[0].files = dataTransfer.files;
+
+    $.ajax({
+        url: "/upload/uploadAjax",
+        type: "post",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(profile){
+            showUploadFile(profile);
+        }
+    });
+});
+
+let removedFiles = [];
+$(".fResult").on("click", "span", function(e){
+    let path = $(this).data("path");
+    let li = $(this).closest("li");
+    //x버튼을 눌렀을 때 삭제될 파일의 원본 이름
+    let fileName = $(this).data("name");
+    const dataTransfer = new DataTransfer();
+    li.remove();
+    removedFiles.push(path);
+    //원래 있었던 파일들에서
+    for(let i=0; i<arFile.length; i++){
+        //삭제한 파일의 이름과 동일한 파일을 검사
+        if(arFile[i].name == fileName){
+            //삭제된 파일은 기존 파일들에서 삭제시켜야 한다.
+            arFile.splice(i, 1);
+        }
+    }
+
+    //삭제된 파일을 제외한 나머지 파일들을
+    arFile.forEach(file => dataTransfer.items.add(file));
+    //input태그에 다시 담아준다.
+    $("input[type='file']")[0].files = dataTransfer.files;
+
+});
+
+$("input[type='button']").on("click", function(e){
+    e.preventDefault();
+
+    let $form = $("form#modifyForm");
+    let str = "";
+
+    for(let i=0; i<removedFiles.length; i++){
+        $.ajax({
+            url: "/upload/delete",
+            type: "delete",
+            data: {path: removedFiles[i]},
+        });
+    }
+
+    $.each($(".result ul li"), function(i, li){
+        str += "<input type='hidden' name='fileList[" + i + "].fileName' value='" + $(li).data('name') +"'>"
+        str += "<input type='hidden' name='fileList[" + i + "].originalFileName' value='" + $(li).data('original') +"'>"
+        str += "<input type='hidden' name='fileList[" + i + "].uploadDirectory' value='" + $(li).data('directory') +"'>"
+        str += "<input type='hidden' name='fileList[" + i + "].image' value='" + $(li).data('image') +"'>"
+    });
+
+    $form.append(str).submit();
+});

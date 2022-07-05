@@ -85,3 +85,33 @@ section[add] {
 .height15{
     height: 15px;
 }
+
+.field {
+    -moz-flex-grow: 0;
+    -webkit-flex-grow: 0;
+    -ms-flex-grow: 0;
+    flex-grow: 0;
+    -moz-flex-shrink: 0;
+    -webkit-flex-shrink: 0;
+    -ms-flex-shrink: 0;
+    flex-shrink: 0;
+    width: calc(100% - 1.5rem);
+}
+
+.file-result {
+    width: 100%;
+}
+
+.file-result ul {
+    display: flex;
+    justify-content: center;
+}
+
+.file-result ul li {
+    list-style: none;
+    padding: 15px;
+}
+
+.profile-uploader{
+    display:none;
+}
