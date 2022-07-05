@@ -11,7 +11,7 @@ function sample4_execDaumPostcode() {
 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             $addressInput.val(roadAddr);
-            $addressInput.attr("value", roadAddr);
+            $jibunInput.val(data.jibunAddress);
         },
         onclose: function(state) {
             //state는 우편번호 찾기 화면이 어떻게 닫혔는지에 대한 상태 변수 이며, 상세 설명은 아래 목록에서 확인하실 수 있습니다.
@@ -28,13 +28,25 @@ function sample4_execDaumPostcode() {
             } else if(state === 'COMPLETE_CLOSE'){
                 //사용자가 검색결과를 선택하여 팝업창이 닫혔을 경우, 실행될 코드를 작성하는 부분입니다.
                 //oncomplete 콜백 함수가 실행 완료된 후에 실행됩니다.
-                $addressInput.addClass("disabled");
-                $addressInput.attr("disabled", true);
-                $addressInput.removeClass("is-invalid");
-                $invalidFeedback.eq(0).css("display", "none");
-                $search.css("display", "block");
-                $addressDetail.css("display", "block");
-                $addressDetail.removeClass("disabled");
+                serviceAreaCheck = checkServiceArea($jibunInput.val());
+                if(serviceAreaCheck){
+                    $addressInput.addClass("disabled");
+                    $addressInput.attr("disabled", true);
+                    $addressInput.removeClass("is-invalid");
+                    $invalidFeedback.eq(0).css("display", "none");
+                    $search.css("display", "block");
+                    $addressDetail.css("display", "block");
+                    $addressDetail.removeClass("disabled");
+                } else {
+                    $addressInput.removeClass("disabled");
+                    $addressInput.attr("disabled", false);
+                    $addressInput.val("");
+                    $search.css("display", "none");
+                    $addressInput.addClass("is-invalid");
+                    $invalidFeedback.eq(0).css("display", "block");
+                    $addressDetail.css("display", "none");
+                    $addressInput.blur();
+                }
             }
         }
     }).open({popupKey : 'addrpopup1',
@@ -42,9 +54,11 @@ function sample4_execDaumPostcode() {
 }
 
 const $addressInput = $("#sample4_roadAddress");
+const $jibunInput = $("#sample4_jibunAddress");
 const $search = $("#search");
 const $addressDetail = $("#addressDetail");
 const $invalidFeedback = $(".invalid-feedback");
+let serviceAreaCheck = false;
 
 /* 주소창 클릭 이벤트 */
 $addressInput.on("click", function(){
@@ -146,6 +160,11 @@ function checkForm(){
         $nextBtn.addClass("disabled");
         return;
     }
+    if(!serviceAreaCheck){
+        $nextBtn.attr("disabled", true);
+        $nextBtn.addClass("disabled");
+        return;
+    }
     if(!$addressDetail.val()){
         $nextBtn.attr("disabled", true);
         $nextBtn.addClass("disabled");
@@ -175,5 +194,37 @@ function checkForm(){
     $nextBtn.attr("disabled", false);
     $nextBtn.removeClass("disabled");
     return;
+}
+
+/* 서비스 가능 지역 여부 검사 */
+function checkServiceArea(address) {
+    let isChecked = false;
+    $.ajax({
+        url: "/user/checkServiceArea",
+        type: "post",
+        data: JSON.stringify(address),
+        contentType: "application/json; charset=utf-8",
+        async: false,
+        success: function (isTrue) {
+            if(!isTrue){
+                isChecked = false;
+                showInvalidFeedback();
+            } else {
+                isChecked = true;
+                hideInvalidFeedback();
+            }
+        }
+    });
+    return isChecked;
+}
+
+function showInvalidFeedback() {
+    $invalidFeedback.eq(0).text("배송 가능 지역이 아닙니다.");
+    $invalidFeedback.eq(0).css("display", "block");
+}
+
+function hideInvalidFeedback() {
+    $invalidFeedback.eq(0).text("주소를 입력해주세요.");
+    $invalidFeedback.eq(0).css("display", "none");
 }
 

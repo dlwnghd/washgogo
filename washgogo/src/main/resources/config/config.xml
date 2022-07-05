@@ -7,5 +7,6 @@
         <typeAlias type="com.project.washgogo.domain.vo.OrderListVO" alias="orderListVO"/>
         <typeAlias type="com.project.washgogo.domain.vo.LaundryVO" alias="laundryVO"/>
         <typeAlias type="com.project.washgogo.domain.vo.NoticeVO" alias="noticeVO"/>
+        <typeAlias type="com.project.washgogo.domain.vo.ServiceAreaVO" alias="serviceAreaVO"/>
     </typeAliases>
 </configuration>
