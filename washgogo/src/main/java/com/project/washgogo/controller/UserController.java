@@ -560,4 +560,27 @@ public class UserController {
         return "/service/serviceChangeComplete";
     }
 
+
+    @PostMapping("myModifyAddress")
+    public String myModifyAddress(HttpSession session, UserVO userVO, @ModelAttribute("selectedServiceType") String selectedServiceType){
+        log.info("-----------------postAddress--------------------");
+        log.info("userVO : " + userVO.toString());
+        log.info("-------------------------------------");
+
+        return "/user/myModifyAddress";
+    }
+
+    @PostMapping("/serviceAddressMyPage")
+    public String serviceAddressMyPage(HttpSession session, UserVO userVO, @ModelAttribute("selectedServiceType") String selectedServiceType, Model model){
+        log.info("-------------------------------------");
+        log.info("userVO : " + userVO.toString());
+        log.info("-------------------------------------");
+        Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
+        userVO.setUserNumber(userNumber);
+        userService.modifyAddress(userVO);
+        UserVO user = userService.loadUserInfo(userNumber);
+        model.addAttribute("selectedServiceType", selectedServiceType);
+        model.addAttribute("userServiceType", user.getUserServiceType());
+        return "/user/modifyingInformation";
+    }
 }

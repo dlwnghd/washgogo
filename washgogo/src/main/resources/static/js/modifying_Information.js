@@ -139,7 +139,7 @@ phoneNumberBtn.addEventListener("click", e => {
 // 배송지 수정 모달 띄우기
 const addressBtn = account.querySelector(".address")
 addressBtn.addEventListener("click", e => {
-    location.href="/user/modifyAddress";
+    location.href="/user/myModifyAddress";
 })
 
 // 계정탈퇴 모달 띄우기

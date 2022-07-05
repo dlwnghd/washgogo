@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>워시고고 - 우리집 모바일 세탁소</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.laundrygo.com/image/favicon/favicon_web.png">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/serviceSubscribeAddress.css">
+</head>
+<body>
+<div id="app">
+    <!---- App-Header ---->
+    <header th:replace="~{/fragments/headerFooter:: header}">
+    </header>
+    <!---- App-Body ---->
+    <div id="app-body">
+        <div class="address">
+            <div class="content-wrap">
+                <div class="main-title">
+                    <p><strong>서비스</strong>를 이용하실<br>
+                        주소를 입력해주세요.</p>
+                </div>
+                <form name ="addressForm" autocomplete="off" action="/user/serviceAddressOk" method="post">
+                    <input type="hidden" name="selectedServiceType" th:value="${selectedServiceType}">
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="title">
+                                <h2>수거/배송 주소</h2>
+                                <a id="search">다른 주소 검색 ></a>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="sample4_roadAddress"  name="userAddress" class="address-input" placeholder="도로명, 지번, 건물명으로 검색해주세요.">
+                            <div class="invalid-feedback">주소를 입력해주세요.</div>
+                            <input type="hidden" id="sample4_jibunAddress" placeholder="지번주소">
+                        </div>
+                        <div class="col">
+                            <input type="text" id="addressDetail" name="userAddressDetail" class="address-input" placeholder="상세주소를 입력해주세요.">
+                            <div class="invalid-feedback">상세주소를 입력해주세요.</div>
+                        </div>
+                        <div class="col">
+                            <a onclick="location.href='/guideTab?tab=3'">서비스 가능 지역 확인하기 ></a>
+                        </div>
+                        <div class="col get-in">
+                            <div class="title">
+                                <h2>공동현관 출입방법</h2>
+                            </div>
+                            <ul>
+                                <li>
+                                    <label>
+                                        <div class="check"></div>
+                                        <input type="radio" name="userEntranceType" id="byPw" value="공동현관 비밀번호">
+                                        <p>공동현관 비밀번호</p>
+                                    </label>
+                                    <input type="text" name="userEntrancePw" id="entrancePw" class="getin-input" placeholder="예) 종 1234 열쇠, #*1234#">
+                                    <p class="caution">비밀번호가 정확하지 않을 경우, 수거/배송이 불가능 할 수 있습니다.</p>
+                                </li>
+                                <li>
+                                    <label>
+                                        <div class="check"></div>
+                                        <input type="radio" name="userEntranceType" id="freely" value="자유 출입 가능">
+                                        <p>자유 출입 가능 & 공동현관 없음</p>
+                                    </label>
+                                    <p class="caution">방문 시 자유 출입이 불가능한 경우, 수거/배송이 불가능 할 수 있습니다.</p>
+                                </li>
+                                <li>
+                                    <label>
+                                        <div class="check"></div>
+                                        <input type="radio" name="userEntranceType" id="byCall" value="경비실 호출">
+                                        <p>경비실 호출</p>
+                                    </label>
+                                    <p class="caution">방문 시점에 경비실 호출이 정상적으로 연결되지 않는 경우, 수거/배송이 불가능 할 수 있습니다.</p>
+                                </li>
+                                <li>
+                                    <label>
+                                        <div class="check"></div>
+                                        <input type="radio" name="userEntranceType" id="etc" value="기타">
+                                        <p>기타</p>
+                                    </label>
+                                    <input type="text" name="userEntranceMessage" id="howto-getin" class="getin-input" placeholder="예) 뒷쪽 문은 항상 열려 있습니다.">
+                                    <p class="caution">비밀번호가 정확하지 않을 경우, 수거 배송이 불가능 할 수 있습니다.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+                <div class="btn-area">
+                    <button type="button" id="nextBtn" class="btn-next disabled" disabled>다음</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---- App-Footer ---->
+    <nav th:replace="~{/fragments/headerFooter:: footer}">
+    </nav>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script th:inline="javascript">
+    let address = [[${userVO.userAddress}]];
+    let addressDetail = [[${userVO.userAddressDetail}]];
+    let entranceType = [[${userVO.userEntranceType}]];
+    let entrancePw = [[${userVO.userEntrancePw}]];
+    let entranceMessage = [[${userVO.userEntranceMessage}]];
+</script>
+<script th:src="@{/js/modifyAddress.js}"></script>
+</html>
