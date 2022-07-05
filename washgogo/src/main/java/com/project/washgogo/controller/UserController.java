@@ -567,4 +567,22 @@ public class UserController {
         return "/service/serviceChangeComplete";
     }
 
+
+    @GetMapping("myModifyAddress")
+    public String myModifyAddress(HttpSession session, UserVO userVO){
+        log.info("-----------------postAddress--------------------");
+        log.info("userVO : " + userVO.toString());
+        log.info("-------------------------------------");
+
+        return "/user/myModifyAddress";
+    }
+
+    @PostMapping("/serviceAddressMyPage")
+    public String serviceAddressMyPage(HttpSession session, UserVO userVO, Model model){
+        Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
+        userVO.setUserNumber(userNumber);
+        userService.modifyAddress(userVO);
+        UserVO user = userService.loadUserInfo(userNumber);
+        return "/user/modifyingInformation";
+    }
 }

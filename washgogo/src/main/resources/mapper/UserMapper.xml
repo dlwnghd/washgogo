@@ -73,7 +73,7 @@
     <update id="updateUserInfo">
         UPDATE TBL_USER
         <trim prefix="SET" suffixOverrides=",">
-            SET USER_EMAIL = #{userEmail}, USER_PW = #{userPw}, USER_NAME = #{userName}, USER_PHONENUM = #{userPhonenum}, USER_ADDRESS = #{userAddress},  USER_ADDRESS_DETAIL = #{userAddressDetail}, USER_ENTRANCE_TYPE = #{userEntranceType}
+            USER_EMAIL = #{userEmail}, USER_PW = #{userPw}, USER_NAME = #{userName}, USER_PHONENUM = #{userPhonenum}, USER_ADDRESS = #{userAddress},  USER_ADDRESS_DETAIL = #{userAddressDetail}, USER_ENTRANCE_TYPE = #{userEntranceType},
             <if test="userEntrancePw != null">USER_ENTRANCE_PW = #{userEntrancePw},</if>
             <if test="userEntranceMessage != null">USER_ENTRANCE_MESSAGE = #{userEntranceMessage},</if>
         </trim>
