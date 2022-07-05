@@ -254,7 +254,7 @@ div.checkbox-container-cleaning {
 }
 
 div.order-measure-wrapper {
-    /* display: none; */
+     display: none;
 }
 
 div.order-measure-wrapper input {
