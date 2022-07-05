@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,13 +26,13 @@
     </div>
     <footer th:replace="~{/fragments/headerFooter :: footer}"></footer>
 </body>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script>
     $('#charge_kakao').click(function () {
         // getter
         var IMP = window.IMP;
-        IMP.init('TC0ONETIME');
+        IMP.init('imp17990477');
         var money = $('input[name="cp_item"]:checked').val();
         console.log(money);
 
@@ -57,7 +57,7 @@
                 msg += '카드 승인번호 : ' + rsp.apply_num;
                 $.ajax({
                     type: "GET",
-                    url: "/user/mypage/charge/point", //충전 금액값을 보낼 url 설정
+                    url: "/order/payok/", //충전 금액값을 보낼 url 설정
                     data: {
                         "amount" : money
                     },
@@ -67,9 +67,8 @@
                 msg += '에러내용 : ' + rsp.error_msg;
             }
             alert(msg);
-            document.location.href="/user/mypage/home"; //alert창 확인 후 이동할 url 설정
+            document.location.href="/order/payment/"; //alert창 확인 후 이동할 url 설정
         });
     });
-
 </script>
 </html>
