@@ -136,7 +136,7 @@ phoneNumberBtn.addEventListener("click", e => {
     modifyInfo.style.display = 'block';
     choose1.style.display = 'contents';
 })
-// 배송지 수정 모달 띄우기
+// 배송지 수정 페이지
 const addressBtn = account.querySelector(".address")
 addressBtn.addEventListener("click", e => {
     location.href="/user/myModifyAddress";

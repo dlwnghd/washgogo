@@ -92,8 +92,8 @@
                                         <div class="height15"></div>
                                         <div add="" class="item-title">공동현관 출입방법</div>
                                         <div id="ENTRANCETYPE" th:text="${loadUserInfo.userEntranceType}"></div>
-                                        <div add="" id="ENTRANCEPW" class="item-info" th:if="*{userEntrancePw != null}" th:text="*{userEntrancePw}"></div>
-                                        <div add="" id="ENTRANCEMESSAGE" class="item-info"  th:if="*{userEntranceMessage != null}" th:text="*{userEntranceMessage}"></div>
+                                        <div add="" id="ENTRANCEPW" class="item-info" th:if="${loadUserInfo.userEntrancePw != null}" th:text="${loadUserInfo.userEntrancePw}"></div>
+                                        <div add="" id="ENTRANCEMESSAGE" class="item-info"  th:if="${loadUserInfo.userEntranceMessage != null}" th:text="${loadUserInfo.userEntranceMessage}"></div>
                                     </div>
                                     <div add=""><img
                                         add=""

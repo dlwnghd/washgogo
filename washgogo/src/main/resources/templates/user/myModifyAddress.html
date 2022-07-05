@@ -19,11 +19,10 @@
         <div class="address">
             <div class="content-wrap">
                 <div class="main-title">
-                    <p><strong>서비스</strong>를 이용하실<br>
+                    <p><strong>수정</strong>하실<br>
                         주소를 입력해주세요.</p>
                 </div>
-                <form name ="addressForm" autocomplete="off" action="/user/serviceAddressOk" method="post">
-                    <input type="hidden" name="selectedServiceType" th:value="${selectedServiceType}">
+                <form name ="addressForm" autocomplete="off" action="/user/modifyingInformation" method="post">
                     <div class="form-row">
                         <div class="col">
                             <div class="title">
