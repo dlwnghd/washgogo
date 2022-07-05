@@ -14,7 +14,6 @@
         <header th:replace="~{/fragments/headerFooter :: header}"></header>
         <!---- App-Body ---->
         <div id="app-body">
-            <!--input 태그 type 확실하게 바꾸기-->
             <section class="request-select-container">
                 <article class="request-select-detail" th:object="${userVO}">
                     <form name ="requestForm" autocomplete="off" action="/order/requestSelectOk" method="post">
@@ -35,7 +34,7 @@
                             <div class="request-where-title">
                                 <div class="border-title">수거 배송/주소</div>
                                 <!--수정 페이지 만들고 연결-->
-                                <a class="update-address">수정 > </a>
+                                <a id="modify" class="update-address" onclick="modifyAddress()">수정 ></a>
                             </div>
                             <div class="request-where-main">
                                 <div class="address-doorlock">
@@ -154,21 +153,53 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:inline="javascript">
+    let address = [[${userVO.userAddress}]];
+    let addressDetail = [[${userVO.userAddressDetail}]];
+    let entranceType = [[${userVO.userEntranceType}]];
+    let entrancePw = [[${userVO.userEntrancePw}]];
+    let entranceMessage = [[${userVO.userEntranceMessage}]];
+    let selectedServiceType = [[${selectedServiceType}]];
+</script>
 <script>
     $("#request-end").on("click", function(){
         document.requestForm.submit();
     })
 
-    // if($("#chk-washer").is(":checked")) {
-    //     $("#washer-measure").show();
-    // } else {
-    //     $("#washer-measure").hide();
-    // }
-    //
-    // if($("#chk-cleaning").is(":checked")) {
-    //     $("#cleaning-measure").show();
-    // } else {
-    //     $("#cleaning-measure").hide();
-    // }
+    $("#chk-washer").change(function(){
+        if($("#chk-washer").is(":checked")) {
+            $("#washer-measure").show();
+        } else {
+            $("#washer-measure").hide();
+        }
+    });
+
+    $("#chk-cleaning").change(function(){
+        if($("#chk-cleaning").is(":checked")) {
+            $("#cleaning-measure").show();
+        } else {
+            $("#cleaning-measure").hide();
+        }
+    });
+
+    /* 주소 수정 버튼 클릭 이벤트 */
+    const $modifyAddressBtn = $("#modify");
+    $modifyAddressBtn.on("click", function () {
+        const $newForm = $('<form></form>')
+        $newForm.attr("name", "newForm");
+        $newForm.attr("method", "post");
+        $newForm.attr("action", "/order/modifyAddress");
+
+        $newForm.append($('<input/>', {type: 'hidden', name: 'userAddress', value: address}));
+        $newForm.append($('<input/>', {type: 'hidden', name: 'userAddressDetail', value: addressDetail}));
+        $newForm.append($('<input/>', {type: 'hidden', name: 'userEntranceType', value: entranceType}));
+        $newForm.append($('<input/>', {type: 'hidden', name: 'userEntrancePw', value: entrancePw}));
+        $newForm.append($('<input/>', {type: 'hidden', name: 'userEntranceMessage', value: entranceMessage}));
+        $newForm.append($('<input/>', {type: 'hidden', name: 'selectedServiceType', value: selectedServiceType}));
+
+        $newForm.appendTo('body');
+
+        $newForm.submit();
+    })
 </script>
 </html>
