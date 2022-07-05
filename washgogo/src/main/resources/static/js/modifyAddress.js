@@ -28,6 +28,7 @@ function sample4_execDaumPostcode() {
                 //사용자가 검색결과를 선택하여 팝업창이 닫혔을 경우, 실행될 코드를 작성하는 부분입니다.
                 //oncomplete 콜백 함수가 실행 완료된 후에 실행됩니다.
                 checkServiceArea($jibunInput.val());
+                console.log($jibunInput.val());
                 if(serviceAreaCheck){
                     $addressInput.addClass("disabled");
                     $addressInput.attr("disabled", true);

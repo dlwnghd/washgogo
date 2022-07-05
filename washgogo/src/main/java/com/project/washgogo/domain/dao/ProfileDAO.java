@@ -17,7 +17,7 @@ public class ProfileDAO {
         profileMapper.insert(profileVO);
     }
 
-    public List<ProfileVO> findByBoardNumber(Long userNumber){
+    public ProfileVO findByUserNumber(Long userNumber){
         return profileMapper.select(userNumber);
     }
 
