@@ -65,4 +65,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void changePw(UserVO userVO) {userDAO.changePw(userVO); }
+
+    @Override
+    public UserVO showPoint(Long userNumber) { return userDAO.showPoint(userNumber); }
 }

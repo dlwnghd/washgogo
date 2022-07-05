@@ -20,4 +20,5 @@ public interface UserService {
     public boolean checkUser(UserVO userVO);
     public int findUserNumber(UserVO userVO);
     public void changePw(UserVO userVO);
+    public UserVO showPoint(Long userNumber);
 }
