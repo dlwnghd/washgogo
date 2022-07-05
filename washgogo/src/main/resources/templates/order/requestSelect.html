@@ -69,27 +69,27 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="pre">
+                        <!--<div class="pre">
                             <div class="premium">
                                 <div class="premium-title border-title">프리미엄 서비스</div>
                                 <div class="guide-premium">프리미엄 서비스 안내</div>
                             </div>
                             <div class="premium-main">
                                 <div class="select-premium">
-                                    <!--생각을 좀 더 해보자-->
+                                    &lt;!&ndash;생각을 좀 더 해보자&ndash;&gt;
                                     <div class="premium-text font-weight500">프리미엄 의류 선택하기</div>
                                     <div>></div>
                                 </div>
                                 <div class="premium-tip">
                                     <div class="tip-text">TIP</div>
-                                    <!--프리미엄 가격표, 지정 브랜드 모달 만들기-->
+                                    &lt;!&ndash;프리미엄 가격표, 지정 브랜드 모달 만들기&ndash;&gt;
                                     <div class="guide-premium-detail">프리미엄 가격표/ 지정 브랜드 보기</div>
                                 </div>
                             </div>
                             <div class="premium-brand-guide">프리미엄 지정 브랜드는
                                 <div class="premium-service-color">프리미엄 서비스로 자동 적용</div>됩니다.
                             </div>
-                        </div>
+                        </div>-->
                         <div class="cleaning">
                             <div class="cleaning-title">
                                 <div class="border-title">맡기실 세탁물 선택하기</div>
@@ -97,20 +97,30 @@
                             <div class="select-cleaning">
                                 <div class="checkbox-container-wrap-cleaning">
                                     <div class="checkbox-container-cleaning">
-                                        <label for="chk-life">
-                                            <input type="checkbox" id="chk-life" name="washer">
+                                        <label for="chk-washer">
+                                            <input type="checkbox" id="chk-washer" name="washer">
                                             <i class="circle2"></i>
                                             <span class="cleaning-choose-text">생활 빨래</span>
                                             <div class="help-text">티셔츠, 수건과 같은 세탁기에 돌리는 빨래입니다.</div>
                                         </label>
+                                        <div class="order-measure-wrapper" id="washer-measure">
+                                            <span>무게: </span>
+                                            <input type="text" name="washerNumber" placeholder="무게를 입력해주세요.">
+                                            <span class="order-measure">kg</span>
+                                        </div>
                                     </div>
                                     <div class="checkbox-container-cleaning">
-                                        <label for="chk-other">
-                                            <input type="checkbox" id="chk-other">
+                                        <label for="chk-cleaning">
+                                            <input type="checkbox" id="chk-cleaning" name="cleaning">
                                             <i class="circle2"></i>
                                             <span class="cleaning-choose-text">개별 클리닝</span>
                                             <div class="help-text">드라이클리닝, 신발, 이불 등의 개별로 과금되는 세탁물입니다.</div>
                                         </label>
+                                        <div class="order-measure-wrapper" id="cleaning-measure">
+                                            <span>개수: </span>
+                                            <input type="text" name="cleaningNumber" placeholder="개수를 입력해주세요.">
+                                            <span class="order-measure">개</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -120,19 +130,6 @@
                                 <div class="border-title">세탁 요청사항</div>
                             </div>
                             <div class="cleaning-requests-container">
-                                <!-- <div class="cleaning-requests-select">
-                                    <input type="checkbox" name="orderOptionStain" id="stain-opt"></input>
-                                    <label for="stain-opt" class="requests-select-box">얼룩케어</label>
-
-                                    <input type="checkbox" name="orderOptionDirt" id="dirt-opt"></input>
-                                    <label for="dirt-opt" class="requests-select-box">소매/목때 케어</label>
-
-                                    <input type="checkbox" name="orderOptionCaution" id="caution-opt"></input>
-                                    <label for="caution-opt" class="requests-select-box">세탁 주의</label>
-
-                                    <input type="checkbox" name="orderOptionAddtion" id="addtion-opt"></input>
-                                    <label for="addtion-opt" class="requests-select-box">추가 요청사항</label>
-                                </div> -->
                                 <div class="cleaning-requests-message">
                                     <div>
                                         <span>추가 요청사항을 입력하세요.</span>
@@ -161,5 +158,17 @@
     $("#request-end").on("click", function(){
         document.requestForm.submit();
     })
+
+    // if($("#chk-washer").is(":checked")) {
+    //     $("#washer-measure").show();
+    // } else {
+    //     $("#washer-measure").hide();
+    // }
+    //
+    // if($("#chk-cleaning").is(":checked")) {
+    //     $("#cleaning-measure").show();
+    // } else {
+    //     $("#cleaning-measure").hide();
+    // }
 </script>
 </html>

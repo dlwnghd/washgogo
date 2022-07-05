@@ -47,4 +47,6 @@ public class UserDAO {
     public int findUserNumber(UserVO userVO) { return userMapper.findUserNumber(userVO);}
     //    비밀번호 변경
     public void changePw(UserVO userVO) {userMapper.changePw(userVO);}
+    //      서비스 해지
+    public int removeService(Long userNumber) { return userMapper.removeService(userNumber);}
 }

@@ -182,6 +182,7 @@ function modify() {
     let userAddressDetail = $("#ADDRESSDETAIL").text();
     let userEntranceType = $("#ENTRANCETYPE").text();
     let userEntrancePw = $("#ENTRANCEPW").text();
+    let userEntranceMessage = $("#ENTRANCEMESSAGE").text();
     var userVO = {
         userName : userName,
         userEmail : userEmail,
@@ -190,7 +191,8 @@ function modify() {
         userAddress : userAddress,
         userAddressDetail : userAddressDetail,
         userEntranceType : userEntranceType,
-        userEntrancePw : userEntrancePw
+        userEntrancePw : userEntrancePw,
+        userEntranceMessage : userEntranceMessage
     }
     console.log(userVO);
     $.ajax({

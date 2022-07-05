@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 
@@ -94,7 +95,18 @@ public class UserController {
     }
 
     @GetMapping("useService")
-    public String useService(UserVO userVO){
+    public String useService(HttpServletResponse response, HttpSession session, Model model) throws IOException{
+        long number = (long)session.getAttribute("userNumber");
+
+        UserVO userVO = userService.loadUserInfo(number);
+        if(userVO.getUserServiceType() == null) {
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('먼저 서비스를 신청해주세요.'); location.href='/index';</script>");
+            out.flush();
+        }
+
+        model.addAttribute("loadUserInfo", userService.loadUserInfo(number));
         return "/user/useService";
     }
 
@@ -107,6 +119,16 @@ public class UserController {
     public String changeCancel(UserVO userVO){
         return "/user/changeCancel";
     }
+
+    @PostMapping("serviceRemove")
+    @ResponseBody
+    public String serviceRemove(HttpSession session, UserVO userVO) {
+        long number = (long)session.getAttribute("userNumber");
+        userVO.setUserNumber(number);
+        userService.removeService(number);
+        return "/user/myPage";
+    }
+
 
     @GetMapping("paymentDetails")
     public String paymentDetails(OrderVO order) {
@@ -224,26 +246,26 @@ public class UserController {
             resultNum += ranNum;			//생성된 난수(문자열)을 원하는 수(letter)만큼 더하며 나열
         }
 
-//        휴대폰에 인증번호 전송
-        String api_key = "NCSHUXHNNINOL8AT";
-        String api_secret = "IMDMEXAZSWQWO7OR993KMVDEXCOK0ZDV";
-        Message coolsms = new Message(api_key, api_secret);
-
-        // 4 params(to, from, type, text) are mandatory. must be filled
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("to", userVO.getUserPhonenum());    // 인증번호 받는 사람
-        params.put("from", "01088580291");  // 인증번호 보내는 사람
-        params.put("type", "SMS");  // 문자형태
-        params.put("text", "[WashGoGo] 인증번호 ["+ resultNum +"]를 입력하세요.");   // 보내는 문자
-        params.put("app_version", "test app 1.2"); // application name and version
-
-        try {
-            JSONObject obj = (JSONObject) coolsms.send(params);
-            System.out.println(obj.toString());
-        } catch (CoolsmsException e) {
-            System.out.println(e.getMessage());
-            System.out.println(e.getCode());
-        }
+////        휴대폰에 인증번호 전송
+//        String api_key = "NCSHUXHNNINOL8AT";
+//        String api_secret = "IMDMEXAZSWQWO7OR993KMVDEXCOK0ZDV";
+//        Message coolsms = new Message(api_key, api_secret);
+//
+//        // 4 params(to, from, type, text) are mandatory. must be filled
+//        HashMap<String, String> params = new HashMap<String, String>();
+//        params.put("to", userVO.getUserPhonenum());    // 인증번호 받는 사람
+//        params.put("from", "01088580291");  // 인증번호 보내는 사람
+//        params.put("type", "SMS");  // 문자형태
+//        params.put("text", "[WashGoGo] 인증번호 ["+ resultNum +"]를 입력하세요.");   // 보내는 문자
+//        params.put("app_version", "test app 1.2"); // application name and version
+//
+//        try {
+//            JSONObject obj = (JSONObject) coolsms.send(params);
+//            System.out.println(obj.toString());
+//        } catch (CoolsmsException e) {
+//            System.out.println(e.getMessage());
+//            System.out.println(e.getCode());
+//        }
 
         log.info("resultNum : " + resultNum);   // 인증번호 확인용 log.info
         return userService.checkUser(userVO) ? resultNum : null;   // userService.checkUser(userVO)이 true : 존재하는 유저
@@ -430,9 +452,18 @@ public class UserController {
 
     // 이용 내역
     @GetMapping("used")
-    public String used(HttpSession session, Model model){
+    public String used(HttpSession session, Model model, HttpServletResponse response) throws IOException {
         long userNumber = (long)session.getAttribute("userNumber");
+        UserVO user = userService.loadUserInfo(userNumber);
         OrderVO order = orderService.getRecent(userNumber);
+
+        if(order == null) {
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('사용한 내역이 없습니다.'); location.href='/index';</script>");
+            out.flush();
+        }
+
         List<OrderListVO> orderList = orderListService.getRecentList(order.getOrderNumber());
 
         model.addAttribute("order", order);

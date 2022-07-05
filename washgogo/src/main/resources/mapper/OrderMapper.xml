@@ -24,7 +24,11 @@
     <!--총 금액 삽입-->
     <update id="updateTotal">
         UPDATE TBL_ORDER
-        SET ORDER_TOTAL_PRICE = #{orderTotalPrice}
+        SET ORDER_TOTAL_PRICE = (
+            SELECT SUM(ORDER_PRICE)
+            FROM TBL_ORDERLIST
+            WHERE ORDER_NUMBER=#{orderNumber}
+        )
         WHERE ORDER_NUMBER = #{orderNumber}
     </update>
 

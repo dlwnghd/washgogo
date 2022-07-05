@@ -25,8 +25,8 @@ public class OrderService {
     public OrderVO getRecent(Long userNumber) {
         return orderDAO.getRecent(userNumber);
     }
-    public int getTotalPrice() {
-        return orderDAO.getTotalPrice();
+    public void setTotalPrice(Long orderNumber) {
+        orderDAO.setTotalPrice(orderNumber);
     }
     public boolean removeRequest(Long orderNumber) {
         return orderDAO.removeRequest(orderNumber);

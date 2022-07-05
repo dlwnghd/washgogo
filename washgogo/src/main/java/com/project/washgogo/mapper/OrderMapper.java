@@ -17,7 +17,7 @@ public interface OrderMapper {
 //    이용 내역
     public OrderVO selectRecentRequest(Long userNumber);
 //    총 금액 구하기
-    public int getTotalPrice();
+    public void updateTotal(Long orderNumber);
 //    수거 취소
     public int delete(Long orderNumber);
 }
