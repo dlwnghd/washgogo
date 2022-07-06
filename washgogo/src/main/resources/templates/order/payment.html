@@ -8,14 +8,36 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
     <link rel="stylesheet" th:href="@{/css/common.css}">
     <link rel="stylesheet" href="/css/common.css">
+    <style>
+        .request-end {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 300px;
+            height: 55px;
+            color: white;
+            background: #00BA86;
+            font-weight: 600;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 3px;
+            border: none;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
     <header th:replace="~{/fragments/headerFooter :: header}"></header>
-        금액:<div name="price" th:text="${order.orderTotalPrice}"/>
+    <form method="post" action="/order/pay" id="pay" >
+<!--        수량:<input name="amount" type="text"/>-->
+<!--        항목:<input name="item" type="text"/>-->
+        금액:<input id="request-end" name="price" type="text" th:text="${order.orderTotalPrice}"/>
 <!--        포인트 사용:<input name="pointUse" type="text"/>-->
 <!--        <input name="userNumber" type="text" th:value="${userVO.userNumber}"/>-->
-        <button type="button" id='charge_kakao'>결제</button>
+        <button class="request-end" type="button" id='charge_kakao'>결제</button>
+<!--        <button type="button" id="onclick">등록</button>-->
+    </form>
     <footer th:replace="~{/fragments/headerFooter :: footer}"></footer>
 </div>
 </body>
@@ -56,8 +78,15 @@
                 msg += '에러내용 : ' + rsp.error_msg;
             }
             alert(msg);
-            document.location.href="/order/payment"; //alert창 확인 후 이동할 url 설정//alert창 확인 후 이동할 url 설정
+             //alert창 확인 후 이동할 url 설정
         });
+    });
+    $('#onclick').click(function () {
+        if(flag == true) {
+            $("#pay").submit();
+        }else{
+            alert("결제를 먼저 진행해주세요")
+        }
     });
 </script>
 </html>
