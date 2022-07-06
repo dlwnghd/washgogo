@@ -33,4 +33,3 @@ changeOnceButton.click(function () {
     userServiceTypeValue.value = "한 번 이용";
     userLaunderetteValue = "선택안함"
 });
-

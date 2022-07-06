@@ -29,22 +29,22 @@
 <body>
 <div id="app">
     <header th:replace="~{/fragments/headerFooter :: header}"></header>
-    <form method="post" action="/order/pay" id="pay" >
-        수량:<input name="amount" type="text"/>
-        항목:<input name="item" type="text"/>
+<!--    <form method="post" action="/order/pay" id="pay" >-->
+<!--        수량:<input name="amount" type="text"/>-->
+<!--        항목:<input name="item" type="text"/>-->
         금액:<input name="price" type="text" th:value="${order.orderTotalPrice}"/>
-        포인트 사용:<input name="pointUse" type="text"/>
+<!--        포인트 사용:<input name="pointUse" type="text"/>-->
 <!--        <input name="userNumber" type="text" th:value="${userVO.userNumber}"/>-->
         <button class="request-end" type="button" id='charge_kakao'>결제</button>
 <!--        <button type="button" id="onclick">등록</button>-->
-    </form>
+<!--    </form>-->
     <footer th:replace="~{/fragments/headerFooter :: footer}"></footer>
 </div>
 </body>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script>
-    flag = false;
+    // flag = false;
     $('#charge_kakao').click(function () {
         // getter
         var IMP = window.IMP;
