@@ -181,11 +181,11 @@ public class UserController {
         long number = (long)session.getAttribute("userNumber");
         userVO = userService.loadUserInfo(number);
         model.addAttribute("userVO", userService.loadUserInfo(number));
-        if(userVO.getUserServiceType().equals("Once")){
-            userVO.setUserServiceType("Several");
+        if(userVO.getUserServiceType().equals("한 번 이용")){
+            userVO.setUserServiceType("여러 번 이용");
             userVO.setUserLaunderetteType("Regular");
-        }else if(userVO.getUserServiceType().equals("Several")){
-            userVO.setUserServiceType("Once");
+        }else if(userVO.getUserServiceType().equals("여러 번 이용")){
+            userVO.setUserServiceType("한 번 이용");
             userVO.setUserLaunderetteType("선택 안 함");
         }
         userService.changeService(userVO);
@@ -207,7 +207,8 @@ public class UserController {
     }
 
     @GetMapping("paymentDetails")
-    public String paymentDetails(OrderVO order) {
+    public String paymentDetails(OrderVO order,UserVO uservo,HttpSession session, Model model) {
+        long number = (long)session.getAttribute("userNumber");
         return "/user/paymentDetails";
     }
 

@@ -3,7 +3,6 @@ package com.project.washgogo.controller;
 import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.OrderListService;
 import com.project.washgogo.service.OrderService;
-import com.project.washgogo.service.PriceService;
 import com.project.washgogo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,8 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
 @Controller
 @Slf4j
@@ -28,7 +25,6 @@ public class OrderController {
 	private final UserService userService;
 	private final OrderService orderService;
 	private final OrderListService orderListService;
-	private final PriceService priceService;
 
 	@GetMapping("requestGuide")
 	public String requestGuide(HttpSession session, HttpServletResponse response) throws IOException {
@@ -38,12 +34,12 @@ public class OrderController {
 		UserVO user = userService.loadUserInfo(userNumber);
 		OrderVO order = orderService.getRecent(userNumber);
 
-		if(user.getUserServiceType() == null) {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('먼저 서비스를 신청해주세요.'); location.href='/index';</script>");
-			out.flush();
-		}
+		//if(user.getUserServiceType() == null) {
+		//	response.setContentType("text/html; charset=UTF-8");
+		//	PrintWriter out = response.getWriter();
+		//	out.println("<script>alert('먼저 서비스를 신청해주세요.'); location.href='/index';</script>");
+		//	out.flush();
+		//}
 
 		return "/order/requestGuide";
 	}
@@ -124,19 +120,6 @@ public class OrderController {
 		if(session.getAttribute("userNumber")  == null) { return "/user/login"; }
 
 		long userNumber = (long)session.getAttribute("userNumber");
-		model.addAttribute("userNumber", userService.loadUserInfo(userNumber));
 		return "/order/payment";
-	}
-	//신규 결제내역
-	@PostMapping("pay")
-	public RedirectView add(PriceVO priceVO, RedirectAttributes rttr){
-
-		priceService.add(priceVO);
-//        1. Flash 사용
-//         세션에 파라미터를 저장하고, request 객체가 초기화된 후 다시 request에 담아준다.
-		rttr.addFlashAttribute("priceNumber", priceVO.getPriceNumber());
-
-
-		return new RedirectView("/");
 	}
 }
