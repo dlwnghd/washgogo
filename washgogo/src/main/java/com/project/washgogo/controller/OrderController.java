@@ -120,11 +120,8 @@ public class OrderController {
 //		if(session.getAttribute("userNumber")  == null) { return "/user/login"; }
 
 		long userNumber = (long)session.getAttribute("userNumber");
-<<<<<<< HEAD
 		UserVO user = userService.loadUserInfo(userNumber);
 		model.addAttribute("userVO", user);
-=======
->>>>>>> c26e3d93fd6290628893e0c2e7c550b758e5a655
 		return "/order/payment";
 	}
 }
