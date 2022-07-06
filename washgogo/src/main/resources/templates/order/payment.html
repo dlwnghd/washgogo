@@ -12,8 +12,8 @@
 <body>
 <div id="app">
     <header th:replace="~{/fragments/headerFooter :: header}"></header>
-        금액:<input name="price" type="text"/>
-        포인트 사용:<input name="pointUse" type="text"/>
+        금액:<div name="price" th:text="${order.orderTotalPrice}"/>
+<!--        포인트 사용:<input name="pointUse" type="text"/>-->
 <!--        <input name="userNumber" type="text" th:value="${userVO.userNumber}"/>-->
         <button type="button" id='charge_kakao'>결제</button>
     <footer th:replace="~{/fragments/headerFooter :: footer}"></footer>
