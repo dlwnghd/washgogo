@@ -186,7 +186,8 @@ public class UserController {
     }
 
     @GetMapping("paymentDetails")
-    public String paymentDetails(OrderVO order) {
+    public String paymentDetails(OrderVO order,UserVO uservo,HttpSession session, Model model) {
+        long number = (long)session.getAttribute("userNumber");
         return "/user/paymentDetails";
     }
 
