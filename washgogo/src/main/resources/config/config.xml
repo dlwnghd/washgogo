@@ -9,6 +9,6 @@
         <typeAlias type="com.project.washgogo.domain.vo.NoticeVO" alias="noticeVO"/>
         <typeAlias type="com.project.washgogo.domain.vo.ProfileVO" alias="profileVO"/>
         <typeAlias type="com.project.washgogo.domain.vo.ServiceAreaVO" alias="serviceAreaVO"/>
-        <typeAlias type="com.project.washgogo.domain.vo.priceVO" alias="priceVO"/>
+        <typeAlias type="com.project.washgogo.domain.vo.PriceVO" alias="priceVO"/>
     </typeAliases>
 </configuration>

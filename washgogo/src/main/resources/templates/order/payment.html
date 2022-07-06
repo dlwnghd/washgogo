@@ -13,11 +13,10 @@
 <div id="app">
     <header th:replace="~{/fragments/headerFooter :: header}"></header>
     <form method="post" action="/order/pay" id="pay" >
-        <input name="item" type="text"/>
-        <input name="amount" type="text"/>
-        <input name="item" type="text"/>
-        <input name="price" type="text"/>
-        <input name="pointUse" type="text"/>
+        수량:<input name="amount" type="text"/>
+        항목:<input name="item" type="text"/>
+        금액:<input name="price" type="text"/>
+        포인트 사용:<input name="pointUse" type="text"/>
         <input name="userNumber" type="text" th:value="${userNumber.userNumber}"/>
         <button type="button" id='charge_kakao'>결제</button>
         <button type="button" id="onclick">등록</button>
@@ -66,7 +65,7 @@
         });
     });
     $('#onclick').click(function () {
-        if(flag = true) {
+        if(flag == true) {
             $("#pay").submit();
         }else{
             alert("결제를 먼저 진행해주세요")

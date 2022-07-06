@@ -120,11 +120,11 @@ public class OrderController {
 	}
 
 	@GetMapping("payment")
-	public String payment(HttpSession session, Model model,HttpServletResponse response) throws IOException{
+	public String payment(HttpSession session, UserVO userVO,Model model,HttpServletResponse response) throws IOException{
 		if(session.getAttribute("userNumber")  == null) { return "/user/login"; }
 
 		long userNumber = (long)session.getAttribute("userNumber");
-		model.addAttribute("userNumber", userService.myPageInfo(userNumber));
+		model.addAttribute("userNumber", userService.loadUserInfo(userNumber));
 		return "/order/payment";
 	}
 	//신규 결제내역

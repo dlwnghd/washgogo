@@ -12,4 +12,5 @@ public class PriceVO {
     private Long price;
     private Long userNumber;
     private Long pointUse;
+
 }
