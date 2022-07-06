@@ -105,7 +105,7 @@
 
         window.addEventListener("load", e => {
             // 한 번 이용 고객
-            if(userServiceType == "Once"){
+            if(userServiceType == "한 번 이용"){
                 changeOnceButton.addClass("using-service");
                 changeOnceButton .removeClass("no-service");
                 changeSeveralButton .removeClass("using-service");
@@ -113,7 +113,7 @@
                 changeSeveralButton.prop("type", "submit");
                 changeSeveralText.innerHTML = '변경하기';
                 changeOnceText.innerHTML = '서비스 이용 중';
-            } else if(userServiceType == "Several"){    // 여러 번 이용 고객
+            } else if(userServiceType == "여러 번 이용"){    // 여러 번 이용 고객
                 changeSeveralButton .addClass("using-service");
                 changeSeveralButton .removeClass("no-service");
                 changeOnceButton.removeClass("using-service");
