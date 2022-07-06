@@ -34,75 +34,147 @@
                             <form id="profileForm" method="post" action="/user/modifyProfile">
                                 <input type="file" name="file" id="profileInput" style="display: none" accept="image/*">
                             </form>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>워시고고 - 우리집 모바일 세탁소</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.laundrygo.com/image/favicon/favicon_web.png">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <!--⭐헤더 푸터-->
+    <link rel="stylesheet" th:href="@{/css/style_frame.css}">
+    <!--⭐틀-->
+    <link rel="stylesheet" th:href="@{/css/modifying_information_modal.css}">
+    <!-- ⭐각 수정별 모달창 스타일-->
+    <link rel="stylesheet" th:href="@{/css/style_Modifying_information.css}">
+    <!-- ⭐수정 페이지 세부 -->
+</head>
+<body class="account-info" data-modal-open-count="0">
+    <div id="app" data-is-loaded="true">
+        <!---- App-Header ---->
+        <header th:replace="~{/fragments/headerFooter:: header}">
+        </header>
+        <!---- App-Body ---->
+        <div id="app-body" class="modifyInfo">
+            <div class="container-md container">
+                <main class="account-info-container">
+                    <h1>계정 설정</h1>
+                    <div class="profile-image">
+                        <div class="user-profile-picture">
+                            <div data-name="image" lazy="loaded" style="background-image: url('/img/user-profile-image.jpg')"></div>
                         </div>
-                        <section>
-                            <ul id="account" class="account-info">
-                                <li class="item-container name">
-                                    <div class="item">
-                                        <div class="item-title name">이름</div>
-                                        <div id="USERNAME" class="item-info username" th:text="${loadUserInfo.userName}"></div>
-                                    </div>
-                                    <div class="name"><img class="name" src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
-                                </li>
-                                <li class="item-container email">
-                                    <div class="item">
-                                        <div class="item-title">이메일</div>
-                                        <div class="item-info">
-                                            <div id="EMAIL" th:text="${loadUserInfo.userEmail}"></div>
-                                        </div>
-                                    </div>
-                                    <div><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
-                                </li>
-                                <li class="item-container password">
-                                    <div class="item">
-                                        <div class="item-title">비밀번호</div>
-                                        <input id="PASSWORD" class="item-info" type="password" th:value="${loadUserInfo.userPw}">
-                                    </div>
-                                    <div><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
-                                </li>
-                                <li class="item-container phoneNumber">
-                                    <div class="item">
-                                        <div class="item-title">휴대전화 번호</div>
-                                        <div id="PHONENUMBER" class="item-info" th:text="${loadUserInfo.userPhonenum}"></div>
-                                    </div>
-                                    <div><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
-                                </li>
+                        <label>
+                            <img class="camera-icon" src="/img/camera-icon.svg" alt="카메라 아이콘">
+                            <input type="file" name="file" id="profileInput" style="display: none" accept="image/*">
+                        </label>
 
-                                <li add="" class="item-container address">
-                                    <div add="" class="item">
-                                        <div add="" class="item-title">배송지</div>
-                                        <div add="" id="ADDRESS" class="item-info" th:text="${loadUserInfo.userAddress}"></div>
-                                        <div add="" id="ADDRESSDETAIL" class="item-info" th:text="${loadUserInfo.userAddressDetail}"></div>
-                                        <div class="height15"></div>
-                                        <div add="" class="item-title">공동현관 출입방법</div>
-                                        <div id="ENTRANCETYPE" th:text="${loadUserInfo.userEntranceType}"></div>
-                                        <div add="" id="ENTRANCEPW" class="item-info" th:if="${loadUserInfo.userEntrancePw != null}" th:text="${loadUserInfo.userEntrancePw}"></div>
-                                        <div add="" id="ENTRANCEMESSAGE" class="item-info"  th:if="${loadUserInfo.userEntranceMessage != null}" th:text="${loadUserInfo.userEntranceMessage}"></div>
+                    </div>
+                    <section>
+                        <ul id="account" class="account-info">
+                            <li class="item-container name">
+                                <div class="item">
+                                    <div class="item-title name">이름</div>
+                                    <div id="USERNAME" class="item-info username" th:text="${loadUserInfo.userName}"></div>
+                                </div>
+                                <div class="name"><img class="name" src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                            </li>
+                            <li class="item-container email">
+                                <div class="item">
+                                    <div class="item-title">이메일</div>
+                                    <div class="item-info">
+                                        <div id="EMAIL" th:text="${loadUserInfo.userEmail}"></div>
                                     </div>
-                                    <div add=""><img
-                                        add=""
-                                        src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
-                                </li>
-                            </ul>
-                            <ul id="withdrawal" data-testid="delete-account" class="delete-account">
-                                <li class="item-container accountWithdrawal">
-                                    <div data-testid="delete-account-text" class="item">계정 탈퇴</div>
-                                    <div><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
-                                </li>
-                            </ul>
-                            <div class="change-flex-container">
-                                <div></div>
-                                <input type="button" class="button" id="change-ok" value="변경 완료">
-                                <div></div>
-                            </div>
-                        </section>
-                    </main>
-                </div>
+                                </div>
+                                <div><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                            </li>
+                            <li class="item-container password">
+                                <div class="item">
+                                    <div class="item-title">비밀번호</div>
+                                    <input id="PASSWORD" class="item-info" type="password" th:value="${loadUserInfo.userPw}">
+                                </div>
+                                <div><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                            </li>
+                            <li class="item-container phoneNumber">
+                                <div class="item">
+                                    <div class="item-title">휴대전화 번호</div>
+                                    <div id="PHONENUMBER" class="item-info" th:text="${loadUserInfo.userPhonenum}"></div>
+                                </div>
+                                <div><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                            </li>
+
+                            <li add="" class="item-container address" id="modify-address">
+                                <div add="" class="item">
+                                    <div add="" class="item-title">배송지</div>
+                                    <div add="" id="ADDRESS" class="item-info" th:text="${loadUserInfo.userAddress}"></div>
+                                    <div add="" id="ADDRESSDETAIL" class="item-info" th:text="${loadUserInfo.userAddressDetail}"></div>
+                                    <div class="height15"></div>
+                                    <div add="" class="item-title">공동현관 출입방법</div>
+                                    <div id="ENTRANCETYPE" th:text="${loadUserInfo.userEntranceType}"></div>
+                                    <div add="" id="ENTRANCEPW" class="item-info" th:if="${loadUserInfo.userEntrancePw != null}" th:text="${loadUserInfo.userEntrancePw}"></div>
+                                    <div add="" id="ENTRANCEMESSAGE" class="item-info"  th:if="${loadUserInfo.userEntranceMessage != null}" th:text="${loadUserInfo.userEntranceMessage}"></div>
+                                </div>
+                                <div add=""><img
+                                    add=""
+                                    src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                            </li>
+                        </ul>
+                        <ul id="withdrawal" data-testid="delete-account" class="delete-account">
+                            <li class="item-container accountWithdrawal">
+                                <div data-testid="delete-account-text" class="item">계정 탈퇴</div>
+                                <div><img src="https://assets.cdn.soomgo.com/icons/icon-mypage-list-arrow.svg"></div>
+                            </li>
+                        </ul>
+                        <div class="change-flex-container">
+                            <div></div>
+                            <input type="button" class="button" id="change-ok" value="변경 완료">
+                            <div></div>
+                        </div>
+                    </section>
+                </main>
             </div>
-            <!---- App-Footer ---->
-            <nav th:replace="~{/fragments/headerFooter:: footer}">
-            </nav>
         </div>
+        <!---- App-Footer ---->
+        <nav th:replace="~{/fragments/headerFooter:: footer}">
+        </nav>
+    </div>
+    <!-- modal -->
+    <div id="modal" class="modal-overlay" style="display: none;">
+        <div id="modal_window" class="modal-window">
+            <div class="close-area">X</div>
+                <div class="title">
+                    <h2 id="changeInfo">수정할 정보명</h2>
+                </div>
+                <div id="withdrawals" class="content" style="display: none;">
+                    <p>계정 탈퇴 시 모든 개인정보가 삭제되며<br>구매하신 캐시는 환불되지 않습니다.</p>
+                </div>
+                <div id="modifyInfo" class="content" style="display: none;">새 ***
+                    <input id="result" class="inputInfo" type="text">
+                </div>
+                <div id="newPw" class="content1" style="display: none;">새 비밀번호
+                    <div class="password-wrapper pw">
+                        <input id="Pw" type="password">
+                        <button class="pw-show"></button>
+                    </div>
+                </div>
+                <div id="newPwCheck" class="content2" style="display: none;">새 비밀번호 확인
+                    <div class="password-wrapper npw">
+                        <input id="PwCheck" type="password">
+                        <button class="pw-show"></button>
+                    </div>
+                </div>
+                <div id="choose1" style="display: none;">
+                    <button type="submit" class="change-user">수정</button>
+                    <button type="button" class="no-change-user">취소</button>
+                </div>
+                <div id="choose2" style="display: none;">
+                        <button type="submit" class="delete-user">계정 탈퇴
+                            <a href="/index"></a>
+                        </button>
+                    <button type="button" class="remain-user">다시 생각해 볼게요</button>
+                </div>
+        </div>
+<<<<<<< HEAD
         <!-- modal -->
         <div id="modal" class="modal-overlay" style="display: none;">
             <div id="modal_window" class="modal-window">
@@ -161,4 +233,18 @@
         let userNumber = [[${session.userNumber}]];
     </script>
     <script th:src="@{/js/modifying_Information.js}"></script>
+=======
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:inline="javascript">
+    let address = [[${loadUserInfo.userAddress}]];
+    let addressDetail = [[${loadUserInfo.userAddressDetail}]];
+    let entranceType = [[${loadUserInfo.userEntranceType}]];
+    let entrancePw = [[${loadUserInfo.userEntrancePw}]];
+    let entranceMessage = [[${loadUserInfo.userEntranceMessage}]];
+    let selectedServiceType = [[${selectedServiceType}]];
+</script>
+<script th:src="@{/js/modifying_Information.js}"></script>
+>>>>>>> 420361acefa25717a07ec64a94f13c61907a1e0c
 </html>
