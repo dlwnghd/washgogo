@@ -50,6 +50,7 @@ public class UserServiceImpl implements UserService{
     public void modifyProfile(UserVO userVO){
         if(userVO.getProfile() != null){
             userVO.getProfile().setUserVO(userVO);
+            profileDAO.remove(userVO.getUserNumber());
             profileDAO.save(userVO.getProfile());
         }
     }
@@ -60,8 +61,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public ProfileVO getProfile(UserVO userVO){
-        return profileDAO.findByUserNumber(userVO.getUserNumber());
+    public ProfileVO getProfile(Long userNumber){
+        return profileDAO.findByUserNumber(userNumber);
     }
 
     @Override

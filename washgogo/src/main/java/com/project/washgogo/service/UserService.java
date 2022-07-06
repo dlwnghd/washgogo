@@ -24,6 +24,6 @@ public interface UserService {
     public UserVO showPoint(Long userNumber);
     public int removeService(Long userNumber);
     public void modifyProfile(UserVO userVO);
-    public ProfileVO getProfile(UserVO userVO);
+    public ProfileVO getProfile(Long userNumber);
     public void removeProfile(Long userNumber);
 }

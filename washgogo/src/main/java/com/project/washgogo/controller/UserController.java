@@ -103,16 +103,18 @@ public class UserController {
     }
 
     @PostMapping("modifyProfile")
-    @ResponseBody
-    public String modifyProfile(@RequestBody UserVO userVO, HttpSession session){
+    public String modifyProfile(UserVO userVO, HttpSession session, Model model){
         log.info(userVO.toString());
         long userNumber = (long)session.getAttribute("userNumber");
         UserVO user = userService.loadUserInfo(userNumber);
         ProfileVO profileVO = userVO.getProfile();
         profileVO.setUserVO(user);
         user.setProfile(profileVO);
+        if(userService.getProfile(userNumber) != null){
+
+        }
         userService.modifyProfile(user);
-        return "프로필 사진 DB저장 성공";
+        return myPage(user, session, model);
     }
 
     @DeleteMapping("removeProfile/{userNumber}")
@@ -440,8 +442,8 @@ public class UserController {
         log.info("---------------------");
         session.setAttribute("userNumber", userNumber);
         session.setAttribute("userName", userName);
-        if(userService.getProfile(user) != null){
-            ProfileVO profile = userService.getProfile(user);
+        if(userService.getProfile(userNumber) != null){
+            ProfileVO profile = userService.getProfile(userNumber);
             profile.setUserVO(user);
             session.setAttribute("profile", profile);
         }
@@ -458,7 +460,7 @@ public class UserController {
         log.info("---------------------");
         HttpSession session = request.getSession();
         log.info("logout에서 session : "+session.getAttribute("userNumber").toString());
-        session.removeAttribute("userNumber");
+        session.invalidate();
         return new RedirectView("/index");
     }
 

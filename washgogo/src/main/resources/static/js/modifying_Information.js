@@ -316,55 +316,30 @@ $fileInput.on("change", function () {
     let input = $("input[name='file']");
     let file = input[0].files[0];
     console.log("파일태그 체인지 이벤트 파일 가져오기 : " + file.name, file.size);
-    if(file){
-        if(checkExtension(file.name, file.size)){
-            formData.append("file", file);
-        }
-
-        $.ajax({
-            url: "/upload/uploadAjax",
-            type: "post",
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function(profile){
-                showUploadFile(profile);
-                console.log("업로드 성공 profile 리턴 : " + profile.toString());
-            }
-        });
-
-
-        /*
-        let profileData = {
-            "profile.fileName" : $Image.data('name'),
-            "profile.originalFileName" : $Image.data('original'),
-            "profile.uploadDirectory" : $Image.data('directory')
-        }
-
-        $.ajax({
-            url: "/user/modifyProfile",
-            type: "post",
-            data: profileData,
-            contentType: "application/json",
-            success: function(result){
-                console.log(result);
-            }
-        });
-
-         */
-
-
-        let $form = $("form#profileForm");
-        let str = "";
-
-        str += "<input type='hidden' name='profile.fileName' value='" + $Image.data('name') +"'>"
-        str += "<input type='hidden' name='profile.originalFileName' value='" + $Image.data('original') +"'>"
-        str += "<input type='hidden' name='profile.uploadDirectory' value='" + $Image.data('directory') +"'>"
-
-        $form.append(str).submit();
-
-
+    if(checkExtension(file.name, file.size)){
+        formData.append("file", file);
     }
+
+    $.ajax({
+        url: "/upload/uploadAjax",
+        type: "post",
+        data: formData,
+        processData: false,
+        contentType: false,
+        async: false,
+        success: function(profile){
+            showUploadFile(profile);
+        }
+    });
+
+    let $form = $("form#profileForm");
+    let str = "";
+
+    str += "<input type='hidden' name='profile.fileName' value='" + $Image.data('name') +"'>"
+    str += "<input type='hidden' name='profile.originalFileName' value='" + $Image.data('original') +"'>"
+    str += "<input type='hidden' name='profile.uploadDirectory' value='" + $Image.data('directory') +"'>"
+
+    $form.append(str).submit();
 
 });
 

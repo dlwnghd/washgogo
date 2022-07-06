@@ -60,7 +60,7 @@ public class UploadController {
             Thumbnailator.createThumbnail(file.getInputStream(), thumbnail, 250, 250);
             thumbnail.close();
         }
-
+        log.info(profileVO.toString());
         return profileVO;
     }
 
