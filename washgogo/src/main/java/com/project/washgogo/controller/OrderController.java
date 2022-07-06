@@ -57,12 +57,32 @@ public class OrderController {
 		return "/order/requestSelect";
 	}
 
+	@PostMapping("modifyAddress")
+	public String modifyAddress(HttpSession session, UserVO userVO, @ModelAttribute("selectedServiceType") String selectedServiceType){
+		log.info("-----------------postAddress--------------------");
+		log.info("userVO : " + userVO.toString());
+		log.info("-------------------------------------");
+
+		return "/order/modifyAddress";
+	}
+
+	@PostMapping("/serviceAddressOk")
+	public String serviceAddressOk(HttpSession session, UserVO userVO, @ModelAttribute("selectedServiceType") String selectedServiceType, Model model){
+		log.info("-------------------------------------");
+		log.info("userVO : " + userVO.toString());
+		log.info("-------------------------------------");
+		Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
+		userVO.setUserNumber(userNumber);
+		userService.modifyAddress(userVO);
+		UserVO user = userService.loadUserInfo(userNumber);
+		model.addAttribute("selectedServiceType", selectedServiceType);
+		model.addAttribute("userServiceType", user.getUserServiceType());
+		return "/order/requestSelect";
+	}
+
 	@PostMapping("/requestSelectOk")
 	public String requestSelectOk(OrderVO orderVO, HttpSession session, HttpServletRequest request) {
 		long userNumber = (long)session.getAttribute("userNumber");
-
-		log.info("============================" + request.getParameter("washerNumber"));
-		log.info("============================" + request.getParameter("cleaningNumber"));
 
 		orderVO.setUserNumber(userNumber);
 		log.info("-------------------------------------");
@@ -70,7 +90,7 @@ public class OrderController {
 		log.info("-------------------------------------");
 		orderService.applyRequest(orderVO);
 
-		if (!request.getParameter("washerNumber").isEmpty()) {
+		if (request.getParameter("washer") != null && !request.getParameter("washer").equals("") && !request.getParameter("washerNumber").isEmpty()) {
 			Double number = Double.parseDouble(request.getParameter("washerNumber"));
 			Double temp = 0.0;
 			if (number > 3.0) {
@@ -86,7 +106,7 @@ public class OrderController {
 			orderListService.insertWasher1(orderVO.getOrderNumber());
 		}
 
-		if (!request.getParameter("cleaningNumber").isEmpty()) {
+		if (request.getParameter("cleaning") != null && !request.getParameter("cleaning").equals("") && !request.getParameter("cleaningNumber").isEmpty()) {
 			Long cleaningNumber = Long.parseLong(request.getParameter("cleaningNumber"));
 			log.info("======================" + cleaningNumber);
 			orderListService.insertCleaning(orderVO.getOrderNumber(), cleaningNumber);

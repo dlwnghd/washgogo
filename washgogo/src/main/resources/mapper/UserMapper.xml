@@ -73,7 +73,7 @@
     <update id="updateUserInfo">
         UPDATE TBL_USER
         <trim prefix="SET" suffixOverrides=",">
-            SET USER_EMAIL = #{userEmail}, USER_PW = #{userPw}, USER_NAME = #{userName}, USER_PHONENUM = #{userPhonenum}, USER_ADDRESS = #{userAddress},  USER_ADDRESS_DETAIL = #{userAddressDetail}, USER_ENTRANCE_TYPE = #{userEntranceType}
+            USER_EMAIL = #{userEmail}, USER_PW = #{userPw}, USER_NAME = #{userName}, USER_PHONENUM = #{userPhonenum}, USER_ADDRESS = #{userAddress},  USER_ADDRESS_DETAIL = #{userAddressDetail}, USER_ENTRANCE_TYPE = #{userEntranceType},
             <if test="userEntrancePw != null">USER_ENTRANCE_PW = #{userEntrancePw},</if>
             <if test="userEntranceMessage != null">USER_ENTRANCE_MESSAGE = #{userEntranceMessage},</if>
         </trim>
@@ -83,10 +83,7 @@
     <!--서비스 변경-->
     <update id="updateService">
         UPDATE TBL_USER
-        <trim prefix="SET" suffixOverrides=",">
-            USER_SERVICE_TYPE = #{userServiceType},
-            <if test="userLaunderetteType != null">USER_LAUNDERETTE_TYPE = #{userLaunderetteType},</if>
-        </trim>
+        SET USER_SERVICE_TYPE = #{userServiceType}, USER_LAUNDERETTE_TYPE = #{userLaunderetteType}
         WHERE USER_NUMBER=#{userNumber}
     </update>
 

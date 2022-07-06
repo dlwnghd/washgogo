@@ -30,7 +30,7 @@ public interface UserMapper {
 public boolean checkUser(UserVO userVO);
 //    회원 번호 확인
 public int findUserNumber(UserVO userVO);
-//    회원 번호 확인
+//    비밀 번호 변경
 public void changePw(UserVO userVO);
 //     포인트
     public UserVO selectPoint(Long userNumber);

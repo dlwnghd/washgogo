@@ -67,13 +67,16 @@
 }
 
 .chooseSeveral, .chooseOnce{
-    cursor: pointer;
     padding:12px 0px;
 }
 
 .using-service{
     color: rgb(197, 197, 197);
-    cursor: default;
+    cursor: auto;
+}
+
+.no-service:hover{
+    color: #00ba86;
 }
 
 .section2{
@@ -88,4 +91,13 @@ ul li{
 
 .section2 ul li{
     font-size: 30px;
+}
+
+h4 > small {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+button:focus {
+    outline: none;
 }

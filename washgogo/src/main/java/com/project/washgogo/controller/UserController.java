@@ -74,6 +74,8 @@ public class UserController {
         //변경
         userService.modifyUserInfo(userVO);
         log.info(userVO.toString());
+        session.removeAttribute("userName");
+        session.setAttribute("userName", userVO.getUserName());
         return "/user/modifyingInformation";
     }
 
@@ -131,9 +133,38 @@ public class UserController {
         return "/user/useService";
     }
 
+    //    서비스 변경 페이지로 이동
     @GetMapping("serviceChange")
-    public String serviceChange(UserVO userVO){
+    public String serviceChange(UserVO userVO, HttpSession session, Model model){
+        log.info("---------------------");
+        log.info("---serviceChange/GET---");
+        log.info("---------------------");
+        long number = (long)session.getAttribute("userNumber");
+        model.addAttribute("userVO", userService.loadUserInfo(number));
+        log.info("userVO : "+userVO);
+        log.info("model : "+model);
+        log.info("GET/userService : "+userService.loadUserInfo(number).getUserServiceType());
         return "/user/serviceChange";
+    }
+
+//        서비스 변경 페이지에서 변경 버튼 클릭 시
+    @PostMapping("serviceChange")
+    public RedirectView serviceChangeOK(UserVO userVO, HttpSession session, Model model){
+        log.info("---------------------");
+        log.info("---serviceChangeOK/POST---");
+        log.info("---------------------");
+        long number = (long)session.getAttribute("userNumber");
+        userVO = userService.loadUserInfo(number);
+        model.addAttribute("userVO", userService.loadUserInfo(number));
+        if(userVO.getUserServiceType().equals("Once")){
+            userVO.setUserServiceType("Several");
+            userVO.setUserLaunderetteType("Regular");
+        }else if(userVO.getUserServiceType().equals("Several")){
+            userVO.setUserServiceType("Once");
+            userVO.setUserLaunderetteType("선택 안 함");
+        }
+        userService.changeService(userVO);
+        return new RedirectView("/user/serviceChange");
     }
 
     @GetMapping("changeCancel")
@@ -149,7 +180,6 @@ public class UserController {
         userService.removeService(number);
         return "/user/myPage";
     }
-
 
     @GetMapping("paymentDetails")
     public String paymentDetails(OrderVO order) {
@@ -336,36 +366,6 @@ public class UserController {
         log.info("---------------------");
         return "/user/login";
     }
-
-//    로그인
-    /*
-    @PostMapping("login")
-    public RedirectView loginOK(UserVO userVO, String userEmail, String userPw, RedirectAttributes rttr){
-        log.info("---------------------");
-        log.info("---loginPostMapping---");
-        log.info("---------------------");
-        log.info("userService출력문 : "+userService.login(userEmail, userPw));
-
-        rttr.addFlashAttribute("userVO", userService.login(userEmail,userPw));
-        userVO = userService.login(userEmail, userPw);
-
-        if(userVO == null){  // 사용자의 번호가 인식되지 않는다면
-            log.info("---로그인 실패---");
-            log.info("userVO : " + userVO);
-            log.info("사용자가 입력한 이메일 : " + userEmail);    // 사용자가 입력한 이메일
-            log.info("사용자가 입력한 Pw : " + userPw);   // 사용자가 입력한 Pw
-            return new RedirectView("/user/login");
-        }
-
-        log.info("---로그인 성공---");
-        log.info("userVO : " + userVO);
-        log.info("사용자가 입력한 이메일 : " + userEmail);    // 사용자가 입력한 이메일
-        log.info("사용자가 입력한 Pw : " + userPw);   // 사용자가 입력한 Pw
-        log.info(userVO.toString());
-        return new RedirectView("/index");
-//        return new RedirectView("/user/myPage");
-    }
-     */
 
 //    로그인 시 유저 존재 확인
     @ResponseBody //REST
@@ -598,4 +598,22 @@ public class UserController {
         return "/service/serviceChangeComplete";
     }
 
+
+    @GetMapping("myModifyAddress")
+    public String myModifyAddress(HttpSession session, UserVO userVO){
+        log.info("-----------------postAddress--------------------");
+        log.info("userVO : " + userVO.toString());
+        log.info("-------------------------------------");
+
+        return "/user/myModifyAddress";
+    }
+
+    @PostMapping("/serviceAddressMyPage")
+    public String serviceAddressMyPage(HttpSession session, UserVO userVO, Model model){
+        Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
+        userVO.setUserNumber(userNumber);
+        userService.modifyAddress(userVO);
+        UserVO user = userService.loadUserInfo(userNumber);
+        return "/user/modifyingInformation";
+    }
 }
