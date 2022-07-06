@@ -116,15 +116,16 @@ public class OrderController {
 		orderListService.insertShipping(orderVO.getOrderNumber());
 		orderService.setTotalPrice(orderVO.getOrderNumber());
 
-		return ("/index");
+		return ("/order/payment");
 	}
 
 	@GetMapping("payment")
-	public String payment(HttpSession session, UserVO userVO,Model model,HttpServletResponse response) throws IOException{
-		if(session.getAttribute("userNumber")  == null) { return "/user/login"; }
+	public String payment(HttpSession session, Model model){
+//		if(session.getAttribute("userNumber")  == null) { return "/user/login"; }
 
 		long userNumber = (long)session.getAttribute("userNumber");
-		model.addAttribute("userNumber", userService.loadUserInfo(userNumber));
+		UserVO user = userService.loadUserInfo(userNumber);
+		model.addAttribute("userVO", user);
 		return "/order/payment";
 	}
 	//신규 결제내역
