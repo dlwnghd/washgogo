@@ -1,135 +1,134 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>워시고고 - 우리집 모바일 세탁소</title>
-        <link
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>워시고고 - 우리집 모바일 세탁소</title>
+    <link
             rel="shortcut icon"
             type="image/x-icon"
             href="https://www.laundrygo.com/image/favicon/favicon_web.png">
-        <link
+    <link
             rel="stylesheet"
             type="text/css"
             href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-        <link rel="stylesheet" th:href="@{/css/common.css}">
-        <!--⭐헤더 푸터-->
-        <link rel="stylesheet" th:href="@{/css/style_frame.css}">
-        <!--⭐틀-->
-        <link rel="stylesheet" th:href="@{/css/style_service_change.css}">
-        <!--⭐서비스 변경 세부-->
-    </head>
-    <body>
-        <div id="app">
-            <!---- App-Header ---->
-            <header th:replace="~{/fragments/headerFooter:: header}">
-            </header>
-            <!---- App-Body ---->
-            <div id="app-body">
-                <div class="container" style="max-width: 62.375rem; margin: 0 auto">
-                    <form action="/user/serviceChange" method="post" name="userVO">
-                        <div class="content" style="margin-top: 50px;">
-                        <div class="title">
-                            <h1>서비스 변경</h1>
-                        </div>
-                        <div class="service_question">
-                            <ul>
-                                <li>
-                                    <p class="question">어떤 요금제로 변경하시겠습니까?</p>
-                                </li>
-                                <li>
-                                    <p class="change_info">다음 결제일에 선택하신 요금제로 변경됩니다.</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <form action="" type="submit">
-                            <div class="section1">
-                                <div class="content-box">
-                                    <div class="content-explain">
-                                        <h3>원하는 만큼 자유롭게</h3>
-                                        <h4>여러 번 이용<small style="font-size: 0.8rem;font-weight: 600;">(런드렛 Regular)</small></h4>
-                                    </div>
-                                    <div class="image-box">
-                                        <img th:src="@{/img/useSeveral.png}" alt="">
-                                    </div>
-                                    <!-- / -->
-                                    <button type="button" id="severalButton" onclick="click()">
-                                        <div class="chooseSeveral" type="userServiceType">
-                                                <h3 id="chooseSeveralText"></h3>
-                                        </div>
-                                    </button>
-                                    <div class="service_once"></div>
-                                </div>
-                                <div class="content-box">
-                                    <div class="content-explain">
-                                        <h3>한 번만 이용하고 싶다면</h3>
-                                        <h4>한 번 이용</h4>
-                                    </div>
-                                    <div class="image-box">
-                                        <img th:src="@{/img/useOnce.png}" alt="">
-                                    </div>
-                                    <button type="button" id="onceButton" onclick="click()">
-                                        <div class="chooseOnce" value="Once">
-                                                <h3 id="chooseOnceText"></h3>
-                                        </div>
-                                    </button>
-                                    <div class="service_once"></div>
-                                </div>
-                            </div>
-                            <input type="hidden" name="userServiceType" id="userServiceType" value="Several" />
-                            <input type="hidden" name="userLaunderetteType" id="userLaunderetteType" value="Regular" />
-                        </form>
-                        <div class="section2">
-                            <ul>
-                                <li>서비스 변경 예약 시, 다음 결제일부터 변경된 요금제가 적용됩니다.<br>
-                                    (사용내역, 결제 금액 등)
-                                </li>
-                                <li>결제 당일에는 변경 예약 취소가 불가능합니다</li>
-                                <li>서비스 즉시 변경은 고객센터를 통해서 가능 합니다.</li>
-                            </ul>
-                        </div>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <!--⭐헤더 푸터-->
+    <link rel="stylesheet" th:href="@{/css/style_frame.css}">
+    <!--⭐틀-->
+    <link rel="stylesheet" th:href="@{/css/style_service_change.css}">
+    <!--⭐서비스 변경 세부-->
+</head>
+<body>
+<div id="app">
+    <!---- App-Header ---->
+    <header th:replace="~{/fragments/headerFooter:: header}">
+    </header>
+    <!---- App-Body ---->
+    <div id="app-body">
+        <div class="container" style="max-width: 62.375rem; margin: 0 auto">
+            <form action="/user/serviceChange" method="post" name="userVO">
+                <div class="content" style="margin-top: 50px;">
+                    <div class="title">
+                        <h1>서비스 변경</h1>
                     </div>
+                    <div class="service_question">
+                        <ul>
+                            <li>
+                                <p class="question">어떤 요금제로 변경하시겠습니까?</p>
+                            </li>
+                            <li>
+                                <p class="change_info">다음 결제일에 선택하신 요금제로 변경됩니다.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <form action="" type="submit">
+                        <div class="section1">
+                            <div class="content-box">
+                                <div class="content-explain">
+                                    <h3>원하는 만큼 자유롭게</h3>
+                                    <h4>여러 번 이용<small style="font-size: 0.8rem;font-weight: 600;">(런드렛 Regular)</small></h4>
+                                </div>
+                                <div class="image-box">
+                                    <img th:src="@{/img/useSeveral.png}" alt="">
+                                </div>
+                                <!-- / -->
+                                <button type="button" id="severalButton" onclick="click()">
+                                    <div class="chooseSeveral" type="userServiceType">
+                                        <h3 id="chooseSeveralText"></h3>
+                                    </div>
+                                </button>
+                                <div class="service_once"></div>
+                            </div>
+                            <div class="content-box">
+                                <div class="content-explain">
+                                    <h3>한 번만 이용하고 싶다면</h3>
+                                    <h4>한 번 이용</h4>
+                                </div>
+                                <div class="image-box">
+                                    <img th:src="@{/img/useOnce.png}" alt="">
+                                </div>
+                                <button type="button" id="onceButton" onclick="click()">
+                                    <div class="chooseOnce" value="Once">
+                                        <h3 id="chooseOnceText"></h3>
+                                    </div>
+                                </button>
+                                <div class="service_once"></div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="userServiceType" id="userServiceType" value="Several" />
+                        <input type="hidden" name="userLaunderetteType" id="userLaunderetteType" value="Regular" />
                     </form>
+                    <div class="section2">
+                        <ul>
+                            <li>서비스 변경 예약 시, 다음 결제일부터 변경된 요금제가 적용됩니다.<br>
+                                (사용내역, 결제 금액 등)
+                            </li>
+                            <li>결제 당일에는 변경 예약 취소가 불가능합니다</li>
+                            <li>서비스 즉시 변경은 고객센터를 통해서 가능 합니다.</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <!---- App-Footer ---->
-            <nav th:replace="~{/fragments/headerFooter:: footer}">
-            </nav>
+            </form>
         </div>
-    </body>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script th:src="@{/js/service_change.js}"></script>
-    <script th:inline="javascript">
-        let userServiceType= [[${userVO.userServiceType}]];	// 유저 서비스 타입를 가져옴
+    </div>
+    <!---- App-Footer ---->
+    <nav th:replace="~{/fragments/headerFooter:: footer}">
+    </nav>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/service_change.js}"></script>
+<script th:inline="javascript">
+    let userServiceType= [[${userVO.userServiceType}]];   // 유저 서비스 타입를 가져옴
 
-        window.addEventListener("load", e => {
-            // 한 번 이용 고객
-            if(userServiceType == "한 번 이용"){
-                changeOnceButton.addClass("using-service");
-                changeOnceButton .removeClass("no-service");
-                changeSeveralButton .removeClass("using-service");
-                changeSeveralButton.addClass("no-service");
-                changeSeveralButton.prop("type", "submit");
-                changeSeveralText.innerHTML = '변경하기';
-                changeOnceText.innerHTML = '서비스 이용 중';
-            } else if(userServiceType == "여러 번 이용"){    // 여러 번 이용 고객
-                changeSeveralButton .addClass("using-service");
-                changeSeveralButton .removeClass("no-service");
-                changeOnceButton.removeClass("using-service");
-                changeOnceButton.addClass("no-service");
-                changeOnceButton.prop("type", "submit");
-                changeSeveralText.innerHTML = '서비스 이용 중';
-                changeOnceText.innerHTML = '변경하기';
-            } else {    // 아직 선택하지 않은 고객
-                changeSeveralButton.removeClass("using-service");
-                changeOnceButton.removeClass("using-service");
-                changeSeveralText.innerHTML = '사용하기';
-                changeOnceText.innerHTML = '사용하기';
-                changeOnceButton.prop("type", "submit");
-                changeSeveralButton.prop("type", "submit");
-            }
-        })
-
-    </script>
+    window.addEventListener("load", e => {
+        // 한 번 이용 고객
+        if(userServiceType == "한 번 이용"){
+            changeOnceButton.addClass("using-service");
+            changeOnceButton .removeClass("no-service");
+            changeSeveralButton .removeClass("using-service");
+            changeSeveralButton.addClass("no-service");
+            changeSeveralButton.prop("type", "submit");
+            changeSeveralText.innerHTML = '변경하기';
+            changeOnceText.innerHTML = '서비스 이용 중';
+        } else if(userServiceType == "여러 번 이용"){    // 여러 번 이용 고객
+            changeSeveralButton .addClass("using-service");
+            changeSeveralButton .removeClass("no-service");
+            changeOnceButton.removeClass("using-service");
+            changeOnceButton.addClass("no-service");
+            changeOnceButton.prop("type", "submit");
+            changeSeveralText.innerHTML = '서비스 이용 중';
+            changeOnceText.innerHTML = '변경하기';
+        } else {    // 아직 선택하지 않은 고객
+            changeSeveralButton.removeClass("using-service");
+            changeOnceButton.removeClass("using-service");
+            changeSeveralText.innerHTML = '사용하기';
+            changeOnceText.innerHTML = '사용하기';
+            changeOnceButton.prop("type", "submit");
+            changeSeveralButton.prop("type", "submit");
+        }
+    })
+</script>
 </html>

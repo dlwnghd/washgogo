@@ -29,22 +29,22 @@
 <body>
 <div id="app">
     <header th:replace="~{/fragments/headerFooter :: header}"></header>
-    <form method="post" action="/order/pay" id="pay" >
+<!--    <form method="post" action="/order/pay" id="pay" >-->
 <!--        수량:<input name="amount" type="text"/>-->
 <!--        항목:<input name="item" type="text"/>-->
-        금액:<input id="request-end" name="price" type="text" th:text="${order.orderTotalPrice}"/>
+        금액:<input name="price" type="text" th:value="${order.orderTotalPrice}"/>
 <!--        포인트 사용:<input name="pointUse" type="text"/>-->
 <!--        <input name="userNumber" type="text" th:value="${userVO.userNumber}"/>-->
         <button class="request-end" type="button" id='charge_kakao'>결제</button>
 <!--        <button type="button" id="onclick">등록</button>-->
-    </form>
+<!--    </form>-->
     <footer th:replace="~{/fragments/headerFooter :: footer}"></footer>
 </div>
 </body>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script>
-    flag = false;
+    // flag = false;
     $('#charge_kakao').click(function () {
         // getter
         var IMP = window.IMP;
@@ -59,10 +59,10 @@
 
             name: '주문명 : 주문명 설정',
             amount: money,
-            buyer_email: 'iamport@siot.do',
-            buyer_name: '구매자이름',
-            buyer_tel: '010-1234-5678',
-            buyer_addr: '인천광역시 부평구',
+            buyer_email: 'okna0523@naver.com',
+            buyer_name: '우재현',
+            buyer_tel: '010-7206-0523',
+            buyer_addr: '경기도 성남 정자동',
             buyer_postcode: '123-456'
         }, function (rsp) {
             console.log(rsp);
@@ -73,6 +73,7 @@
                 msg += '결제 금액 : ' + rsp.paid_amount;
                 msg += '카드 승인번호 : ' + rsp.apply_num;
                 flag = true;
+                location.href="/index"
             } else {
                 var msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
