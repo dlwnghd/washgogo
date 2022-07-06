@@ -12,15 +12,10 @@
 <body>
 <div id="app">
     <header th:replace="~{/fragments/headerFooter :: header}"></header>
-    <form method="post" action="/order/pay" id="pay" >
-        수량:<input name="amount" type="text"/>
-        항목:<input name="item" type="text"/>
         금액:<input name="price" type="text"/>
         포인트 사용:<input name="pointUse" type="text"/>
 <!--        <input name="userNumber" type="text" th:value="${userVO.userNumber}"/>-->
         <button type="button" id='charge_kakao'>결제</button>
-        <button type="button" id="onclick">등록</button>
-    </form>
     <footer th:replace="~{/fragments/headerFooter :: footer}"></footer>
 </div>
 </body>
@@ -61,15 +56,8 @@
                 msg += '에러내용 : ' + rsp.error_msg;
             }
             alert(msg);
-             //alert창 확인 후 이동할 url 설정
+            document.location.href="/order/payment"; //alert창 확인 후 이동할 url 설정//alert창 확인 후 이동할 url 설정
         });
-    });
-    $('#onclick').click(function () {
-        if(flag == true) {
-            $("#pay").submit();
-        }else{
-            alert("결제를 먼저 진행해주세요")
-        }
     });
 </script>
 </html>
