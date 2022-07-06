@@ -1,16 +1,16 @@
 package com.project.washgogo.controller;
 
-import com.project.washgogo.domain.vo.OrderListVO;
-import com.project.washgogo.domain.vo.OrderVO;
-import com.project.washgogo.domain.vo.UserVO;
+import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.OrderListService;
 import com.project.washgogo.service.OrderService;
+import com.project.washgogo.service.PriceService;
 import com.project.washgogo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +28,7 @@ public class OrderController {
 	private final UserService userService;
 	private final OrderService orderService;
 	private final OrderListService orderListService;
+	private final PriceService priceService;
 
 	@GetMapping("requestGuide")
 	public String requestGuide(HttpSession session, HttpServletResponse response) throws IOException {
@@ -118,8 +119,24 @@ public class OrderController {
 		return ("/index");
 	}
 
-	//공지 추가 링크
 	@GetMapping("payment")
-	public void payment(){
+	public String payment(HttpSession session, Model model,HttpServletResponse response) throws IOException{
+		if(session.getAttribute("userNumber")  == null) { return "/user/login"; }
+
+		long userNumber = (long)session.getAttribute("userNumber");
+		model.addAttribute("userNumber", userService.myPageInfo(userNumber));
+		return "/order/payment";
+	}
+	//신규 결제내역
+	@PostMapping("pay")
+	public RedirectView add(PriceVO priceVO, RedirectAttributes rttr){
+
+		priceService.add(priceVO);
+//        1. Flash 사용
+//         세션에 파라미터를 저장하고, request 객체가 초기화된 후 다시 request에 담아준다.
+		rttr.addFlashAttribute("priceNumber", priceVO.getPriceNumber());
+
+
+		return new RedirectView("/");
 	}
 }

@@ -12,32 +12,29 @@
 <body>
 <div id="app">
     <header th:replace="~{/fragments/headerFooter :: header}"></header>
-        <div class="card-body bg-white mt-0 shadow">
-            <p style="font-weight: bold">카카오페이 현재 사용가능</p>
-            <label class="box-radio-input"><input type="radio" name="cp_item" value="5000"><span>5,000원</span></label>
-            <label class="box-radio-input"><input type="radio" name="cp_item" value="10000"><span>10,000원</span></label>
-            <label class="box-radio-input"><input type="radio" name="cp_item" value="15000"><span>15,000원</span></label>
-            <label class="box-radio-input"><input type="radio" name="cp_item" value="20000"><span>20,000원</span></label>
-            <label class="box-radio-input"><input type="radio" name="cp_item" value="25000"><span>25,000원</span></label>
-            <label class="box-radio-input"><input type="radio" name="cp_item" value="30000"><span>30,000원</span></label>
-            <label class="box-radio-input"><input type="radio" name="cp_item" value="35000"><span>35,000원</span></label>
-            <label class="box-radio-input"><input type="radio" name="cp_item" value="40000"><span>40,000원</span></label>
-            <label class="box-radio-input"><input type="radio" name="cp_item" value="50000"><span>50,000원</span></label>
-            <p style="color: #ac2925; margin-top: 30px">카카오페이의 최소 충전금액은 5,000원이며 <br/>최대 충전금액은 50,000원 입니다.</p>
-            <button type="button" class="btn btn-lg btn-block  btn-custom" id="charge_kakao">충 전 하 기</button>
-        </div>
+    <form method="post" action="/order/pay" id="pay" >
+        <input name="item" type="text"/>
+        <input name="amount" type="text"/>
+        <input name="item" type="text"/>
+        <input name="price" type="text"/>
+        <input name="pointUse" type="text"/>
+        <input name="userNumber" type="text" th:value="${userNumber.userNumber}"/>
+        <button type="button" id='charge_kakao'>결제</button>
+        <button type="button" id="onclick">등록</button>
+    </form>
     <footer th:replace="~{/fragments/headerFooter :: footer}"></footer>
 </div>
 </body>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script>
+    flag = false;
     $('#charge_kakao').click(function () {
         // getter
         var IMP = window.IMP;
-        IMP.init('imp31075947');
-        // IMP.init('imp17990477');
-        var money = $('input[name="cp_item"]:checked').val();
+        //IMP.init('imp31075947');
+        IMP.init('imp17990477');
+        var money = $('input[name=price]').val();
         console.log(money);
 
         IMP.request_pay({
@@ -59,20 +56,21 @@
                 msg += '상점 거래ID : ' + rsp.merchant_uid;
                 msg += '결제 금액 : ' + rsp.paid_amount;
                 msg += '카드 승인번호 : ' + rsp.apply_num;
-                $.ajax({
-                    type: "GET",
-                    url: "/order/payok/", //충전 금액값을 보낼 url 설정
-                    data: {
-                        "amount" : money
-                    },
-                });
+                flag = true;
             } else {
                 var msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
             }
             alert(msg);
-            document.location.href="/order/payment/"; //alert창 확인 후 이동할 url 설정
+             //alert창 확인 후 이동할 url 설정
         });
+    });
+    $('#onclick').click(function () {
+        if(flag = true) {
+            $("#pay").submit();
+        }else{
+            alert("결제를 먼저 진행해주세요")
+        }
     });
 </script>
 </html>
