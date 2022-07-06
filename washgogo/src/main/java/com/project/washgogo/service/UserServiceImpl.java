@@ -1,11 +1,14 @@
 package com.project.washgogo.service;
 
+import com.project.washgogo.domain.dao.ProfileDAO;
 import com.project.washgogo.domain.dao.UserDAO;
+import com.project.washgogo.domain.vo.ProfileVO;
 import com.project.washgogo.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,6 +18,7 @@ import java.util.List;
 @Primary
 public class UserServiceImpl implements UserService{
     private final UserDAO userDAO;
+    private final ProfileDAO profileDAO;
     @Override
     public List<UserVO> getList() {
         return userDAO.getList();
@@ -39,6 +43,26 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean modifyUserInfo(UserVO userVO) {
         return userDAO.modifyUserInfo(userVO);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void modifyProfile(UserVO userVO){
+        if(userVO.getProfile() != null){
+            userVO.getProfile().setUserVO(userVO);
+            profileDAO.remove(userVO.getUserNumber());
+            profileDAO.save(userVO.getProfile());
+        }
+    }
+
+    @Override
+    public void removeProfile(Long userNumber){
+        profileDAO.remove(userNumber);
+    }
+
+    @Override
+    public ProfileVO getProfile(Long userNumber){
+        return profileDAO.findByUserNumber(userNumber);
     }
 
     @Override

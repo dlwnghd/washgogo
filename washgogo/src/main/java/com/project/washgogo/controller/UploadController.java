@@ -24,16 +24,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-// 1. 동일한 이름으로 파일이 업로드 되면, 기존 파일 삭제
-// 2. 이미지 파일의 경우 원본 파일의 용량이 클 수 있기 때문에 썸네일 이미지가 필요하다.
-// 3. 첨부파일 공격에 대비하기 위한 업로드 파일의 확장자 제한
-
 @Controller
 @Slf4j
 @RequestMapping("/upload/*")
 public class UploadController {
 
-    @ResponseBody //REST
+    @ResponseBody
     @PostMapping("/uploadAjax")
     public ProfileVO uploadAjax(MultipartFile file) throws IOException{
         String rootDirectory = "C:/upload";
@@ -47,6 +43,7 @@ public class UploadController {
 
         ProfileVO profileVO = new ProfileVO();
 
+        /* 파일 이름 중복 제거*/
         UUID uuid = UUID.randomUUID();
         String fileName = uuid.toString() + "_" + file.getOriginalFilename();
 
@@ -57,17 +54,18 @@ public class UploadController {
         File saveFile = new File(uploadDirectory, fileName);
         file.transferTo(saveFile);
 
+        /* 썸네일 생성 */
         if(checkImageType(saveFile)){
             FileOutputStream thumbnail = new FileOutputStream(new File(uploadDirectory, "t_" + fileName));
-            Thumbnailator.createThumbnail(file.getInputStream(), thumbnail, 100, 100);
+            Thumbnailator.createThumbnail(file.getInputStream(), thumbnail, 250, 250);
             thumbnail.close();
-            profileVO.setImage(true);
         }
-
+        log.info(profileVO.toString());
         return profileVO;
     }
 
-    @GetMapping("display")
+    /* 썸네일 화면에 전송 */
+    @GetMapping("/display")
     @ResponseBody
     public byte[] getFile(String path) throws IOException {
         return FileCopyUtils.copyToByteArray(new File("C:/upload/" + path));
@@ -76,6 +74,8 @@ public class UploadController {
     @DeleteMapping("/delete")
     @ResponseBody
     public void deleteFile(String path){
+        log.info("===================="+ path + "=====================" );
+
     // 썸네일 삭제
         File file = new File("C:/upload", path);
         if(file.exists()) {file.delete();}

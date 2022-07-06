@@ -22,5 +22,5 @@ public class UserVO {
 	private String userLaunderetteType; // 런드렛 타입
 	private String userPoint;           // 포인트
 
-	private List<ProfileVO> profile;
+	private ProfileVO profile;
 }
