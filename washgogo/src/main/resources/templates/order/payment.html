@@ -24,6 +24,26 @@
             border-radius: 3px;
             border: none;
         }
+
+        .price-container{
+            text-align: center;
+        }
+
+        .flex-container{
+            display:flex;
+            justify-content: space-between;
+        }
+
+        .price{
+            font-size: 1.5rem;
+            border: 0;
+            text-align: center;
+        }
+
+        .price-help{
+            text-align:center;
+        }
+
     </style>
 </head>
 <body>
@@ -32,10 +52,19 @@
 <!--    <form method="post" action="/order/pay" id="pay" >-->
 <!--        수량:<input name="amount" type="text"/>-->
 <!--        항목:<input name="item" type="text"/>-->
-        금액:<input name="price" type="text" th:value="${order.orderTotalPrice}"/>
+    <div class="price-help">결제하실 금액</div>
+    <h3 class="price-container">
+       <input name="price" class="price" type="text" th:value="| ${order.orderTotalPrice}원|"/>
+    </h3>
 <!--        포인트 사용:<input name="pointUse" type="text"/>-->
 <!--        <input name="userNumber" type="text" th:value="${userVO.userNumber}"/>-->
+    <div class="flex-container">
+        <div></div>
         <button class="request-end" type="button" id='charge_kakao'>결제</button>
+        <div></div>
+    </div>
+
+    <div>결제는 카카오페이로 진행되며</div>
 <!--        <button type="button" id="onclick">등록</button>-->
 <!--    </form>-->
     <footer th:replace="~{/fragments/headerFooter :: footer}"></footer>
