@@ -237,137 +237,178 @@ deleteBtn.addEventListener("click", e => {
     remove();
 })
 
-/* 프로필 업로드 */
+/*----------------프로필 업로드------------------------*/
+/* 모달창 이벤트 */
+const $modalBg = $("#commonMessageBoxBg");
+const $body = $("body");
+const $modal = $("#commonMessageBox");
+const $basicBtn = $("#commonMessageBox .btn-to-basic");
+const $closeModal = $(".modalCloseBtn");
+const $okBtn = $("#commonMessageBox .btnOk");
+function showModal() {
+    $modal.css("display", "block");
+    modalOn();
+}
+$closeModal.on("click", function(){
+    modalOff();
+});
+function modalOn(){
+    $modalBg.css("display", "block");
+    $body.css("overflow", "hidden");
+}
+function modalOff(){
+    $modalBg.css("display", "none");
+    $modal.css("display", "none");
+    $body.css("overflow", "auto");
+}
+/* 카메라 아이콘 클릭 이벤트*/
+const $cameraIcon = $(".modifyInfo .camera-icon");
+$cameraIcon.on("click",function () {
+    showModal();
+});
 
-/* 첨부파일 공격에 대비하기 위한 업로드 파일의 확장자 제한 */
-/*
+/* 업로드 파일의 확장자 제한 */
 let regex = new RegExp("(.*?)\.(jpg|png)$");
 let maxSize = 5242880; // 5MB
 
 function checkExtension(fileName, fileSize){
     if(!regex.test(fileName)){
-        alert("(" + fileName + ")업로드 할 수 없는 파일의 형식입니다.")
+        alert("(" + fileName + ")업로드 할 수 없는 파일의 형식입니다.");
         return false;
     }
     if(fileSize >= maxSize){
-        alert("(" + fileName + ")파일 사이즈 초과")
+        alert("(" + fileName + ")파일 사이즈 초과");
         return false;
     }
     return true;
 }
-
-const $Image = $(".modifyInfo .user-profile-picture div[data-name='image']");
-
-showUploadFile(files);
-function showUploadFile(profile){
-    let str = "";
-    $.each(profile, function(i, file){
-        str += "<li data-name='" + file.fileName + "' data-original='" + file.originalFileName + "' data-directory='" + file.uploadDirectory + "' data-image='" + file.image + "'>";
-        str += "<span data-name='" + file.originalFileName + "' data-path='" + file.uploadDirectory + "/t_" + file.fileName + "' style='cursor: pointer'>x</span>";
-        str += "<a href='/upload/download?path=" + file.uploadDirectory + "/" + file.fileName + "'>"
-        str += file.image ? "<img src='/upload/display?path=" + file.uploadDirectory + "/t_" + file.fileName + "'>"
-            : "<img src='/img/user-profile-image.jpg' width='100'>";
-        str += "</a><p>" + file.originalFileName + "</p>";
-        str += "</li>";
-    });
-    result.append(str);
-
-}
-*/
-/* 프로필사진 업로드 */
-const $cameraIcon = $(".modifyInfo .camera-icon");
+/* 사진 업로드 */
 const $fileInput = $("#profileInput");
-/*
-$cameraIcon.on("click",function () {
-
+const $Image = $(".modifyInfo .user-profile-picture div.image");
+$okBtn.on("click", function () {
+    modalOff();
+    $fileInput.click();
 });
-
- */
-
-//업로드 전
-//let filePrev = $fileInput.files[0];
-
-$fileInput.on("change", function (e) {
+$fileInput.on("change", function () {
     let formData = new FormData();
-    // 업로드 후
     let input = $("input[name='file']");
     let file = input[0].files[0];
-    console.log(file);
-});
+    console.log("파일태그 체인지 이벤트 파일 가져오기 : " + file.name, file.size);
+    if(file){
+        if(checkExtension(file.name, file.size)){
+            formData.append("file", file);
+        }
 
-    /*
-    if(checkExtension(file.name, file.size)){
-        formData.append("file", file);
+        $.ajax({
+            url: "/upload/uploadAjax",
+            type: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(profile){
+                showUploadFile(profile);
+                console.log("업로드 성공 profile 리턴 : " + profile.toString());
+            }
+        });
+
+
+        /*
+        let profileData = {
+            "profile.fileName" : $Image.data('name'),
+            "profile.originalFileName" : $Image.data('original'),
+            "profile.uploadDirectory" : $Image.data('directory')
+        }
+
+        $.ajax({
+            url: "/user/modifyProfile",
+            type: "post",
+            data: profileData,
+            contentType: "application/json",
+            success: function(result){
+                console.log(result);
+            }
+        });
+
+         */
+
+
+        let $form = $("form#profileForm");
+        let str = "";
+
+        str += "<input type='hidden' name='profile.fileName' value='" + $Image.data('name') +"'>"
+        str += "<input type='hidden' name='profile.originalFileName' value='" + $Image.data('original') +"'>"
+        str += "<input type='hidden' name='profile.uploadDirectory' value='" + $Image.data('directory') +"'>"
+
+        $form.append(str).submit();
+
+
     }
 
-    const dataTransfer = new DataTransfer();
+});
 
-    //사용자가 업로드한 파일들의 정보를 전역변수인 arFile에 담아놓기
-    filePrev = file;
-    //전역변수의 전체 파일들을 FileList타입으로 변경
-    arFile.forEach(file => dataTransfer.items.add(file));
-    //input태그에 그 동안 업로드했던 모든 파일의 정보로 덮어 씌우기
-    file = dataTransfer.files;
+/* 첨부된 파일 화면에 보여주기 */
+function showUploadFile(profile){
+    $Image.attr("data-name", profile.fileName);
+    $Image.attr("data-original", profile.originalFileName);
+    $Image.attr("data-directory", profile.uploadDirectory);
+    $Image.css("background-image", "url('/upload/display?path=" + profile.uploadDirectory + "/t_" + profile.fileName + "'");
+    console.log("화면에 첨부파일 뿌려주기");
+}
+/* 기본 이미지 적용 */
+$basicBtn.on("click", function () {
+    removeImageFile();
+    showBasicImage();
+    modalOff();
 
     $.ajax({
-        url: "/upload/uploadAjax",
-        type: "post",
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function(profile){
-            showUploadFile(profile);
+        url: "/user/removeProfile/" + userNumber,
+        type: "delete",
+        success: function(){
+            console.log("DB 삭제 성공");
+        },
+        error: function () {
+            console.log("DB 삭제 실패");
         }
     });
-});
 
-let removedFiles = [];
-$(".fResult").on("click", "span", function(e){
-    let path = $(this).data("path");
-    let li = $(this).closest("li");
-    //x버튼을 눌렀을 때 삭제될 파일의 원본 이름
-    let fileName = $(this).data("name");
-    const dataTransfer = new DataTransfer();
-    li.remove();
-    removedFiles.push(path);
-    //원래 있었던 파일들에서
-    for(let i=0; i<arFile.length; i++){
-        //삭제한 파일의 이름과 동일한 파일을 검사
-        if(arFile[i].name == fileName){
-            //삭제된 파일은 기존 파일들에서 삭제시켜야 한다.
-            arFile.splice(i, 1);
-        }
-    }
+    /*
+    const $deleteForm = $('<form></form>')
+    $deleteForm.attr("name", "newForm");
+    $deleteForm.attr("method", "post");
+    $deleteForm.attr("action", "/user/removeProfile");
 
-    //삭제된 파일을 제외한 나머지 파일들을
-    arFile.forEach(file => dataTransfer.items.add(file));
-    //input태그에 다시 담아준다.
-    $("input[type='file']")[0].files = dataTransfer.files;
+    $deleteForm.append($('<input/>', {type: 'hidden', name: 'userNumber', value: userNumber}));
 
-});
+    $deleteForm.appendTo('body');
 
-$("input[type='button']").on("click", function(e){
-    e.preventDefault();
-
-    let $form = $("form#modifyForm");
-    let str = "";
-
-    for(let i=0; i<removedFiles.length; i++){
-        $.ajax({
-            url: "/upload/delete",
-            type: "delete",
-            data: {path: removedFiles[i]},
-        });
-    }
-
-    $.each($(".result ul li"), function(i, li){
-        str += "<input type='hidden' name='fileList[" + i + "].fileName' value='" + $(li).data('name') +"'>"
-        str += "<input type='hidden' name='fileList[" + i + "].originalFileName' value='" + $(li).data('original') +"'>"
-        str += "<input type='hidden' name='fileList[" + i + "].uploadDirectory' value='" + $(li).data('directory') +"'>"
-        str += "<input type='hidden' name='fileList[" + i + "].image' value='" + $(li).data('image') +"'>"
-    });
-
-    $form.append(str).submit();
-});
-
+    $deleteForm.submit();
      */
+
+});
+function showBasicImage() {
+    $Image.css("background-image", "url('/img/user-profile-image.jpg'");
+}
+/* 첨부된 파일 삭제 */
+function removeImageFile() {
+    let path = $Image.data("directory") + "/t_" + $Image.data("name");
+    pathData = {
+        path: path
+    }
+    $.ajax({
+        url: "/upload/delete",
+        type: "delete",
+        data: JSON.stringify(pathData),
+        success: function(){
+            console.log("삭제 성공");
+        },
+        error: function () {
+            console.log("삭제 실패");
+        }
+    });
+}
+
+/*프로필*/
+if(profileSession){
+    const $image = $(".profile-image .user-profile-picture div");
+    $image.css("background-image", "url('/upload/display?path=" + profileSession.uploadDirectory + "/t_" + profileSession.fileName + "'");
+}

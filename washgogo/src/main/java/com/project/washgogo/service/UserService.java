@@ -1,5 +1,6 @@
 package com.project.washgogo.service;
 
+import com.project.washgogo.domain.vo.ProfileVO;
 import com.project.washgogo.domain.vo.UserVO;
 import org.springframework.stereotype.Service;
 
@@ -22,4 +23,7 @@ public interface UserService {
     public void changePw(UserVO userVO);
     public UserVO showPoint(Long userNumber);
     public int removeService(Long userNumber);
+    public void modifyProfile(UserVO userVO);
+    public ProfileVO getProfile(UserVO userVO);
+    public void removeProfile(Long userNumber);
 }

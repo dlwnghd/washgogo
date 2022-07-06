@@ -6,6 +6,7 @@ import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -74,6 +75,26 @@ public class UserController {
         userService.modifyUserInfo(userVO);
         log.info(userVO.toString());
         return "/user/modifyingInformation";
+    }
+
+    @PostMapping("modifyProfile")
+    @ResponseBody
+    public String modifyProfile(@RequestBody UserVO userVO, HttpSession session){
+        log.info(userVO.toString());
+        long userNumber = (long)session.getAttribute("userNumber");
+        UserVO user = userService.loadUserInfo(userNumber);
+        ProfileVO profileVO = userVO.getProfile();
+        profileVO.setUserVO(user);
+        user.setProfile(profileVO);
+        userService.modifyProfile(user);
+        return "프로필 사진 DB저장 성공";
+    }
+
+    @DeleteMapping("removeProfile/{userNumber}")
+    @ResponseBody
+    public String removeProfile(@PathVariable("userNumber") Long userNumber){
+        userService.removeProfile(userNumber);
+        return "프로필 사진 DB삭제 성공";
     }
 
     @PostMapping("informationRemove")
@@ -389,13 +410,21 @@ public class UserController {
         }
         HttpSession session = request.getSession();
         Long userNumber = userService.login(userVO.getUserEmail(), userVO.getUserPw());
-        String userName = userService.loadUserInfo(userNumber).getUserName();
+        UserVO user = userService.loadUserInfo(userNumber);
+        String userName = user.getUserName();
         log.info("---------------------");
         log.info("---로그인 성공---");
         log.info("---------------------");
         session.setAttribute("userNumber", userNumber);
         session.setAttribute("userName", userName);
+        if(userService.getProfile(user) != null){
+            ProfileVO profile = userService.getProfile(user);
+            profile.setUserVO(user);
+            session.setAttribute("profile", profile);
+        }
+
         return new RedirectView("/index");
+
     }
 
 //    로그아웃

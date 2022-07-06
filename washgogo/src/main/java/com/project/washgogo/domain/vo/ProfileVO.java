@@ -9,7 +9,7 @@ public class ProfileVO {
     private String fileName;
     private String originalFileName;
     private String uploadDirectory;
-    private boolean image;
 
     private UserVO userVO;
+
 }

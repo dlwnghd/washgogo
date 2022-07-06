@@ -111,3 +111,96 @@ input{
     border-radius: 4px;
     border: 0.0625rem solid #e1e1e1;
 }
+
+#commonMessageBoxBg{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10001;
+    background: url("/img/modal-bg.png") repeat;
+}
+#commonMessageBox{
+    display: none;
+    position: fixed;
+    background-color: #fff;
+    z-index: 10002;
+    width: 23rem;
+    top: 50%;
+    left: 50%;
+    transform:  translate(-50%, -50%);
+}
+#commonMessageBox .modalContentsBox{
+    max-width: 23rem;
+    padding: 2.438rem 1.875rem 1.563rem;
+    height: auto;
+}
+#commonMessageBox .modalContentsBox{
+    padding: 2.438rem 1.875rem 3.063rem;
+}
+#commonMessageBox .btn-area{
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+#commonMessageBox .btn-area button{
+    min-width: 7.188rem;
+    padding: 0 0.625rem;
+    margin: 0 auto;
+    background: #fff;
+    color: #666;
+    border: 0.0625rem solid #666;
+    font-size: 0.875rem;
+    display: inline-block;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    vertical-align: top;
+    width: 50%;
+    margin-right: 0.5rem;
+}
+#commonMessageBox .btn-area button:last-child{
+    margin-left: 0.5rem;
+}
+#commonMessageBox .btn-area label button{
+    width: 100%;
+}
+#commonMessageBox .btn-area button.btn-white{
+    color: #000;
+    border: 0.0625rem solid #000;
+}
+#commonMessageBox .btn-area button.btn-green{
+    color: #fff;
+    background-color: #00BA86;
+    border: none;
+}
+#commonMessageBox .modalCloseBtn{
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: url("/img/modal-close.png") no-repeat center center;
+    background-size: 100% 100%;
+    text-indent: -999rem;
+}
+#commonMessageBox .modalHead{
+    font-size: 1.125rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: #000;
+    text-align: center;
+}
+#commonMessageBox .modalHead h1{
+    font-size: 1.3rem;
+    vertical-align: top;
+}
+#commonMessageBox .modalMsg{
+    font-size: 1rem;
+    color: #000;
+    text-align: center;
+    line-height: 1.5;
+}
