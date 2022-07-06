@@ -63,6 +63,29 @@ public class UserController {
         return "/user/modifyingInformation";
     }
 
+    @PostMapping("myModifyAddress")
+    public String myModifyAddress(HttpSession session, UserVO userVO, @ModelAttribute("selectedServiceType") String selectedServiceType){
+        log.info("-----------------postAddress--------------------");
+        log.info("userVO : " + userVO.toString());
+        log.info("-------------------------------------");
+
+        return "/user/myModifyAddress";
+    }
+
+    @PostMapping("/myModifyingInformationOk")
+    public String myModifyingInformationOk(HttpSession session, UserVO userVO, @ModelAttribute("selectedServiceType") String selectedServiceType, Model model){
+        log.info("------------------------------------");
+        log.info("userVO : " + userVO.toString());
+        log.info("-------------------------------------");
+        Long userNumber = Long.parseLong(String.valueOf(session.getAttribute("userNumber")));
+        userVO.setUserNumber(userNumber);
+        userService.modifyAddress(userVO);
+        log.info("-------------주소 수정 완료!!!!!!!!!!!------------------------");
+        long number = (long)session.getAttribute("userNumber");
+        model.addAttribute("loadUserInfo", userService.loadUserInfo(number));
+        return "/user/modifyingInformation";
+    }
+
     @PostMapping("informationModify")
     @ResponseBody
     public String informationModify(@RequestBody UserVO userVO, HttpSession session){
@@ -77,6 +100,8 @@ public class UserController {
         session.setAttribute("userName", userVO.getUserName());
         return "/user/modifyingInformation";
     }
+
+
 
     @PostMapping("informationRemove")
     @ResponseBody
