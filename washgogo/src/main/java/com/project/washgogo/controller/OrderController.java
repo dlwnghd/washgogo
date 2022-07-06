@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -78,9 +79,9 @@ public class OrderController {
 	}
 
 	@PostMapping("/requestSelectOk")
-	public String requestSelectOk(OrderVO orderVO, HttpSession session, HttpServletRequest request) {
+	public String requestSelectOk(OrderVO orderVO, HttpSession session, HttpServletRequest request, Model model) {
 		long userNumber = (long)session.getAttribute("userNumber");
-
+		OrderVO order = orderService.getRecent(userNumber);
 		orderVO.setUserNumber(userNumber);
 		log.info("-------------------------------------");
 		log.info("orderVO : " + orderVO.toString());
@@ -90,6 +91,7 @@ public class OrderController {
 		if (request.getParameter("washer") != null && !request.getParameter("washer").equals("") && !request.getParameter("washerNumber").isEmpty()) {
 			Double number = Double.parseDouble(request.getParameter("washerNumber"));
 			Double temp = 0.0;
+
 			if (number > 3.0) {
 				log.info("=============== 3.0보다 큼");
 				temp = (number - 3) / 0.5;
@@ -112,14 +114,21 @@ public class OrderController {
 		orderListService.insertShipping(orderVO.getOrderNumber());
 		orderService.setTotalPrice(orderVO.getOrderNumber());
 
-		return ("/index");
+		List<OrderListVO> orderList = orderListService.getRecentList(order.getOrderNumber());
+
+		model.addAttribute("order", order);
+		model.addAttribute("orderList", orderList);
+
+		return ("/order/payment");
 	}
 
 	@GetMapping("payment")
-	public String payment(HttpSession session, UserVO userVO,Model model,HttpServletResponse response) throws IOException{
-		if(session.getAttribute("userNumber")  == null) { return "/user/login"; }
+	public String payment(HttpSession session, Model model){
+//		if(session.getAttribute("userNumber")  == null) { return "/user/login"; }
 
 		long userNumber = (long)session.getAttribute("userNumber");
+		UserVO user = userService.loadUserInfo(userNumber);
+		model.addAttribute("userVO", user);
 		return "/order/payment";
 	}
 }
