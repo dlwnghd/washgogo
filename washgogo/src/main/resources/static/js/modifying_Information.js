@@ -35,7 +35,7 @@ changeuserBtn.addEventListener('click', e => {
             }
             // 비밀번호는 db에 전달만 하고 view에서는 보이지 않게 하도록 하자
             // console.log(document.getElementById("Pw").value);
-            // $password.text(document.getElementById("Pw").value); // ⭐기능 구현되는 코드
+            $password.text(document.getElementById("Pw").value); // ⭐기능 구현되는 코드
             alert(type + "이 수정되었습니다!");
             break;
         case '휴대전화 번호 수정':
