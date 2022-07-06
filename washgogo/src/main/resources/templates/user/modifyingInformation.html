@@ -28,13 +28,12 @@
                     <h1>계정 설정</h1>
                     <div class="profile-image">
                         <div class="user-profile-picture">
-                            <div data-name="image" lazy="loaded" style="background-image: url('/img/user-profile-image.jpg')"></div>
+                            <div class="image" lazy="loaded" style="background-image: url('/img/user-profile-image.jpg')"></div>
                         </div>
-                        <label>
-                            <img class="camera-icon" src="/img/camera-icon.svg" alt="카메라 아이콘">
+                        <img class="camera-icon" src="/img/camera-icon.svg" alt="카메라 아이콘">
+                        <form id="profileForm" method="post" action="/user/modifyProfile">
                             <input type="file" name="file" id="profileInput" style="display: none" accept="image/*">
-                        </label>
-
+                        </form>
                     </div>
                     <section>
                         <ul id="account" class="account-info">
@@ -100,14 +99,11 @@
                 </main>
             </div>
         </div>
-        <!---- App-Footer ---->
-        <nav th:replace="~{/fragments/headerFooter:: footer}">
-        </nav>
-    </div>
-    <!-- modal -->
-    <div id="modal" class="modal-overlay" style="display: none;">
-        <div id="modal_window" class="modal-window">
-            <div class="close-area">X</div>
+
+        <!-- modal -->
+        <div id="modal" class="modal-overlay" style="display: none;">
+            <div id="modal_window" class="modal-window">
+                <div class="close-area">X</div>
                 <div class="title">
                     <h2 id="changeInfo">수정할 정보명</h2>
                 </div>
@@ -139,11 +135,31 @@
                         </button>
                     <button type="button" class="remain-user">다시 생각해 볼게요</button>
                 </div>
+            </div>
         </div>
+        <div id="commonMessageBoxBg"></div>
+        <div id="commonMessageBox">
+            <div class="modalContentsBox">
+                <div class="modalHead">
+                    <h1>프로필 사진 등록</h1>
+                </div>
+                <div class="modalContent">
+                    <div class="btn-area">
+                        <button type="button" class="btn-white btn-to-basic">기본 이미지로 변경</button>
+                        <button type="button" class="btn-green btnOk">사진 등록하기</button>
+                    </div>
+                </div>
+            </div>
+            <a class="modalCloseBtn">팝업닫기</a>
+        </div>
+        <!---- App-Footer ---->
+        <nav th:replace="~{/fragments/headerFooter:: footer}">
+        </nav>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:inline="javascript">
+    let userNumber = [[${session.userNumber}]];
     let address = [[${loadUserInfo.userAddress}]];
     let addressDetail = [[${loadUserInfo.userAddressDetail}]];
     let entranceType = [[${loadUserInfo.userEntranceType}]];

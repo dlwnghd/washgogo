@@ -6,6 +6,7 @@ import com.project.washgogo.domain.vo.*;
 import com.project.washgogo.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -101,7 +102,27 @@ public class UserController {
         return "/user/modifyingInformation";
     }
 
+    @PostMapping("modifyProfile")
+    public String modifyProfile(UserVO userVO, HttpSession session, Model model){
+        log.info(userVO.toString());
+        long userNumber = (long)session.getAttribute("userNumber");
+        UserVO user = userService.loadUserInfo(userNumber);
+        ProfileVO profileVO = userVO.getProfile();
+        profileVO.setUserVO(user);
+        user.setProfile(profileVO);
+        if(userService.getProfile(userNumber) != null){
 
+        }
+        userService.modifyProfile(user);
+        return myPage(user, session, model);
+    }
+
+    @DeleteMapping("removeProfile/{userNumber}")
+    @ResponseBody
+    public String removeProfile(@PathVariable("userNumber") Long userNumber){
+        userService.removeProfile(userNumber);
+        return "프로필 사진 DB삭제 성공";
+    }
 
     @PostMapping("informationRemove")
     @ResponseBody
@@ -415,13 +436,21 @@ public class UserController {
         }
         HttpSession session = request.getSession();
         Long userNumber = userService.login(userVO.getUserEmail(), userVO.getUserPw());
-        String userName = userService.loadUserInfo(userNumber).getUserName();
+        UserVO user = userService.loadUserInfo(userNumber);
+        String userName = user.getUserName();
         log.info("---------------------");
         log.info("---로그인 성공---");
         log.info("---------------------");
         session.setAttribute("userNumber", userNumber);
         session.setAttribute("userName", userName);
+        if(userService.getProfile(userNumber) != null){
+            ProfileVO profile = userService.getProfile(userNumber);
+            profile.setUserVO(user);
+            session.setAttribute("profile", profile);
+        }
+
         return new RedirectView("/index");
+
     }
 
 //    로그아웃
@@ -432,7 +461,7 @@ public class UserController {
         log.info("---------------------");
         HttpSession session = request.getSession();
         log.info("logout에서 session : "+session.getAttribute("userNumber").toString());
-        session.removeAttribute("userNumber");
+        session.invalidate();
         return new RedirectView("/index");
     }
 

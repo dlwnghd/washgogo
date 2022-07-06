@@ -102,4 +102,11 @@
         </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:inline="javascript">
+        /*프로필*/
+        if(profileSession){
+            const $image = $(".thumb .user-profile-picture div");
+            $image.css("background-image", "url('/upload/display?path=" + profileSession.uploadDirectory + "/t_" + profileSession.fileName + "'");
+        }
+    </script>
 </html>

@@ -3,12 +3,12 @@
 <mapper namespace="com.project.washgogo.mapper.ProfileMapper">
     <insert id="insert">
         INSERT INTO TBL_PROFILE
-        (FILE_NAME, ORIGINAL_FILE_NAME, UPLOAD_DIRECTORY, IMAGE, BOARD_NUMBER)
-        VALUES(#{fileName}, #{originalFileName}, #{uploadDirectory}, #{image}, #{userVO.userNumber})
+        (FILE_NAME, ORIGINAL_FILE_NAME, UPLOAD_DIRECTORY, USER_NUMBER)
+        VALUES(#{fileName}, #{originalFileName}, #{uploadDirectory}, #{userVO.userNumber})
     </insert>
 
     <select id="select" resultType="profileVO">
-        SELECT FILE_NAME, ORIGINAL_FILE_NAME, UPLOAD_DIRECTORY, IMAGE
+        SELECT FILE_NAME, ORIGINAL_FILE_NAME, UPLOAD_DIRECTORY
         FROM TBL_PROFILE
         WHERE USER_NUMBER = #{userNumber}
     </select>
@@ -19,7 +19,7 @@
     </delete>
 
     <select id="getOldFiles" resultType="profileVO">
-        SELECT FILE_NAME, ORIGINAL_FILE_NAME, UPLOAD_DIRECTORY, IMAGE
+        SELECT FILE_NAME, ORIGINAL_FILE_NAME, UPLOAD_DIRECTORY
         FROM TBL_PROFILE WHERE UPLOAD_DIRECTORY = TO_CHAR(SYSDATE-1, 'YYYY/MM/DD')
     </select>
 </mapper>
