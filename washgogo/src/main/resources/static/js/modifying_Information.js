@@ -138,11 +138,32 @@ phoneNumberBtn.addEventListener("click", e => {
     modifyInfo.style.display = 'block';
     choose1.style.display = 'contents';
 })
-// 배송지 수정 페이지
-const addressBtn = account.querySelector(".address")
-addressBtn.addEventListener("click", e => {
-    location.href="/user/myModifyAddress";
+
+/* 주소 수정 이벤트 */
+const $modifyAddressBtn = $("#modify-address");
+$modifyAddressBtn.on("click", function () {
+    const $newForm = $('<form></form>')
+    $newForm.attr("name", "newForm");
+    $newForm.attr("method", "post");
+    $newForm.attr("action", "/user/myModifyAddress");
+
+    $newForm.append($('<input/>', {type: 'hidden', name: 'userAddress', value: address}));
+    $newForm.append($('<input/>', {type: 'hidden', name: 'userAddressDetail', value: addressDetail}));
+    $newForm.append($('<input/>', {type: 'hidden', name: 'userEntranceType', value: entranceType}));
+    $newForm.append($('<input/>', {type: 'hidden', name: 'userEntrancePw', value: entrancePw}));
+    $newForm.append($('<input/>', {type: 'hidden', name: 'userEntranceMessage', value: entranceMessage}));
+    $newForm.append($('<input/>', {type: 'hidden', name: 'selectedServiceType', value: selectedServiceType}));
+
+    $newForm.appendTo('body');
+
+    $newForm.submit();
 })
+
+// // 배송지 수정 페이지
+// const addressBtn = account.querySelector(".address")
+// addressBtn.addEventListener("click", e => {
+//     location.href="/user/myModifyAddress";
+// })
 
 // 계정탈퇴 모달 띄우기
 const accountWithdrawalBtn = withdrawal.querySelector(".accountWithdrawal")
