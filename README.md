@@ -1,5 +1,5 @@
 # washgogo
-- spring 프로젝트 (http://http://localhost:20000/index)
+- spring 프로젝트 (http://localhost:20000/index)
 - 누구나 쉽고 간편하게 세탁 서비스 이용
 
 # 프로젝트 목적
