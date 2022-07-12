@@ -16,7 +16,7 @@ changeSeveralButton .click(function () {
     // ⭐후에 시간 남으면 h3를 없애고 div에 text(ex.변경하기)를 넣고 아래와 같이 변경하기
     changeSeveralText.innerHTML = '서비스 이용 중';
     changeOnceText.innerHTML = '변경하기';
-    userServiceTypeValue.value = "여러 번 이용";
+    userServiceTypeValue.value = "Several";
     userLaunderetteValue = "Regular"
 });
 
@@ -30,6 +30,6 @@ changeOnceButton.click(function () {
     changeSeveralButton.prop("type", "submit");
     changeSeveralText.innerHTML = '변경하기';
     changeOnceText.innerHTML = '서비스 이용 중';
-    userServiceTypeValue.value = "한 번 이용";
+    userServiceTypeValue.value = "Once";
     userLaunderetteValue = "선택안함"
 });

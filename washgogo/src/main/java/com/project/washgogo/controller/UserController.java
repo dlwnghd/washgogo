@@ -320,7 +320,7 @@ public class UserController {
         for (int i=0; i<letter; i++) {
             createNum = random.nextInt(9);		//0부터 9까지 올 수 있는 1자리 난수 생성
             ranNum =  Integer.toString(createNum);  //1자리 난수를 String으로 형변환
-            resultNum += ranNum;			//생성된 난수(문자열)을 원하는 수(letter)만큼 더하며 나열
+            resultNum += ranNum;			//생성된 난수(문자열)을 원하는 수(letter)ㅇ만큼 더하며 나열
         }
 
 ////        휴대폰에 인증번호 전송
