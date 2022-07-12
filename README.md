@@ -1,6 +1,5 @@
 # washgogo
-- spring 프로젝트
-- http://http://localhost:20000/index
+- spring 프로젝트 (http://http://localhost:20000/index)
 - 누구나 쉽고 간편하게 세탁 서비스 이용
 
 # 프로젝트 목적
@@ -46,4 +45,4 @@
 	- 결제 API
 
 # ERD
-
+![ERD](https://user-images.githubusercontent.com/104343387/178387232-7433c856-b007-4678-ab8c-46f161a8e595.png)
