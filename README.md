@@ -45,4 +45,4 @@
 	- 결제 API
 
 # ERD
-![ERD](https://user-images.githubusercontent.com/104343387/178387232-7433c856-b007-4678-ab8c-46f161a8e595.png)
+![ERD](./washgogoDB.png)
